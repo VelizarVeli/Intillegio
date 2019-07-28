@@ -1,9 +1,8 @@
 ﻿namespace Intillegio.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using Intillegio.Data.Models;
     using Intillegio.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {
