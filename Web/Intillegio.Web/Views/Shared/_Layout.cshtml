@@ -335,11 +335,9 @@
                 <!-- Column 4 End -->
             </div>
 
-            <!-- Footer Bar Start -->
             <div class="footer-bar">
-                <p><span class="primary-color">SpecThemes</span> © 2018. All Rights Reserved.</p>
+                <p><span class="primary-color">Intillegio</span> &copy; @DateTime.Now.Year.  All Rights Reserved.</p>
             </div>
-            <!-- Footer Bar End -->
         </div>
     </footer>
     <!-- Footer END -->
@@ -348,21 +346,72 @@
                 &copy; @DateTime.Now.Year - Intillegio - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
         </footer>*@
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+<environment names="Development">
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/popper.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/bootstrap.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/owl.carousel.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/navigation.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/navigation.fixed.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/wow.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.counterup.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/waypoints.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/tabs.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/moment.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/moment-timezone-with-data.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/timer.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.mb.YTPlayer.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/isotope.pkgd.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/modernizr.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/switcher.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/map.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/main.js" asp-append-version="true"></script>
+    
 
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+
+
+    
+    
+    
+    
+
+    @*<script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>*@
+
+</environment>
+<environment names="Staging,Production">
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/popper.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/bootstrap.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/owl.carousel.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/navigation.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/navigation.fixed.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/wow.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.counterup.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/waypoints.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/tabs.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/moment.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/moment-timezone-with-data.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/timer.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.mb.YTPlayer.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/isotope.pkgd.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/modernizr.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/switcher.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/map.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/main.js" asp-append-version="true"></script>
+
+
+
+
+    @*<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>*@
+</environment>
     @this.RenderSection("Scripts", required: false)
 </body>
 </html>
