@@ -1,42 +1,10 @@
 ﻿@{
-    this.ViewData["Title"] = "Home Page";
+    this.ViewData["Title"] = "Home";
 }
-
-<div class="count-back-box" style="background-image: url('@Url.Content("img/logos/underConstruction.jpg")');">
-    <div class="container">
-        <div class="row">
-            <div class="construction-box">
-                <div class="construction-icons">
-                    <i class="icon-settings" id="cons-icon-1"></i>
-                    <i class="icon-settings" id="cons-icon-2"></i>
-                </div>
-            </div>
-            <div class="wrapper">
-                <div class="clock">
-                    <div class="column days mr-20-md">
-                        <div class="timer" id="days"></div>
-                        <h5>DAY</h5>
-                    </div>
-                    <div class="column">
-                        <div class="timer" id="hours"></div>
-                        <h5>HOUR</h5>
-                    </div>
-                    <div class="timer">:</div>
-                    <div class="column">
-                        <div class="timer" id="minutes"></div>
-                        <h5>MINUTE</h5>
-                    </div>
-                    <div class="timer">:</div>
-                    <div class="column">
-                        <div class="timer" id="seconds"></div>
-                        <h5>SECOND</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="count-back-box-text">
-                <h3>We’re getting ready to launch</h3>
-                <h6>We’ll be here soon with our new awesome site, subscribe to be notified.</h6>
-            </div>
-        </div>
-    </div>
-</div>
+<partial name="~/Views/Home/PartialViews/_MainImageSection.cshtml" />
+<partial name="~/Views/Home/PartialViews/_FeatureBoxesSection.cshtml" />
+<partial name="~/Views/Home/PartialViews/_BackgroundSection.cshtml" />
+<partial name="~/Views/Home/PartialViews/_ClientsCarousel.cshtml" />
+<partial name="~/Views/Home/PartialViews/_ProjectsSection.cshtml" />
+<partial name="~/Views/Home/PartialViews/_BlogGrid.cshtml" />
+<partial name="~/Views/Home/PartialViews/_NoticeSection.cshtml" />
