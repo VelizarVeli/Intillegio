@@ -46,14 +46,13 @@
     <partial name="_TopBar" />
     <header>
         <partial name="_Navbar" />
-        <partial name="_NavbarASPNet" />
     </header>
     <partial name="_CookieConsentPartial" />
     <main role="main" class="pb-3">
         @this.RenderBody()
     </main>
-    <partial name="_Footer"/>
-    
+    <partial name="_Footer" />
+
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>

@@ -11,16 +11,9 @@
                 <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             </li>
             <li>
-                <a href="#">About</a>
-                <ul class="nav-dropdown">
-                    <li><a href="about.html">About Us 01</a></li>
-                    <li><a href="about-2.html">About Us 02</a></li>
-                    <li><a href="team.html">Our Team 01</a></li>
-                    <li><a href="team-2.html">Our Team 02</a></li>
-                    <li><a href="team-3.html">Our Team 03</a></li>
-                    <li><a href="team-single.html">Team Single</a></li>
-                    <li><a href="partners.html">Our Partners</a></li>
-                </ul>
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+            </li>
             </li>
             <li>
                 <a href="#">Services</a>
@@ -74,19 +67,6 @@
                 </ul>
             </li>
             <li>
-                <a href="#">Elements</a>
-                <ul class="nav-dropdown">
-                    <li><a href="feature-boxes.html">Feature Boxes</a></li>
-                    <li><a href="pricing-lists.html">Pricing Lists</a></li>
-                    <li><a href="testmonials.html">Testmonials</a></li>
-                    <li><a href="progress-bars.html">Progress Bars</a></li>
-                    <li><a href="accordions.html">Accordions</a></li>
-                    <li><a href="animated-tabs.html">Animated Tabs</a></li>
-                    <li><a href="countups.html">Countups</a></li>
-                    <li><a href="responsive-videos.html">Responsive Videos</a></li>
-                </ul>
-            </li>
-            <li>
                 <a href="#">Contact</a>
                 <ul class="nav-dropdown">
                     <li><a href="contact.html">Contact Us 01</a></li>
@@ -95,6 +75,7 @@
                     <li><a href="contact-4.html">Contact Us 04</a></li>
                 </ul>
             </li>
+            <partial name="_LoginPartial" />
         </ul>
     </div>
 </nav>
