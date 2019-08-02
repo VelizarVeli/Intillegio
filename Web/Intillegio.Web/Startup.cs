@@ -1,4 +1,7 @@
-﻿namespace Intillegio.Web
+﻿using Intillegio.Services.Messaging.Emails;
+using Intillegio.Services.Messaging.Emails.Contracts;
+
+namespace Intillegio.Web
 {
     using System.Reflection;
 
@@ -94,6 +97,10 @@
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
+
+            services.AddSingleton<IEmailConfiguration>(configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddScoped<IEmailMessage, EmailMessage>();
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
