@@ -10,8 +10,8 @@
             <div class="col-md-6 col-sm-6 col-12">
                 <!-- Map START -->
                 <div id="map" class="mb-20 mt-10">
-                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk25E4mNfVIEt3tNl3K1HwNZVruVoFBlA&callback=initMap">
-                    </script>
+                    <input type="button" value="Click to Display Map" onclick="DisplayGoogleMap()" />
+                    <div id="myDiv" style="width:100%;height:400px;"></div>
                 </div>
                 <!-- Map START -->
             </div>
@@ -35,7 +35,6 @@
                             <div class="col-md-6 col-sm-6 col-12">
                                 <span asp-validation-for="Email" class="text-danger"></span>
                                 <label asp-for="Email">Email</label>
-                                <input asp-for="Email" id="contactEmail">
                             </div>
 
                             <div class="col-md-12">

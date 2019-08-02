@@ -19,6 +19,11 @@
             return this.View();
         }
 
+        public IActionResult Faq()
+        {
+            return this.View();
+        }
+
         public IActionResult Privacy()
         {
             return this.View();
