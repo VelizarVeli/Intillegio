@@ -20,7 +20,7 @@
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet" asp-append-version="true">
         <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css" asp-append-version="true">
         <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/segment7" type="text/css" asp-append-version="true" />
-
+        <script src="https://maps.googleapis.com/maps/api/js?"></script>
         <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     <environment names="Staging,Production">
@@ -74,14 +74,12 @@
         <script src="~/lib/jquery/dist/switcher.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/map.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/main.js" asp-append-version="true"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk25E4mNfVIEt3tNl3K1HwNZVruVoFBlA&callback=initMap"></script>
-
 
         <script type="text/javascript">
             function DisplayGoogleMap() {
 
                 //Set the Latitude and Longitude of the Map
-                var myAddress = new google.maps.LatLng(24.466807, 54.384297);
+                var myAddress = new google.maps.LatLng(43.854146, 25.969668);
 
                 //Create Options or set different Characteristics of Google Map
                 var mapOptions = {
