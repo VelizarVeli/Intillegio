@@ -16,7 +16,7 @@ namespace Intillegio.Services.Messaging.Emails
         public string Subject { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Message should be more than or equal to {1} characters")]
+        [MinLength(10, ErrorMessage = "Message should be more than or equal to {1} characters")]
         public string Content { get; set; }
     }
 }

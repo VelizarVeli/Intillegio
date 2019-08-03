@@ -101,6 +101,7 @@
                 marker.setMap(map);
             }
         </script>
+        <partial name="_ValidationScriptsPartial.cshtml"/>
     </environment>
     <environment names="Staging,Production">
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
@@ -150,6 +151,7 @@
                 marker.setMap(map);
             }
         </script>
+        <partial name="_ValidationScriptsPartial.cshtml" />
     </environment>
     @this.RenderSection("Scripts", required: false)
 </body>
