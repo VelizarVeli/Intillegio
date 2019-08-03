@@ -11,49 +11,31 @@
                 <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             </li>
             <li>
-            <li>
                 <a asp-area="" asp-controller="Home" asp-action="About">About Us</a>
             </li>
             <li>
                 <a href="#">Services</a>
                 <ul class="nav-dropdown">
-                    <li><a href="services.html">Services 01</a></li>
-                    <li><a href="services-2.html">Services 02</a></li>
-                    <li><a href="services-3.html">Services 03</a></li>
-                    <li><a href="service-detail.html">Service Detail</a></li>
+                    @*TODO: Add foreach with all services from database*@
+                    <li><a asp-area="" asp-controller="Solutions" asp-action="Solutions">Services 01</a></li>
+                    <li><a asp-area="" asp-controller="Solutions" asp-action="Solutions">Services 02</a></li>
+                    <li><a asp-area="" asp-controller="Solutions" asp-action="Solutions">Services 03</a></li>
+                    <li><a asp-area="" asp-controller="Solutions" asp-action="Solutions">Services 04</a></li>
+                    <li><a asp-area="" asp-controller="Solutions" asp-action="Solutions">Services 05</a></li>
                     <li><a href="cases.html">Cases</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">Projects</a>
-                <ul class="nav-dropdown">
-                    <li><a href="projects-grid.html">Grid Style</a></li>
-                    <li><a href="projects-masonry-3-column.html">Masonry Style 01</a></li>
-                    <li><a href="projects-masonry-4-column.html">Masonry Style 02</a></li>
-                    <li><a href="project-detail.html">Projects Detail 01</a></li>
-                    <li><a href="project-detail-2.html">Projects Detail 02</a></li>
-                </ul>
+                <a asp-area="" asp-controller="Projects" asp-action="Projects">Projects</a>
             </li>
             <li>
-                <a href="#">Blog</a>
-                <ul class="nav-dropdown">
-                    <li><a href="blog-grid.html">Blog Grid</a></li>
-                    <li><a href="blog-grid-classic.html">Blog Grid Classic</a></li>
-                    <li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
-                    <li><a href="blog-list.html">Blog List</a></li>
-                    <li><a href="blog-list-sidebar.html">Blog List Sidebar</a></li>
-                    <li><a href="blog-post.html">Blog Post</a></li>
-                </ul>
+                <a asp-area="" asp-controller="Blog" asp-action="Blog">Blog</a>
             </li>
             <li>
                 <a href="#">Shop</a>
                 <ul class="nav-dropdown">
-                    <li><a href="shop-grid.html">Grid Style 3 Col</a></li>
-                    <li><a href="shop-grid-4-col.html">Grid Style 4 Col</a></li>
-                    <li><a href="shop-grid-classic.html">Classic Style 3 Col</a></li>
-                    <li><a href="shop-grid-classic-4-col.html">Classic Style 4 Col</a></li>
-                    <li><a href="shop-single.html">Shop Single</a></li>
-                    <li><a href="shopping-cart.html">Shopping Cart</a></li>
+                    <li><a asp-area="" asp-controller="Shop" asp-action="Products">Products</a></li>
+                    <li><a asp-area="" asp-controller="Shop" asp-action="ShoppingCart">Shopping Cart</a></li>
                 </ul>
             </li>
             <li>
