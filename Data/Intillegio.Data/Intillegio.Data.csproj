@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Intillegio.Common\Intillegio.Common.csproj" />
+    <ProjectReference Include="..\..\Services\Intillegio.Services.Data\Intillegio.Services.Data.csproj" />
     <ProjectReference Include="..\Intillegio.Data.Common\Intillegio.Data.Common.csproj" />
     <ProjectReference Include="..\Intillegio.Data.Models\Intillegio.Data.Models.csproj" />
   </ItemGroup>

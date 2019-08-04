@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Intillegio.Data.Common\Intillegio.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\Intillegio.Data.Models\Intillegio.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\Intillegio.Web.ViewModels\Intillegio.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
