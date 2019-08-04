@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Intillegio.Common\Intillegio.Common.csproj" />
     <ProjectReference Include="..\Intillegio.Data.Common\Intillegio.Data.Common.csproj" />
   </ItemGroup>
   

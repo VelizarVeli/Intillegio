@@ -1,4 +1,6 @@
-﻿namespace Intillegio.Web.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace Intillegio.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
 
