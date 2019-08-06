@@ -1,4 +1,7 @@
-﻿namespace Intillegio.Data
+﻿using Intillegio.Data.Common.Models.Contracts;
+using Intillegio.Data.Models.Entities;
+
+namespace Intillegio.Data
 {
     using System;
     using System.Linq;
@@ -6,7 +9,6 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Intillegio.Data.Common.Models;
     using Intillegio.Data.Models;
 
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

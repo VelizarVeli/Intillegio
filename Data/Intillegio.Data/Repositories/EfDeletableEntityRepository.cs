@@ -1,4 +1,6 @@
-﻿namespace Intillegio.Data.Repositories
+﻿using Intillegio.Data.Common.Models.Contracts;
+
+namespace Intillegio.Data.Repositories
 {
     using System;
     using System.Linq;

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Intillegio.Data.Models
+namespace Intillegio.Data.Models.Entities
 {
-   public class ProjectFeatures
+    public class ProjectFeatures
     {
         public int Id { get; set; }
 

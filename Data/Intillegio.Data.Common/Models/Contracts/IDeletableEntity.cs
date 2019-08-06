@@ -1,8 +1,8 @@
-﻿namespace Intillegio.Data.Common.Models
-{
-    using System;
-    using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
+namespace Intillegio.Data.Common.Models.Contracts
+{
     public interface IDeletableEntity
     {
         bool IsDeleted { get; set; }

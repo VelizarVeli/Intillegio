@@ -1,4 +1,6 @@
-﻿namespace Intillegio.Data
+﻿using Intillegio.Data.Common.Models.Contracts;
+
+namespace Intillegio.Data
 {
     using System.Linq;
 

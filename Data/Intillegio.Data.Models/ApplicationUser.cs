@@ -1,4 +1,7 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
+
+using Intillegio.Data.Common.Models.Contracts;
+
 namespace Intillegio.Data.Models
 {
     using System;

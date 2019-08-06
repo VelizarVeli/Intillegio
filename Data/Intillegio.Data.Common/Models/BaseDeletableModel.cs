@@ -1,4 +1,6 @@
-﻿namespace Intillegio.Data.Common.Models
+﻿using Intillegio.Data.Common.Models.Contracts;
+
+namespace Intillegio.Data.Common.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;

@@ -1,4 +1,4 @@
-﻿namespace Intillegio.Data.Models
+﻿namespace Intillegio.Data.Models.Entities.Enums
 {
     public enum Status
     {

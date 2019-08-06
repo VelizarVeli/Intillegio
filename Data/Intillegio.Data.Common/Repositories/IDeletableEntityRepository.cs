@@ -1,4 +1,6 @@
-﻿namespace Intillegio.Data.Common.Repositories
+﻿using Intillegio.Data.Common.Models.Contracts;
+
+namespace Intillegio.Data.Common.Repositories
 {
     using System.Linq;
     using System.Threading.Tasks;

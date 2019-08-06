@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace Intillegio.Data.Models
+namespace Intillegio.Data.Models.Entities
 {
     public class Category
     {
@@ -9,6 +10,7 @@ namespace Intillegio.Data.Models
             this.Projects = new HashSet<Project>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         public string Name { get; set; }

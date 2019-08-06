@@ -1,14 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Intillegio.Data.Common.Models;
 
-namespace Intillegio.Data.Models
+namespace Intillegio.Data.Models.Entities
 {
-    using System;
-
-    using System.Collections.Generic;
-
-    using Intillegio.Data.Common.Models;
-
-    public class Client : BaseModel<Guid>
+    public class Client : BaseId
     {
         public Client()
         {
