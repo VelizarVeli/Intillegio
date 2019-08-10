@@ -19,9 +19,9 @@ namespace Intillegio.Web.Controllers
             _currentUser = currentUser;
         }
 
-        public async Task<IActionResult> LastProjects()
+        public IActionResult LastProjects()
         {
-            var lastProjects = await _projectsService.LastProjects();
+            var lastProjects =  _projectsService.LastProjects();
             return View("Projects", lastProjects);
         }
     }

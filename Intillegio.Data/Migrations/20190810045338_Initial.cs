@@ -230,7 +230,7 @@ namespace Intillegio.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectFeatureses",
+                name: "ProjectFeatures",
                 columns: table => new
                 {
                     ProjectId = table.Column<Guid>(nullable: false),
@@ -239,15 +239,15 @@ namespace Intillegio.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProjectFeatureses", x => new { x.ProjectId, x.FeatureId });
+                    table.PrimaryKey("PK_ProjectFeatures", x => new { x.ProjectId, x.FeatureId });
                     table.ForeignKey(
-                        name: "FK_ProjectFeatureses_Features_FeatureId",
+                        name: "FK_ProjectFeatures_Features_FeatureId",
                         column: x => x.FeatureId,
                         principalTable: "Features",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ProjectFeatureses_Projects_ProjectId",
+                        name: "FK_ProjectFeatures_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
@@ -282,8 +282,8 @@ namespace Intillegio.Data.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectFeatureses_FeatureId",
-                table: "ProjectFeatureses",
+                name: "IX_ProjectFeatures_FeatureId",
+                table: "ProjectFeatures",
                 column: "FeatureId");
 
             migrationBuilder.CreateIndex(
@@ -332,7 +332,7 @@ namespace Intillegio.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ProjectFeatureses");
+                name: "ProjectFeatures");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

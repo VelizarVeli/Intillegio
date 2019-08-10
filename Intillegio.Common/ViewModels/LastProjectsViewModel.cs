@@ -12,6 +12,6 @@ namespace Intillegio.Common.ViewModels
 
         public string Stage { get; set; }
 
-        public string Category { get; set; }
+        public string CategoryName { get; set; }
     }
 }

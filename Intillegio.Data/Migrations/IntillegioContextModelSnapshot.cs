@@ -163,7 +163,7 @@ namespace Intillegio.Data.Migrations
 
                     b.HasIndex("FeatureId");
 
-                    b.ToTable("ProjectFeatureses");
+                    b.ToTable("ProjectFeatures");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Intillegio.Common.ViewModels.ClientViewModel>
+<div class="owl-carousel owl-theme clients" id="clients">
+    @foreach (var client in Model)
+    {
+      <div class="item">
+          <img src="@client.Logo" alt="partner-image">
+      </div>
+    }
+</div>

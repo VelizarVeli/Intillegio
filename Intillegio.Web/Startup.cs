@@ -93,6 +93,7 @@ namespace Intillegio.Web
         private void RegisterGlobalServices(IServiceCollection services)
         {
             services.AddScoped<IProjectsService, ProjectsService>();
+            services.AddScoped<IClientsService, ClientsService>();
         }
     }
 }

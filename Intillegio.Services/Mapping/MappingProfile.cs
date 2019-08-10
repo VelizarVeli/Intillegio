@@ -9,11 +9,19 @@ namespace Intillegio.Services.Mapping
         public MappingProfile()
         {
             ConfigureProjects();
+            ConfigureClients();
         }
 
         private void ConfigureProjects()
         {
-            CreateMap<LastProjectsViewModel, Project>();
+            CreateMap<Project, LastProjectsViewModel>()
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
+           
+        }
+
+        private void ConfigureClients()
+        {
+            CreateMap<Client, ClientViewModel>();
         }
     }
 }

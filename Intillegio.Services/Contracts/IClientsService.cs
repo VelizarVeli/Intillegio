@@ -4,8 +4,8 @@ using Intillegio.Common.ViewModels;
 
 namespace Intillegio.Services.Contracts
 {
-   public interface IProjectsService
-   {
-       IEnumerable<LastProjectsViewModel> LastProjects();
-   }
+    public interface IClientsService
+    {
+        Task<IEnumerable<ClientViewModel>> GetClientsLogos();
+    }
 }
