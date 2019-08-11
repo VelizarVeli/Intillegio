@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using Intillegio.Common;
-using Intillegio.Common.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Intillegio.Models;
 using Intillegio.Models.Constants;
@@ -74,6 +73,15 @@ namespace Intillegio.Web.Areas.Identity.Pages.Account
             {
                 var user = new IntillegioUser { UserName = Input.Username, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+                if (_signInManager.UserManager.Users.Count() == 1)
+                {
+                    var roleResult = _signInManager.UserManager.AddToRoleAsync(user, "Admin").Result;
+                }
+                else
+                {
+                    var roleResult = _signInManager.UserManager.AddToRoleAsync(user, "User").Result;
+                }
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
