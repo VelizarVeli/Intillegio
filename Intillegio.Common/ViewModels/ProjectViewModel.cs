@@ -2,7 +2,7 @@
 
 namespace Intillegio.Common.ViewModels
 {
-    public class LastProjectsViewModel
+    public class ProjectViewModel
     {
         public Guid Id { get; set; }
 

@@ -1,5 +1,4 @@
 ﻿
-using System.Threading.Tasks;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;

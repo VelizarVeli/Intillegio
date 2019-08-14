@@ -1,0 +1,31 @@
+﻿@model List<Intillegio.Common.ViewModels.ProjectViewModel>
+@{
+    ViewData["Title"] = "All Projects";
+}
+<div class="section-block">
+    <div class="container">
+        <div class="section-heading">
+            <h4>All Projects</h4>
+            <div class="section-heading-line-left"></div>
+        </div>
+        <div class="row mt-30">
+            <div class="masonry-4">
+                @foreach (var project in Model)
+                {
+                    <a href="@project.Id">
+                        <div class="masonry-item">
+                            <img src="@project.Image" alt="project">
+                            <div class="masonry-item-overlay">
+                                <h4>@project.Name</h4>
+                                <ul>
+                                    <li>@project.CategoryName</li>
+                                    <li>@project.Stage</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
