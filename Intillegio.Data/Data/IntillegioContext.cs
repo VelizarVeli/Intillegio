@@ -22,6 +22,8 @@ namespace Intillegio.Data.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductFeatures> ProductFeatureses { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

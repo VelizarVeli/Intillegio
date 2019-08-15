@@ -107,6 +107,53 @@ namespace Intillegio.Data.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("Intillegio.Models.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("MainImage")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(3);
+
+                    b.Property<string>("Place")
+                        .IsRequired()
+                        .HasMaxLength(3);
+
+                    b.Property<DateTime>("StartingDate");
+
+                    b.Property<string>("VideoLink");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("Intillegio.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("EventId");
+
+                    b.Property<string>("LinkToImage");
+
+                    b.Property<int>("ProductId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("Intillegio.Models.IntillegioUser", b =>
                 {
                     b.Property<string>("Id")
@@ -462,6 +509,19 @@ namespace Intillegio.Data.Migrations
                     b.HasOne("Intillegio.Models.Article", "Article")
                         .WithMany("Comments")
                         .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Intillegio.Models.Image", b =>
+                {
+                    b.HasOne("Intillegio.Models.Event", "Event")
+                        .WithMany("Images")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Intillegio.Models.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
