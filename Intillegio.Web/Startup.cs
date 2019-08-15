@@ -48,7 +48,11 @@ namespace Intillegio.Web
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IntillegioUser, IdentityRole>()
+            services.AddIdentity<IntillegioUser, IdentityRole>(options =>
+                {
+                    options.Lockout.DefaultLockoutTimeSpan = new TimeSpan(1, 0, 0);
+                    options.Lockout.MaxFailedAccessAttempts = 10;
+                })
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<IntillegioContext>()
                 .AddDefaultTokenProviders();
@@ -79,9 +83,9 @@ namespace Intillegio.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsEnvironment("QA"))
             {
-                app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage(new DeveloperExceptionPageOptions());
                 app.UseDatabaseErrorPage();
             }
             else
