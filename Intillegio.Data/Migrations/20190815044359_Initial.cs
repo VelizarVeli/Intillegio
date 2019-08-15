@@ -62,6 +62,21 @@ namespace Intillegio.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Solutions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 1000, nullable: false),
+                    About = table.Column<string>(maxLength: 1000, nullable: false),
+                    Image = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Solutions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
                 {
@@ -333,6 +348,9 @@ namespace Intillegio.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProjectFeatures");
+
+            migrationBuilder.DropTable(
+                name: "Solutions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

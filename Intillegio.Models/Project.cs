@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Intillegio.Models.Constants;
+using Intillegio.Common.Constants;
 
 namespace Intillegio.Models
 {
@@ -14,7 +14,7 @@ namespace Intillegio.Models
         }
 
         [Required]
-        [StringLength(LengthConstants.MaxLength, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = LengthConstants.ClientNameMinLength)]
+        [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.ClientNameMinLength)]
         public string Name { get; set; }
 
         [Required]
@@ -28,6 +28,7 @@ namespace Intillegio.Models
         public Guid ClientId { get; set; }
         public virtual Client Client { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime StartingDate { get; set; }
 
         [Required]

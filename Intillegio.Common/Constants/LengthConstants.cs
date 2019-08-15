@@ -1,4 +1,4 @@
-﻿namespace Intillegio.Models.Constants
+﻿namespace Intillegio.Common.Constants
 {
     public class LengthConstants
     {
@@ -7,5 +7,7 @@
         public const int ClientNameMinLength = 2;
         public const int PasswordMinLength = 6;
         public const int MaxLengthProjectName = 10;
+        public const int AboutMinLength = 20;
+        public const int AboutMaxLength = 1000;
     }
 }

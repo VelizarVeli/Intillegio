@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Intillegio.Common.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Intillegio.Models;
-using Intillegio.Models.Constants;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;

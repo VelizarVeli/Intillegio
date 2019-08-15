@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Intillegio.Common.Constants;
 using Intillegio.Models;
-using Intillegio.Models.Constants;
 
 namespace Intillegio.Common.BindingModels
 {

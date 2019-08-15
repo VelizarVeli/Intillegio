@@ -16,6 +16,7 @@ namespace Intillegio.Data.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProjectFeatures> ProjectFeatures { get; set; }
         public DbSet<Feature> Features { get; set; }
+        public DbSet<Solution> Solutions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
