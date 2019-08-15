@@ -17,6 +17,7 @@ namespace Intillegio.Data.Data
         public DbSet<ProjectFeatures> ProjectFeatures { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<Solution> Solutions { get; set; }
+        public DbSet<Article> Articles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
