@@ -11,7 +11,7 @@ namespace Intillegio.Data.Data
         {
         }
 
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<Partner> Partners { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProjectFeatures> ProjectFeatures { get; set; }

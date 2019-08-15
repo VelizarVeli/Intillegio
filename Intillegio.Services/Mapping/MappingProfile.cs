@@ -21,7 +21,7 @@ namespace Intillegio.Services.Mapping
 
         private void ConfigureClients()
         {
-            CreateMap<Client, ClientViewModel>();
+            CreateMap<Partner, PartnerViewModel>();
         }
     }
 }

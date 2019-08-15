@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Intillegio.Web.Models;
 
@@ -6,9 +7,17 @@ namespace Intillegio.Web.Controllers
 {
     public class HomeController : BaseController
     {
+        private readonly IProjectsService _projectsService;
+
+        public HomeController(IProjectsService projectsService)
+        {
+            _projectsService = projectsService;
+        }
+
         public IActionResult Index()
         {
-            return this.View();
+            var lastProjects = _projectsService.LastProjects();
+            return this.View(lastProjects);
         }
 
         public IActionResult About()

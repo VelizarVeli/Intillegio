@@ -28,8 +28,8 @@ namespace Intillegio.Models
         public Stage Stage { get; set; }
 
         [Required]
-        public Guid ClientId { get; set; }
-        public virtual Client Client { get; set; }
+        public Guid PartnerId { get; set; }
+        public virtual Partner Partner { get; set; }
 
         [Required]
         [DataType(DataType.Date)]

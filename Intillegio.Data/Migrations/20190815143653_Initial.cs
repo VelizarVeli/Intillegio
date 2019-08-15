@@ -28,25 +28,11 @@ namespace Intillegio.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 3, nullable: false)
+                    Name = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Clients",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(maxLength: 3, nullable: false),
-                    About = table.Column<string>(nullable: false),
-                    Logo = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clients", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -55,9 +41,9 @@ namespace Intillegio.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 3, nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
                     StartingDate = table.Column<DateTime>(nullable: false),
-                    Place = table.Column<string>(maxLength: 3, nullable: false),
+                    Place = table.Column<string>(maxLength: 100, nullable: false),
                     MainImage = table.Column<string>(nullable: false),
                     VideoLink = table.Column<string>(nullable: true)
                 },
@@ -72,11 +58,25 @@ namespace Intillegio.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 3, nullable: false)
+                    Name = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Features", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Partners",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    About = table.Column<string>(nullable: false),
+                    Logo = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Partners", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,13 +85,13 @@ namespace Intillegio.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 3, nullable: true),
-                    ProductCategory = table.Column<string>(maxLength: 3, nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: true),
+                    ProductCategory = table.Column<string>(maxLength: 100, nullable: false),
                     Height = table.Column<int>(nullable: false),
                     Width = table.Column<int>(nullable: false),
                     Weight = table.Column<double>(nullable: false),
-                    Material = table.Column<string>(maxLength: 3, nullable: false),
-                    Color = table.Column<string>(maxLength: 3, nullable: false)
+                    Material = table.Column<string>(maxLength: 100, nullable: false),
+                    Color = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,7 +104,7 @@ namespace Intillegio.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 3, nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
                     About = table.Column<string>(maxLength: 1000, nullable: false),
                     Image = table.Column<string>(nullable: false)
                 },
@@ -165,7 +165,7 @@ namespace Intillegio.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 3, nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
                     Content = table.Column<string>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
                     VideoLink = table.Column<string>(nullable: true),
@@ -192,7 +192,7 @@ namespace Intillegio.Data.Migrations
                     ProjectInfo = table.Column<string>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
                     Stage = table.Column<int>(nullable: false),
-                    ClientId = table.Column<Guid>(nullable: false),
+                    PartnerId = table.Column<Guid>(nullable: false),
                     StartingDate = table.Column<DateTime>(nullable: false),
                     Image = table.Column<string>(nullable: false),
                     ProjectId = table.Column<Guid>(nullable: true)
@@ -207,9 +207,9 @@ namespace Intillegio.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Projects_Clients_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "Clients",
+                        name: "FK_Projects_Partners_PartnerId",
+                        column: x => x.PartnerId,
+                        principalTable: "Partners",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -226,7 +226,7 @@ namespace Intillegio.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 3, nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
                     Price = table.Column<decimal>(nullable: false),
                     ProductId = table.Column<int>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
@@ -415,7 +415,7 @@ namespace Intillegio.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(maxLength: 3, nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
                     Content = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: true),
@@ -501,9 +501,9 @@ namespace Intillegio.Data.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects_ClientId",
+                name: "IX_Projects_PartnerId",
                 table: "Projects",
-                column: "ClientId");
+                column: "PartnerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_ProjectId",
@@ -582,7 +582,7 @@ namespace Intillegio.Data.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Clients");
+                name: "Partners");
 
             migrationBuilder.DropTable(
                 name: "Categories");

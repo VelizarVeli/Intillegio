@@ -5,15 +5,15 @@ using Intillegio.Common.Constants;
 
 namespace Intillegio.Models
 {
-    public class Client : BaseId
+    public class Partner : BaseId
     {
-        public Client()
+        public Partner()
         {
             this.Projects = new HashSet<Project>();
         }
 
         [Required]
-        [StringLength(LengthConstants.NameMinLength, MinimumLength = LengthConstants.MaxLength)]
+        [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.ClientNameMinLength)]
         public string Name { get; set; }
 
         [Required]

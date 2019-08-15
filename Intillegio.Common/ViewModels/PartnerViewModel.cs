@@ -1,6 +1,6 @@
 ﻿namespace Intillegio.Common.ViewModels
 {
-    public class ClientViewModel
+    public class PartnerViewModel
     {
         public string Id { get; set; }
 

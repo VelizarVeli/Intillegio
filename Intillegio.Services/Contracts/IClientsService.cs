@@ -6,6 +6,6 @@ namespace Intillegio.Services.Contracts
 {
     public interface IClientsService
     {
-        Task<IEnumerable<ClientViewModel>> GetClientsLogos();
+        Task<IEnumerable<PartnerViewModel>> GetClientsLogos();
     }
 }

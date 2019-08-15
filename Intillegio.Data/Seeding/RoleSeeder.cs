@@ -11,7 +11,7 @@ namespace Intillegio.Data.Seeding
             var roleManager = provider.GetService<RoleManager<IdentityRole>>();
             var adminRoleExists = roleManager.RoleExistsAsync("Admin").Result;
             var userRoleExists = roleManager.RoleExistsAsync("User").Result;
-            var clientRoleExists = roleManager.RoleExistsAsync("Client").Result;
+            var clientRoleExists = roleManager.RoleExistsAsync("Partner").Result;
 
             if (!adminRoleExists)
             {
@@ -25,7 +25,7 @@ namespace Intillegio.Data.Seeding
 
             if (!clientRoleExists)
             {
-                 roleManager.CreateAsync(new IdentityRole("Client"));
+                 roleManager.CreateAsync(new IdentityRole("Partner"));
             }
         }
     }

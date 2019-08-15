@@ -8,11 +8,11 @@ namespace Intillegio.Models
         [Key]
         public int Id { get; set; }
 
-        [StringLength(LengthConstants.NameMinLength, MinimumLength = LengthConstants.MaxLength)]
+        [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string Name { get; set; }
 
         [Required]
-        [StringLength(LengthConstants.NameMinLength, MinimumLength = LengthConstants.MaxLength)]
+        [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string ProductCategory { get; set; }
 
         [Required]
@@ -25,11 +25,11 @@ namespace Intillegio.Models
         public double Weight { get; set; }
 
         [Required]
-        [StringLength(LengthConstants.NameMinLength, MinimumLength = LengthConstants.MaxLength)]
+        [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string Material { get; set; }
 
         [Required]
-        [StringLength(LengthConstants.NameMinLength, MinimumLength = LengthConstants.MaxLength)]
+        [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string Color { get; set; }
     }
 }

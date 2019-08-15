@@ -10,7 +10,7 @@ namespace Intillegio.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(LengthConstants.NameMinLength, MinimumLength = LengthConstants.MaxLength)]
+        [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string Name { get; set; }
 
         public ICollection<ProjectFeatures> Projects { get; set; }

@@ -18,10 +18,10 @@ namespace Intillegio.Services
         {
         }
 
-        public async Task<IEnumerable<ClientViewModel>> GetClientsLogos()
+        public async Task<IEnumerable<PartnerViewModel>> GetClientsLogos()
         {
-           var clients = await DbContext.Clients.ToListAsync();
-            var clientsLogos = Mapper.Map<ICollection<ClientViewModel>>(clients);
+           var clients = await DbContext.Partners.ToListAsync();
+            var clientsLogos = Mapper.Map<ICollection<PartnerViewModel>>(clients);
             
             return clientsLogos;
         }

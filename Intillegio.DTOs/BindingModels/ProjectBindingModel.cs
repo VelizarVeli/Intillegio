@@ -35,6 +35,6 @@ namespace Intillegio.Common.BindingModels
         public IEnumerable<Category> Categories { get; set; }
 
         public string Client { get; set; }
-        public IEnumerable<Client> Clients { get; set; }
+        public IEnumerable<Partner> Clients { get; set; }
     }
 }

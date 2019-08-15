@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Intillegio.Data.Migrations
 {
     [DbContext(typeof(IntillegioContext))]
-    [Migration("20190815090256_Initial")]
+    [Migration("20190815143653_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,7 +39,7 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.Property<string>("VideoLink");
 
@@ -58,31 +58,11 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Intillegio.Models.Client", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("About")
-                        .IsRequired();
-
-                    b.Property<string>("Logo")
-                        .IsRequired();
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(3);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("Intillegio.Models.Comment", b =>
@@ -120,11 +100,11 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.Property<string>("Place")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.Property<DateTime>("StartingDate");
 
@@ -208,6 +188,26 @@ namespace Intillegio.Data.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("Intillegio.Models.Partner", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("About")
+                        .IsRequired();
+
+                    b.Property<string>("Logo")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Partners");
+                });
+
             modelBuilder.Entity("Intillegio.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -221,7 +221,7 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.Property<string>("PictureLink")
                         .IsRequired();
@@ -249,20 +249,20 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<string>("Color")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.Property<int>("Height");
 
                     b.Property<string>("Material")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.Property<string>("Name")
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.Property<string>("ProductCategory")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.Property<double>("Weight");
 
@@ -280,14 +280,14 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<Guid>("ClientId");
-
                     b.Property<string>("Image")
                         .IsRequired();
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100);
+
+                    b.Property<Guid>("PartnerId");
 
                     b.Property<Guid?>("ProjectId");
 
@@ -302,7 +302,7 @@ namespace Intillegio.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("PartnerId");
 
                     b.HasIndex("ProjectId");
 
@@ -317,7 +317,7 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
@@ -353,7 +353,7 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.Property<string>("Picture");
 
@@ -381,7 +381,7 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(3);
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
@@ -547,9 +547,9 @@ namespace Intillegio.Data.Migrations
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Intillegio.Models.Client", "Client")
+                    b.HasOne("Intillegio.Models.Partner", "Partner")
                         .WithMany("Projects")
-                        .HasForeignKey("ClientId")
+                        .HasForeignKey("PartnerId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Intillegio.Models.Project")
