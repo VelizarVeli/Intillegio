@@ -6,5 +6,6 @@
         public const int NameMinLength = 3;
         public const int ClientNameMinLength = 2;
         public const int PasswordMinLength = 6;
+        public const int MaxLengthProjectName = 10;
     }
 }

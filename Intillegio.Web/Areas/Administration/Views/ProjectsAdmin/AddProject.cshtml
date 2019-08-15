@@ -1,0 +1,135 @@
+﻿@model Intillegio.Common.BindingModels.ProjectBindingModel
+
+@{
+    ViewData["Title"] = "AddProject";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section-block">
+    <div class="container">
+        <div class="project-single">
+            <form asp-area="Administration"asp-controller="ProjectsAdmin" asp-action="CreateProject">
+                <h1 class="page-title-section"><a asp-area="Administration" asp-controller="Projects" asp-action="ProjectsAdmin">Add Project</a></h1>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="project-single-img">
+                    <img src="http://via.placeholder.com/1110x450" class="rounded-border shadow-primary" alt="img">
+                </div>
+                <div class="project-single-img">
+                    <label asp-for="Image" class="control-label"></label>
+                    <input asp-for="Image" class="form-control" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div class="project-single-text">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-12">
+                            <h4>About Project</h4>
+                            <p>
+                                <div class="form-group">
+                                    <textarea asp-for="ProjectInfo" class="form-control"></textarea>
+                                    <span asp-validation-for="ProjectInfo" class="text-danger"></span>
+                                </div>
+                            </p>
+
+                            <h4>Project Features</h4>
+                            <ul>
+                                <li><i class="fa fa-check"></i>Immigration consultant, Information technology consulting.</li>
+                                <li><i class="fa fa-check"></i>Consultant pharmacist Creative consultant.</li>
+                                <li><i class="fa fa-check"></i>Employment consultant Environmental consultant.</li>
+                                <li><i class="fa fa-check"></i>Independent contractor, Permatemp.</li>
+                                <li><i class="fa fa-check"></i>Consultant pharmacist Creative consultant.</li>
+                            </ul>
+                        </div>
+                        <!-- Left Side End -->
+                        <div class="col-md-4 col-sm-4 col-12">
+                            <h4>Project Information</h4>
+                            <div class="project-single-info">
+                                <ul>
+                                    <li>
+                                        <span>Name :</span>
+                                        <input asp-for="Name" class="form-control" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </li>
+                                    <li>
+                                        <span>Category :</span>
+                                        <input asp-for="Category" class="form-control" />
+                                        <span asp-validation-for="Category" class="text-danger"></span>
+                                    </li>
+                                    <li>
+                                        <span>Status :</span>
+                                        <input asp-for="Stage" class="form-control" />
+                                        <span asp-validation-for="Stage" class="text-danger"></span>
+                                    </li>
+                                    <li>
+                                        <span>Client :</span>
+                                        <input asp-for="Client" class="form-control" />
+                                        <span asp-validation-for="Client" class="text-danger"></span>
+                                    </li>
+                                    <li>
+                                        <span>Date :</span>
+                                        <input style="margin-right: 0" asp-for="StartingDate" class="form-control" />
+                                        <span asp-validation-for="StartingDate" class="text-danger"></span>
+                                    </li>
+                                    <li><span>Tags :</span> Finance, Business</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a asp-area="Administration" asp-controller="ProjectsAdmin" asp-action="CreateProject" class="primary-button button-sm mt-15-xs">Add Project</a>
+                <a asp-action="AllProjects" class="primary-button button-sm mt-15-xs">Cancel</a>
+            </form>
+        </div>
+
+        <!-- Carousel Start -->
+        <div class="project-carousel">
+            <h4>Related Projects</h4>
+            <div class="owl-carousel owl-theme" id="project-single">
+
+                <div class="project-item">
+                    <img src="http://via.placeholder.com/360x240" alt="project">
+                    <div class="project-item-overlay">
+                        <div class="project-item-content">
+                            <span>Business, Consulting</span>
+                            <h6>Independent contractor</h6>
+                            <a href="#">View More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <img src="http://via.placeholder.com/360x240" alt="project">
+                    <div class="project-item-overlay">
+                        <div class="project-item-content">
+                            <span>Business, Consulting</span>
+                            <h6>Finance Consultancy</h6>
+                            <a href="#">View More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <img src="http://via.placeholder.com/360x240" alt="project">
+                    <div class="project-item-overlay">
+                        <div class="project-item-content">
+                            <span>Business, Consulting</span>
+                            <h6>Immigration consultant</h6>
+                            <a href="#">View More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <img src="http://via.placeholder.com/360x240" alt="project">
+                    <div class="project-item-overlay">
+                        <div class="project-item-content">
+                            <span>Business, Consulting</span>
+                            <h6>Finance Consultancy</h6>
+                            <a href="#">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel End -->
+    </div>
+</div>

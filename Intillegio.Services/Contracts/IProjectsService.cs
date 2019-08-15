@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Intillegio.Common.BindingModels;
 using Intillegio.Common.ViewModels;
 
 namespace Intillegio.Services.Contracts
@@ -7,5 +9,6 @@ namespace Intillegio.Services.Contracts
    {
        IEnumerable<ProjectViewModel> LastProjects();
        IEnumerable<ProjectViewModel> AllProjects();
-    }
+       Task AddProject(ProjectBindingModel project);
+   }
 }
