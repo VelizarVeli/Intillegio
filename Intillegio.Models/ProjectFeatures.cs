@@ -9,7 +9,7 @@ namespace Intillegio.Models
         public Guid ProjectId { get; set; }
         public virtual Project Project { get; set; }
 
-        public Guid FeatureId { get; set; }
-        public virtual Feature Feature { get; set; }
+        public int FeatureId { get; set; }
+        public virtual ProjectFeature ProjectFeature { get; set; }
     }
 }

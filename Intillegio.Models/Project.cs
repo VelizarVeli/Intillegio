@@ -20,14 +20,18 @@ namespace Intillegio.Models
         [Required]
         public string ProjectInfo { get; set; }
 
+        [Required]
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
+        [Required]
         public Stage Stage { get; set; }
 
+        [Required]
         public Guid ClientId { get; set; }
         public virtual Client Client { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         public DateTime StartingDate { get; set; }
 

@@ -54,7 +54,9 @@ namespace Intillegio.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(3);
 
                     b.HasKey("Id");
 
@@ -73,7 +75,8 @@ namespace Intillegio.Data.Migrations
                         .IsRequired();
 
                     b.Property<string>("Name")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(3);
 
                     b.HasKey("Id");
 
@@ -101,19 +104,7 @@ namespace Intillegio.Data.Migrations
 
                     b.HasIndex("ArticleId");
 
-                    b.ToTable("Comment");
-                });
-
-            modelBuilder.Entity("Intillegio.Models.Feature", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Features");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Intillegio.Models.IntillegioUser", b =>
@@ -168,6 +159,71 @@ namespace Intillegio.Data.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("Intillegio.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(3);
+
+                    b.Property<string>("PictureLink")
+                        .IsRequired();
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<int>("ProductFeaturesId");
+
+                    b.Property<int>("ProductId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ProductFeaturesId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Intillegio.Models.ProductFeatures", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasMaxLength(3);
+
+                    b.Property<int>("Height");
+
+                    b.Property<string>("Material")
+                        .IsRequired()
+                        .HasMaxLength(3);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(3);
+
+                    b.Property<string>("ProductCategory")
+                        .IsRequired()
+                        .HasMaxLength(3);
+
+                    b.Property<double>("Weight");
+
+                    b.Property<int>("Width");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductFeatureses");
+                });
+
             modelBuilder.Entity("Intillegio.Models.Project", b =>
                 {
                     b.Property<Guid>("Id")
@@ -204,11 +260,26 @@ namespace Intillegio.Data.Migrations
                     b.ToTable("Projects");
                 });
 
+            modelBuilder.Entity("Intillegio.Models.ProjectFeature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(3);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Features");
+                });
+
             modelBuilder.Entity("Intillegio.Models.ProjectFeatures", b =>
                 {
                     b.Property<Guid>("ProjectId");
 
-                    b.Property<Guid>("FeatureId");
+                    b.Property<int>("FeatureId");
 
                     b.Property<int>("Id");
 
@@ -217,6 +288,33 @@ namespace Intillegio.Data.Migrations
                     b.HasIndex("FeatureId");
 
                     b.ToTable("ProjectFeatures");
+                });
+
+            modelBuilder.Entity("Intillegio.Models.Review", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Content")
+                        .IsRequired();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(3);
+
+                    b.Property<string>("Picture");
+
+                    b.Property<int?>("ProductId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Intillegio.Models.Solution", b =>
@@ -367,6 +465,19 @@ namespace Intillegio.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("Intillegio.Models.Product", b =>
+                {
+                    b.HasOne("Intillegio.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Intillegio.Models.ProductFeatures", "ProductFeatures")
+                        .WithMany()
+                        .HasForeignKey("ProductFeaturesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Intillegio.Models.Project", b =>
                 {
                     b.HasOne("Intillegio.Models.Category", "Category")
@@ -386,7 +497,7 @@ namespace Intillegio.Data.Migrations
 
             modelBuilder.Entity("Intillegio.Models.ProjectFeatures", b =>
                 {
-                    b.HasOne("Intillegio.Models.Feature", "Feature")
+                    b.HasOne("Intillegio.Models.ProjectFeature", "ProjectFeature")
                         .WithMany("Projects")
                         .HasForeignKey("FeatureId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -395,6 +506,13 @@ namespace Intillegio.Data.Migrations
                         .WithMany("Features")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("Intillegio.Models.Review", b =>
+                {
+                    b.HasOne("Intillegio.Models.Product")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

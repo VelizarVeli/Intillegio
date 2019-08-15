@@ -28,7 +28,7 @@ namespace Intillegio.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 3, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,7 +40,7 @@ namespace Intillegio.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 3, nullable: false),
                     About = table.Column<string>(nullable: false),
                     Logo = table.Column<string>(nullable: false)
                 },
@@ -53,12 +53,32 @@ namespace Intillegio.Data.Migrations
                 name: "Features",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 3, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Features", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductFeatureses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 3, nullable: true),
+                    ProductCategory = table.Column<string>(maxLength: 3, nullable: false),
+                    Height = table.Column<int>(nullable: false),
+                    Width = table.Column<int>(nullable: false),
+                    Weight = table.Column<double>(nullable: false),
+                    Material = table.Column<string>(maxLength: 3, nullable: false),
+                    Color = table.Column<string>(maxLength: 3, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductFeatureses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -184,6 +204,37 @@ namespace Intillegio.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 3, nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    ProductFeaturesId = table.Column<int>(nullable: false),
+                    PictureLink = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Products_ProductFeatureses_ProductFeaturesId",
+                        column: x => x.ProductFeaturesId,
+                        principalTable: "ProductFeatureses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
@@ -269,7 +320,7 @@ namespace Intillegio.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comment",
+                name: "Comments",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -281,9 +332,9 @@ namespace Intillegio.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comment", x => x.Id);
+                    table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comment_Articles_ArticleId",
+                        name: "FK_Comments_Articles_ArticleId",
                         column: x => x.ArticleId,
                         principalTable: "Articles",
                         principalColumn: "Id",
@@ -295,7 +346,7 @@ namespace Intillegio.Data.Migrations
                 columns: table => new
                 {
                     ProjectId = table.Column<Guid>(nullable: false),
-                    FeatureId = table.Column<Guid>(nullable: false),
+                    FeatureId = table.Column<int>(nullable: false),
                     Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -311,6 +362,29 @@ namespace Intillegio.Data.Migrations
                         name: "FK_ProjectFeatures_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 3, nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Content = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    Picture = table.Column<string>(nullable: true),
+                    ProductId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -348,9 +422,19 @@ namespace Intillegio.Data.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_ArticleId",
-                table: "Comment",
+                name: "IX_Comments_ArticleId",
+                table: "Comments",
                 column: "ArticleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_CategoryId",
+                table: "Products",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_ProductFeaturesId",
+                table: "Products",
+                column: "ProductFeaturesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectFeatures_FeatureId",
@@ -371,6 +455,11 @@ namespace Intillegio.Data.Migrations
                 name: "IX_Projects_ProjectId",
                 table: "Projects",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reviews_ProductId",
+                table: "Reviews",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
@@ -403,10 +492,13 @@ namespace Intillegio.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Comment");
+                name: "Comments");
 
             migrationBuilder.DropTable(
                 name: "ProjectFeatures");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
 
             migrationBuilder.DropTable(
                 name: "Solutions");
@@ -427,10 +519,16 @@ namespace Intillegio.Data.Migrations
                 name: "Projects");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Clients");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "ProductFeatureses");
         }
     }
 }

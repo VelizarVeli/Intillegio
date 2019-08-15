@@ -13,12 +13,14 @@ namespace Intillegio.Models
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string CommenterName { get; set; }
 
+        [Required]
         public DateTime CommentDate { get; set; } = DateTime.UtcNow;
 
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Required]
         public int ArticleId { get; set; }
         public virtual Article Article { get; set; }
     }

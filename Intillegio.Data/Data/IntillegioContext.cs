@@ -15,9 +15,13 @@ namespace Intillegio.Data.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProjectFeatures> ProjectFeatures { get; set; }
-        public DbSet<Feature> Features { get; set; }
+        public DbSet<ProjectFeature> Features { get; set; }
         public DbSet<Solution> Solutions { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductFeatures> ProductFeatureses { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -35,7 +39,7 @@ namespace Intillegio.Data.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<ProjectFeatures>()
-                .HasOne(f => f.Feature)
+                .HasOne(f => f.ProjectFeature)
                 .WithMany(p => p.Projects)
                 .HasForeignKey(f => f.FeatureId)
                 .OnDelete(DeleteBehavior.Restrict);

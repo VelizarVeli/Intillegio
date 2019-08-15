@@ -22,6 +22,7 @@ namespace Intillegio.Models
         [Required]
         public string Content { get; set; }
 
+        [Required]
         public int CategoryId { get; set; }
         public Category ArticleCategory { get; set; }
 
