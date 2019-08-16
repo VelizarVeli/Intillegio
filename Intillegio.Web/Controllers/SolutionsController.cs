@@ -1,12 +1,26 @@
-﻿namespace Intillegio.Web.Controllers
+﻿using Intillegio.Models;
+using Intillegio.Services.Contracts;
+using Microsoft.AspNetCore.Identity;
+
+namespace Intillegio.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
 
-    public class SolutionsController : Controller
+    public class SolutionsController : BaseController
     {
-        public IActionResult Solutions()
+        private readonly ISolutionsService _solutionsService;
+        private readonly UserManager<IntillegioUser> _currentUser;
+
+        public SolutionsController(ISolutionsService solutionsService, UserManager<IntillegioUser> currentUser)
         {
-            return View();
+            _solutionsService = solutionsService;
+            _currentUser = currentUser;
+        }
+
+        public IActionResult AllSolutions()
+        {
+            var solutions = _solutionsService.AllSolutions();
+            return View("Solutions", solutions);
         }
     }
 }

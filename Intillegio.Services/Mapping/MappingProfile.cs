@@ -10,6 +10,7 @@ namespace Intillegio.Services.Mapping
         {
             ConfigureProjects();
             ConfigureClients();
+            ConfigureSolutions();
         }
 
         private void ConfigureProjects()
@@ -22,6 +23,11 @@ namespace Intillegio.Services.Mapping
         private void ConfigureClients()
         {
             CreateMap<Partner, PartnerViewModel>();
+        }
+
+        private void ConfigureSolutions()
+        {
+            CreateMap<Solution, SolutionViewModel>();
         }
     }
 }

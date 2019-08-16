@@ -9,7 +9,6 @@ using Intillegio.Data.Data;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace Intillegio.Services
 {
@@ -22,22 +21,6 @@ namespace Intillegio.Services
 
         public IEnumerable<ProjectViewModel> LastProjects()
         {
-            //var lastProjects = await DbContext
-            //    .Projects
-            //    .OrderByDescending(a => a.StartingDate)
-            //    .Select(a => new ProjectViewModel
-            //    {
-            //        Id = a.Id,
-            //        CategoryName = a.Category.Name,
-            //        Image = a.Image,
-            //        Name = a.Name,
-            //        Stage = a.Stage.ToString()
-            //    })
-            //    .Take(6)
-            //    .ToListAsync();
-            //var projects = await DbContext.Projects.ToListAsync().OrderByDescending(p=>p.StartingDate).Take(6);
-            //var lastProjects =  Mapper.Map<ICollection<ProjectViewModel>>(
-            //    projects);
             var lastProjects = Mapper.Map<IEnumerable<ProjectViewModel>>(
                 DbContext.Projects.OrderByDescending(a => a.StartingDate).Take(6));
             return lastProjects;
