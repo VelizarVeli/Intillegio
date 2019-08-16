@@ -27,8 +27,8 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult AllProjects()
         {
-            var allProjects = _projectsService.AllProjects();
-            return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/AllProjects.cshtml", allProjects);
+            var allProjects = _projectsService.GetAllProjects();
+            return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/GetAllProjects.cshtml", allProjects);
         }
 
         [Authorize(Roles = "Admin")]

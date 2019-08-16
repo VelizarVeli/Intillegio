@@ -26,7 +26,7 @@ namespace Intillegio.Services
             return lastProjects;
         }
 
-        public IEnumerable<ProjectViewModel> AllProjects()
+        public IEnumerable<ProjectViewModel> GetAllProjects()
         {
             var allProjects = Mapper.Map<IEnumerable<ProjectViewModel>>(
                 DbContext.Projects.OrderByDescending(a => a.StartingDate));

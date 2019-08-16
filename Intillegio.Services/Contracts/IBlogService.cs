@@ -3,8 +3,8 @@ using Intillegio.Common.ViewModels;
 
 namespace Intillegio.Services.Contracts
 {
-   public interface ISolutionsService
+    public interface IBlogService
     {
-       IEnumerable<SolutionViewModel> GetAllSolutions();
-   }
+        IEnumerable<ArticleViewModel> GetAllArticles();
+    }
 }

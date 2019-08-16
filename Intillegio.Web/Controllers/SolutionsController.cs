@@ -19,7 +19,7 @@ namespace Intillegio.Web.Controllers
 
         public IActionResult AllSolutions()
         {
-            var solutions = _solutionsService.AllSolutions();
+            var solutions = _solutionsService.GetAllSolutions();
             return View("Solutions", solutions);
         }
     }

@@ -8,7 +8,7 @@ namespace Intillegio.Services.Contracts
    public interface IProjectsService
    {
        IEnumerable<ProjectViewModel> LastProjects();
-       IEnumerable<ProjectViewModel> AllProjects();
+       IEnumerable<ProjectViewModel> GetAllProjects();
        Task AddProject(ProjectBindingModel project);
    }
 }

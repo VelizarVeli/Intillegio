@@ -16,7 +16,7 @@ namespace Intillegio.Services
         {
         }
 
-        public IEnumerable<SolutionViewModel> AllSolutions()
+        public IEnumerable<SolutionViewModel> GetAllSolutions()
         {
             var allSolutions = Mapper.Map<IEnumerable<SolutionViewModel>>(
                 DbContext.Solutions.OrderByDescending(a => a.Id));

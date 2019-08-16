@@ -11,6 +11,7 @@ namespace Intillegio.Services.Mapping
             ConfigureProjects();
             ConfigureClients();
             ConfigureSolutions();
+            ConfigureBlogs();
         }
 
         private void ConfigureProjects()
@@ -28,6 +29,11 @@ namespace Intillegio.Services.Mapping
         private void ConfigureSolutions()
         {
             CreateMap<Solution, SolutionViewModel>();
+        }
+
+        private void ConfigureBlogs()
+        {
+            CreateMap<Article, ArticleViewModel>();
         }
     }
 }

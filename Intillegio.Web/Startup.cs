@@ -125,6 +125,7 @@ namespace Intillegio.Web
             services.AddScoped<IProjectsService, ProjectsService>();
             services.AddScoped<IClientsService, ClientsService>();
             services.AddScoped<ISolutionsService, SolutionsService>();
+            services.AddScoped<IBlogService, BlogService>();
         }
     }
 }
