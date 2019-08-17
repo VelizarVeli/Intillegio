@@ -6,18 +6,18 @@ namespace Intillegio.Web.Controllers
 {
     public class MailController : BaseController
     {
-        private readonly IEmailService emailService;
+        private readonly IEmailService _emailService;
 
         public MailController(IEmailService emailService)
         {
             ViewData["Message"] = "Your contact page.";
-            this.emailService = emailService;
+            this._emailService = emailService;
         }
 
         [HttpPost]
         public IActionResult SendMessage(EmailMessage message)
         {
-            emailService.Send(message);
+            _emailService.Send(message);
             return RedirectToAction("Index", "Home");
         }
     }
