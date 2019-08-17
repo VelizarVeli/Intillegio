@@ -1,4 +1,4 @@
-﻿@model List<Intillegio.Common.ViewModels.ProjectViewModel>
+﻿@model Intillegio.Common.ViewModels.HomeViewModel
 <div class="section-block">
     <div class="container">
         <div class="section-heading">
@@ -6,7 +6,7 @@
             <div class="section-heading-line-left"></div>
         </div>
         <div class="row mt-30">
-            @foreach (var project in Model)
+            @foreach (var project in Model.Projects)
             {
                 <div class="col-md-4 col-sm-6 col-12">
                     <div class="project-grid">

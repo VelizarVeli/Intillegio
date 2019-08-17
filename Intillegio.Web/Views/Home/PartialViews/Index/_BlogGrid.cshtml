@@ -1,4 +1,5 @@
-﻿<div class="section-block-grey">
+﻿@model Intillegio.Common.ViewModels.HomeViewModel
+<div class="section-block-grey">
     <div class="container">
         <div class="section-heading center-holder">
             <span>Tips & News</span>
@@ -7,75 +8,32 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
         </div>
         <div class="row mt-50">
+            @foreach(var article in Model.Articles)
+            {
             <div class="col-md-4 col-sm-4 col-12">
                 <div class="blog-grid">
                     <div class="blog-grid-img">
-                        <img src="http://via.placeholder.com/350x220" alt="img">
+                        <img src="@article.ImageLink" alt="img">
                         <div class="data-box-grid">
-                            <h4>07</h4>
-                            <p>Feb</p>
+                            <h4>@article.Date.Day.ToString("D2")</h4>
+                            <p>@article.Date.ToString("MMM")</p>
                         </div>
                     </div>
                     <div class="blog-grid-text">
-                        <span>Business</span>
-                        <h4>Advices for young designers</h4>
+                        <span>@article.ArticleCategory</span>
+                        <h4>@article.Name</h4>
                         <ul>
-                            <li><i class="fa fa-calendar"></i>Feb 19, 2018</li>
-                            <li><i class="fa fa-list-ul"></i>Business</li>
+                            <li><i class="fa fa-calendar"></i>@article.Date.ToString("MMMM dd, yyyy")</li>
+                            <li><i class="fa fa-list-ul"></i>@article.ArticleCategory</li>
                         </ul>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+                        <p>@article.Content</p>
                         <div class="mt-20 left-holder">
-                            <a href="#" class="primary-button button-sm">Read More</a>
+                            <a href="@article.Id" class="primary-button button-sm">Read More</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-12">
-                <div class="blog-grid">
-                    <div class="blog-grid-img">
-                        <img src="http://via.placeholder.com/350x220" alt="img">
-                        <div class="data-box-grid">
-                            <h4>08</h4>
-                            <p>Feb</p>
-                        </div>
-                    </div>
-                    <div class="blog-grid-text">
-                        <span>Finance</span>
-                        <h4>What Planning Process Needs?</h4>
-                        <ul>
-                            <li><i class="fa fa-calendar"></i>Feb 19, 2018</li>
-                            <li><i class="fa fa-list-ul"></i>Finance</li>
-                        </ul>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
-                        <div class="mt-20 left-holder">
-                            <a href="#" class="primary-button button-sm">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-12">
-                <div class="blog-grid">
-                    <div class="blog-grid-img">
-                        <img src="http://via.placeholder.com/350x220" alt="img">
-                        <div class="data-box-grid">
-                            <h4>09</h4>
-                            <p>Feb</p>
-                        </div>
-                    </div>
-                    <div class="blog-grid-text">
-                        <span>Consulting</span>
-                        <h4>Leverage Customer Analytics</h4>
-                        <ul>
-                            <li><i class="fa fa-calendar"></i>Feb 19, 2018</li>
-                            <li><i class="fa fa-list-ul"></i>Consulting</li>
-                        </ul>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
-                        <div class="mt-20 left-holder">
-                            <a href="#" class="primary-button button-sm">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
