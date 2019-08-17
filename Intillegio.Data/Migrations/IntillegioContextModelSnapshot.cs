@@ -214,8 +214,20 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<int>("CategoryId");
 
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<DateTime>("Date");
+
                     b.Property<string>("Description")
                         .IsRequired();
+
+                    b.Property<int>("Height");
+
+                    b.Property<string>("Material")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -226,41 +238,13 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("ProductFeaturesId");
-
-                    b.Property<int>("ProductId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ProductFeaturesId");
-
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Intillegio.Models.ProductFeatures", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Color")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<int>("Height");
-
-                    b.Property<string>("Material")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(100);
-
                     b.Property<string>("ProductCategory")
                         .IsRequired()
                         .HasMaxLength(100);
+
+                    b.Property<string>("StockKeepingUnit")
+                        .IsRequired()
+                        .HasMaxLength(40);
 
                     b.Property<double>("Weight");
 
@@ -268,7 +252,9 @@ namespace Intillegio.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductFeatureses");
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Intillegio.Models.Project", b =>
@@ -530,11 +516,6 @@ namespace Intillegio.Data.Migrations
                     b.HasOne("Intillegio.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Intillegio.Models.ProductFeatures", "ProductFeatures")
-                        .WithMany()
-                        .HasForeignKey("ProductFeaturesId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

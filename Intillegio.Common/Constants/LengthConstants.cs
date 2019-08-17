@@ -9,5 +9,7 @@
         public const int MaxLengthProjectName = 10;
         public const int AboutMinLength = 20;
         public const int AboutMaxLength = 1000;
+        public const int SkuMinLength = 6;
+        public const int SkuMaxLength = 40;
     }
 }
