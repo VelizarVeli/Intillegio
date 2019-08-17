@@ -1,4 +1,6 @@
-﻿
+﻿using System;
+using System.Threading.Tasks;
+using Intillegio.Common.Constants;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -18,10 +20,21 @@ namespace Intillegio.Web.Controllers
             _currentUser = currentUser;
         }
 
-        public IActionResult LastProjects()
+        public IActionResult AllProjects()
         {
-            var lastProjects =  _projectsService.LastProjects();
-            return View("Projects", lastProjects);
+            var projects = _projectsService.GetAllProjects();
+            return View("Projects", projects);
+        }
+
+        public async Task<IActionResult> ProjectDetails(Guid id)
+        {
+            var projectDetails = await _projectsService.GetProjectDetailsAsync(id);
+            if (projectDetails == null)
+            {
+                return RedirectToAction(ActionConstants.Projects);
+            }
+
+            return View("ProjectDetails", projectDetails);
         }
     }
 }

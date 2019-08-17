@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using Intillegio.Common.ViewModels;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +20,11 @@ namespace Intillegio.Web.Controllers
 
         public IActionResult Index()
         {
-            var lastProjects = _projectsService.LastProjects();
-            var recentArticles = _recentArticles.GetAllArticles();
+            var allProjects = _projectsService.GetAllProjects().Take(6);
+            var recentArticles = _recentArticles.GetAllArticles().Take(3);
             var homeModel = new HomeViewModel
             {
-                Projects = lastProjects,
+                Projects = allProjects,
                 Articles = recentArticles
             };
             return this.View(homeModel);

@@ -1,7 +1,6 @@
 ﻿<footer>
     <div class="container">
         <div class="row">
-            <!-- Column 1 Start -->
             <div class="col-md-4 col-sm-6 col-12">
                 <h3>About Us</h3>
                 <div class="mt-25">
@@ -20,8 +19,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Column 1 End -->
-            <!-- Column 2 Start -->
             <div class="col-md-3 col-sm-6 col-12">
                 <h3>Quick Links</h3>
                 <ul class="footer-list">
@@ -34,46 +31,18 @@
                     <li><a href="#">Market Research</a></li>
                 </ul>
             </div>
-            <!-- Column 2 End -->
-            
+
+            <!-- Column 3 Start -->
             <div class="col-md-3 col-sm-6 col-12">
                 <h3>Recent Posts</h3>
                 <div class="mt-25">
-                    <!-- Post Start -->
-                    <div class="footer-recent-post clearfix">
-                        <div class="footer-recent-post-thumb">
-                            <img src="http://via.placeholder.com/65x65" alt="img">
-                        </div>
-                        <div class="footer-recent-post-content">
-                            <span>February 7, 2018</span>
-                            <a href="#">Advices for young designers</a>
-                        </div>
-                    </div>
-                    <!-- Post End -->
-                    <!-- Post Start -->
-                    <div class="footer-recent-post clearfix">
-                        <div class="footer-recent-post-thumb">
-                            <img src="http://via.placeholder.com/65x65" alt="img">
-                        </div>
-                        <div class="footer-recent-post-content">
-                            <span>February 7, 2018</span>
-                            <a href="#">What Planning Process Needs?</a>
-                        </div>
-                    </div>
-                    <!-- Post End -->
-                    <!-- Post Start -->
-                    <div class="footer-recent-post clearfix">
-                        <div class="footer-recent-post-thumb">
-                            <img src="http://via.placeholder.com/65x65" alt="img">
-                        </div>
-                        <div class="footer-recent-post-content">
-                            <span>February 7, 2018</span>
-                            <a href="#">Lorem ipsum dolor sit amet.</a>
-                        </div>
-                    </div>
-                    <!-- Post End -->
+                    <partial name="~/Views/Shared/_Articles.cshtml" />
+                   
+
                 </div>
             </div>
+            <!-- Column 3 End -->
+
         </div>
         <div class="footer-bar">
             <p><span class="primary-color">Intillegio</span> &copy; @DateTime.Now.Year.  All Rights Reserved.</p>

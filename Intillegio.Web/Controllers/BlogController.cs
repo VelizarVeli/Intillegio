@@ -1,4 +1,6 @@
 ﻿
+using System.Threading.Tasks;
+using Intillegio.Common.Constants;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -21,6 +23,17 @@ namespace Intillegio.Web.Controllers
         {
             var allArticles = _blogService.GetAllArticles();
             return View("Blog", allArticles);
+        }
+
+        public async Task<IActionResult> ArticleDetails(int id)
+        {
+            var articleDetails = await _blogService.GetArticleDetailsAsync(id);
+            if (articleDetails== null)
+            {
+                return RedirectToAction(ActionConstants.Blog);
+            }
+
+            return View(articleDetails);
         }
     }
 }

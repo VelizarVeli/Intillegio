@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Intillegio.Common.Constants;
+using Intillegio.Models;
 
-namespace Intillegio.Models
+namespace Intillegio.DTOs.BindingModels
 {
-   public class Article
+   public class ArticleBindingModel
     {
-        public Article()
-        {
-            Comments = new HashSet<Comment>();
-        }
-
-        [Key]
         public int Id { get; set; }
 
         [Required]
-        [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
+        [Display(Name = DisplayNameConstants.ArticleName)]
         public string Name { get; set; }
 
         [Required]
@@ -36,8 +31,8 @@ namespace Intillegio.Models
 
         [Required]
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; } = DateTime.UtcNow;
+        public DateTime Date { get; set; } 
 
-        public ICollection<Comment> Comments { get; set; }
+        public IEnumerable<Comment> Comments { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -9,6 +10,7 @@ using Intillegio.Data.Data;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Intillegio.Services
 {
@@ -17,13 +19,6 @@ namespace Intillegio.Services
         public ProjectsService(IntillegioContext dbContext, IMapper mapper, UserManager<IntillegioUser> userManager)
             : base(dbContext, mapper, userManager)
         {
-        }
-
-        public IEnumerable<ProjectViewModel> LastProjects()
-        {
-            var lastProjects = Mapper.Map<IEnumerable<ProjectViewModel>>(
-                DbContext.Projects.OrderByDescending(a => a.StartingDate).Take(6));
-            return lastProjects;
         }
 
         public IEnumerable<ProjectViewModel> GetAllProjects()
@@ -40,6 +35,15 @@ namespace Intillegio.Services
             var model = this.Mapper.Map<Project>(project);
             await DbContext.Projects.AddAsync(model);
             await this.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<ProjectBindingModel> GetProjectDetailsAsync(Guid id)
+        {
+            var project = await DbContext.Projects.SingleOrDefaultAsync(i => i.Id == id);
+
+            var projectDto = Mapper.Map<ProjectBindingModel>(project);
+
+            return projectDto;
         }
     }
 }
