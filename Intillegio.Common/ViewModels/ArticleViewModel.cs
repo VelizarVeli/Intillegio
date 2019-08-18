@@ -12,7 +12,15 @@ namespace Intillegio.Common.ViewModels
 
         public string ArticleCategory { get; set; }
 
-        public string ImageLink { get; set; }
+        public string Image65X65 { get; set; }
+
+        public string Image390X245 { get; set; }
+      
+        public string Image350X220 { get; set; }
+
+        public string VideoImage400X250 { get; set; }
+
+        public string Image825X530 { get; set; }
 
         public DateTime Date { get; set; }
     }

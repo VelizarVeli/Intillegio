@@ -4,14 +4,16 @@ using Intillegio.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Intillegio.Data.Migrations
 {
     [DbContext(typeof(IntillegioContext))]
-    partial class IntillegioContextModelSnapshot : ModelSnapshot
+    [Migration("20190817182958_ArticleImages")]
+    partial class ArticleImages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,7 +34,7 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<string>("Image350X220")
+                    b.Property<string>("Image350X350")
                         .IsRequired();
 
                     b.Property<string>("Image390X245")

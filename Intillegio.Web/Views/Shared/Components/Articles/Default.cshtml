@@ -1,11 +1,10 @@
-﻿@using Intillegio.Common.ViewModels
-@model IEnumerable<Intillegio.Common.ViewModels.ArticleViewModel>
+﻿@model IEnumerable<Intillegio.Common.ViewModels.ArticleViewModel>
 
 @foreach (var article in Model)
 {
     <div class="footer-recent-post clearfix">
         <div class="footer-recent-post-thumb">
-            <img src="@article.ImageLink" alt="img">
+            <img src="@article.Image65X65" alt="img">
         </div>
         <div class="footer-recent-post-content">
             <span>@article.Date.ToString("MMMM d, yyyy")</span>

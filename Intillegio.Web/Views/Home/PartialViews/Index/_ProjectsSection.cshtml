@@ -14,7 +14,7 @@
                             <img src="@project.Image" alt="img">
                         </div>
                         <div class="project-grid-overlay">
-                            <h4><a href="#">@project.Name</a></h4>
+                            <h4><a asp-area="" asp-controller="Projects" asp-action="ProjectDetails" asp-route-id="@project.Id">@project.Name</a></h4>
                             <p>@project.CategoryName</p>
                             <span>@project.Stage</span>
                         </div>
