@@ -4,11 +4,8 @@ using Intillegio.Common.Constants;
 
 namespace Intillegio.Models
 {
-    public class Review
+    public class Review : BaseId
     {
-        [Key]
-        public string Id { get; set; }
-
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string Name { get; set; }

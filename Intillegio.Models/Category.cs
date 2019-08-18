@@ -4,7 +4,7 @@ using Intillegio.Common.Constants;
 
 namespace Intillegio.Models
 {
-    public class Category
+    public class Category : BaseId
     {
         public Category()
         {
@@ -12,9 +12,6 @@ namespace Intillegio.Models
             this.Articles = new HashSet<Article>();
             this.Products = new HashSet<Product>();
         }
-
-        [Key]
-        public int Id { get; set; }
 
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]

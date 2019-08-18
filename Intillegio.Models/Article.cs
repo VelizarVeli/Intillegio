@@ -5,15 +5,12 @@ using Intillegio.Common.Constants;
 
 namespace Intillegio.Models
 {
-   public class Article
+    public class Article : BaseId
     {
         public Article()
         {
             Comments = new HashSet<Comment>();
         }
-
-        [Key]
-        public int Id { get; set; }
 
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]

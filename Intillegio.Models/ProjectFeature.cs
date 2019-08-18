@@ -4,11 +4,8 @@ using Intillegio.Common.Constants;
 
 namespace Intillegio.Models
 {
-    public class ProjectFeature
+    public class ProjectFeature : BaseId
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string Name { get; set; }

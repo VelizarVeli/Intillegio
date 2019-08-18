@@ -26,7 +26,7 @@ namespace Intillegio.Web.Controllers
             return View("Projects", projects);
         }
 
-        public async Task<IActionResult> ProjectDetails(Guid id)
+        public async Task<IActionResult> ProjectDetails(int id)
         {
             var projectDetails = await _projectsService.GetProjectDetailsAsync(id);
             if (projectDetails == null)

@@ -37,7 +37,7 @@ namespace Intillegio.Services
             await this.DbContext.SaveChangesAsync();
         }
 
-        public async Task<ProjectBindingModel> GetProjectDetailsAsync(Guid id)
+        public async Task<ProjectBindingModel> GetProjectDetailsAsync(int id)
         {
             var project = await DbContext.Projects.SingleOrDefaultAsync(i => i.Id == id);
 

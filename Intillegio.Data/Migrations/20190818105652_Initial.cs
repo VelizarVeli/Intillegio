@@ -44,7 +44,7 @@ namespace Intillegio.Data.Migrations
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     StartingDate = table.Column<DateTime>(nullable: false),
                     Place = table.Column<string>(maxLength: 100, nullable: false),
-                    MainImage = table.Column<string>(nullable: false),
+                    Image320X405 = table.Column<string>(nullable: false),
                     VideoLink = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -69,10 +69,11 @@ namespace Intillegio.Data.Migrations
                 name: "Partners",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     About = table.Column<string>(nullable: false),
-                    Logo = table.Column<string>(nullable: false)
+                    Logo155X75 = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -87,7 +88,9 @@ namespace Intillegio.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     About = table.Column<string>(maxLength: 1000, nullable: false),
-                    Image = table.Column<string>(nullable: false)
+                    Image825X445 = table.Column<string>(nullable: false),
+                    Image255X155 = table.Column<string>(nullable: false),
+                    Image65X65 = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -179,7 +182,10 @@ namespace Intillegio.Data.Migrations
                     StockKeepingUnit = table.Column<string>(maxLength: 40, nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: false),
-                    PictureLink = table.Column<string>(nullable: false),
+                    Image255X325 = table.Column<string>(nullable: false),
+                    Image540X540 = table.Column<string>(nullable: false),
+                    Image135X135 = table.Column<string>(nullable: false),
+                    Image95X125 = table.Column<string>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
                     ProductCategory = table.Column<string>(maxLength: 100, nullable: false),
                     Height = table.Column<int>(nullable: false),
@@ -200,18 +206,42 @@ namespace Intillegio.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EventImage",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    EventId = table.Column<int>(nullable: false),
+                    Image320X405 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventImage", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EventImage_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     ProjectInfo = table.Column<string>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
                     Stage = table.Column<int>(nullable: false),
                     PartnerId = table.Column<Guid>(nullable: false),
+                    PartnerId1 = table.Column<int>(nullable: true),
                     StartingDate = table.Column<DateTime>(nullable: false),
-                    Image = table.Column<string>(nullable: false),
-                    ProjectId = table.Column<Guid>(nullable: true)
+                    Image350X350 = table.Column<string>(nullable: false),
+                    Image1110X450 = table.Column<string>(nullable: false),
+                    Image360X240 = table.Column<string>(nullable: false),
+                    ProjectId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -223,11 +253,11 @@ namespace Intillegio.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Projects_Partners_PartnerId",
-                        column: x => x.PartnerId,
+                        name: "FK_Projects_Partners_PartnerId1",
+                        column: x => x.PartnerId1,
                         principalTable: "Partners",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Projects_Projects_ProjectId",
                         column: x => x.ProjectId,
@@ -349,19 +379,12 @@ namespace Intillegio.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    EventId = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false),
-                    LinkToImage = table.Column<string>(nullable: true)
+                    Image135X135 = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Images", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Images_Events_EventId",
-                        column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Images_Products_ProductId",
                         column: x => x.ProductId,
@@ -374,12 +397,13 @@ namespace Intillegio.Data.Migrations
                 name: "Reviews",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
                     Content = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: true),
-                    Picture = table.Column<string>(nullable: true),
+                    Image75X75 = table.Column<string>(nullable: true),
                     ProductId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -397,13 +421,14 @@ namespace Intillegio.Data.Migrations
                 name: "ProjectFeatures",
                 columns: table => new
                 {
-                    ProjectId = table.Column<Guid>(nullable: false),
+                    ProjectId = table.Column<int>(nullable: false),
                     FeatureId = table.Column<int>(nullable: false),
                     Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProjectFeatures", x => new { x.ProjectId, x.FeatureId });
+                    table.UniqueConstraint("AK_ProjectFeatures_Id", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ProjectFeatures_Features_FeatureId",
                         column: x => x.FeatureId,
@@ -456,8 +481,8 @@ namespace Intillegio.Data.Migrations
                 column: "ArticleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Images_EventId",
-                table: "Images",
+                name: "IX_EventImage_EventId",
+                table: "EventImage",
                 column: "EventId");
 
             migrationBuilder.CreateIndex(
@@ -481,9 +506,9 @@ namespace Intillegio.Data.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects_PartnerId",
+                name: "IX_Projects_PartnerId1",
                 table: "Projects",
-                column: "PartnerId");
+                column: "PartnerId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_ProjectId",
@@ -527,6 +552,9 @@ namespace Intillegio.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "EventImage");
 
             migrationBuilder.DropTable(
                 name: "Images");

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Intillegio.Data.Migrations
 {
     [DbContext(typeof(IntillegioContext))]
-    [Migration("20190818083814_Initial1")]
-    partial class Initial1
+    [Migration("20190818105652_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -134,6 +134,8 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<int>("EventId");
 
+                    b.Property<string>("Image320X405");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");
@@ -195,8 +197,9 @@ namespace Intillegio.Data.Migrations
 
             modelBuilder.Entity("Intillegio.Models.Partner", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("About")
                         .IsRequired();
@@ -279,7 +282,7 @@ namespace Intillegio.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("LinkToImage");
+                    b.Property<string>("Image135X135");
 
                     b.Property<int>("ProductId");
 
@@ -292,8 +295,9 @@ namespace Intillegio.Data.Migrations
 
             modelBuilder.Entity("Intillegio.Models.Project", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CategoryId");
 
@@ -312,7 +316,9 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<Guid>("PartnerId");
 
-                    b.Property<Guid?>("ProjectId");
+                    b.Property<int?>("PartnerId1");
+
+                    b.Property<int?>("ProjectId");
 
                     b.Property<string>("ProjectInfo")
                         .IsRequired();
@@ -325,7 +331,7 @@ namespace Intillegio.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("PartnerId");
+                    b.HasIndex("PartnerId1");
 
                     b.HasIndex("ProjectId");
 
@@ -349,13 +355,15 @@ namespace Intillegio.Data.Migrations
 
             modelBuilder.Entity("Intillegio.Models.ProjectFeatures", b =>
                 {
-                    b.Property<Guid>("ProjectId");
+                    b.Property<int>("ProjectId");
 
                     b.Property<int>("FeatureId");
 
                     b.Property<int>("Id");
 
                     b.HasKey("ProjectId", "FeatureId");
+
+                    b.HasAlternateKey("Id");
 
                     b.HasIndex("FeatureId");
 
@@ -364,8 +372,9 @@ namespace Intillegio.Data.Migrations
 
             modelBuilder.Entity("Intillegio.Models.Review", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Content")
                         .IsRequired();
@@ -576,8 +585,7 @@ namespace Intillegio.Data.Migrations
 
                     b.HasOne("Intillegio.Models.Partner", "Partner")
                         .WithMany("Projects")
-                        .HasForeignKey("PartnerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PartnerId1");
 
                     b.HasOne("Intillegio.Models.Project")
                         .WithMany("RelatedProjects")

@@ -2,11 +2,9 @@
 
 namespace Intillegio.Models
 {
-    public class ProjectFeatures
+    public class ProjectFeatures : BaseId
     {
-        public int Id { get; set; }
-
-        public Guid ProjectId { get; set; }
+        public int ProjectId { get; set; }
         public virtual Project Project { get; set; }
 
         public int FeatureId { get; set; }

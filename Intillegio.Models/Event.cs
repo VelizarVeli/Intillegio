@@ -5,16 +5,13 @@ using Intillegio.Common.Constants;
 
 namespace Intillegio.Models
 {
-    public class Event
+    public class Event : BaseId
     {
         public Event()
         {
             this.EventImages = new HashSet<EventImage>();
         }
-
-        [Key]
-        public int Id { get; set; }
-
+        
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string Name { get; set; }

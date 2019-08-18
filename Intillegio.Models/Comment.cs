@@ -4,11 +4,8 @@ using Intillegio.Common.Constants;
 
 namespace Intillegio.Models
 {
-   public class Comment
+   public class Comment : BaseId
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string CommenterName { get; set; }

@@ -10,6 +10,6 @@ namespace Intillegio.Services.Contracts
    {
        IEnumerable<ProjectViewModel> GetAllProjects();
        Task AddProject(ProjectBindingModel project);
-       Task<ProjectBindingModel> GetProjectDetailsAsync(Guid id);
+       Task<ProjectBindingModel> GetProjectDetailsAsync(int id);
     }
 }

@@ -5,16 +5,13 @@ using Intillegio.Common.Constants;
 
 namespace Intillegio.Models
 {
-    public class Product
+    public class Product : BaseId
     {
         public Product()
         {
             this.Reviews = new HashSet<Review>();
             this.ProductImages = new HashSet<ProductImage>();
         }
-
-        [Key]
-        public int Id { get; set; }
 
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
