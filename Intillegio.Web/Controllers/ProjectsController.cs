@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Intillegio.Common.Constants;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;

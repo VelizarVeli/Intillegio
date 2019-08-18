@@ -10,7 +10,7 @@
 
         public string Category { get; set; }
 
-        public string PictureLink { get; set; }
+        public string Image255X325 { get; set; }
 
         public int  Stars { get; set; }
     }

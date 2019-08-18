@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace Intillegio.Common.ViewModels
+﻿namespace Intillegio.Common.ViewModels
 {
     public class ProjectViewModel
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Image350X350 { get; set; }
 

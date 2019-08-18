@@ -28,7 +28,7 @@ namespace Intillegio.Models
         public Stage Stage { get; set; }
 
         [Required]
-        public Guid PartnerId { get; set; }
+        public int PartnerId { get; set; }
         public virtual Partner Partner { get; set; }
 
         [Required]

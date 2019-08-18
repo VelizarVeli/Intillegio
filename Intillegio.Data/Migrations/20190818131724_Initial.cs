@@ -235,8 +235,7 @@ namespace Intillegio.Data.Migrations
                     ProjectInfo = table.Column<string>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
                     Stage = table.Column<int>(nullable: false),
-                    PartnerId = table.Column<Guid>(nullable: false),
-                    PartnerId1 = table.Column<int>(nullable: true),
+                    PartnerId = table.Column<int>(nullable: false),
                     StartingDate = table.Column<DateTime>(nullable: false),
                     Image350X350 = table.Column<string>(nullable: false),
                     Image1110X450 = table.Column<string>(nullable: false),
@@ -253,11 +252,11 @@ namespace Intillegio.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Projects_Partners_PartnerId1",
-                        column: x => x.PartnerId1,
+                        name: "FK_Projects_Partners_PartnerId",
+                        column: x => x.PartnerId,
                         principalTable: "Partners",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Projects_Projects_ProjectId",
                         column: x => x.ProjectId,
@@ -506,9 +505,9 @@ namespace Intillegio.Data.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Projects_PartnerId1",
+                name: "IX_Projects_PartnerId",
                 table: "Projects",
-                column: "PartnerId1");
+                column: "PartnerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_ProjectId",

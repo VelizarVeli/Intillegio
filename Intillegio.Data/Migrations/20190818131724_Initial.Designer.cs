@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Intillegio.Data.Migrations
 {
     [DbContext(typeof(IntillegioContext))]
-    [Migration("20190818105652_Initial")]
+    [Migration("20190818131724_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -314,9 +314,7 @@ namespace Intillegio.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<Guid>("PartnerId");
-
-                    b.Property<int?>("PartnerId1");
+                    b.Property<int>("PartnerId");
 
                     b.Property<int?>("ProjectId");
 
@@ -331,7 +329,7 @@ namespace Intillegio.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("PartnerId1");
+                    b.HasIndex("PartnerId");
 
                     b.HasIndex("ProjectId");
 
@@ -585,7 +583,8 @@ namespace Intillegio.Data.Migrations
 
                     b.HasOne("Intillegio.Models.Partner", "Partner")
                         .WithMany("Projects")
-                        .HasForeignKey("PartnerId1");
+                        .HasForeignKey("PartnerId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Intillegio.Models.Project")
                         .WithMany("RelatedProjects")

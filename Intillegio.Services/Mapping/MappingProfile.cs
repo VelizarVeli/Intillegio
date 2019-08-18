@@ -48,6 +48,8 @@ namespace Intillegio.Services.Mapping
         private void ConfigureShops()
         {
             CreateMap<Product, ProductViewModel>();
+            CreateMap<Product, ProductBindingModel>();
+            CreateMap<ProductBindingModel, Product>();
         }
     }
 }

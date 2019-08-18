@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Data.Data;
+using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Intillegio.Services
 {
@@ -21,6 +24,15 @@ namespace Intillegio.Services
                 DbContext.Products);
 
             return allProducts;
+        }
+
+        public async Task<ProductBindingModel> GetProductDetailsAsync(int id)
+        {
+            var product = await DbContext.Products.SingleOrDefaultAsync(i => i.Id == id);
+
+            var productDto = Mapper.Map<ProductBindingModel>(product);
+
+            return productDto;
         }
     }
 }

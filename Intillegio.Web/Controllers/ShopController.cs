@@ -1,4 +1,6 @@
-﻿using Intillegio.Models;
+﻿using System.Threading.Tasks;
+using Intillegio.Common.Constants;
+using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
 
@@ -17,10 +19,21 @@ namespace Intillegio.Web.Controllers
             _currentUser = currentUser;
         }
 
-        public IActionResult Products()
+        public IActionResult AllProducts()
         {
             var allProducts = _shopService.GetAllProducts();
             return this.View(allProducts);
+        }
+
+        public async Task<IActionResult> ProductDetails(int id)
+        {
+            var productDetails = await _shopService.GetProductDetailsAsync(id);
+            if (productDetails == null)
+            {
+                return RedirectToAction(ActionConstants.Products);
+            }
+
+            return View("ProductDetails", productDetails);
         }
 
         public IActionResult ShoppingCart()
