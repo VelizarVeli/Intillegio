@@ -1,0 +1,26 @@
+﻿@model List<Intillegio.Common.ViewModels.ProjectViewModel>
+<div class="section-block">
+    <div class="container">
+        <div class="section-heading">
+            <h4>Latest Projects</h4>
+            <div class="section-heading-line-left"></div>
+        </div>
+        <div class="row mt-30">
+            @foreach (var project in Model)
+            {
+                <div class="col-md-4 col-sm-6 col-12">
+                    <div class="project-grid">
+                        <div class="project-grid-img">
+                            <img src="@project.Image" alt="img">
+                        </div>
+                        <div class="project-grid-overlay">
+                            <h4><a asp-area="" asp-controller="Projects" asp-action="ProjectDetails" asp-route-id="@project.Id">@project.Name</a></h4>
+                            <p>@project.CategoryName</p>
+                            <span>@project.Stage</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

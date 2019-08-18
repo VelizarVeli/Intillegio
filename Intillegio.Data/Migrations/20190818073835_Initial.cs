@@ -150,7 +150,11 @@ namespace Intillegio.Data.Migrations
                     Content = table.Column<string>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
                     VideoLink = table.Column<string>(nullable: true),
-                    ImageLink = table.Column<string>(nullable: false),
+                    Image65X65 = table.Column<string>(nullable: false),
+                    Image350X220 = table.Column<string>(nullable: false),
+                    Image390X245 = table.Column<string>(nullable: false),
+                    VideoImage400X250 = table.Column<string>(nullable: true),
+                    Image825X530 = table.Column<string>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

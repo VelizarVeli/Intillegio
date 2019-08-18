@@ -9,7 +9,7 @@ namespace Intillegio.Models
     {
         public Event()
         {
-            this.Images = new HashSet<Image>();
+            this.Images = new HashSet<ProductImage>();
         }
 
         [Key]
@@ -32,6 +32,6 @@ namespace Intillegio.Models
 
         public string VideoLink { get; set; }
 
-        public ICollection<Image> Images { get; set; }
+        public ICollection<ProductImage> Images { get; set; }
     }
 }

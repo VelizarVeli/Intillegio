@@ -10,7 +10,7 @@ namespace Intillegio.Models
         public Product()
         {
             this.Reviews = new HashSet<Review>();
-            this.Images = new HashSet<Image>();
+            this.Images = new HashSet<ProductImage>();
         }
 
         [Key]
@@ -65,6 +65,6 @@ namespace Intillegio.Models
         public string Color { get; set; }
 
         public ICollection<Review> Reviews { get; set; }
-        public ICollection<Image> Images { get; set; }
+        public ICollection<ProductImage> Images { get; set; }
     }
 }

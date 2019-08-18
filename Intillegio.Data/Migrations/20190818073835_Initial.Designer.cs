@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Intillegio.Data.Migrations
 {
     [DbContext(typeof(IntillegioContext))]
-    [Migration("20190817162655_BigImage")]
-    partial class BigImage
+    [Migration("20190818073835_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,9 +27,6 @@ namespace Intillegio.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BigImage")
-                        .IsRequired();
-
                     b.Property<int>("CategoryId");
 
                     b.Property<string>("Content")
@@ -37,12 +34,23 @@ namespace Intillegio.Data.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<string>("Image350X220")
+                        .IsRequired();
+
+                    b.Property<string>("Image390X245")
+                        .IsRequired();
+
+                    b.Property<string>("Image65X65")
+                        .IsRequired();
+
+                    b.Property<string>("Image825X530")
+                        .IsRequired();
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<string>("SmallImage")
-                        .IsRequired();
+                    b.Property<string>("VideoImage400X250");
 
                     b.Property<string>("VideoLink");
 
