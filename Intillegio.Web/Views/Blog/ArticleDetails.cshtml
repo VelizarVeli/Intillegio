@@ -3,17 +3,7 @@
     ViewData["Title"] = "Article Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!-- Page Title START -->
-<div class="page-title-section" style="background-image: url(http://via.placeholder.com/1730x300);">
-    <div class="container">
-        <h1>Blog Post</h1>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog-post.html">Blog Post</a></li>
-        </ul>
-    </div>
-</div>
-<!-- Page Title END -->
+<partial name="~/Views/Blog/PartialViews/ArticleDetails/_PageTitleDetails.cshtml" />
 <!-- Blog Post START -->
 <div class="section-block">
     <div class="container">
@@ -31,7 +21,6 @@
                         <span><i class="fa fa-calendar"></i>Feb 19, 2018</span>
                         <span><i class="fa fa-list-ul"></i>	Business</span>
                     </div>
-
                     <div class="blog-post-content">
                         <p>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
@@ -39,12 +28,10 @@
                             also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
                             containing Lorem Ipsum passages.
                         </p>
-
                         <p>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
                             1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
                         </p>
-
                         <blockquote class="blockquote">
                             <p>
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since
@@ -53,7 +40,6 @@
                             </p>
                             <h4>- Tomas Edison</h4>
                         </blockquote>
-
                         <p>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
                             1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
@@ -61,7 +47,6 @@
                             unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
                             publishing software like Aldus PageMaker including versions of Lorem Ipsum
                         </p>
-
                         <div class="row mt-30">
                             <div class="col-md-6 col-sm-6 col-12">
                                 <div class="blog-list-img">
@@ -87,7 +72,6 @@
                                     <!-- Vide Box END -->
                                 </div>
                             </div>
-
                             <div class="col-md-6 col-sm-6 col-12">
                                 <div class="blog-list-bottom-text">
                                     <p>
@@ -99,14 +83,12 @@
                                 </div>
                             </div>
                         </div>
-
                         <p>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
                             1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
                             also the leap into electronic typesetting, remaining essentially unchanged. but also the leap into electronic typesetting, remaining essentially
                             unchanged.It was popularised in the 1960s with Letraset.
                         </p>
-
 
                         <div class="blog-comments mt-50">
                             <h3 class="mt-0">All Comments:</h3>
@@ -126,7 +108,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="blog-comment-user">
                                 <div class="row">
                                     <div class="col-md-1 hidden-sm-down pr-0">
@@ -143,7 +124,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <h3 class="mt-30">Your Comment:</h3>
                             <form class="comment-form" method="post" autocomplete="off">
                                 <div class="row">
@@ -158,7 +138,6 @@
                                     </div>
                                 </div>
                             </form>
-
                             <div class="mt-10 left-holder">
                                 <a href="#" class="primary-button button-md">Send Comment</a>
                             </div>
@@ -180,7 +159,6 @@
                             </span>
                         </div>
                     </div>
-
                     <!-- Categories -->
                     <div class="blog-list-left-heading">
                         <h4>Categories</h4>
@@ -195,7 +173,6 @@
                             <li><a href="#">World of Business</a></li>
                         </ul>
                     </div>
-
                     <!-- Recent News -->
                     <div class="blog-list-left-heading">
                         <h4>Recent News</h4>
@@ -205,40 +182,34 @@
                             <div class="col-md-5 col-sm-5 col-4 latest-posts-img">
                                 <img src="http://via.placeholder.com/80x80" alt="blog-img">
                             </div>
-
                             <div class="col-md-7 col-sm-7 col-8 latest-posts-text pl-0">
                                 <a href="#">Simply dummy text of the printing</a>
                                 <span>Mar 13, 2018</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="latest-posts">
                         <div class="row">
                             <div class="col-md-5 col-sm-5 col-4 latest-posts-img">
                                 <img src="http://via.placeholder.com/80x80" alt="blog-img">
                             </div>
-
                             <div class="col-md-7 col-sm-7 col-8 latest-posts-text pl-0">
                                 <a href="#">Simply dummy text of the printing</a>
                                 <span>Mar 19, 2018</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="latest-posts">
                         <div class="row">
                             <div class="col-md-5 col-sm-5 col-4 latest-posts-img">
                                 <img src="http://via.placeholder.com/80x80" alt="blog-img">
                             </div>
-
                             <div class="col-md-7 col-sm-7 col-8 latest-posts-text pl-0">
                                 <a href="#">Simply dummy text of the printing</a>
                                 <span>Mar 27, 2018</span>
                             </div>
                         </div>
                     </div>
-
                     <!-- Archives -->
                     <div class="blog-list-left-heading">
                         <h4>Archives</h4>
@@ -252,7 +223,6 @@
                             <li><a href="#">May 07</a> <span>(16)</span></li>
                         </ul>
                     </div>
-
                     <!-- Tags -->
                     <div class="blog-list-left-heading">
                         <h4>Tags</h4>
@@ -267,7 +237,6 @@
                         <a href="#" class="button-tag primary-button">Funding</a>
                         <a href="#" class="button-tag primary-button">Transaction</a>
                     </div>
-
                     <!--Share Links -->
                     <div class="blog-list-left-heading">
                         <h4>Share Links</h4>
@@ -281,7 +250,6 @@
                             <li><a href="#"><i class="fa fa-skype"></i></a></li>
                         </ul>
                     </div>
-
                 </div>
             </div>
             <!-- Right Side END -->
