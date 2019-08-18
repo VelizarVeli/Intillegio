@@ -1,0 +1,173 @@
+﻿@model Intillegio.DTOs.SolutionBindingModel
+@{
+    ViewData["Title"] = "Solution Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="~/Views/Solutions/PartialViews/SolutionDetails/_DetailsPageTitle.cshtml" />
+
+<!-- Service Single START -->
+<div class="section-block">
+    <div class="container">
+        <div class="row">
+            <!-- Left Side START -->
+            <div class="col-md-3 col-sm-4 col-12">
+                <div class="services-single-left-box">
+
+                    <!-- Vertical Menu START -->
+                    <div class="services-single-left-heading">
+                        <h4>All Services</h4>
+                    </div>
+                    <div class="services-single-menu mt-30">
+                        <ul>
+                            <li class="services-active"><a href="#">Financial Services Consulting</a></li>
+                            <li><a href="#">Consumer Product Consulting</a></li>
+                            <li><a href="#">Global Consumer insights</a></li>
+                            <li><a href="#">Independent contractor</a></li>
+                            <li><a href="#">Professional Advisor</a></li>
+                        </ul>
+                    </div>
+                    <!-- Vertical Menu END -->
+
+                    <div class="services-single-left-heading mt-40">
+                        <h4>Need Help ?</h4>
+                    </div>
+                    <ul class="primary-list mt-30">
+                        <li><i class="fa fa-globe"></i>Street Sheram 113/11 9007</li>
+                        <li><i class="fa fa-phone"></i>(+123) 123-456-789</li>
+                        <li><i class="fa fa-envelope-open"></i>SpecThemes@gmail.com</li>
+                    </ul>
+
+                    <!-- Callback START -->
+                    <div class="callback-box mt-30">
+                        <div class="services-single-left-heading">
+                            <h4>Request a Callback</h4>
+                        </div>
+                        <form method="get" action="#" class="callback-box-form mt-20">
+                            <input type="text" name="name" placeholder="Your Name">
+                            <input type="text" name="phone" placeholder="Phone Number">
+                            <button type="submit">Request</button>
+                        </form>
+                    </div>
+                    <!-- Callback END -->
+                </div>
+            </div>
+            <!-- Left Side END -->
+            <!-- Right Side START -->
+            <div class="col-md-9 col-sm-8 col-12">
+                <div class="services-single-right">
+                    <img src="@Model.Image825X445" class="rounded-border" alt="img">
+                    <div class="text-content-big mt-20">
+                        <p>
+                            @Model.About
+                        </p>
+                    </div>
+
+                    <div class="row mt-30">
+                        <div class="col-md-6 col-sm-6 col-12">
+                            <div class="pr-15-md">
+                                <div class="section-single-heading">
+                                    <h4>Financial Planning Strategies</h4>
+                                </div>
+                                <ul class="primary-list mt-35">
+                                    <li><i class="fa fa-check"></i>Foreclosure consultant Human resource consulting</li>
+                                    <li><i class="fa fa-check"></i>Employment consultant Environmental consultant</li>
+                                    <li><i class="fa fa-check"></i>Immigration consultant, Information consulting</li>
+                                    <li><i class="fa fa-check"></i>Consultant pharmacist Creative consultant</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-12">
+                            <div class="section-single-heading">
+                                <h4>Analyze Your Business</h4>
+                            </div>
+                            <!-- Pie Chart START -->
+                            <canvas id="chart-area" class="chartjs-render-monitor"></canvas>
+                            <!-- Pie Chart END -->
+                        </div>
+                    </div>
+
+                    <!-- Accordions START -->
+                    <div class="panel-group mt-20" id="accordion" role="tablist" aria-multiselectable="true">
+
+                        <div class="panel panel-default accordion">
+                            <div class="panel-heading accordion-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title accordion-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Where can I get access to Capital IQ?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body accordion-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default accordion">
+                            <div class="panel-heading accordion-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title accordion-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                       aria-controls="collapseTwo">
+                                        Where can I find market research reports?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body accordion-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default accordion">
+                            <div class="panel-heading accordion-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title accordion-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                       aria-controls="collapseThree">
+                                        How do I get access to case studies?
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body accordion-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordions END -->
+                    <!-- Download Button START -->
+                    <a href="#">
+                        <div class="download-file-button clearfix">
+                            <h5>Download Our Services file <span>(zip)</span></h5>
+                            <i class="fa fa-file-word-o"></i>
+                        </div>
+                    </a>
+                    <!-- Download Button END -->
+
+                    <div class="section-single-heading mt-50">
+                        <h4>About Our Company</h4>
+                    </div>
+                    <div class="text-content-big mt-15">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Right Side END -->
+        </div>
+    </div>
+</div>
+<!-- Service Single END -->

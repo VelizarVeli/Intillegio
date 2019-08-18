@@ -1,4 +1,6 @@
-﻿using Intillegio.Models;
+﻿using System.Threading.Tasks;
+using Intillegio.Common.Constants;
+using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
 
@@ -21,6 +23,17 @@ namespace Intillegio.Web.Controllers
         {
             var solutions = _solutionsService.GetAllSolutions();
             return View("Solutions", solutions);
+        }
+
+        public async Task<IActionResult> SolutionDetails(int id)
+        {
+            var solutionDetails = await _solutionsService.GetSolutionDetailsAsync(id);
+            if (solutionDetails == null)
+            {
+                return RedirectToAction(ActionConstants.Solutions);
+            }
+
+            return View("SolutionDetails", solutionDetails);
         }
     }
 }

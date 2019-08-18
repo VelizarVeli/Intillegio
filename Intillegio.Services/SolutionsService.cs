@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Data.Data;
+using Intillegio.DTOs;
+using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Intillegio.Services
 {
@@ -21,6 +25,15 @@ namespace Intillegio.Services
             var allSolutions = Mapper.Map<IEnumerable<SolutionViewModel>>(
                 DbContext.Solutions.OrderByDescending(a => a.Id));
             return allSolutions;
+        }
+
+        public async Task<SolutionBindingModel> GetSolutionDetailsAsync(int id)
+        {
+            var solution = await DbContext.Solutions.SingleOrDefaultAsync(i => i.Id == id);
+
+            var solutionDto = Mapper.Map<SolutionBindingModel>(solution);
+
+            return solutionDto;
         }
     }
 }

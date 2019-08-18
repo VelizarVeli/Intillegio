@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.DTOs;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
 
@@ -33,6 +34,8 @@ namespace Intillegio.Services.Mapping
         private void ConfigureSolutions()
         {
             CreateMap<Solution, SolutionViewModel>();
+            CreateMap<Solution, SolutionBindingModel>();
+            CreateMap<SolutionBindingModel, Solution>();
         }
 
         private void ConfigureBlogs()
