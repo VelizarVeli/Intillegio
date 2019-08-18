@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Intillegio.Common.BindingModels;
 using Intillegio.Common.ViewModels;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;

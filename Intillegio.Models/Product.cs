@@ -10,7 +10,7 @@ namespace Intillegio.Models
         public Product()
         {
             this.Reviews = new HashSet<Review>();
-            this.Images = new HashSet<ProductImage>();
+            this.ProductImages = new HashSet<ProductImage>();
         }
 
         [Key]
@@ -35,9 +35,18 @@ namespace Intillegio.Models
 
         [Required]
         public string Description { get; set; }
-        
+
         [Required]
-        public string PictureLink { get; set; }
+        public string Image255X325 { get; set; }
+
+        [Required]
+        public string Image540X540 { get; set; }
+
+        [Required]
+        public string Image135X135 { get; set; }
+
+        [Required]
+        public string Image95X125 { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -65,6 +74,6 @@ namespace Intillegio.Models
         public string Color { get; set; }
 
         public ICollection<Review> Reviews { get; set; }
-        public ICollection<ProductImage> Images { get; set; }
+        public ICollection<ProductImage> ProductImages { get; set; }
     }
 }

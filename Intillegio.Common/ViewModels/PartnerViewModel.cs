@@ -8,6 +8,6 @@
 
         public string About { get; set; }
 
-        public string Logo { get; set; }
+        public string Logo155X75 { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Intillegio.Common.Constants;
 
@@ -20,7 +19,7 @@ namespace Intillegio.Models
         public string About { get; set; }
 
         [Required]
-        public string Logo { get; set; }
+        public string Logo155X75 { get; set; }
 
         public ICollection<Project> Projects { get; set; }
     }

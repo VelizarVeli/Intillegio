@@ -1,4 +1,4 @@
-﻿@model Intillegio.Common.BindingModels.ProjectBindingModel
+﻿@model Intillegio.DTOs.BindingModels.ProjectBindingModel
 
 @{
     ViewData["Title"] = "AddProject";
@@ -9,15 +9,15 @@
     <div class="container">
         <div class="project-single">
             <form asp-area="Administration"asp-controller="ProjectsAdmin" asp-action="CreateProject">
-                <h1 class="page-title-section"><a asp-area="Administration" asp-controller="Projects" asp-action="ProjectsAdmin">Add Project</a></h1>
+                <h1 class="page-title-section"><a asp-area="Administration" asp-controller="Projects" asp-action="">Add Project</a></h1>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="project-single-img">
                     <img src="http://via.placeholder.com/1110x450" class="rounded-border shadow-primary" alt="img">
                 </div>
                 <div class="project-single-img">
-                    <label asp-for="Image" class="control-label"></label>
-                    <input asp-for="Image" class="form-control" />
-                    <span asp-validation-for="Image" class="text-danger"></span>
+                    <label asp-for="Image1110X450" class="control-label"></label>
+                    <input asp-for="Image1110X450" class="form-control" />
+                    <span asp-validation-for="Image1110X450" class="text-danger"></span>
                 </div>
                 <div class="project-single-text">
                     <div class="row">

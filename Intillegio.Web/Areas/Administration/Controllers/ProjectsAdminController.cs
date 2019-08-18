@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Intillegio.Common.BindingModels;
 using Intillegio.Common.Constants;
+using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
@@ -28,7 +28,7 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         public IActionResult AllProjects()
         {
             var allProjects = _projectsService.GetAllProjects();
-            return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/GetAllProjects.cshtml", allProjects);
+            return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/AllProjects.cshtml", allProjects);
         }
 
         [Authorize(Roles = "Admin")]

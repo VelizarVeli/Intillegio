@@ -17,6 +17,12 @@ namespace Intillegio.Models
         public string About { get; set; }
 
         [Required]
-        public string Image { get; set; }
+        public string Image825X445 { get; set; }
+
+        [Required]
+        public string Image255X155 { get; set; }
+
+        [Required]
+        public string Image65X65 { get; set; }
     }
 }

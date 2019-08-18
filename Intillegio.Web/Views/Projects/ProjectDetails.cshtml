@@ -1,4 +1,5 @@
-﻿
+﻿@using Intillegio.DTOs.BindingModels
+@model Intillegio.DTOs.BindingModels.ProjectBindingModel
 @{
     ViewData["Title"] = "Project Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +10,7 @@
     <div class="container">
         <div class="project-single">
             <div class="project-single-img">
-                <img src="http://via.placeholder.com/1110x450" class="rounded-border shadow-primary" alt="img">
+                <img src="@Model.Image1110X450" class="rounded-border shadow-primary" alt="img">
             </div>
 
             <div class="project-single-text">

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using Intillegio.Common.Constants;
 using Intillegio.Models;
 
-namespace Intillegio.Common.BindingModels
+namespace Intillegio.DTOs.BindingModels
 {
     public class ProjectBindingModel
     {
@@ -22,10 +22,18 @@ namespace Intillegio.Common.BindingModels
         [Required]
         [DataType(DataType.Date)]
         public DateTime StartingDate { get; set; }
+        
+        [Required]
+        [Display(Name="Add the link to the image 350x350 px")]
+        public string Image350X350 { get; set; }
 
         [Required]
-        [Display(Name="Add the link to the image")]
-        public string Image { get; set; }
+        [Display(Name= "Add the link to the image 1110X450 px")]
+        public string Image1110X450 { get; set; }
+
+        [Required]
+        [Display(Name= "Add the link to the image 360X240 px")]
+        public string Image360X240 { get; set; }
 
         public ICollection<Project> RelatedProjects { get; set; }
         public ICollection<ProjectFeatures> Features { get; set; }

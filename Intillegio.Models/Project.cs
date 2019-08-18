@@ -36,7 +36,13 @@ namespace Intillegio.Models
         public DateTime StartingDate { get; set; }
 
         [Required]
-        public string Image { get; set; }
+        public string Image350X350 { get; set; }
+
+        [Required]
+        public string Image1110X450 { get; set; }
+        
+        [Required]
+        public string Image360X240 { get; set; }
 
         //TODO: Add related projects
         //public virtual ICollection<RelatedProject> RelatedProjects { get; set; }
