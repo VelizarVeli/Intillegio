@@ -8,7 +8,7 @@ namespace Intillegio.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
 
-    public class ProjectsController : Controller
+    public class ProjectsController : BaseController
     {
         private readonly IProjectsService _projectsService;
         private readonly UserManager<IntillegioUser> _currentUser;

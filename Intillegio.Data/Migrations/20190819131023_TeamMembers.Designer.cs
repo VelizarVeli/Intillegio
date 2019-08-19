@@ -4,14 +4,16 @@ using Intillegio.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Intillegio.Data.Migrations
 {
     [DbContext(typeof(IntillegioContext))]
-    partial class IntillegioContextModelSnapshot : ModelSnapshot
+    [Migration("20190819131023_TeamMembers")]
+    partial class TeamMembers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -317,8 +319,7 @@ namespace Intillegio.Data.Migrations
                     b.Property<int?>("ProjectId");
 
                     b.Property<string>("ProjectInfo")
-                        .IsRequired()
-                        .HasMaxLength(1000);
+                        .IsRequired();
 
                     b.Property<int>("Stage");
 
@@ -430,8 +431,7 @@ namespace Intillegio.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("About")
-                        .IsRequired()
-                        .HasMaxLength(1000);
+                        .IsRequired();
 
                     b.Property<string>("Facebook");
 
@@ -441,12 +441,10 @@ namespace Intillegio.Data.Migrations
                     b.Property<string>("Instagram");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                        .IsRequired();
 
                     b.Property<string>("Position")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                        .IsRequired();
 
                     b.Property<string>("Skype");
 
