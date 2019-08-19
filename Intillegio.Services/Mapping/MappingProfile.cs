@@ -15,6 +15,7 @@ namespace Intillegio.Services.Mapping
             ConfigureSolutions();
             ConfigureBlogs();
             ConfigureShops();
+            ConfigureTeamMembers();
         }
 
         private void ConfigureProjects()
@@ -50,6 +51,11 @@ namespace Intillegio.Services.Mapping
             CreateMap<Product, ProductViewModel>();
             CreateMap<Product, ProductBindingModel>();
             CreateMap<ProductBindingModel, Product>();
+        }
+
+        private void ConfigureTeamMembers() 
+        {
+            CreateMap<TeamMember, TeamMemberViewModel>();
         }
     }
 }

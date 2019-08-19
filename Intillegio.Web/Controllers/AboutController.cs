@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Intillegio.Services.Contracts;
+﻿using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Intillegio.Web.Controllers
@@ -12,9 +11,9 @@ namespace Intillegio.Web.Controllers
         {
             _aboutService = aboutService;
         }
-        public async Task<IActionResult> About()
+        public IActionResult About()
         {
-            var teamMembers = await _aboutService.GetAllTeamMembers();
+            var teamMembers = _aboutService.GetAllTeamMembers();
             return View("About", teamMembers);
         }
     }

@@ -1,0 +1,36 @@
+﻿@model List<Intillegio.Common.ViewModels.TeamMemberViewModel>
+<div class="section-block-grey">
+    <div class="container">
+        <div class="section-heading center-holder">
+            <span>Meet Our Team</span>
+            <h3>We Are Team Of Professionals</h3>
+            <div class="section-heading-line"></div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="row mt-50">
+            @foreach (var member in Model)
+            {
+                <div class="col-md-4 col-sm-4 col-12">
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="@member.Image350X290" alt="img">
+                        </div>
+                        <div class="team-member-text">
+                            <h4><a href="#">@member.Name</a></h4>
+                            <span>@member.Position</span>
+                            <p>
+                               @member.About
+                            </p>
+                            <ul>
+                                <li><a target="_blank" href="@member.Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a target="_blank" href="@member.Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a target="_blank" href="@member.Instagram"><i class="fa fa-instagram"></i></a></li>
+                                <li><a target="_blank" href="@member.Skype"><i class="fa fa-skype"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
