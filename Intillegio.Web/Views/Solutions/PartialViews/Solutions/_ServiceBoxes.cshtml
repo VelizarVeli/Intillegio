@@ -19,7 +19,7 @@
                         <img src="@solution.Image255X155" alt="service">
                         <div class="clearfix">
                             <div class="service-block-number">
-                                <h5>@solution.Id</h5>
+                                <h5>@solution.Id.ToString("D2")</h5>
                             </div>
                             <div class="service-block-title">
                                 <h4><a asp-area="" asp-controller="Solutions" asp-action="SolutionDetails" asp-route-id="@solution.Id" >@solution.Name</a></h4>
