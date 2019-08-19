@@ -10,6 +10,10 @@
         <div class="row mt-50">
             @foreach (var solution in Model.OrderBy(i => i.Id))
             {
+                if (solution.About.Length > 100)
+                {
+                    solution.About = solution.About.Substring(0, 120) + "...";
+                }
                 <div class="col-md-3 col-sm-6 col-12">
                     <div class="service-block">
                         <img src="@solution.Image255X155" alt="service">

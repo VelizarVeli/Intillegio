@@ -3,8 +3,7 @@
     <div class="row">
         @foreach (var article in Model)
         {
-            int articleLength = article.Content.Length;
-            if (articleLength > 100)
+            if (article.Content.Length > 100)
             {
                 article.Content = article.Content.Substring(0, 145).Trim('"') + "...";
             }
