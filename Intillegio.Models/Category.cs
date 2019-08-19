@@ -15,7 +15,7 @@ namespace Intillegio.Models
 
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
 
         public ICollection<Project> Projects { get; set; }
 

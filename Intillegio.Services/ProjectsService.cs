@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -21,10 +20,17 @@ namespace Intillegio.Services
         {
         }
 
-        public IEnumerable<ProjectViewModel> GetAllProjects()
+        public async Task<IEnumerable<ProjectViewModel>> GetAllProjects()
         {
-            var allProjects = Mapper.Map<IEnumerable<ProjectViewModel>>(
-                DbContext.Projects.OrderByDescending(a => a.StartingDate));
+            var allProjects = await DbContext.Projects.Select(v => new ProjectViewModel
+            {
+                Name = v.Name,
+                CategoryName = v.Category.CategoryName,
+                Id = v.Id,
+                Image350X350 = v.Image350X350,
+                Stage = v.Stage.ToString()
+            }).ToListAsync();
+            
             return allProjects;
         }
 

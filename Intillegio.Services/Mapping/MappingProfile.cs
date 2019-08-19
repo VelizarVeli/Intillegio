@@ -20,7 +20,7 @@ namespace Intillegio.Services.Mapping
         private void ConfigureProjects()
         {
             CreateMap<Project, ProjectViewModel>()
-                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName));
             CreateMap<Project, ProjectBindingModel>();
             CreateMap<ProjectBindingModel, Project>();
 

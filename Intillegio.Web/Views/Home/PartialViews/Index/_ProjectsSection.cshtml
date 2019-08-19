@@ -6,7 +6,7 @@
             <div class="section-heading-line-left"></div>
         </div>
         <div class="row mt-30">
-            @foreach (var project in Model.Projects)
+            @foreach (var project in Model.Projects.ToList().Take(6))
             {
                 <div class="col-md-4 col-sm-6 col-12">
                     <div class="project-grid">
