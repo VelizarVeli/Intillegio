@@ -3,6 +3,11 @@
     <div class="row">
         @foreach (var article in Model)
         {
+            int articleLength = article.Content.Length;
+            if (articleLength > 100)
+            {
+                article.Content = article.Content.Substring(0, 145).Trim('"') + "...";
+            }
             <div class="col-md-6 col-sm-12 col-12">
                 <div class="blog-grid">
                     <div class="blog-grid-img">

@@ -2,6 +2,10 @@
 
 @foreach (var article in Model)
 {
+    if (article.Name.Length > 47)
+    {
+        article.Name = article.Name.Substring(0, 46) + "...";
+    }
     <div class="footer-recent-post clearfix">
         <div class="footer-recent-post-thumb">
             <img src="@article.Image65X65" alt="img">

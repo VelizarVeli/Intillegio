@@ -8,31 +8,35 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
         </div>
         <div class="row mt-50">
-            @foreach(var article in Model.Articles)
+            @foreach (var article in Model.Articles)
             {
-            <div class="col-md-4 col-sm-4 col-12">
-                <div class="blog-grid">
-                    <div class="blog-grid-img">
-                        <img src="@article.Image350X220" alt="img">
-                        <div class="data-box-grid">
-                            <h4>@article.Date.Day.ToString("D2")</h4>
-                            <p>@article.Date.ToString("MMM")</p>
+                if (article.Content.Length > 100)
+                {
+                    article.Content = article.Content.Substring(0, 120).Trim('"') + "...";
+                }
+                <div class="col-md-4 col-sm-4 col-12">
+                    <div class="blog-grid">
+                        <div class="blog-grid-img">
+                            <img src="@article.Image350X220" alt="img">
+                            <div class="data-box-grid">
+                                <h4>@article.Date.Day.ToString("D2")</h4>
+                                <p>@article.Date.ToString("MMM")</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="blog-grid-text">
-                        <span>@article.ArticleCategory</span>
-                        <h4>@article.Name</h4>
-                        <ul>
-                            <li><i class="fa fa-calendar"></i>@article.Date.ToString("MMMM dd, yyyy")</li>
-                            <li><i class="fa fa-list-ul"></i>@article.ArticleCategory</li>
-                        </ul>
-                        <p>@article.Content</p>
-                        <div class="mt-20 left-holder">
-                            <a asp-area="" asp-controller="Blog" asp-action="ArticleDetails" asp-route-id="@article.Id" class="primary-button button-sm">Read More</a>
+                        <div class="blog-grid-text">
+                            <span>@article.ArticleCategory</span>
+                            <h4>@article.Name</h4>
+                            <ul>
+                                <li><i class="fa fa-calendar"></i>@article.Date.ToString("MMMM dd, yyyy")</li>
+                                <li><i class="fa fa-list-ul"></i>@article.ArticleCategory</li>
+                            </ul>
+                            <p>@article.Content</p>
+                            <div class="mt-20 left-holder">
+                                <a asp-area="" asp-controller="Blog" asp-action="ArticleDetails" asp-route-id="@article.Id" class="primary-button button-sm">Read More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             }
         </div>
     </div>
