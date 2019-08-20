@@ -1,0 +1,12 @@
+﻿@model Intillegio.Common.ViewModels.ServicesViewModel
+<div class="services-single-left-heading">
+    <h4>All Services</h4>
+</div>
+<div class="services-single-menu mt-30">
+    <ul>
+        @foreach (var service in Model.AllSolutions)
+        {
+            <li><a asp-area="" asp-controller="Solutions" asp-action="SolutionDetails" asp-route-id="@service.Id">@service.Name</a></li>
+        }
+    </ul>
+</div>

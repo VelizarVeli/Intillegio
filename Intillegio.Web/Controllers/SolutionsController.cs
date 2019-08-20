@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Intillegio.Common.Constants;
+using Intillegio.Common.ViewModels;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -27,13 +28,20 @@ namespace Intillegio.Web.Controllers
 
         public async Task<IActionResult> SolutionDetails(int id)
         {
+            var allSolutions = _solutionsService.GetAllSolutions();
             var solutionDetails = await _solutionsService.GetSolutionDetailsAsync(id);
             if (solutionDetails == null)
             {
                 return RedirectToAction(ActionConstants.Solutions);
             }
 
-            return View("SolutionDetails", solutionDetails);
+            var services = new ServicesViewModel
+            {
+                AllSolutions = allSolutions,
+                Solution = solutionDetails
+            };
+
+            return View("SolutionDetails", services);
         }
     }
 }

@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Data.Data;
-using Intillegio.DTOs;
-using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -27,11 +25,11 @@ namespace Intillegio.Services
             return allSolutions;
         }
 
-        public async Task<SolutionBindingModel> GetSolutionDetailsAsync(int id)
+        public async Task<SolutionViewModel> GetSolutionDetailsAsync(int id)
         {
             var solution = await DbContext.Solutions.SingleOrDefaultAsync(i => i.Id == id);
 
-            var solutionDto = Mapper.Map<SolutionBindingModel>(solution);
+            var solutionDto = Mapper.Map<SolutionViewModel>(solution);
 
             return solutionDto;
         }
