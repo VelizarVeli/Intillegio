@@ -1,4 +1,4 @@
-﻿@model List<Intillegio.Common.ViewModels.TeamMemberViewModel>
+﻿@model Intillegio.Common.ViewModels.AboutUsViewModel
 <div class="section-block-grey">
     <div class="container">
         <div class="section-heading center-holder">
@@ -8,7 +8,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
         </div>
         <div class="row mt-50">
-            @foreach (var member in Model)
+            @foreach (var member in Model.TeamMembers)
             {
                 <div class="col-md-4 col-sm-4 col-12">
                     <div class="team-member">

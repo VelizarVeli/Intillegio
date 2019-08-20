@@ -1,10 +1,11 @@
-﻿<div class="section-block-bg" style="background-image:url('@Url.Content("~/img/biznesmen.jpg")');">
+﻿@model Intillegio.Common.ViewModels.AboutUsViewModel
+<div class="section-block-bg" style="background-image:url('@Url.Content("~/img/biznesmen.jpg")');">
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-sm-12 col-12 offset-md-5">
                 <div class="section-heading">
                     <span>Improve your business with us !</span>
-                    <h4>First class business solutions since 1995</h4>
+                    <h4>First class business solutions since 2015</h4>
                     <div class="section-heading-line-left"></div>
                     <div class="text-content-big mt-10">
                         <p>
@@ -13,66 +14,29 @@
                         </p>
                     </div>
                 </div>
-                <!-- Feature Boxes START -->
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-12">
-                        <div class="feature-flex-square">
-                            <div class="clearfix">
-                                <div class="feature-flex-square-icon">
-                                    <i class="icon-target"></i>
-                                </div>
-                                <div class="feature-flex-square-content">
-                                    <h4><a href="#">Business Solutions</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus bibendum, nunc ut.</p>
-                                    <a href="#" class="feature-flex-square-content-button">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-12">
-                        <div class="feature-flex-square">
-                            <div class="clearfix">
-                                <div class="feature-flex-square-icon">
-                                    <i class="icon-diamond"></i>
-                                </div>
-                                <div class="feature-flex-square-content">
-                                    <h4><a href="#">Development Manager</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus bibendum, nunc ut.</p>
-                                    <a href="#" class="feature-flex-square-content-button">Learn More</a>
+                    @foreach (var solution in Model.Solutions)
+                    {
+                        if (solution.About.Length > 80)
+                        {
+                            solution.About = solution.About.Substring(0, 78) + "...";
+                        }
+                        <div class="col-md-6 col-sm-6 col-12">
+                            <div class="feature-flex-square">
+                                <div class="clearfix">
+                                    <div class="feature-flex-square-icon">
+                                        <i class="icon-target"></i>
+                                    </div>
+                                    <div class="feature-flex-square-content">
+                                        <h4><a asp-area="" asp-controller="Solutions" asp-action="SolutionDetails" asp-route-id="@solution.Id" >@solution.Name</a></h4>
+                                        <p>@solution.About</p>
+                                        <a asp-area="" asp-controller="Solutions" asp-action="SolutionDetails" asp-route-id="@solution.Id" class="feature-flex-square-content-button">Learn More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-12">
-                        <div class="feature-flex-square">
-                            <div class="clearfix">
-                                <div class="feature-flex-square-icon">
-                                    <i class="icon-networking"></i>
-                                </div>
-                                <div class="feature-flex-square-content">
-                                    <h4><a href="#">Global Consumer insights</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus bibendum, nunc ut.</p>
-                                    <a href="#" class="feature-flex-square-content-button">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-12">
-                        <div class="feature-flex-square">
-                            <div class="clearfix">
-                                <div class="feature-flex-square-icon">
-                                    <i class="icon-hourglass"></i>
-                                </div>
-                                <div class="feature-flex-square-content">
-                                    <h4><a href="#">Professional Approach</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus bibendum, nunc ut.</p>
-                                    <a href="#" class="feature-flex-square-content-button">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
-                <!-- Feature Boxes END -->
             </div>
         </div>
     </div>
