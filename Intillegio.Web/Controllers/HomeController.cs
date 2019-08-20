@@ -21,12 +21,12 @@ namespace Intillegio.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allProjects = _projectsService.GetAllProjects();
+            var allProjects = await _projectsService.GetAllProjects();
             var recentArticles = _recentArticles.GetAllArticles().Take(3);
             var homeModel = new HomeViewModel
             {
-                Projects = await allProjects,
-                Articles = recentArticles
+                Articles = recentArticles,
+                Projects = allProjects
             };
             return this.View(homeModel);
         }

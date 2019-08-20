@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intillegio.Common", "Intill
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intillegio.Services", "Intillegio.Services\Intillegio.Services.csproj", "{63BFAC01-5389-4AA9-A8B2-938BAD2BA06F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intillegio.DTOs", "Intillegio.DTOs\Intillegio.DTOs.csproj", "{64D6EA5D-D07C-42A5-A440-80E52E153CBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intillegio.DTOs", "Intillegio.DTOs\Intillegio.DTOs.csproj", "{64D6EA5D-D07C-42A5-A440-80E52E153CBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9FB1BC2F-E62B-4179-AF40-483387874642}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intillegio.Web.Tests", "Tests\Intillegio.Web.Tests\Intillegio.Web.Tests.csproj", "{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +49,16 @@ Global
 		{64D6EA5D-D07C-42A5-A440-80E52E153CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64D6EA5D-D07C-42A5-A440-80E52E153CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64D6EA5D-D07C-42A5-A440-80E52E153CBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88} = {9FB1BC2F-E62B-4179-AF40-483387874642}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E06D6601-9914-46C2-877A-EE9332003096}
