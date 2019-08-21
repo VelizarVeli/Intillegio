@@ -18,7 +18,7 @@
         <div class="section-heading-line-left"></div>
     </div>
     <div class="mt-40">
-        @foreach (var bar in Model.ProffessionalSkills)
+        @foreach (var bar in Model.ProffessionalSkills.OrderBy(p => p.Percentage))
         {
             <div class="progress-text">
                 <div class="row">

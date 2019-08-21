@@ -1,4 +1,4 @@
-﻿namespace Intillegio.Services.Emails
+﻿namespace Intillegio.Emails
 {
     public class EmailAddress
     {

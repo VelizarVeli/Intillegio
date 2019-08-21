@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Intillegio.Services.Emails.Contracts;
+using Intillegio.Emails.Contracts;
 
-namespace Intillegio.Services.Emails
+namespace Intillegio.Emails
 {
     public class EmailMessage : IEmailMessage
     {

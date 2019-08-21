@@ -1,4 +1,4 @@
-﻿namespace Intillegio.Services.Emails.Contracts
+﻿namespace Intillegio.Emails.Contracts
 {
     public interface IEmailConfiguration
     {

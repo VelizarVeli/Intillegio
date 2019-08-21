@@ -1,0 +1,16 @@
+﻿@model Intillegio.Common.ViewModels.ServicesViewModel
+<div class="callback-box mt-30">
+    <div class="services-single-left-heading">
+        <h4>Request a Callback</h4>
+    </div>
+    <form asp-controller="Mail" asp-action="RequestCallBack" class="callback-box-form mt-20">
+        <label asp-for="@Model.Callback.Name">Your Name</label>
+        <input asp-for="@Model.Callback.Name" id="contactName">
+        <span asp-validation-for="@Model.Callback.Name" class="text-danger"></span>
+
+        <label asp-for="@Model.Callback.PhoneNumber">Phone Number</label>
+        <input asp-for="@Model.Callback.PhoneNumber" id="contactName">
+        <span asp-validation-for="@Model.Callback.PhoneNumber" class="text-danger"></span>
+        <button type="submit">Request</button>
+    </form>
+</div>

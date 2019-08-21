@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Intillegio.Emails;
 
 namespace Intillegio.Common.ViewModels
 {
@@ -6,5 +7,6 @@ namespace Intillegio.Common.ViewModels
     {
         public IEnumerable<SolutionViewModel> AllSolutions { get; set; }
         public SolutionViewModel Solution { get; set; }
+        public EmailCallback Callback { get; set; }
     }
 }

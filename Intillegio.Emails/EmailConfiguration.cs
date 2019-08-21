@@ -1,6 +1,6 @@
-﻿using Intillegio.Services.Emails.Contracts;
+﻿using Intillegio.Emails.Contracts;
 
-namespace Intillegio.Services.Emails
+namespace Intillegio.Emails
 {
 
     public class EmailConfiguration : IEmailConfiguration

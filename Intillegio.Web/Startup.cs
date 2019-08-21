@@ -2,11 +2,12 @@
 using AutoMapper;
 using Intillegio.Data.Data;
 using Intillegio.Data.Seeding;
+using Intillegio.Emails;
+using Intillegio.Emails.Contracts;
 using Intillegio.Models;
 using Intillegio.Services;
 using Intillegio.Services.Contracts;
 using Intillegio.Services.Emails;
-using Intillegio.Services.Emails.Contracts;
 using Intillegio.Services.Mapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;

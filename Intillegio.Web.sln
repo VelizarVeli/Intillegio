@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intillegio.DTOs", "Intilleg
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9FB1BC2F-E62B-4179-AF40-483387874642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intillegio.Web.Tests", "Tests\Intillegio.Web.Tests\Intillegio.Web.Tests.csproj", "{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intillegio.Web.Tests", "Tests\Intillegio.Web.Tests\Intillegio.Web.Tests.csproj", "{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intillegio.Emails", "Intillegio.Emails\Intillegio.Emails.csproj", "{7AA643A1-D475-4065-A96A-B4742B18ECBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8D758B1-0EFD-49BC-8A83-CDBC2A1B7F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AA643A1-D475-4065-A96A-B4742B18ECBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA643A1-D475-4065-A96A-B4742B18ECBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AA643A1-D475-4065-A96A-B4742B18ECBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA643A1-D475-4065-A96A-B4742B18ECBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

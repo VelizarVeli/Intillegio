@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Intillegio.Common.Constants;
 using Intillegio.Common.ViewModels;
+using Intillegio.Emails;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -30,6 +31,7 @@ namespace Intillegio.Web.Controllers
         {
             var allSolutions = _solutionsService.GetAllSolutions();
             var solutionDetails = await _solutionsService.GetSolutionDetailsAsync(id);
+            var message = new EmailCallback();
             if (solutionDetails == null)
             {
                 return RedirectToAction(ActionConstants.Solutions);
@@ -38,7 +40,8 @@ namespace Intillegio.Web.Controllers
             var services = new ServicesViewModel
             {
                 AllSolutions = allSolutions,
-                Solution = solutionDetails
+                Solution = solutionDetails,
+                Callback = message
             };
 
             return View("SolutionDetails", services);
