@@ -6,10 +6,8 @@ using Intillegio.Models;
 
 namespace Intillegio.DTOs.BindingModels
 {
-   public class ArticleBindingModel
+    public class ArticleBindingModel : BaseId
     {
-        public int Id { get; set; }
-
         [Required]
         [Display(Name = DisplayNameConstants.ArticleName)]
         public string Name { get; set; }
@@ -39,7 +37,7 @@ namespace Intillegio.DTOs.BindingModels
 
         [Required]
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; } 
+        public DateTime Date { get; set; }
 
         public IEnumerable<Comment> Comments { get; set; }
     }

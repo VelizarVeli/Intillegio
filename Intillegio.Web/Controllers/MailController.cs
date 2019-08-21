@@ -1,4 +1,5 @@
 ﻿using Intillegio.Common.ViewModels;
+using Intillegio.DTOs.BindingModels;
 using Intillegio.Emails;
 using Intillegio.Emails.Contracts;
 using Microsoft.AspNetCore.Mvc;

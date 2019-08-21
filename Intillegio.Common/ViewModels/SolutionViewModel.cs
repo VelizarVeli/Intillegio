@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Intillegio.Common.ViewModels
+﻿namespace Intillegio.Common.ViewModels
 {
     public class SolutionViewModel
     {

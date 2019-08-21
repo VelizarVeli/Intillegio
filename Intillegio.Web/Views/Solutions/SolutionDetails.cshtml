@@ -1,4 +1,4 @@
-﻿@model Intillegio.Common.ViewModels.ServicesViewModel
+﻿@model Intillegio.DTOs.BindingModels.ServicesViewModel
 @{
     ViewData["Title"] = "Solution Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-9 col-sm-8 col-12">
                 <div class="services-single-right">
-                    <img src="@Model.Solution.Image255X155" class="rounded-border" alt="img">
+                    <img src="@Model.Solution.Image825X445" class="rounded-border" alt="img">
                     <div class="text-content-big mt-20">
                         <p>
                             @Model.Solution.About
@@ -37,10 +37,10 @@
                                     <h4>@Model.Solution.Name</h4>
                                 </div>
                                 <ul class="primary-list mt-35">
-                                    <li><i class="fa fa-check"></i>Foreclosure consultant Human resource consulting</li>
-                                    <li><i class="fa fa-check"></i>Employment consultant Environmental consultant</li>
-                                    <li><i class="fa fa-check"></i>Immigration consultant, Information consulting</li>
-                                    <li><i class="fa fa-check"></i>Consultant pharmacist Creative consultant</li>
+                                    @foreach (var fps in Model.Solution.FinancialPlanningStrategies)
+                                    {
+                                        <li><i class="fa fa-check"></i>@fps.Name</li>
+                                    }
                                 </ul>
                             </div>
                         </div>
