@@ -30,7 +30,7 @@ namespace Intillegio.Services
                 Image350X350 = v.Image350X350,
                 Stage = v.Stage.ToString()
             }).ToListAsync();
-            
+           
             return allProjects;
         }
 

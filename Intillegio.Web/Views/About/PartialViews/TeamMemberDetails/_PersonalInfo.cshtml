@@ -1,26 +1,22 @@
 ﻿<div class="col-md-8 col-sm-8 col-12">
     <div class="team-single-text">
-        <span>Agency Director</span>
-        <h4>Henry Ford</h4>
+        <span>@Model.Position</span>
+        <h4>@Model.Name</h4>
         <ul class="team-single-info">
-            <li><strong>Phone</strong><span>(+123) 123-456-789</span></li>
-            <li><strong>Gmail</strong><span>SpecThemes@gmail.com</span></li>
+            <li><strong>Phone</strong><span>@Model.PhoneNumber</span></li>
+            <li><strong>Gmail</strong><span>@Model.Email</span></li>
         </ul>
         <div class="text-content mt-20">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur.
+                @Model.About
             </p>
         </div>
 
         <ul class="team-single-social">
-            <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa fa-skype"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="@Model.Facebook"><i class="fa fa-facebook-square"></i></a></li>
+            <li><a href="@Model.Instagram"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="@Model.Skype"><i class="fa fa-skype"></i></a></li>
+            <li><a href="@Model.Linkedin"><i class="fa fa-linkedin"></i></a></li>
         </ul>
     </div>
 </div>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
@@ -27,7 +28,11 @@ namespace Intillegio.Services
 
         public async Task<TeamMemberBindingModel> GetTeamMemberDetailsAsync(int id)
         {
-            var teamMember = await DbContext.TeamMembers.SingleOrDefaultAsync(i => i.Id == id);
+            var teamMember = await DbContext
+                .TeamMembers
+                .Include(a => a.ActivitiesAndSkills)
+                .Include(p => p.ProffessionalSkills)
+                .SingleOrDefaultAsync(i => i.Id == id);
 
             var teamMemberDto = Mapper.Map<TeamMemberBindingModel>(teamMember);
 

@@ -11,5 +11,6 @@
         public const int AboutMaxLength = 1000;
         public const int SkuMinLength = 6;
         public const int SkuMaxLength = 40;
+        public const int PhonStringMaxLength = 18;
     }
 }

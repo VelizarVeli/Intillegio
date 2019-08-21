@@ -4,39 +4,22 @@ using Intillegio.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Intillegio.Data.Migrations
 {
     [DbContext(typeof(IntillegioContext))]
-    partial class IntillegioContextModelSnapshot : ModelSnapshot
+    [Migration("20190821025353_TeamMemberLinkedin")]
+    partial class TeamMemberLinkedin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Intillegio.Models.ActivityAndSkill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<int>("TeamMemberId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeamMemberId");
-
-                    b.ToTable("ActivityAndSkill");
-                });
 
             modelBuilder.Entity("Intillegio.Models.Article", b =>
                 {
@@ -310,27 +293,6 @@ namespace Intillegio.Data.Migrations
                     b.ToTable("Images");
                 });
 
-            modelBuilder.Entity("Intillegio.Models.ProffessionalSkill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<int>("Percentage");
-
-                    b.Property<int>("TeamMemberId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeamMemberId");
-
-                    b.ToTable("ProffessionalSkill");
-                });
-
             modelBuilder.Entity("Intillegio.Models.Project", b =>
                 {
                     b.Property<int>("Id")
@@ -490,8 +452,7 @@ namespace Intillegio.Data.Migrations
                         .HasMaxLength(100);
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(18);
+                        .IsRequired();
 
                     b.Property<string>("Position")
                         .IsRequired()
@@ -616,14 +577,6 @@ namespace Intillegio.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Intillegio.Models.ActivityAndSkill", b =>
-                {
-                    b.HasOne("Intillegio.Models.TeamMember", "TeamMember")
-                        .WithMany("ActivitiesAndSkills")
-                        .HasForeignKey("TeamMemberId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Intillegio.Models.Article", b =>
                 {
                     b.HasOne("Intillegio.Models.Category", "ArticleCategory")
@@ -661,14 +614,6 @@ namespace Intillegio.Data.Migrations
                     b.HasOne("Intillegio.Models.Product", "Product")
                         .WithMany("ProductImages")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Intillegio.Models.ProffessionalSkill", b =>
-                {
-                    b.HasOne("Intillegio.Models.TeamMember", "TeamMember")
-                        .WithMany("ProffessionalSkills")
-                        .HasForeignKey("TeamMemberId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

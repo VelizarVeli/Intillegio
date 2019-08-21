@@ -58,6 +58,25 @@ namespace Intillegio.Services.Mapping
             CreateMap<TeamMember, TeamMemberViewModel>();
             CreateMap<TeamMember, TeamMemberBindingModel>();
             CreateMap<TeamMemberBindingModel, TeamMember>();
+
+            //var configuration = new MapperConfiguration(c => {
+            //    c.CreateMap<TeamMember, ParentDestination>()
+            //        .Include<ChildSource, ChildDestination>();
+            //    c.CreateMap<ChildSource, ChildDestination>();
+            //});
+
+            //var sources = new[]
+            //{
+            //    new ParentSource(),
+            //    new ChildSource(),
+            //    new ParentSource()
+            //};
+
+            //var destinations = mapper.Map<ParentSource[], ParentDestination[]>(sources);
+
+            //destinations[0].ShouldBeInstanceOf<ParentDestination>();
+            //destinations[1].ShouldBeInstanceOf<ChildDestination>();
+            //destinations[2].ShouldBeInstanceOf<ParentDestination>();
         }
     }
 }
