@@ -56,6 +56,8 @@ namespace Intillegio.Services.Mapping
         private void ConfigureTeamMembers() 
         {
             CreateMap<TeamMember, TeamMemberViewModel>();
+            CreateMap<TeamMember, TeamMemberBindingModel>();
+            CreateMap<TeamMemberBindingModel, TeamMember>();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Intillegio.Common.Esceptions
+namespace Intillegio.Common.Exceptions
 {
     public class IntillegioBaseException : Exception
     {

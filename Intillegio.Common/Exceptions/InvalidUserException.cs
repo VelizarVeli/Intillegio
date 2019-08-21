@@ -1,6 +1,6 @@
-﻿namespace Intillegio.Common.Esceptions
+﻿namespace Intillegio.Common.Exceptions
 {
-    public class InvalidUserException :IntillegioBaseException
+    public class InvalidUserException : IntillegioBaseException
     {
         private const string message = "User not found!";
 

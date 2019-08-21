@@ -1,13 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Intillegio.Common.Constants;
 
-namespace Intillegio.Models
+namespace Intillegio.DTOs.BindingModels
 {
-   public class TeamMember
+    public class TeamMemberBindingModel
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.ClientNameMinLength)]
         public string Name { get; set; }

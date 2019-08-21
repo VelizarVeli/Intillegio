@@ -16,7 +16,7 @@
                             <img src="@member.Image350X290" alt="img">
                         </div>
                         <div class="team-member-text">
-                            <h4><a href="#">@member.Name</a></h4>
+                            <h4><a asp-area="" asp-controller="About" asp-action="TeamMemberDetails" asp-route-id="@member.Id">@member.Name</a></h4>
                             <span>@member.Position</span>
                             <p>
                                @member.About

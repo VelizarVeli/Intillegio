@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common;
-using Intillegio.Common.Esceptions;
+using Intillegio.Common.Exceptions;
 using Intillegio.Data.Data;
 using Intillegio.Models;
 using Microsoft.AspNetCore.Identity;

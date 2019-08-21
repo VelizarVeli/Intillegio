@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
+using Intillegio.Common.Constants;
 using Intillegio.Common.ViewModels;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +17,7 @@ namespace Intillegio.Web.Controllers
             _aboutService = aboutService;
             _solutionService = solutionService;
         }
+
         public IActionResult About()
         {
             var teamMembers = _aboutService.GetAllTeamMembers();
@@ -26,6 +29,18 @@ namespace Intillegio.Web.Controllers
                 TeamMembers = teamMembers
             };
             return View("About", aboutUs);
+        }
+
+        public async Task<IActionResult> TeamMemberDetails(int id)
+        {
+            var teamMemberDetails = await _aboutService.GetTeamMemberDetailsAsync(id);
+
+            if (teamMemberDetails == null)
+            {
+                return RedirectToAction(ActionConstants.About);
+            }
+
+            return View("TeamMemberDetails", teamMemberDetails);
         }
     }
 }
