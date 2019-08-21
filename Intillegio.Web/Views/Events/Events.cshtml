@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Intillegio.Common.ViewModels.EventViewModel>
+@{
+    ViewData["Title"] = "Events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="~/Views/Events/PartialViews/Events/_PageTitleEvents.cshtml"/>
+<div class="section-block">
+    <div class="container">
+        <div class="section-heading">
+            <h5>Events</h5>
+            <div class="section-heading-line-left"></div>
+        </div>
+        <div class="row mt-30">
+            @foreach(var eventure in Model)
+            {
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="shop-grid">
+                    <div class="shop-grid-info">
+                        <div class="row">
+                            <div class="col-md-9 col-sm-9 col-9 pr-0">
+                                <h4><a asp-area="" asp-controller="Events" asp-action="EventDetails" asp-route-id="@eventure.Id">@eventure.Name</a></h4>
+                                <span>@eventure.About</span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-3 pl-0">
+                                <h5>@eventure.Place</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-grid-img">
+                        <img src="@eventure.Image225X285" alt="img">
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+<partial name="~/Views/Shared/_ClientsCarousel.cshtml" />

@@ -16,6 +16,7 @@ namespace Intillegio.Services.Mapping
             ConfigureBlogs();
             ConfigureShops();
             ConfigureTeamMembers();
+            ConfigureEvents();
         }
 
         private void ConfigureProjects()
@@ -37,6 +38,12 @@ namespace Intillegio.Services.Mapping
             CreateMap<Solution, SolutionViewModel>();
             CreateMap<Solution, SolutionBindingModel>();
             CreateMap<SolutionBindingModel, Solution>();
+        }
+        private void ConfigureEvents()
+        {
+            CreateMap<Event, EventViewModel>();
+            CreateMap<Event, EventBindingModel>();
+            CreateMap<EventBindingModel, Event>();
         }
 
         private void ConfigureBlogs()

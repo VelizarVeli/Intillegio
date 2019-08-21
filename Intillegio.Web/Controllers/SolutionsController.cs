@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Intillegio.Common.Constants;
-using Intillegio.Common.ViewModels;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Emails;
 using Intillegio.Models;

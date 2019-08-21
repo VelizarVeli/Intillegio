@@ -129,6 +129,7 @@ namespace Intillegio.Web
             services.AddScoped<IBlogService, BlogService>();
             services.AddScoped<IShopService, ShopService>();
             services.AddScoped<IAboutService, AboutService>();
+            services.AddScoped<IEventsService, EventsService>();
         }
     }
 }
