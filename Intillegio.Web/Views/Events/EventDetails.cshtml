@@ -1,4 +1,4 @@
-﻿
+﻿@model Intillegio.DTOs.BindingModels.EventBindingModel
 @{
     ViewData["Title"] = "EventDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,160 +10,30 @@
             <div class="col-md-6 col-sm-6 col-12">
                 <div class="pr-30-md">
                     <div class="section-heading">
-                        <h4>Consulting Agency for every Business</h4>
+                        <h4>@Model.Name</h4>
                     </div>
                     <div class="section-heading-line-left"></div>
                     <div class="text-content mt-20">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+                            @Model.About
                         </p>
                     </div>
                     <div class="mt-20">
                         <ul class="primary-list">
-                            <li><i class="fa fa-check"></i>Phone: (+123) 456 7890</li>
-                            <li><i class="fa fa-check"></i>Email: Example@gmail.com</li>
-                            <li><i class="fa fa-check"></i>Place: West road, London, England Seram 113</li>
-                            <li><i class="fa fa-check"></i>Foreclosure consultant Human resource consulting</li>
+                            <li><i class="fa fa-check"></i>Starting at: @Model.StartDateTime.ToString("HH:mm")</li>
+                            <li><i class="fa fa-check"></i>On: @Model.StartDateTime.ToString("dd MMMM yyyy")</li>
+                            <li><i class="fa fa-check"></i>Place: @Model.Place</li>
+                            <li><i class="fa fa-check"></i>@Model.Town</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-12">
                 <div class="video-video-box full-width mt-15-xs">
-                    <img src="http://via.placeholder.com/540x360" class="rounded-border shadow-primary mb-10" alt="img">
-                    <div class="video-video-box-overlay">
-                        <div class="video-video-box-button">
-                            <button class="video-video-play-icon" data-toggle="modal" data-target=".video-modal">
-                                <i class="fa fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Start -->
-                <div class="modal fade video-modal" id="videomodal1" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <iframe height="415" src="https://www.youtube.com/embed/EWzsJG07vHY" class="full-width round-frame image-shadow" allowfullscreen=""></iframe>
-                    </div>
-                </div>
-                <!-- Modal End -->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Info Video Section END -->
-<!-- Video Section START -->
-<div class="video-section">
-    <div class="video-area" id="video-area">
-        <div class="player" id="video-play"
-             data-property="{videoURL:'https://www.youtube.com/watch?v=buBvqw6G3WU', containment:'#video-area', showControls:false, autoPlay:true, zoom:0, loop:true, mute:true, startAt:55, opacity:1, quality:'low',}"></div>
-        <div class="video-overlay">
-            <div class="video-content">
-                <div class="section-heading center-holder white-color">
-                    <span>Gain a Success With Us!</span>
-                    <h2><strong>Creative Consulting Agency</strong></h2>
-                    <h4>For Smart Solutions.</h4>
-                    <a href="#" class="primary-button button-md mt-10">Become a Client</a>
+                    <img src="@Model.Image540X360" class="rounded-border shadow-primary mb-10" alt="img">
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Video Section END -->
-<!-- Video Boxes START -->
-<div class="section-block">
-    <div class="container">
-        <div class="section-heading">
-            <h4>Consulting Agency for every Business</h4>
-            <div class="section-heading-line-left"></div>
-        </div>
-        <div class="row mt-50">
-            <div class="col-md-4 col-sm-4 col-12">
-                <!-- Video Box START -->
-                <div class="video-video-box full-width mt-15-xs">
-                    <img src="http://via.placeholder.com/350x235" class="rounded-border shadow-primary mb-10" alt="img">
-                    <div class="video-video-box-overlay">
-                        <div class="video-video-box-button">
-                            <button class="video-video-play-icon" data-toggle="modal" data-target=".video-modal-2">
-                                <i class="fa fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Start -->
-                <div class="modal fade video-modal-2" id="videomodal2" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <iframe height="415" src="https://www.youtube.com/embed/EWzsJG07vHY" class="full-width round-frame image-shadow" allowfullscreen=""></iframe>
-                    </div>
-                </div>
-                <!-- Modal End -->
-                <!-- Video Box END -->
-            </div>
-
-            <div class="col-md-4 col-sm-4 col-12">
-                <!-- Video Box START -->
-                <div class="video-video-box full-width mt-15-xs">
-                    <img src="http://via.placeholder.com/350x235" class="rounded-border shadow-primary mb-10" alt="img">
-                    <div class="video-video-box-overlay">
-                        <div class="video-video-box-button">
-                            <button class="video-video-play-icon" data-toggle="modal" data-target=".video-modal-3">
-                                <i class="fa fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Start -->
-                <div class="modal fade video-modal-3" id="videomodal3" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <iframe height="415" src="https://www.youtube.com/embed/EWzsJG07vHY" class="full-width round-frame image-shadow" allowfullscreen=""></iframe>
-                    </div>
-                </div>
-                <!-- Modal End -->
-                <!-- Video Box END -->
-            </div>
-
-            <div class="col-md-4 col-sm-4 col-12">
-                <!-- Video Box START -->
-                <div class="video-video-box full-width mt-15-xs">
-                    <img src="http://via.placeholder.com/350x235" class="rounded-border shadow-primary mb-10" alt="img">
-                    <div class="video-video-box-overlay">
-                        <div class="video-video-box-button">
-                            <button class="video-video-play-icon" data-toggle="modal" data-target=".video-modal-4">
-                                <i class="fa fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Start -->
-                <div class="modal fade video-modal-4" id="videomodal4" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <iframe height="415" src="https://www.youtube.com/embed/EWzsJG07vHY" class="full-width round-frame image-shadow" allowfullscreen=""></iframe>
-                    </div>
-                </div>
-                <!-- Modal End -->
-                <!-- Video Box END -->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Video Boxes END -->
-<!-- Notice Section START -->
-<div class="notice-section-grey notice-section-sm border-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-sm-8 col-12">
-                <div class="mt-5">
-                    <h6>Looking for Professional Approach and Quality Services ?</h6>
-                    <div class="section-heading-line-left"></div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-12">
-                <div class="mt-10 right-holder-md">
-                    <a href="#" class="primary-button button-sm mt-15-xs">Contact Us Today</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<partial name="~/Views/Events/PartialViews/EventDetails/_images.cshtml"/>

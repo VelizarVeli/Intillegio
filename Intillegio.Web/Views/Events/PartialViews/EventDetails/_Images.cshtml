@@ -1,0 +1,20 @@
+﻿<div class="section-block">
+    <div class="container">
+        <div class="section-heading">
+            <h4>Event Images</h4>
+            <div class="section-heading-line-left"></div>
+        </div>
+        <div class="section-clients border-top border-bottom">
+            <div class="container">
+                <div class="owl-carousel owl-theme clients" id="clients">
+                    @foreach (var image in Model.EventImages)
+                    {
+                        <div class="item" data-toggle="modal" data-target="@image.Id">
+                            <img src="@image.Image350X235" alt="partner-image">
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

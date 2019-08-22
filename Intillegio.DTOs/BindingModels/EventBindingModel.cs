@@ -20,12 +20,7 @@ namespace Intillegio.DTOs.BindingModels
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Starting Date")]
-        public DateTime Date { get; set; }
-
-        [Required]
-        [DataType(DataType.Time)]
-        [Display(Name = "Starting Time")]
-        public DateTime StartTime { get; set; }
+        public DateTime StartDateTime { get; set; }
 
         [Required]
         [DataType(DataType.Time)]
