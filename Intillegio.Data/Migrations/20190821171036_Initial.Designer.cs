@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Intillegio.Data.Migrations
 {
     [DbContext(typeof(IntillegioContext))]
-    [Migration("20190821034036_TeamMemberPercentage")]
-    partial class TeamMemberPercentage
+    [Migration("20190821171036_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -125,7 +125,14 @@ namespace Intillegio.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Image320X405")
+                    b.Property<string>("About")
+                        .IsRequired()
+                        .HasMaxLength(1000);
+
+                    b.Property<string>("Image225X285")
+                        .IsRequired();
+
+                    b.Property<string>("Image540X360")
                         .IsRequired();
 
                     b.Property<string>("Name")
@@ -160,6 +167,23 @@ namespace Intillegio.Data.Migrations
                     b.HasIndex("EventId");
 
                     b.ToTable("EventImage");
+                });
+
+            modelBuilder.Entity("Intillegio.Models.FinancialPlanningStrategy", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("SolutionId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SolutionId");
+
+                    b.ToTable("FinancialPlanningStrategy");
                 });
 
             modelBuilder.Entity("Intillegio.Models.IntillegioUser", b =>
@@ -647,6 +671,14 @@ namespace Intillegio.Data.Migrations
                     b.HasOne("Intillegio.Models.Event", "Event")
                         .WithMany("EventImages")
                         .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Intillegio.Models.FinancialPlanningStrategy", b =>
+                {
+                    b.HasOne("Intillegio.Models.Solution", "Solution")
+                        .WithMany("FinancialPlanningStrategies")
+                        .HasForeignKey("SolutionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

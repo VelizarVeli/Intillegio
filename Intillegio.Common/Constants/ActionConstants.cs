@@ -7,5 +7,6 @@
         public const string Products = "AllProducts";
         public const string Blog = "Blog";
         public const string About = "About";
+        public const string Events = "Events";
     }
 }
