@@ -4,133 +4,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <partial name="~/Views/Projects/PartialViews/ProjectDetails/_PageTitleDetails.cshtml" />
-
 <div class="section-block">
     <div class="container">
         <div class="project-single">
             <div class="project-single-img">
                 <img src="@Model.Image1110X450" class="rounded-border shadow-primary" alt="img">
             </div>
-
             <div class="project-single-text">
                 <div class="row">
-                    <!-- Left Side Start -->
-                    <div class="col-md-8 col-sm-8 col-12">
-                        <h4>About Project</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat.
-                        </p>
-
-                        <h4>Project Features</h4>
-                        <ul>
-                            <li><i class="fa fa-check"></i>Immigration consultant, Information technology consulting.</li>
-                            <li><i class="fa fa-check"></i>Consultant pharmacist Creative consultant.</li>
-                            <li><i class="fa fa-check"></i>Employment consultant Environmental consultant.</li>
-                            <li><i class="fa fa-check"></i>Independent contractor, Permatemp.</li>
-                            <li><i class="fa fa-check"></i>Consultant pharmacist Creative consultant.</li>
-                        </ul>
-                    </div>
-                    <!-- Left Side End -->
-                    <!-- Right Side Start -->
-                    <div class="col-md-4 col-sm-4 col-12">
-                        <h4>Project Information</h4>
-                        <div class="project-single-info">
-                            <ul>
-                                <li><span>Category :</span> Business</li>
-                                <li><span>Status :</span> Complete</li>
-                                <li><span>Client :</span> SpecThemes</li>
-                                <li><span>Date :</span> 17 Mar, 2018</li>
-                                <li><span>Tags :</span> Finance, Business</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Right Side End -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Carousel Start -->
-        <div class="project-carousel">
-            <h4>Related Projects</h4>
-            <div class="owl-carousel owl-theme" id="project-single">
-
-                <div class="project-item">
-                    <img src="http://via.placeholder.com/360x240" alt="project">
-                    <div class="project-item-overlay">
-                        <div class="project-item-content">
-                            <span>Business, Consulting</span>
-                            <h6>Independent contractor</h6>
-                            <a href="#">View More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <img src="http://via.placeholder.com/360x240" alt="project">
-                    <div class="project-item-overlay">
-                        <div class="project-item-content">
-                            <span>Business, Consulting</span>
-                            <h6>Finance Consultancy</h6>
-                            <a href="#">View More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <img src="http://via.placeholder.com/360x240" alt="project">
-                    <div class="project-item-overlay">
-                        <div class="project-item-content">
-                            <span>Business, Consulting</span>
-                            <h6>Immigration consultant</h6>
-                            <a href="#">View More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <img src="http://via.placeholder.com/360x240" alt="project">
-                    <div class="project-item-overlay">
-                        <div class="project-item-content">
-                            <span>Business, Consulting</span>
-                            <h6>Finance Consultancy</h6>
-                            <a href="#">View More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Carousel End -->
-    </div>
-</div>
-
-
-<!-- Notice Section START -->
-<div class="notice-section notice-section-sm border-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-sm-8 col-12">
-                <div class="mt-5">
-                    <h6>Looking for Professional Approach and Quality Services ?</h6>
-                    <div class="section-heading-line-left"></div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-12">
-                <div class="mt-10 right-holder-md">
-                    <a href="#" class="primary-button button-sm mt-15-xs">Contact Us Today</a>
+                    <partial name="~/Views/Projects/PartialViews/ProjectDetails/_LeftSide.cshtml" />
+                    <partial name="~/Views/Projects/PartialViews/ProjectDetails/_RightSide.cshtml" />
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Notice Section END -->
+<partial name="~/Views/Projects/PartialViews/ProjectDetails/_NoticeSection.cshtml" />

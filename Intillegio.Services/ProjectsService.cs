@@ -34,6 +34,30 @@ namespace Intillegio.Services
             return allProjects;
         }
 
+        public async Task<ProjectBindingModel> GetProjectDetailsAsync(int id)
+        {
+            var project = await DbContext.Projects
+                    .Select(v => new ProjectBindingModel
+                {
+                   Category = v.Category.CategoryName,
+                    Partner = v.Partner.Name,
+                    Image350X350 = v.Image350X350,
+                    Image1110X450 = v.Image1110X450,
+                    Image360X240 = v.Image360X240,
+                    Stage = v.Stage.ToString(),
+                    StartingDate = v.StartingDate,
+                    Name = v.Name,
+                    Id = v.Id
+                })
+                .Include(a => a.RelatedProjects)
+                .Include(b=>b.Features)
+                .SingleOrDefaultAsync(i => i.Id == id);
+
+            //var projectDto = Mapper.Map<ProjectBindingModel>(project);
+
+            return project;
+        }
+
         public async Task AddProject(ProjectBindingModel project)
         {
             CoreValidator.ThrowIfNull(project);
@@ -41,15 +65,6 @@ namespace Intillegio.Services
             var model = this.Mapper.Map<Project>(project);
             await DbContext.Projects.AddAsync(model);
             await this.DbContext.SaveChangesAsync();
-        }
-
-        public async Task<ProjectBindingModel> GetProjectDetailsAsync(int id)
-        {
-            var project = await DbContext.Projects.SingleOrDefaultAsync(i => i.Id == id);
-
-            var projectDto = Mapper.Map<ProjectBindingModel>(project);
-
-            return projectDto;
         }
     }
 }

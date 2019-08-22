@@ -14,7 +14,7 @@ namespace Intillegio.Models
         }
 
         [Required]
-        [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.ClientNameMinLength)]
+        [StringLength(LengthConstants.ProjectMaxLength, MinimumLength = LengthConstants.ClientNameMinLength)]
         public string Name { get; set; }
 
         [Required]

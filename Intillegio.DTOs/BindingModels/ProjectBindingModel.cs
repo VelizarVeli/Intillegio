@@ -6,8 +6,13 @@ using Intillegio.Models;
 
 namespace Intillegio.DTOs.BindingModels
 {
-    public class ProjectBindingModel
+    public class ProjectBindingModel : BaseId
     {
+        public ProjectBindingModel()
+        {
+            Features = new HashSet<ProjectFeatures>();
+        }
+
         [Required]
         [StringLength(LengthConstants.MaxLengthProjectName, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = LengthConstants.NameMinLength)]
         public string Name { get; set; }
@@ -17,22 +22,23 @@ namespace Intillegio.DTOs.BindingModels
         [Display(Name = "About the project")]
         public string ProjectInfo { get; set; }
 
+        [Display(Name = "In Progress")]
         public string Stage { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         public DateTime StartingDate { get; set; }
-        
+
         [Required]
-        [Display(Name="Add the link to the image 350x350 px")]
+        [Display(Name = "Add the link to the image 350x350 px")]
         public string Image350X350 { get; set; }
 
         [Required]
-        [Display(Name= "Add the link to the image 1110X450 px")]
+        [Display(Name = "Add the link to the image 1110X450 px")]
         public string Image1110X450 { get; set; }
 
         [Required]
-        [Display(Name= "Add the link to the image 360X240 px")]
+        [Display(Name = "Add the link to the image 360X240 px")]
         public string Image360X240 { get; set; }
 
         public ICollection<Project> RelatedProjects { get; set; }
@@ -42,7 +48,8 @@ namespace Intillegio.DTOs.BindingModels
         public string Category { get; set; }
         public IEnumerable<Category> Categories { get; set; }
 
-        public string Client { get; set; }
-        public IEnumerable<Partner> Clients { get; set; }
+        public string Partner { get; set; }
+
+        public IEnumerable<Partner> Partners { get; set; }
     }
 }

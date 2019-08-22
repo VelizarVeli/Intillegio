@@ -1,0 +1,13 @@
+﻿@model Intillegio.DTOs.BindingModels.ProjectBindingModel
+<div class="col-md-4 col-sm-4 col-12">
+    <h4>Project Information</h4>
+    <div class="project-single-info">
+        <ul>
+            <li><span>Category :</span> @Model.Category</li>
+            <li><span>Status :</span> @Model.Stage</li>
+            <li><span>Client :</span> @Model.Partner</li>
+            <li><span>Date :</span> @Model.StartingDate.ToString("dd MMMM, yyyy")</li>
+            <li><span>Tags :</span> Finance, Business</li>
+        </ul>
+    </div>
+</div>
