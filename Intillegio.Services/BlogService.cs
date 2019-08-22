@@ -42,5 +42,10 @@ namespace Intillegio.Services
 
             return article;
         }
+
+        public Task<BlogViewModel> BlogArticles()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

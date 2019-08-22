@@ -10,5 +10,6 @@ namespace Intillegio.Services.Contracts
         IEnumerable<ArticleViewModel> GetAllArticles();
         Task<IEnumerable<ArticleViewModel>> GetArticles();
         Task<ArticleBindingModel> GetArticleDetailsAsync(int id);
+        Task<BlogViewModel> BlogArticles();
     }
 }

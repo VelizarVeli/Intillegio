@@ -7,20 +7,24 @@
             {
                 article.Content = article.Content.Substring(0, 132) + "...";
             }
+            if (article.Name.Length > 33)
+            {
+                article.Name = article.Name.Substring(0, 32) + "...";
+            }
             <div class="col-md-6 col-sm-12 col-12">
                 <div class="blog-grid">
                     <div class="blog-grid-img">
                         <img src="@article.Image390X245" alt="img">
                         <div class="data-box-grid">
-                            <h4>@article.Date.Day</h4>
-                            <p>@article.Date.Month</p>
+                            <h4>@article.Date.Day.ToString("D2")</h4>
+                            <p>@article.Date.ToString("MMM")</p>
                         </div>
                     </div>
                     <div class="blog-grid-text">
                         <span>@article.ArticleCategory</span>
                         <h4>@article.Name</h4>
                         <ul>
-                            <li><i class="fa fa-calendar"></i>@article.Date</li>
+                            <li><i class="fa fa-calendar"></i>@article.Date.ToString("MMMM dd, yyyy")</li>
                             <li><i class="fa fa-list-ul"></i>@article.ArticleCategory</li>
                         </ul>
                         <p>@article.Content</p>
