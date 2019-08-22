@@ -4,14 +4,16 @@ using Intillegio.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Intillegio.Data.Migrations
 {
     [DbContext(typeof(IntillegioContext))]
-    partial class IntillegioContextModelSnapshot : ModelSnapshot
+    [Migration("20190822062541_EventsChange")]
+    partial class EventsChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,6 +129,8 @@ namespace Intillegio.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(1000);
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<DateTime>("EndTime");
 
                     b.Property<string>("Image445X255")
@@ -143,11 +147,7 @@ namespace Intillegio.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<DateTime>("StartDateTime");
-
-                    b.Property<string>("Town")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                    b.Property<DateTime>("StartTime");
 
                     b.Property<string>("VideoLink");
 

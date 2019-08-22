@@ -17,12 +17,20 @@ namespace Intillegio.Models
         public string Name { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
-        public DateTime StartingDate { get; set; }
+        [DataType(DataType.Time)]
+        public DateTime StartDateTime { get; set; }
+
+        [Required]
+        [DataType(DataType.Time)]
+        public DateTime EndTime { get; set; }
 
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string Place { get; set; }
+
+        [Required]
+        [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
+        public string Town { get; set; }
 
         [Required]
        [StringLength(LengthConstants.AboutMaxLength, MinimumLength = LengthConstants.AboutMinLength)]
@@ -32,7 +40,7 @@ namespace Intillegio.Models
         public string Image540X360 { get; set; }
 
         [Required]
-        public string Image225X285 { get; set; }
+        public string Image445X255 { get; set; }
 
         public string VideoLink { get; set; }
 

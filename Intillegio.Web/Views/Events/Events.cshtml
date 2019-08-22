@@ -4,36 +4,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<partial name="~/Views/Events/PartialViews/Events/_PageTitleEvents.cshtml"/>
+<partial name="~/Views/Events/PartialViews/Events/_PageTitleEvents.cshtml" />
 <div class="section-block">
     <div class="container">
-        <div class="section-heading">
-            <h5>Events</h5>
-            <div class="section-heading-line-left"></div>
-        </div>
-        <div class="row mt-30">
-            @foreach(var eventure in Model)
+        @foreach (var eventure in Model)
+        {
+            if (eventure.About.Length > 296)
             {
-            <div class="col-md-3 col-sm-6 col-12">
-                <div class="shop-grid">
-                    <div class="shop-grid-info">
-                        <div class="row">
-                            <div class="col-md-9 col-sm-9 col-9 pr-0">
-                                <h4><a asp-area="" asp-controller="Events" asp-action="EventDetails" asp-route-id="@eventure.Id">@eventure.Name</a></h4>
-                                <span>@eventure.About</span>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-3 pl-0">
-                                <h5>@eventure.Place</h5>
+                eventure.About = eventure.About.Substring(0, 296) + "...";
+            }
+            <div class="blog-list-simple">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 col-12">
+                        <div class="blog-list-simple-img">
+                            <img src="@eventure.Image445X255" alt="img">
+                            <div class="data-box-simple">
+                                <h4>@eventure.StartDateTime.Day</h4>
+                                <p>@eventure.StartDateTime.ToString("MMM")</p>
                             </div>
                         </div>
                     </div>
-                    <div class="shop-grid-img">
-                        <img src="@eventure.Image225X285" alt="img">
+                    <div class="col-md-7 col-sm-7 col-12">
+                        <div class="blog-list-simple-text">
+                            <span>@eventure.Town</span>
+                            <h4>@eventure.Name</h4>
+                            <ul>
+                                <li><i class="fa fa-map-marker"></i>@eventure.Place</li>
+                                <li><i class="fa fa-clock-o"></i>@eventure.StartDateTime.ToString("HH:mm") - @eventure.EndTime.ToString("HH:mm")</li>
+                            </ul>
+                            <p>
+                                @eventure.About
+                            </p>
+                            <div class="mt-20 left-holder">
+                                <a asp-area="" asp-controller="Events" asp-action="EventDetails" asp-route-id="@eventure.Id" class="primary-button button-sm">Read More</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            }
-        </div>
+        }
     </div>
 </div>
 <partial name="~/Views/Shared/_ClientsCarousel.cshtml" />

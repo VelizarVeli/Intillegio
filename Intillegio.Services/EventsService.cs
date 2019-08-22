@@ -22,7 +22,7 @@ namespace Intillegio.Services
         public IEnumerable<EventViewModel> GetAllEvents()
         {
             var allEvents = Mapper.Map<IEnumerable<EventViewModel>>(
-                DbContext.Events.OrderByDescending(a => a.StartingDate));
+                DbContext.Events.OrderByDescending(a => a.StartDateTime));
             return allEvents;
         }
 
