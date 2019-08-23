@@ -27,5 +27,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
             return View(GlobalConstants.AdminAreaPath + "TeamMembers/TeamMembers.cshtml", allTeamMembers);
         }
+
+        public IActionResult AddTeamMember()
+        {
+            return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddMember.cshtml");
+        }
     }
 }
