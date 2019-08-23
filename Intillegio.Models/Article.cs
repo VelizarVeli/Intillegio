@@ -21,7 +21,7 @@ namespace Intillegio.Models
 
         [Required]
         public int CategoryId { get; set; }
-        public Category ArticleCategory { get; set; }
+        public Category CategoryName { get; set; }
 
         public string VideoLink { get; set; }
 

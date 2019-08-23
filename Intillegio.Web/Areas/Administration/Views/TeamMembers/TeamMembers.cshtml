@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Team Members";
+}
+@model List<Intillegio.Common.ViewModels.Admin.AdminTeamMemberViewModel>
+<section id="action" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-block" asp-controller="Reports" asp-action="AddExpenditure">
+                    <i class="fa fa-plus"></i> Add Team Members
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-success btn-block" asp-controller="Reports" asp-action="AddIncome">
+                    <i class="fa fa-plus"></i> Add Service
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-warning btn-block" asp-controller="Reports" asp-action="AddCategory">
+                    <i class="fa fa-plus"></i> Add Project
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-block" asp-controller="Reports" asp-action="AddExpenditure">
+                    <i class="fa fa-plus"></i> Add Event
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-success btn-block" asp-controller="Reports" asp-action="AddIncome">
+                    <i class="fa fa-plus"></i> Add Article
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-warning btn-block" asp-controller="Reports" asp-action="AddCategory">
+                    <i class="fa fa-plus"></i> Add Product
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<partial name="~/Areas/Administration/Views/TeamMembers/Partials/_InfoMember.cshtml"/>

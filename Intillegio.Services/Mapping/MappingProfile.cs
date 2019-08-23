@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.DTOs;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
@@ -47,7 +48,8 @@ namespace Intillegio.Services.Mapping
 
         private void ConfigureBlogs()
         {
-            CreateMap<Article, ArticleViewModel>();
+            CreateMap<Article, ArticleViewModel>()
+                .ForMember(d => d.CategoryName, opt => opt.MapFrom(sr => sr.CategoryName.CategoryName));
             CreateMap<Article, ArticleBindingModel>();
             CreateMap<ArticleBindingModel, Article>();
         }
@@ -62,6 +64,7 @@ namespace Intillegio.Services.Mapping
         private void ConfigureTeamMembers() 
         {
             CreateMap<TeamMember, TeamMemberViewModel>();
+            CreateMap<TeamMember, AdminTeamMemberViewModel>();
             CreateMap<TeamMember, TeamMemberBindingModel>();
             CreateMap<TeamMemberBindingModel, TeamMember>();
         }

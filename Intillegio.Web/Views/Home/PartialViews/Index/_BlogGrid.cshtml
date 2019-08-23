@@ -1,4 +1,5 @@
-﻿<div class="section-block-grey">
+﻿@model Intillegio.Common.ViewModels.HomeViewModel
+<div class="section-block-grey">
     <div class="container">
         <div class="section-heading center-holder">
             <span>Tips & News</span>
@@ -7,11 +8,15 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
         </div>
         <div class="row mt-50">
-            @foreach (var article in Model.Articles)
+            @foreach (var article in Model.Articles.Take(3))
             {
                 if (article.Content.Length > 100)
                 {
-                    article.Content = article.Content.Substring(0, 120).Trim('"') + "...";
+                    article.Content = article.Content.Substring(0, 120) + "...";
+                }
+                if (article.Name.Length > 26)
+                {
+                    article.Name = article.Name.Substring(0, 26) + "...";
                 }
                 <div class="col-md-4 col-sm-4 col-12">
                     <div class="blog-grid">
@@ -23,11 +28,11 @@
                             </div>
                         </div>
                         <div class="blog-grid-text">
-                            <span>@article.ArticleCategory</span>
+                            <span inline>@article.CategoryName</span>
                             <h4>@article.Name</h4>
                             <ul>
                                 <li><i class="fa fa-calendar"></i>@article.Date.ToString("MMMM dd, yyyy")</li>
-                                <li><i class="fa fa-list-ul"></i>@article.ArticleCategory</li>
+                                <li><i class="fa fa-list-ul"></i>@article.CategoryName</li>
                             </ul>
                             <p>@article.Content</p>
                             <div class="mt-20 left-holder">

@@ -5,7 +5,7 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 {
     public class PartnersController : BaseController
     {
-        public IActionResult Partners()
+        public IActionResult AllPartners()
         {
             return View();
         }

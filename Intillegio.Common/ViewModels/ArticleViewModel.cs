@@ -10,7 +10,7 @@ namespace Intillegio.Common.ViewModels
 
         public string Content { get; set; }
 
-        public string ArticleCategory { get; set; }
+        public string CategoryName { get; set; }
 
         public string Image65X65 { get; set; }
 

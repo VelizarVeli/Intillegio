@@ -19,8 +19,24 @@ namespace Intillegio.Services
         {
         }
 
-        public IEnumerable<ArticleViewModel> GetAllArticles()
+        public async Task<IEnumerable<ArticleViewModel>> GetAllArticles()
         {
+            //var allArticles = await DbContext.Articles.Select(v => new ArticleViewModel()
+            //{
+            //    Name = v.Name,
+            //    CategoryName = v.CategoryName.CategoryName,
+            //    Id = v.Id,
+            //    Image65X65 = v.Image65X65,
+            //    Image825X530 = v.Image825X530,
+            //    Image390X245 = v.Image390X245,
+            //    Image350X220 = v.Image350X220,
+            //    Content = v.Content,
+            //    VideoImage400X250 = v.VideoImage400X250,
+            //    Date = v.Date
+
+            //}).ToListAsync();
+            await DbContext.SaveChangesAsync();
+            var checkMapper = Mapper.Map<ArticleViewModel>(DbContext.Articles.FirstOrDefault());
             var allArticles = Mapper.Map<IEnumerable<ArticleViewModel>>(
                 DbContext.Articles.OrderByDescending(a => a.Date));
             return allArticles;

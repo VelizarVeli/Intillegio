@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
@@ -37,6 +38,13 @@ namespace Intillegio.Services
             var teamMemberDto = Mapper.Map<TeamMemberBindingModel>(teamMember);
 
             return teamMemberDto;
+        }
+
+        public IEnumerable<AdminTeamMemberViewModel> GetTeamMembersForAdmin()
+        {
+            var allTeamMembers = Mapper.Map<IEnumerable<AdminTeamMemberViewModel>>(
+                DbContext.TeamMembers);
+            return allTeamMembers;
         }
     }
 }

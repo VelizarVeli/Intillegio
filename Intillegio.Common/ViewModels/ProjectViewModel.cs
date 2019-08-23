@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Intillegio.Common.ViewModels
+﻿namespace Intillegio.Common.ViewModels
 {
     public class ProjectViewModel
     {
