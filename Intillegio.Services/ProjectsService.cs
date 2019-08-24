@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
@@ -56,6 +57,19 @@ namespace Intillegio.Services
             //var projectDto = Mapper.Map<ProjectBindingModel>(project);
 
             return project;
+        }
+
+        public async Task<IEnumerable<AdminProjectViewModel>> GetAllProjectsForAdmin()
+        {
+            var allProjects = await DbContext.Projects.Select(v => new AdminProjectViewModel
+            {
+                Name = v.Name,
+                CategoryName = v.Category.CategoryName,
+                Id = v.Id,
+                Stage = v.Stage.ToString()
+            }).ToListAsync();
+
+            return allProjects;
         }
 
         public async Task AddProject(ProjectBindingModel project)

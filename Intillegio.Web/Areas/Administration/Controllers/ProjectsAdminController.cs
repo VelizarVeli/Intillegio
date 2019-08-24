@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Intillegio.Web.Areas.Administration.Controllers
 {
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
+    [Area("Administration")]
     public class ProjectsAdminController : BaseController
     {
         private readonly IProjectsService _projectsService;
@@ -24,14 +26,12 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             _currentUser = currentUser;
         }
 
-        [Authorize(Roles = "Admin")]
-        public IActionResult AllProjects()
+        public async Task<IActionResult> ProjectsAdmin()
         {
-            var allProjects = _projectsService.GetAllProjects();
-            return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/AllProjects.cshtml", allProjects);
+            var allProjects = await _projectsService.GetAllProjectsForAdmin();
+            return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/ProjectsAdmin.cshtml", allProjects);
         }
 
-        [Authorize(Roles = "Admin")]
         public IActionResult AddProject()
         {
             var projectList = new List<SelectListItem>();
@@ -51,7 +51,6 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/AddProject.cshtml");
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateProject(ProjectBindingModel model)
         {
