@@ -23,9 +23,9 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
         public IActionResult SolutionsAdmin()
         {
-            var allSolutions = _solutionsService.GetAllSolutionsForAdmin();
+            var allSolutionsForAdmin = _solutionsService.GetAllSolutionsForAdmin();
 
-            return View(GlobalConstants.AdminAreaPath + "SolutionsAdmin/SolutionsAdmin.cshtml", allSolutions);
+            return View(GlobalConstants.AdminAreaPath + "SolutionsAdmin/SolutionsAdmin.cshtml", allSolutionsForAdmin);
         }
     }
 }

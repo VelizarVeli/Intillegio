@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
@@ -12,33 +13,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Intillegio.Services
 {
-   public class BlogService : BaseService, IBlogService
+    public class BlogService : BaseService, IBlogService
     {
-        public BlogService(IntillegioContext dbContext, IMapper mapper, UserManager<IntillegioUser> userManager) 
+        public BlogService(IntillegioContext dbContext, IMapper mapper, UserManager<IntillegioUser> userManager)
             : base(dbContext, mapper, userManager)
         {
         }
 
         public async Task<IEnumerable<ArticleViewModel>> GetAllArticles()
         {
-            //var allArticles = await DbContext.Articles.Select(v => new ArticleViewModel()
-            //{
-            //    Name = v.Name,
-            //    CategoryName = v.CategoryName.CategoryName,
-            //    Id = v.Id,
-            //    Image65X65 = v.Image65X65,
-            //    Image825X530 = v.Image825X530,
-            //    Image390X245 = v.Image390X245,
-            //    Image350X220 = v.Image350X220,
-            //    Content = v.Content,
-            //    VideoImage400X250 = v.VideoImage400X250,
-            //    Date = v.Date
+            var allArticles = await DbContext.Articles.Select(v => new ArticleViewModel()
+            {
+                Name = v.Name,
+                CategoryName = v.CategoryName.CategoryName,
+                Id = v.Id,
+                Image65X65 = v.Image65X65,
+                Image825X530 = v.Image825X530,
+                Image390X245 = v.Image390X245,
+                Image350X220 = v.Image350X220,
+                Content = v.Content,
+                VideoImage400X250 = v.VideoImage400X250,
+                Date = v.Date
 
-            //}).ToListAsync();
-            await DbContext.SaveChangesAsync();
-            var checkMapper = Mapper.Map<ArticleViewModel>(DbContext.Articles.FirstOrDefault());
-            var allArticles = Mapper.Map<IEnumerable<ArticleViewModel>>(
-                DbContext.Articles.OrderByDescending(a => a.Date));
+            }).ToListAsync();
+
+            //var allArticles = Mapper.Map<IEnumerable<ArticleViewModel>>(
+            //    DbContext.Articles.OrderByDescending(a => a.Date));
             return allArticles;
         }
 
@@ -62,6 +62,19 @@ namespace Intillegio.Services
         public Task<BlogViewModel> BlogArticles()
         {
             throw new System.NotImplementedException();
+        }
+
+        public async Task<IEnumerable<AdminArticleViewModel>> GetAllArticlesForAdmin()
+        {
+            var allArticles = await DbContext.Articles.Select(v => new AdminArticleViewModel()
+            {
+                Name = v.Name,
+                CategoryName = v.CategoryName.CategoryName,
+                Id = v.Id,
+                Date = v.Date
+
+            }).ToListAsync();
+            return allArticles;
         }
     }
 }

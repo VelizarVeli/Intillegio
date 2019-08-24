@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Articles";
+}
+<section id="action" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-block" asp-area="Administration" asp-controller="ArticlesAdmin" asp-action="ArticlesAdmin">
+                    <i class="fa fa-plus"></i> Add Article
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<partial name="~/Areas/Administration/Views/ArticlesAdmin/Partials/_InfoArticles.cshtml"/>

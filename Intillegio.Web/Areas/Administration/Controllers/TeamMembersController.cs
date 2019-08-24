@@ -24,9 +24,9 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
         public IActionResult TeamMembers()
         {
-            var allTeamMembers = _aboutService.GetTeamMembersForAdmin();
+            var allTeamMembersForAdmin = _aboutService.GetTeamMembersForAdmin();
 
-            return View(GlobalConstants.AdminAreaPath + "TeamMembers/TeamMembers.cshtml", allTeamMembers);
+            return View(GlobalConstants.AdminAreaPath + "TeamMembers/TeamMembers.cshtml", allTeamMembersForAdmin);
         }
 
         public IActionResult AddTeamMember()

@@ -1,35 +1,33 @@
 ﻿@using System.Globalization
-@model List<Intillegio.Common.ViewModels.Admin.AdminEventViewModel>
+@model List<Intillegio.Common.ViewModels.Admin.AdminArticleViewModel>
 <section id="posts">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Events</h4>
+                        <h4>Articles</h4>
                     </div>
                     <table class="table table-striped">
                         <thead class="thead-inverse">
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Category</th>
                                 <th>Date</th>
-                                <th>Place</th>
-                                <th>Town</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach (var eventure in Model)
+                            @foreach (var article in Model)
                             {
                             <tr>
-                                <td scope="row">@eventure.Id</td>
-                                <td>@eventure.Name</td>
-                                <td>@eventure.StartDateTime.ToString("dd MMMM yyyy HH:mm", CultureInfo.InvariantCulture)</td>
-                                <td>@eventure.Place</td>
-                                <td>@eventure.Town</td>
+                                <td scope="row">@article.Id</td>
+                                <td>@article.Name</td>
+                                <td>@article.CategoryName</td>
+                                <td>@article.Date.ToString("dd MMM yy", CultureInfo.InvariantCulture)</td>
                                 <td>
-                                    <a asp-area="Administration" asp-controller="EventsAdmin" asp-action="EventsAdmin" asp-route-id="@eventure.Id" class="btn btn-secondary">
+                                    <a asp-area="Administration" asp-controller="ArticlesAdmin" asp-action="ArticlesAdmin" asp-route-id="@article.Id" class="btn btn-secondary">
                                         <i class="fa fa-angle-double-right"></i> Details
                                     </a>
                                 </td>
