@@ -36,6 +36,7 @@ namespace Intillegio.Services.Mapping
         private void ConfigureSolutions()
         {
             CreateMap<Solution, SolutionViewModel>();
+            CreateMap<Solution, AdminSolutionViewModel>();
             CreateMap<Solution, SolutionBindingModel>();
             CreateMap<SolutionBindingModel, Solution>();
         }
@@ -61,14 +62,14 @@ namespace Intillegio.Services.Mapping
             CreateMap<ProductBindingModel, Product>();
         }
 
-        private void ConfigureTeamMembers() 
+        private void ConfigureTeamMembers()
         {
             CreateMap<TeamMember, TeamMemberViewModel>();
             CreateMap<TeamMember, AdminTeamMemberViewModel>();
             CreateMap<TeamMember, TeamMemberBindingModel>();
             CreateMap<TeamMemberBindingModel, TeamMember>();
             CreateMap<AdminTeamMemberBindingModel, TeamMember>();
-            CreateMap<TeamMember, AdminTeamMemberBindingModel >();
+            CreateMap<TeamMember, AdminTeamMemberBindingModel>();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
@@ -14,7 +15,7 @@ namespace Intillegio.Services
 {
     public class SolutionsService : BaseService, ISolutionsService
     {
-        public SolutionsService(IntillegioContext dbContext, IMapper mapper, UserManager<IntillegioUser> userManager) 
+        public SolutionsService(IntillegioContext dbContext, IMapper mapper, UserManager<IntillegioUser> userManager)
             : base(dbContext, mapper, userManager)
         {
         }
@@ -34,8 +35,15 @@ namespace Intillegio.Services
                 .SingleOrDefaultAsync(i => i.Id == id);
 
             var solutionDto = Mapper.Map<SolutionBindingModel>(solution);
-            
+
             return solutionDto;
+        }
+
+        public IEnumerable<AdminSolutionViewModel> GetAllSolutionsForAdmin()
+        {
+            var allSolutions = Mapper.Map<IEnumerable<AdminSolutionViewModel>>(
+                DbContext.Solutions.OrderBy(a => a.Id));
+            return allSolutions;
         }
     }
 }
