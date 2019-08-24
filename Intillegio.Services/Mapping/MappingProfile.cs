@@ -32,6 +32,7 @@ namespace Intillegio.Services.Mapping
         private void ConfigurePartners()
         {
             CreateMap<Partner, PartnerViewModel>();
+            CreateMap<Partner, AdminPartnerViewModel>();
         }
 
         private void ConfigureSolutions()

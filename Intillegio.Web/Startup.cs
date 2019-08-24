@@ -124,7 +124,7 @@ namespace Intillegio.Web
         private void RegisterGlobalServices(IServiceCollection services)
         {
             services.AddScoped<IProjectsService, ProjectsService>();
-            services.AddScoped<IClientsService, ClientsService>();
+            services.AddScoped<IPartnersService, PartnersService>();
             services.AddScoped<ISolutionsService, SolutionsService>();
             services.AddScoped<IBlogService, BlogService>();
             services.AddScoped<IShopService, ShopService>();

@@ -8,6 +8,6 @@
 
         public decimal Price { get; set; }
 
-        public string StockKeepUnit { get; set; }
+        public string StockKeepingUnit { get; set; }
     }
 }

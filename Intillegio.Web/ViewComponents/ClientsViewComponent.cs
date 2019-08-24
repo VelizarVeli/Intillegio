@@ -6,16 +6,16 @@ namespace Intillegio.Web.ViewComponents
 {
     public class ClientsViewComponent : ViewComponent
     {
-        private readonly IClientsService _clientsService;
+        private readonly IPartnersService _partnersService;
 
-        public ClientsViewComponent(IClientsService clientsService)
+        public ClientsViewComponent(IPartnersService partnersService)
         {
-            _clientsService = clientsService;
+            _partnersService = partnersService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var model = await _clientsService.GetClientsLogos();
+            var model = await _partnersService.GetPartnersLogos();
 
             return View(model);
         }

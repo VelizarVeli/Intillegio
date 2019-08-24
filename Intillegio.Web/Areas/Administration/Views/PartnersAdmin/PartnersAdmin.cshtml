@@ -1,0 +1,16 @@
+﻿@model List<Intillegio.Common.ViewModels.Admin.AdminPartnerViewModel>
+@{
+    ViewData["Title"] = "Partners";
+}
+<section id="action" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-block" asp-area="Administration" asp-controller="Partners" asp-action="Partners">
+                    <i class="fa fa-plus"></i> Add Partner
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<partial name="~/Areas/Administration/Views/PartnersAdmin/Partials/_InfoPartners.cshtml"/>

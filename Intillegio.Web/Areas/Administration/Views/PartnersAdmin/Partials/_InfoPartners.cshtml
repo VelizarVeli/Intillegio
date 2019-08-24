@@ -1,32 +1,28 @@
-﻿@model List<Intillegio.Common.ViewModels.Admin.AdminProductViewModel>
+﻿@model List<Intillegio.Common.ViewModels.Admin.AdminPartnerViewModel>
 <section id="posts">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Products</h4>
+                        <h4>Partners</h4>
                     </div>
                     <table class="table table-striped">
                         <thead class="thead-inverse">
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Price</th>
-                                <th>SKU</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach (var product in Model)
+                            @foreach (var partner in Model)
                             {
                             <tr>
-                                <td scope="row">@product.Id</td>
-                                <td>@product.Name</td>
-                                <td>@product.Price</td>
-                                <td>@product.StockKeepingUnit</td>
+                                <td scope="row">@partner.Id</td>
+                                <td>@partner.Name</td>
                                 <td>
-                                    <a asp-area="Administration" asp-controller="ProductsAdmin" asp-action="ProductsAdmin" asp-route-id="@product.Id" class="btn btn-secondary">
+                                    <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="PartnersAdmin" asp-route-id="@partner.Id" class="btn btn-secondary">
                                         <i class="fa fa-angle-double-right"></i> Details
                                     </a>
                                 </td>
