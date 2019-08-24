@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Services";
+}
+<section id="action" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-block" asp-area="Administration" asp-controller="ProductsAdmin" asp-action="ProductsAdmin">
+                    <i class="fa fa-plus"></i> Add Product
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<partial name="~/Areas/Administration/Views/ProductsAdmin/Partials/_InfoProducts.cshtml"/>

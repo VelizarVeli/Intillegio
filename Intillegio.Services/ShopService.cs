@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
@@ -33,6 +34,14 @@ namespace Intillegio.Services
             var productDto = Mapper.Map<ProductBindingModel>(product);
 
             return productDto;
+        }
+
+        public IEnumerable<AdminProductViewModel> GetAllProductsForAdmin()
+        {
+            var allProducts = Mapper.Map<IEnumerable<AdminProductViewModel>>(
+                DbContext.Products);
+
+            return allProducts;
         }
     }
 }
