@@ -44,6 +44,7 @@ namespace Intillegio.Services.Mapping
         private void ConfigureEvents()
         {
             CreateMap<Event, EventViewModel>();
+            CreateMap<Event, AdminEventViewModel>();
             CreateMap<Event, EventBindingModel>();
             CreateMap<EventBindingModel, Event>();
         }

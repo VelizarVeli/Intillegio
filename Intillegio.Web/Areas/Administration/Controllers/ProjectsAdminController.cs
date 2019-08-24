@@ -28,8 +28,8 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
         public async Task<IActionResult> ProjectsAdmin()
         {
-            var allProjects = await _projectsService.GetAllProjectsForAdmin();
-            return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/ProjectsAdmin.cshtml", allProjects);
+            var allProjectsForAdmin = await _projectsService.GetAllProjectsForAdmin();
+            return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/ProjectsAdmin.cshtml", allProjectsForAdmin);
         }
 
         public IActionResult AddProject()

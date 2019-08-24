@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
@@ -36,6 +37,13 @@ namespace Intillegio.Services
             var eventDto = Mapper.Map<EventBindingModel>(eventure);
 
             return eventDto;
+        }
+
+        public IEnumerable<AdminEventViewModel> GetAllEventsForAdmin()
+        {
+            var allEvents = Mapper.Map<IEnumerable<AdminEventViewModel>>(
+                DbContext.Events.OrderByDescending(a => a.StartDateTime));
+            return allEvents;
         }
     }
 }

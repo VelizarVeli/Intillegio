@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "All Events";
+}
+<section id="action" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-block" asp-area="Administration" asp-controller="EventsAdmin" asp-action="EventsAdmin">
+                    <i class="fa fa-plus"></i> Add Event
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<partial name="~/Areas/Administration/Views/EventsAdmin/Partials/_InfoEvents.cshtml" />
