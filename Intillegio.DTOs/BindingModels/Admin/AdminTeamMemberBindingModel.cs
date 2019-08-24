@@ -30,7 +30,7 @@ namespace Intillegio.DTOs.BindingModels.Admin
         [Required]
         [StringLength(LengthConstants.PhonStringMaxLength)]
         [Display(Name = "Phone Number")]
-        [RegularExpression("^\\(\\+[\\d]{3}\\) [\\d]{3}-[\\d]{3}-[\\d]{3}$", ErrorMessage = "The phone number should be in this format (+123) 123-456-789")]
+        [RegularExpression("^\\(\\+[\\d]{3}\\) [\\d]{3} [\\d]{3} [\\d]{3}$", ErrorMessage = "The phone number should be in this format (+123) 123 456 789")]
         public string PhoneNumber { get; set; }
 
         [Required]

@@ -13,6 +13,6 @@ namespace Intillegio.Services.Contracts
         Task<TeamMemberBindingModel> GetTeamMemberDetailsAsync(int id);
         IEnumerable<AdminTeamMemberViewModel> GetTeamMembersForAdmin();
         Task<AdminTeamMemberBindingModel> GetTeamMemberDetailsForAdminAsync(int id);
-
+        Task DeleteTeamMemberAsync(int id);
     }
 }

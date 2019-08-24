@@ -27,5 +27,25 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
             return View(GlobalConstants.AdminAreaPath + "SolutionsAdmin/SolutionsAdmin.cshtml", allSolutionsForAdmin);
         }
+
+        public IActionResult CheckEdit()
+        {
+            return View();
+        }
+
+        public IActionResult CheckEditorForCreate()
+        {
+            return View();
+        }
+
+        public IActionResult CheckEditorForDelete()
+        {
+            return View();
+        }
+
+        public IActionResult CheckEditorForDetails()
+        {
+            return View();
+        }
     }
 }

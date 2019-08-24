@@ -1,0 +1,37 @@
+﻿@model Intillegio.DTOs.BindingModels.SolutionBindingModel
+
+@{
+    ViewData["Title"] = "CheckEditorForDetails";
+    Layout = "~/Areas/Administration/Shared/_Layout.cshtml";
+}
+
+<h1>CheckEditorForDetails</h1>
+
+<div>
+    <h4>SolutionBindingModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.About)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.About)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image825X445)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Image825X445)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
