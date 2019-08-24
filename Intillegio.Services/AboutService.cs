@@ -6,6 +6,7 @@ using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -45,6 +46,19 @@ namespace Intillegio.Services
             var allTeamMembers = Mapper.Map<IEnumerable<AdminTeamMemberViewModel>>(
                 DbContext.TeamMembers);
             return allTeamMembers;
+        }
+
+        public async Task<AdminTeamMemberBindingModel> GetTeamMemberDetailsForAdminAsync(int id)
+        {
+            var teamMember = await DbContext
+                .TeamMembers
+                .Include(a => a.ActivitiesAndSkills)
+                .Include(p => p.ProffessionalSkills)
+                .SingleOrDefaultAsync(i => i.Id == id);
+
+            var teamMemberDto = Mapper.Map<AdminTeamMemberBindingModel>(teamMember);
+
+            return teamMemberDto;
         }
     }
 }

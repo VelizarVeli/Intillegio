@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
-using Intillegio.DTOs;
 using Intillegio.DTOs.BindingModels;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 
 namespace Intillegio.Services.Mapping
@@ -67,6 +67,8 @@ namespace Intillegio.Services.Mapping
             CreateMap<TeamMember, AdminTeamMemberViewModel>();
             CreateMap<TeamMember, TeamMemberBindingModel>();
             CreateMap<TeamMemberBindingModel, TeamMember>();
+            CreateMap<AdminTeamMemberBindingModel, TeamMember>();
+            CreateMap<TeamMember, AdminTeamMemberBindingModel >();
         }
     }
 }

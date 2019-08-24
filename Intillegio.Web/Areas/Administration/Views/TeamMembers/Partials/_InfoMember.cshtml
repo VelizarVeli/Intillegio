@@ -28,7 +28,7 @@
                                     <td>@teamMember.Email</td>
                                     <td>@teamMember.PhoneNumber</td>
                                     <td>
-                                        <a href="details.html" class="btn btn-secondary">
+                                        <a asp-area="Administration" asp-controller="TeamMembers" asp-action="TeamMemberDetails" asp-route-id="@teamMember.Id" class="btn btn-secondary">
                                             <i class="fa fa-angle-double-right"></i> Details
                                         </a>
                                     </td>

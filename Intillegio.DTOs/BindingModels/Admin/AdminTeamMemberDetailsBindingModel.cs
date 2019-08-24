@@ -5,9 +5,9 @@ using Intillegio.Models;
 
 namespace Intillegio.DTOs.BindingModels.Admin
 {
-    public class AdminTeamMemberBindingModel
+    public class AdminTeamMemberDetailsBindingModel
     {
-        public AdminTeamMemberBindingModel()
+        public AdminTeamMemberDetailsBindingModel()
         {
             ActivitiesAndSkills = new HashSet<ActivityAndSkill>();
             ProffessionalSkills = new HashSet<ProffessionalSkill>();
@@ -52,8 +52,10 @@ namespace Intillegio.DTOs.BindingModels.Admin
 
         public string Linkedin { get; set; }
 
+        [Display(Name = "Activities and Skills")]
         public ICollection<ActivityAndSkill> ActivitiesAndSkills { get; set; }
 
+        [Display(Name = "Proffessional Skills")]
         public ICollection<ProffessionalSkill> ProffessionalSkills { get; set; }
     }
 }

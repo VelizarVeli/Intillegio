@@ -1,4 +1,5 @@
-﻿using Intillegio.Common.Constants;
+﻿using System.Threading.Tasks;
+using Intillegio.Common.Constants;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
@@ -31,6 +32,18 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         public IActionResult AddTeamMember()
         {
             return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddMember.cshtml");
+        }
+
+        public async Task<IActionResult> TeamMemberDetails(int id)
+        {
+            var teamMemberDetails = await _aboutService.GetTeamMemberDetailsForAdminAsync(id);
+
+            if (teamMemberDetails == null)
+            {
+                return RedirectToAction(ActionConstants.TeamMembers);
+            }
+
+            return View("TeamMemberDetails", teamMemberDetails);
         }
     }
 }

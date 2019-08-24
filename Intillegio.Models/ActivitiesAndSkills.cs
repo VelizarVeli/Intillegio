@@ -3,7 +3,7 @@ using Intillegio.Common.Constants;
 
 namespace Intillegio.Models
 {
-public    class ActivityAndSkill:BaseId
+    public class ActivityAndSkill : BaseId
     {
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.ClientNameMinLength)]
