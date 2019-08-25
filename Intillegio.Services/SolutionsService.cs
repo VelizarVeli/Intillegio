@@ -6,6 +6,7 @@ using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -44,6 +45,18 @@ namespace Intillegio.Services
             var allSolutions = Mapper.Map<IEnumerable<AdminSolutionViewModel>>(
                 DbContext.Solutions.OrderBy(a => a.Id));
             return allSolutions;
+        }
+
+        public async Task<AdminSolutionBindingModel> GetSolutionDetailsForAdminAsync(int id)
+        {
+            var solution = await DbContext
+                .Solutions
+                .Include(fps => fps.FinancialPlanningStrategies)
+                .SingleOrDefaultAsync(i => i.Id == id);
+
+            var solutionDto = Mapper.Map<AdminSolutionBindingModel>(solution);
+
+            return solutionDto;
         }
     }
 }

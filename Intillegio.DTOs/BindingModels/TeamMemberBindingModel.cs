@@ -46,8 +46,10 @@ namespace Intillegio.DTOs.BindingModels
 
         public string Linkedin { get; set; }
 
+        [Display(Name = "Activities and Skills")]
         public ICollection<ActivityAndSkill> ActivitiesAndSkills { get; set; }
 
+        [Display(Name = "Proffessional Skills")]
         public ICollection<ProffessionalSkill> ProffessionalSkills { get; set; }
     }
 }

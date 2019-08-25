@@ -1,4 +1,5 @@
-﻿using Intillegio.Common.Constants;
+﻿using System.Threading.Tasks;
+using Intillegio.Common.Constants;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
@@ -28,6 +29,18 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             return View(GlobalConstants.AdminAreaPath + "SolutionsAdmin/SolutionsAdmin.cshtml", allSolutionsForAdmin);
         }
 
+        public async Task<IActionResult> SolutionDetails(int id)
+        {
+            var solutionDetails = await _solutionsService.GetSolutionDetailsForAdminAsync(id);
+
+            if (solutionDetails == null)
+            {
+                return RedirectToAction(ActionConstants.SolutionsAdmin);
+            }
+
+            return View("SolutionDetails", solutionDetails);
+        }
+
         public IActionResult CheckEdit()
         {
             return View();
@@ -39,11 +52,6 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         }
 
         public IActionResult CheckEditorForDelete()
-        {
-            return View();
-        }
-
-        public IActionResult CheckEditorForDetails()
         {
             return View();
         }

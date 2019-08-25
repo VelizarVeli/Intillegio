@@ -9,5 +9,6 @@
         public const string About = "About";
         public const string Events = "Events";
         public const string TeamMembers = "TeamMembers";
+        public const string SolutionsAdmin = "SolutionsAdmin";
     }
 }
