@@ -14,7 +14,7 @@ namespace Intillegio.Data.Data
         public DbSet<Partner> Partners { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<ProjectFeatures> ProjectFeatures { get; set; }
+        public DbSet<ProjectFeatureJunctionClass> ProjectFeaturesJunction { get; set; }
         public DbSet<ProjectFeature> Features { get; set; }
         public DbSet<Solution> Solutions { get; set; }
         public DbSet<Article> Articles { get; set; }
@@ -31,16 +31,16 @@ namespace Intillegio.Data.Data
             builder.Entity<IntillegioUser>().ToTable("User");
             builder.Entity<IntillegioUser>().Property(u => u.PasswordHash).HasMaxLength(500);
 
-            builder.Entity<ProjectFeatures>()
+            builder.Entity<ProjectFeatureJunctionClass>()
                 .HasKey(pf => new {pf.ProjectId, pf.FeatureId});
 
-            builder.Entity<ProjectFeatures>()
+            builder.Entity<ProjectFeatureJunctionClass>()
                 .HasOne(p => p.Project)
                 .WithMany(f => f.Features)
                 .HasForeignKey(pf => pf.ProjectId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<ProjectFeatures>()
+            builder.Entity<ProjectFeatureJunctionClass>()
                 .HasOne(f => f.ProjectFeature)
                 .WithMany(p => p.Projects)
                 .HasForeignKey(f => f.FeatureId)

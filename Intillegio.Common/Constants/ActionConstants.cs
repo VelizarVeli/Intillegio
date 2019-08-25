@@ -10,5 +10,6 @@
         public const string Events = "Events";
         public const string TeamMembers = "TeamMembers";
         public const string SolutionsAdmin = "SolutionsAdmin";
+        public const string ProjectsAdmin = "ProjectsAdmin";
     }
 }

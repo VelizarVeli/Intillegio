@@ -10,6 +10,6 @@ namespace Intillegio.Models
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]
         public string Name { get; set; }
 
-        public ICollection<ProjectFeatures> Projects { get; set; }
+        public ICollection<ProjectFeatureJunctionClass> Projects { get; set; }
     }
 }

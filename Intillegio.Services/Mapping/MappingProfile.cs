@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.DTOs.BindingModels;
@@ -27,6 +28,11 @@ namespace Intillegio.Services.Mapping
             CreateMap<Project, AdminProjectViewModel>();
             CreateMap<Project, ProjectBindingModel>();
             CreateMap<ProjectBindingModel, Project>();
+            //CreateMap<AdminProjectBindingModel, Project>()
+            //    .ForMember(d => d.Features, opt => opt.MapFrom(sr => sr.Features.Select(y => y.Name).ToList()));
+            CreateMap<Project, AdminProjectBindingModel>()
+                .ForMember(d => d.Category, opt => opt.MapFrom(sr => sr.Category.CategoryName))
+                .ForMember(d => d.Features, opt => opt.MapFrom(sr => sr.Features.Select(y => y.ProjectFeature).ToList()));
         }
 
         private void ConfigurePartners()

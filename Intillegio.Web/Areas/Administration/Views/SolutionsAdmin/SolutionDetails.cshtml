@@ -6,7 +6,7 @@
 
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
+        <div class="modal-header bg-success text-white">
             <h5 class="modal-title"><i class="fa fa-bell"></i> Service Details</h5>
         </div>
         <div class="modal-body">
@@ -41,10 +41,10 @@
                     <div class="col">
                         <h4 class="card-title">@Html.DisplayNameFor(model => model.FinancialPlanningStrategies)</h4>
                     </div>
-                    @foreach (var activityOrSkill in @Model.FinancialPlanningStrategies)
+                    @foreach (var fps in @Model.FinancialPlanningStrategies)
                     {
                     <div class="col">
-                        <p class="card-text"><i class="fa fa-check"></i> @activityOrSkill.Name</p>
+                        <p class="card-text"><i class="fa fa-check"></i> @fps.Name</p>
                     </div>
                     }
                 </div>

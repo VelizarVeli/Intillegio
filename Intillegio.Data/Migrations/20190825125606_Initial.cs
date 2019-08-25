@@ -42,11 +42,13 @@ namespace Intillegio.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
-                    StartingDate = table.Column<DateTime>(nullable: false),
+                    StartDateTime = table.Column<DateTime>(nullable: false),
+                    EndTime = table.Column<DateTime>(nullable: false),
                     Place = table.Column<string>(maxLength: 100, nullable: false),
+                    Town = table.Column<string>(maxLength: 100, nullable: false),
                     About = table.Column<string>(maxLength: 1000, nullable: false),
                     Image540X360 = table.Column<string>(nullable: false),
-                    Image225X285 = table.Column<string>(nullable: false),
+                    Image445X255 = table.Column<string>(nullable: false),
                     VideoLink = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -237,7 +239,7 @@ namespace Intillegio.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EventId = table.Column<int>(nullable: false),
-                    Image320X405 = table.Column<string>(nullable: true)
+                    Image350X235 = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -256,7 +258,7 @@ namespace Intillegio.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Name = table.Column<string>(maxLength: 20, nullable: false),
                     ProjectInfo = table.Column<string>(maxLength: 1000, nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
                     Stage = table.Column<int>(nullable: false),
@@ -503,7 +505,7 @@ namespace Intillegio.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectFeatures",
+                name: "ProjectFeaturesJunction",
                 columns: table => new
                 {
                     ProjectId = table.Column<int>(nullable: false),
@@ -512,16 +514,15 @@ namespace Intillegio.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProjectFeatures", x => new { x.ProjectId, x.FeatureId });
-                    table.UniqueConstraint("AK_ProjectFeatures_Id", x => x.Id);
+                    table.PrimaryKey("PK_ProjectFeaturesJunction", x => new { x.ProjectId, x.FeatureId });
                     table.ForeignKey(
-                        name: "FK_ProjectFeatures_Features_FeatureId",
+                        name: "FK_ProjectFeaturesJunction_Features_FeatureId",
                         column: x => x.FeatureId,
                         principalTable: "Features",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ProjectFeatures_Projects_ProjectId",
+                        name: "FK_ProjectFeaturesJunction_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
@@ -596,8 +597,8 @@ namespace Intillegio.Data.Migrations
                 column: "TeamMemberId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectFeatures_FeatureId",
-                table: "ProjectFeatures",
+                name: "IX_ProjectFeaturesJunction_FeatureId",
+                table: "ProjectFeaturesJunction",
                 column: "FeatureId");
 
             migrationBuilder.CreateIndex(
@@ -669,7 +670,7 @@ namespace Intillegio.Data.Migrations
                 name: "ProffessionalSkill");
 
             migrationBuilder.DropTable(
-                name: "ProjectFeatures");
+                name: "ProjectFeaturesJunction");
 
             migrationBuilder.DropTable(
                 name: "Reviews");

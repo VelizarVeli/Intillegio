@@ -10,7 +10,7 @@ namespace Intillegio.DTOs.BindingModels
     {
         public ProjectBindingModel()
         {
-            Features = new HashSet<ProjectFeatures>();
+            Features = new HashSet<ProjectFeatureJunctionClass>();
         }
 
         [Required]
@@ -42,7 +42,7 @@ namespace Intillegio.DTOs.BindingModels
         public string Image360X240 { get; set; }
 
         public ICollection<Project> RelatedProjects { get; set; }
-        public ICollection<ProjectFeatures> Features { get; set; }
+        public ICollection<ProjectFeatureJunctionClass> Features { get; set; }
 
         [Required]
         public string Category { get; set; }

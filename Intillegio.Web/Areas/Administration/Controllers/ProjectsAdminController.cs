@@ -32,6 +32,18 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/ProjectsAdmin.cshtml", allProjectsForAdmin);
         }
 
+        public async Task<IActionResult> ProjectDetails(int id)
+        {
+            var projectsDetails = await _projectsService.GetProjectDetailsForAdminAsync(id);
+
+            if (projectsDetails == null)
+            {
+                return RedirectToAction(ActionConstants.ProjectsAdmin);
+            }
+
+            return View("ProjectDetails", projectsDetails);
+        }
+
         public IActionResult AddProject()
         {
             var projectList = new List<SelectListItem>();

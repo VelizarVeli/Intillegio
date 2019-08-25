@@ -420,7 +420,7 @@ namespace Intillegio.Data.Migrations
                     b.ToTable("Features");
                 });
 
-            modelBuilder.Entity("Intillegio.Models.ProjectFeatures", b =>
+            modelBuilder.Entity("Intillegio.Models.ProjectFeatureJunctionClass", b =>
                 {
                     b.Property<int>("ProjectId");
 
@@ -430,11 +430,9 @@ namespace Intillegio.Data.Migrations
 
                     b.HasKey("ProjectId", "FeatureId");
 
-                    b.HasAlternateKey("Id");
-
                     b.HasIndex("FeatureId");
 
-                    b.ToTable("ProjectFeatures");
+                    b.ToTable("ProjectFeaturesJunction");
                 });
 
             modelBuilder.Entity("Intillegio.Models.Review", b =>
@@ -656,7 +654,7 @@ namespace Intillegio.Data.Migrations
 
             modelBuilder.Entity("Intillegio.Models.Article", b =>
                 {
-                    b.HasOne("Intillegio.Models.Category", "ArticleCategory")
+                    b.HasOne("Intillegio.Models.Category", "CategoryName")
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -727,7 +725,7 @@ namespace Intillegio.Data.Migrations
                         .HasForeignKey("ProjectId");
                 });
 
-            modelBuilder.Entity("Intillegio.Models.ProjectFeatures", b =>
+            modelBuilder.Entity("Intillegio.Models.ProjectFeatureJunctionClass", b =>
                 {
                     b.HasOne("Intillegio.Models.ProjectFeature", "ProjectFeature")
                         .WithMany("Projects")

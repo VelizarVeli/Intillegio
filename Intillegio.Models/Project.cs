@@ -9,7 +9,7 @@ namespace Intillegio.Models
     {
         public Project()
         {
-            this.Features = new HashSet<ProjectFeatures>();
+            this.Features = new HashSet<ProjectFeatureJunctionClass>();
             this.RelatedProjects = new HashSet<Project>();
         }
 
@@ -54,6 +54,6 @@ namespace Intillegio.Models
 
         public ICollection<Project> RelatedProjects { get; set; }
 
-        public ICollection<ProjectFeatures> Features { get; set; }
+        public ICollection<ProjectFeatureJunctionClass> Features { get; set; }
     }
 }
