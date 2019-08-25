@@ -1,4 +1,5 @@
-﻿using Intillegio.Common.Constants;
+﻿using System.Threading.Tasks;
+using Intillegio.Common.Constants;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
@@ -26,6 +27,18 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             var allProductsForAdmin = _productsService.GetAllProductsForAdmin();
 
             return View(GlobalConstants.AdminAreaPath + "ProductsAdmin/ProductsAdmin.cshtml", allProductsForAdmin);
+        }
+
+        public async Task<IActionResult> ProductDetails(int id)
+        {
+            var productDetails = await _productsService.GetProductDetailsForAdminAsync(id);
+
+            if (productDetails == null)
+            {
+                return RedirectToAction(ActionConstants.ProductsAdmin);
+            }
+
+            return View("ProductDetails", productDetails);
         }
     }
 }

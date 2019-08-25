@@ -5,6 +5,7 @@ using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -42,6 +43,20 @@ namespace Intillegio.Services
                 DbContext.Products);
 
             return allProducts;
+        }
+
+        public async Task<AdminProductBindingModel> GetProductDetailsForAdminAsync(int id)
+        {
+            var product = await DbContext
+                .Products
+                .Include(c => c.Category)
+                .Include(i => i.ProductImages)
+                .Include(b => b.Reviews)
+                .SingleOrDefaultAsync(i => i.Id == id);
+
+            var productDto = Mapper.Map<AdminProductBindingModel>(product);
+            productDto.Category = product.Category.CategoryName;
+            return productDto;
         }
     }
 }

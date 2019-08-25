@@ -14,5 +14,6 @@
         public const string PartnersAdmin = "PartnersAdmin";
         public const string EventsAdmin = "EventsAdmin";
         public const string ArticlesAdmin = "ArticlesAdmin";
+        public const string ProductsAdmin = "ProductsAdmin";
     }
 }

@@ -80,6 +80,8 @@ namespace Intillegio.Services.Mapping
             CreateMap<Product, AdminProductViewModel>();
             CreateMap<Product, ProductBindingModel>();
             CreateMap<ProductBindingModel, Product>();
+            CreateMap<Product, AdminProductBindingModel>();
+            CreateMap<AdminProductBindingModel, Product>();
         }
 
         private void ConfigureTeamMembers()
