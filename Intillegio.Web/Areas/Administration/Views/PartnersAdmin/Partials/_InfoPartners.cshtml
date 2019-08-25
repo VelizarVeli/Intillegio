@@ -1,4 +1,4 @@
-﻿@model List<Intillegio.Common.ViewModels.Admin.AdminPartnerViewModel>
+﻿@model IEnumerable<Intillegio.Common.ViewModels.Admin.AdminPartnerViewModel>
 <section id="posts">
     <div class="container">
         <div class="row">
@@ -22,7 +22,7 @@
                                 <td scope="row">@partner.Id</td>
                                 <td>@partner.Name</td>
                                 <td>
-                                    <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="PartnersAdmin" asp-route-id="@partner.Id" class="btn btn-secondary">
+                                    <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="PartnerDetails" asp-route-id="@partner.Id" class="btn btn-secondary">
                                         <i class="fa fa-angle-double-right"></i> Details
                                     </a>
                                 </td>

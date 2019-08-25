@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
+using Intillegio.DTOs.BindingModels.Admin;
 
 namespace Intillegio.Services.Contracts
 {
@@ -9,5 +10,6 @@ namespace Intillegio.Services.Contracts
     {
         Task<IEnumerable<PartnerViewModel>> GetPartnersLogos();
         Task<IEnumerable<AdminPartnerViewModel>> GetPartnersForAdmin();
+        Task<AdminPartnerBindingModel> GetPartnerDetailsForAdminAsync(int id);
     }
 }

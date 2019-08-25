@@ -76,7 +76,7 @@ namespace Intillegio.Services
 
         public async Task<AdminProjectBindingModel> GetProjectDetailsForAdminAsync(int id)
         {
-            var projectDto1 = await DbContext
+            var projectDto = await DbContext
                 .Projects
                 .Select(p => new AdminProjectBindingModel
                 {
@@ -100,12 +100,12 @@ namespace Intillegio.Services
                 .SingleOrDefaultAsync(i => i.Id == id);
 
 
-            var projectDto = Mapper
-                .Map<AdminProjectBindingModel>(DbContext
-                    .Projects
-                    .SingleOrDefault(i => i.Id == id));
+            //var projectDto = Mapper
+            //    .Map<AdminProjectBindingModel>(DbContext
+            //        .Projects
+            //        .SingleOrDefault(i => i.Id == id));
 
-            return projectDto1;
+            return projectDto;
         }
 
         public async Task AddProject(ProjectBindingModel project)

@@ -28,5 +28,17 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
             return View(GlobalConstants.AdminAreaPath + "PartnersAdmin/PartnersAdmin.cshtml", allPartnersForAdmin);
         }
+
+        public async Task<IActionResult> PartnerDetails(int id)
+        {
+            var partnerDetails = await _partnersService.GetPartnerDetailsForAdminAsync(id);
+
+            if (partnerDetails == null)
+            {
+                return RedirectToAction(ActionConstants.PartnersAdmin);
+            }
+
+            return View("PartnerDetails", partnerDetails);
+        }
     }
 }

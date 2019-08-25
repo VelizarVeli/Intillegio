@@ -1,0 +1,60 @@
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminPartnerBindingModel
+@{
+    ViewData["Title"] = "Partner Details";
+
+}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+            <h5 class="modal-title"><i class="fa fa-handshake-o"></i> Partner Details</h5>
+        </div>
+        <div class="modal-body">
+            <div class="d-flex justify-content-around row">
+                <div class="col-sm-12 mt-5">
+                    <img src="@Model.Logo155X75"  class="img-fluid" alt="Responsive image">
+                </div>
+                <hr />
+                <div class="col-sm-12 mt-2">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Logo155X75)</h4>
+                        </div>
+                        <div class="col">
+                            <a href="@Html.DisplayFor(model => model.Logo155X75)">
+                                <p class="card-text">@Html.DisplayFor(model => model.Logo155X75)</p>
+                            </a>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="col">
+                        <h4 class="card-title">@Html.DisplayNameFor(model => model.Projects)</h4>
+                    </div>
+                    @foreach (var fps in @Model.Projects)
+                    {
+                    <div class="col">
+                        <p class="card-text"><i class="fa fa-check"></i> @fps.Name</p>
+                    </div>
+                    }
+                </div>
+                <hr />
+                <div class="col-sm-12 mt-2">
+                    <div class="col">
+                        <h4 class="card-title"> @Html.DisplayNameFor(model => model.About) @Model.Name</h4>
+                    </div>
+                    <div class="col">
+                        <p class="card-text">@Html.DisplayFor(model => model.About)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-around">
+                <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="PartnersAdmin" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
+                <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="EditPartners" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="DeletePartnerDetails" asp-route-id="@Model.Id"class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
