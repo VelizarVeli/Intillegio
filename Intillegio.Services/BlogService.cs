@@ -6,6 +6,7 @@ using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -75,6 +76,19 @@ namespace Intillegio.Services
 
             }).ToListAsync();
             return allArticles;
+        }
+
+        public async Task<AdminArticleBindingModel> GetArticleDetailsForAdminAsync(int id)
+        {
+            var articleModel = await DbContext
+                .Articles
+                .Include(a => a.CategoryName)
+                .SingleOrDefaultAsync(e => e.Id == id);
+
+            var article = Mapper.Map<AdminArticleBindingModel>(articleModel);
+            article.Category = articleModel.CategoryName.CategoryName;
+
+            return article;
         }
     }
 }

@@ -69,6 +69,9 @@ namespace Intillegio.Services.Mapping
                 .ForMember(d => d.CategoryName, opt => opt.MapFrom(sr => sr.CategoryName.CategoryName));
             CreateMap<Article, ArticleBindingModel>();
             CreateMap<ArticleBindingModel, Article>();
+            CreateMap<Article, AdminArticleBindingModel>()
+                .ForMember(d => d.Category, opt => opt.MapFrom(sr => sr.CategoryName.CategoryName));
+            CreateMap<AdminArticleBindingModel, Article>();
         }
 
         private void ConfigureShops()

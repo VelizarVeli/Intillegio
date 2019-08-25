@@ -1,0 +1,100 @@
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminArticleBindingModel
+@{
+    ViewData["Title"] = "Article Details";
+
+}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header bg-secondary text-white">
+            <h5 class="modal-title"><i class="fa fa-newspaper-o"></i> Article Details</h5>
+        </div>
+        <div class="modal-body">
+            <div class="d-flex justify-content-around row">
+                <div class="col-sm-6">
+                    <div class="card-body">
+                        <h2 class="card-title">@Model.Name</h2>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Category)</h4>
+                        </div>
+                        <div class="col">
+                            <p class="card-text">@Html.DisplayFor(model => model.Category)</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Date )</h4>
+                        </div>
+                        <div class="col">
+                            <p class="card-text">@Model.Date </p>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <div class="col-sm-6 mt-5">
+                    <img src="@Model.Image350X220 " style="width: 100% \9;" class="img-fluid" alt="Responsive image">
+                </div>
+                <hr />
+                <div class="col-sm-12 mt-2">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Image65X65 )</h4>
+                        </div>
+                        <div class="col">
+                            <p class="card-text">@Model.Image65X65 </p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Image390X245 )</h4>
+                        </div>
+                        <div class="col">
+                            <p class="card-text">@Html.DisplayFor(model => model.Image390X245 )</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Image825X530  )</h4>
+                        </div>
+                        <div class="col">
+                            <p class="card-text">@Html.DisplayFor(model => model.Image825X530  )</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="card-title">@Html.DisplayNameFor(model => model.VideoImage400X250)</h4>
+                        </div>
+                        <div class="col">
+                                <p class="card-text">@Html.DisplayFor(model => model.VideoImage400X250)</p>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <hr />
+                <div class="col-sm-12 mt-2">
+                    <div class="col">
+                        <h4 class="card-title"> @Html.DisplayNameFor(model => model.Content) @Model.Name</h4>
+                    </div>
+                    <div class="col">
+                        <p class="card-text">@Html.DisplayFor(model => model.Content)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-around">
+                <a asp-area="Administration" asp-controller="ArticlesAdmin" asp-action="ArticlesAdmin" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
+                <a asp-area="Administration" asp-controller="ArticlesAdmin" asp-action="CheckEdit" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                <a asp-area="Administration" asp-controller="ArticlesAdmin" asp-action="DeleteArticleDetails" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

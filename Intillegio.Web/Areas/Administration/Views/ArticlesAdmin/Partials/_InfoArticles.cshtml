@@ -27,7 +27,7 @@
                                 <td>@article.CategoryName</td>
                                 <td>@article.Date.ToString("dd MMM yy", CultureInfo.InvariantCulture)</td>
                                 <td>
-                                    <a asp-area="Administration" asp-controller="ArticlesAdmin" asp-action="ArticlesAdmin" asp-route-id="@article.Id" class="btn btn-secondary">
+                                    <a asp-area="Administration" asp-controller="ArticlesAdmin" asp-action="ArticleDetails" asp-route-id="@article.Id" class="btn btn-secondary">
                                         <i class="fa fa-angle-double-right"></i> Details
                                     </a>
                                 </td>

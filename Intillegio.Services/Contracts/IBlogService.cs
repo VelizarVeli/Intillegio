@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.DTOs.BindingModels;
+using Intillegio.DTOs.BindingModels.Admin;
 
 namespace Intillegio.Services.Contracts
 {
@@ -13,5 +14,6 @@ namespace Intillegio.Services.Contracts
         Task<ArticleBindingModel> GetArticleDetailsAsync(int id);
         Task<BlogViewModel> BlogArticles();
         Task<IEnumerable<AdminArticleViewModel>> GetAllArticlesForAdmin();
+        Task<AdminArticleBindingModel> GetArticleDetailsForAdminAsync(int id);
     }
 }

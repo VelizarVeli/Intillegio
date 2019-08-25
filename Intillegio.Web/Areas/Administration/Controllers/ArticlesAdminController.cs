@@ -28,5 +28,17 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
             return View(GlobalConstants.AdminAreaPath + "ArticlesAdmin/ArticlesAdmin.cshtml", allArticles);
         }
+
+        public async Task<IActionResult> ArticleDetails(int id)
+        {
+            var articleDetails = await _articlesService.GetArticleDetailsForAdminAsync(id);
+
+            if (articleDetails == null)
+            {
+                return RedirectToAction(ActionConstants.ArticlesAdmin);
+            }
+
+            return View("ArticleDetails", articleDetails);
+        }
     }
 }
