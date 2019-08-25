@@ -6,6 +6,7 @@ using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -44,6 +45,18 @@ namespace Intillegio.Services
             var allEvents = Mapper.Map<IEnumerable<AdminEventViewModel>>(
                 DbContext.Events.OrderByDescending(a => a.StartDateTime));
             return allEvents;
+        }
+
+        public async Task<AdminEventBindingModel> GetEventDetailsForAdminAsync(int id)
+        {
+            var eventure = await DbContext
+                .Events
+                .Include(a => a.EventImages)
+                .SingleOrDefaultAsync(i => i.Id == id);
+
+            var teamMemberDto = Mapper.Map<AdminEventBindingModel>(eventure);
+
+            return teamMemberDto;
         }
     }
 }

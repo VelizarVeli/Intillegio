@@ -57,6 +57,10 @@ namespace Intillegio.Services.Mapping
             CreateMap<Event, AdminEventViewModel>();
             CreateMap<Event, EventBindingModel>();
             CreateMap<EventBindingModel, Event>();
+            CreateMap<Event, AdminEventBindingModel>()
+                .ForMember(d => d.StartDate, opt => opt.MapFrom(sr => sr.StartDateTime))
+                .ForMember(des => des.StartTime, opt => opt.MapFrom(sr => sr.StartDateTime));
+            CreateMap<AdminEventBindingModel, Event>();
         }
 
         private void ConfigureBlogs()

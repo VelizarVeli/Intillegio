@@ -12,5 +12,6 @@
         public const string SolutionsAdmin = "SolutionsAdmin";
         public const string ProjectsAdmin = "ProjectsAdmin";
         public const string PartnersAdmin = "PartnersAdmin";
+        public const string EventsAdmin = "EventsAdmin";
     }
 }

@@ -1,4 +1,5 @@
-﻿using Intillegio.Common.Constants;
+﻿using System.Threading.Tasks;
+using Intillegio.Common.Constants;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
@@ -26,6 +27,18 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             var allEvents = _eventsService.GetAllEventsForAdmin();
 
             return View(GlobalConstants.AdminAreaPath + "EventsAdmin/EventsAdmin.cshtml", allEvents);
+        }
+
+        public async Task<IActionResult> EventDetails(int id)
+        {
+            var eventDetails = await _eventsService.GetEventDetailsForAdminAsync(id);
+
+            if (eventDetails == null)
+            {
+                return RedirectToAction(ActionConstants.EventsAdmin);
+            }
+
+            return View("EventDetails", eventDetails);
         }
     }
 }
