@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Intillegio.Common;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
@@ -56,6 +57,15 @@ namespace Intillegio.Services
                 DbContext.Partners.Remove(partner);
                 await DbContext.SaveChangesAsync();
             }
+        }
+
+        public async Task AddPartnerAsync(AdminPartnerBindingModel partner)
+        {
+            CoreValidator.ThrowIfNull(partner);
+
+            var model = this.Mapper.Map<Partner>(partner);
+            await DbContext.Partners.AddAsync(model);
+            await DbContext.SaveChangesAsync();
         }
     }
 }

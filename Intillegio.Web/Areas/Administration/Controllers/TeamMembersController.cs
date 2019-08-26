@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Intillegio.Common.Constants;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
@@ -31,8 +32,9 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
         public IActionResult AddTeamMember()
         {
-            return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddMember.cshtml");
+            return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddTeamMember.cshtml");
         }
+
 
         public async Task<IActionResult> TeamMemberDetails(int id)
         {

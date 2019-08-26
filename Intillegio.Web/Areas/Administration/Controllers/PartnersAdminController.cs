@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Intillegio.Common.Constants;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
@@ -39,6 +40,19 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             }
 
             return View("PartnerDetails", partnerDetails);
+        }
+
+        public IActionResult AddPartner()
+        {
+            return View(GlobalConstants.AdminAreaPath + "PartnersAdmin/AddPartner.cshtml");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddPartner(AdminPartnerBindingModel model)
+        {
+            await _partnersService.AddPartnerAsync(model);
+
+            return RedirectToAction("PartnersAdmin");
         }
 
         public async Task<IActionResult> DeletePartnerDetails(int id)
