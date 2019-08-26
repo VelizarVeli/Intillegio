@@ -13,5 +13,6 @@ namespace Intillegio.Services.Contracts
         Task<EventBindingModel> GetEventDetailsAsync(int id);
         IEnumerable<AdminEventViewModel> GetAllEventsForAdmin();
         Task<AdminEventBindingModel> GetEventDetailsForAdminAsync(int id);
+        Task DeleteEventAsync(int id);
     }
 }

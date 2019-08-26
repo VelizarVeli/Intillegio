@@ -1,0 +1,96 @@
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminEventBindingModel
+<div class="d-flex justify-content-around row">
+    <div class="col-sm-6">
+        <div class="card-body">
+            <h2 class="card-title">@Model.Name</h2>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.StartDate)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Html.DisplayFor(model => model.StartDate)</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.StartTime)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Html.DisplayFor(model => model.StartTime)</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.EndTime)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Model.EndTime </p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.Place)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Html.DisplayFor(model => model.Place)</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.Town)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Html.DisplayFor(model => model.Town)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 mt-5">
+        <img src="@Model.Image540X360 " style="width: 100% \9;" class="img-fluid" alt="Responsive image">
+    </div>
+    <hr />
+
+    <div class="col-sm-12 mt-2">
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.Image445X255)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Model.Image445X255 </p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.VideoLink)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Html.DisplayFor(model => model.VideoLink)</p>
+            </div>
+        </div>
+        <hr />
+        <div class="col">
+            <h4 class="card-title">@Html.DisplayNameFor(model => model.EventImages)</h4>
+        </div>
+        @foreach (var eventImage in @Model.EventImages)
+        {
+            <div class="col">
+                <p class="card-text"><i class="fa fa-link"></i> @eventImage.Image350X235</p>
+            </div>
+        }
+    </div>
+    <hr />
+    <div class="col-sm-12 mt-2">
+        <div class="col">
+            <h4 class="card-title"> @Html.DisplayNameFor(model => model.About) @Model.Name</h4>
+        </div>
+        <div class="col">
+            <p class="card-text">@Html.DisplayFor(model => model.About)</p>
+        </div>
+    </div>
+</div>

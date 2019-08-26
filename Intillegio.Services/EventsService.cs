@@ -58,5 +58,15 @@ namespace Intillegio.Services
 
             return teamMemberDto;
         }
+
+        public async Task DeleteEventAsync(int id)
+        {
+            var eventure = DbContext.Events.SingleOrDefault(e => e.Id == id);
+            if (eventure != null)
+            {
+                DbContext.Events.Remove(eventure);
+                await DbContext.SaveChangesAsync();
+            }
+        }
     }
 }
