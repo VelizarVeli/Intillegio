@@ -12,8 +12,8 @@ namespace Intillegio.Services.Contracts
         Task<IEnumerable<ArticleViewModel>> GetAllArticles();
         Task<IEnumerable<ArticleViewModel>> GetArticles();
         Task<ArticleBindingModel> GetArticleDetailsAsync(int id);
-        Task<BlogViewModel> BlogArticles();
         Task<IEnumerable<AdminArticleViewModel>> GetAllArticlesForAdmin();
         Task<AdminArticleBindingModel> GetArticleDetailsForAdminAsync(int id);
+        Task DeleteArticleAsync(int id);
     }
 }

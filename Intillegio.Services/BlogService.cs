@@ -60,11 +60,6 @@ namespace Intillegio.Services
             return article;
         }
 
-        public Task<BlogViewModel> BlogArticles()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public async Task<IEnumerable<AdminArticleViewModel>> GetAllArticlesForAdmin()
         {
             var allArticles = await DbContext.Articles.Select(v => new AdminArticleViewModel()
@@ -89,6 +84,16 @@ namespace Intillegio.Services
             article.Category = articleModel.CategoryName.CategoryName;
 
             return article;
+        }
+
+        public async Task DeleteArticleAsync(int id)
+        {
+            var article = DbContext.Articles.SingleOrDefault(e => e.Id == id);
+            if (article != null)
+            {
+                DbContext.Articles.Remove(article);
+                await DbContext.SaveChangesAsync();
+            }
         }
     }
 }
