@@ -40,5 +40,18 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
             return View("ProductDetails", productDetails);
         }
+
+        public async Task<IActionResult> DeleteProductDetails(int id)
+        {
+            var deleteDetails = await _productsService.GetProductDetailsForAdminAsync(id);
+
+            return View("DeleteProduct", deleteDetails);
+        }
+
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            await _productsService.DeleteProductAsync(id);
+            return RedirectToAction("ProductsAdmin");
+        }
     }
 }

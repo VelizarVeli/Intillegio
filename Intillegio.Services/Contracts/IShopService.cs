@@ -13,5 +13,6 @@ namespace Intillegio.Services.Contracts
         Task<ProductBindingModel> GetProductDetailsAsync(int id);
         IEnumerable<AdminProductViewModel> GetAllProductsForAdmin();
         Task<AdminProductBindingModel> GetProductDetailsForAdminAsync(int id);
+        Task DeleteProductAsync(int id);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
@@ -57,6 +58,16 @@ namespace Intillegio.Services
             var productDto = Mapper.Map<AdminProductBindingModel>(product);
             productDto.Category = product.Category.CategoryName;
             return productDto;
+        }
+
+        public async Task DeleteProductAsync(int id)
+        {
+            var product = DbContext.Products.SingleOrDefault(e => e.Id == id);
+            if (product != null)
+            {
+                DbContext.Products.Remove(product);
+                await DbContext.SaveChangesAsync();
+            }
         }
     }
 }
