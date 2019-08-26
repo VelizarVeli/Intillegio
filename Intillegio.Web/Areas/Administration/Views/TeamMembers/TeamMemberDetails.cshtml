@@ -1,150 +1,22 @@
-﻿@model Intillegio.DTOs.BindingModels.Admin.AdminTeamMemberBindingModel
-@{
+﻿@{
     ViewData["Title"] = "Team Member Details";
 
 }
-
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header bg-primary text-white">
             <h5 class="modal-title"><i class="fa fa-users"></i> Team Member Details</h5>
         </div>
         <div class="modal-body">
-            <div class="d-flex justify-content-around row">
-                <div class="col-sm-6">
-                    <div class="card-body">
-                        <h2 class="card-title">@Model.Name</h2>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Position)</h4>
-                        </div>
-                        <div class="col">
-                            <p class="card-text">@Html.DisplayFor(model => model.Position)</p>
-                        </div>
-                    </div>
-                    <hr />
-
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Email)</h4>
-                        </div>
-                        <div class="col">
-                            <p class="card-text">@Model.Email</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="card-title">@Html.DisplayNameFor(model => model.PhoneNumber)</h4>
-                        </div>
-                        <div class="col">
-                            <p class="card-text">@Html.DisplayFor(model => model.PhoneNumber)</p>
-                        </div>
-                    </div>
-                    <hr />
-                </div>
-                <div class="col-sm-6 mt-5">
-                    <img src="@Model.Image350X290" style="width: 100% \9;" class="img-fluid" alt="Responsive image">
-                </div>
-                <hr />
-
-                <div class="col-sm-12 mt-2">
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Twitter)</h4>
-                        </div>
-                        <div class="col">
-                            <a href="@Html.DisplayFor(model => model.Twitter)">
-                                <p class="card-text">@Model.Twitter</p>
-                            </a>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Instagram)</h4>
-                        </div>
-                        <div class="col">
-                            <a href="@Html.DisplayFor(model => model.Instagram)">
-                                <p class="card-text">@Html.DisplayFor(model => model.Instagram)</p>
-                            </a>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Skype)</h4>
-                        </div>
-                        <div class="col">
-                            <a href="@Html.DisplayFor(model => model.Skype)">
-                                <p class="card-text">@Html.DisplayFor(model => model.Skype)</p>
-                            </a>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Facebook)</h4>
-                        </div>
-                        <div class="col">
-                            <a href="@Html.DisplayFor(model => model.Facebook)">
-                                <p class="card-text">@Html.DisplayFor(model => model.Facebook)</p>
-                            </a>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="card-title"> @Html.DisplayNameFor(model => model.Linkedin)</h4>
-                        </div>
-                        <div class="col">
-                            <a href="@Html.DisplayFor(model => model.Linkedin)">
-                                <p class="card-text">@Html.DisplayFor(model => model.Linkedin)</p>
-                            </a>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="col">
-                        <h4 class="card-title">@Html.DisplayNameFor(model => model.ActivitiesAndSkills)</h4>
-                    </div>
-                    @foreach (var activityOrSkill in @Model.ActivitiesAndSkills)
-                    {
-                        <div class="col">
-                            <p class="card-text"><i class="fa fa-check"></i> @activityOrSkill.Name</p>
-                        </div>
-                    }
-                    <hr />
-                    <div class="col">
-                        <h4 class="card-title">@Html.DisplayNameFor(model => model.ProffessionalSkills)</h4>
-                    </div>
-                    @foreach (var proffessionalSkill in @Model.ProffessionalSkills)
-                    {
-                        <div class="col">
-                            <p class="card-text"><i class="fa fa-check"></i> @proffessionalSkill.Name</p>
-                        </div>
-                    }
-                </div>
-                <hr />
-                <div class="col-sm-12 mt-2">
-                    <div class="col">
-                        <h4 class="card-title"> @Html.DisplayNameFor(model => model.About) @Model.Name.Split(' ')[0]</h4>
-                    </div>
-                    <div class="col">
-                        <p class="card-text">@Html.DisplayFor(model => model.About)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-around">
-                <a asp-area="Administration" asp-controller="TeamMembers" asp-action="TeamMembers" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
-                <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="CheckEdit" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-                <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="CheckEditorForCreate" class="btn btn-primary"><i class="fa fa-edit"></i> Create</a>
-                <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="CheckEditorForDetails" class="btn btn-primary"><i class="fa fa-edit"></i> Details</a>
-                <a asp-area="Administration" asp-controller="TeamMembers" asp-action="DeleteTeamMemberDetails" asp-route-id="@Model.Id"class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
-            </div>
+            <partial name="~/Areas/Administration/Views/TeamMembers/Partials/_Details.cshtml" />
+        </div><div class="modal-footer d-flex justify-content-around">
+            <a asp-area="Administration" asp-controller="TeamMembers" asp-action="TeamMembers" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
+            <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="CheckEdit" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+            <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="CheckEditorForCreate" class="btn btn-primary"><i class="fa fa-edit"></i> Create</a>
+            <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="CheckEditorForDetails" class="btn btn-primary"><i class="fa fa-edit"></i> Details</a>
+            <a asp-area="Administration" asp-controller="TeamMembers" asp-action="DeleteTeamMemberDetails" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
         </div>
-    </div>
+    </div>>
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

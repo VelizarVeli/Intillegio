@@ -1,63 +1,14 @@
-﻿@model Intillegio.DTOs.BindingModels.Admin.AdminSolutionBindingModel
-@{
+﻿@{
     ViewData["Title"] = "Service Details";
 
 }
-
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header bg-success text-white">
             <h5 class="modal-title"><i class="fa fa-bell"></i> Service Details</h5>
         </div>
         <div class="modal-body">
-            <div class="d-flex justify-content-around row">
-                <div class="col-sm-12 mt-5">
-                    <img src="@Model.Image65X65"  class="img-fluid" alt="Responsive image">
-                </div>
-                <hr />
-                <div class="col-sm-12 mt-2">
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="card-title">@Html.DisplayNameFor(model => model.Image65X65)</h4>
-                        </div>
-                        <div class="col">
-                            <a href="@Html.DisplayFor(model => model.Image65X65)">
-                                <p class="card-text">@Html.DisplayFor(model => model.Image65X65)</p>
-                            </a>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col">
-                            <h4 class="card-title"> @Html.DisplayNameFor(model => model.Image825X445)</h4>
-                        </div>
-                        <div class="col">
-                            <a href="@Html.DisplayFor(model => model.Image825X445)">
-                                <p class="card-text">@Html.DisplayFor(model => model.Image825X445)</p>
-                            </a>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="col">
-                        <h4 class="card-title">@Html.DisplayNameFor(model => model.FinancialPlanningStrategies)</h4>
-                    </div>
-                    @foreach (var fps in @Model.FinancialPlanningStrategies)
-                    {
-                    <div class="col">
-                        <p class="card-text"><i class="fa fa-check"></i> @fps.Name</p>
-                    </div>
-                    }
-                </div>
-                <hr />
-                <div class="col-sm-12 mt-2">
-                    <div class="col">
-                        <h4 class="card-title"> @Html.DisplayNameFor(model => model.About) @Model.Name</h4>
-                    </div>
-                    <div class="col">
-                        <p class="card-text">@Html.DisplayFor(model => model.About)</p>
-                    </div>
-                </div>
-            </div>
+            <partial name="~/Areas/Administration/Views/SolutionsAdmin/Partials/_Details.cshtml" />
             <div class="modal-footer d-flex justify-content-around">
                 <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="SolutionsAdmin" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
                 <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="EditSolution" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>

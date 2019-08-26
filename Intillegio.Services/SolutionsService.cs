@@ -58,5 +58,15 @@ namespace Intillegio.Services
 
             return solutionDto;
         }
+
+        public async Task DeleteSolutionAsync(int id)
+        {
+            var solution = DbContext.Solutions.SingleOrDefault(e => e.Id == id);
+            if (solution != null)
+            {
+                DbContext.Solutions.Remove(solution);
+                await DbContext.SaveChangesAsync();
+            }
+        }
     }
 }

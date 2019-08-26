@@ -13,5 +13,6 @@ namespace Intillegio.Services.Contracts
         Task<SolutionBindingModel> GetSolutionDetailsAsync(int id);
         IEnumerable<AdminSolutionViewModel> GetAllSolutionsForAdmin();
         Task<AdminSolutionBindingModel> GetSolutionDetailsForAdminAsync(int id);
+        Task DeleteSolutionAsync(int id);
     }
 }
