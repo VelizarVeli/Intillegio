@@ -38,13 +38,13 @@ namespace Intillegio.Data.Data
                 .HasOne(p => p.Project)
                 .WithMany(f => f.Features)
                 .HasForeignKey(pf => pf.ProjectId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<ProjectFeatureJunctionClass>()
                 .HasOne(f => f.ProjectFeature)
                 .WithMany(p => p.Projects)
                 .HasForeignKey(f => f.FeatureId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

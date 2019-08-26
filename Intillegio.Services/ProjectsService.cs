@@ -108,6 +108,16 @@ namespace Intillegio.Services
             return projectDto;
         }
 
+        public async Task DeleteProjectAsync(int id)
+        {
+            var project = DbContext.Projects.SingleOrDefault(e => e.Id == id);
+            if (project != null)
+            {
+                DbContext.Projects.Remove(project);
+                await DbContext.SaveChangesAsync();
+            }
+        }
+
         public async Task AddProject(ProjectBindingModel project)
         {
             CoreValidator.ThrowIfNull(project);

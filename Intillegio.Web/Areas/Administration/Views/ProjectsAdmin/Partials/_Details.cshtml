@@ -1,0 +1,101 @@
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminProjectBindingModel
+<div class="d-flex justify-content-around row">
+    <div class="col-sm-6">
+        <div class="card-body">
+            <h2 class="card-title">@Model.Name</h2>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.StartingDate)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Html.DisplayFor(model => model.StartingDate)</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.Category)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Model.Category</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.Stage)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Html.DisplayFor(model => model.Stage)</p>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.Partner)</h4>
+            </div>
+            <div class="col">
+                <p class="card-text">@Html.DisplayFor(model => model.Partner)</p>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <div class="col-sm-6 mt-5">
+        <img src="@Model.Image350X350" class="img-fluid" alt="Responsive image">
+    </div>
+    <hr />
+    <div class="col-sm-12 mt-2">
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.Image360X240)</h4>
+            </div>
+            <div class="col">
+                <a href="@Html.DisplayFor(model => model.Image360X240)">
+                    <p class="card-text">@Html.DisplayFor(model => model.Image360X240)</p>
+                </a>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title"> @Html.DisplayNameFor(model => model.Image1110X450)</h4>
+            </div>
+            <div class="col">
+                <a href="@Html.DisplayFor(model => model.Image1110X450)">
+                    <p class="card-text">@Html.DisplayFor(model => model.Image1110X450)</p>
+                </a>
+            </div>
+        </div>
+        <hr />
+        <div class="col">
+            <h4 class="card-title">@Html.DisplayNameFor(model => model.Features)</h4>
+        </div>
+        @foreach (var feature in @Model.Features)
+        {
+            <div class="col">
+                <p class="card-text"><i class="fa fa-check"></i> @feature.Name</p>
+            </div>
+        }
+        <hr />
+        <div class="col">
+            <h4 class="card-title">@Html.DisplayNameFor(model => model.RelatedProjects)</h4>
+        </div>
+        @foreach (var project in @Model.RelatedProjects)
+        {
+            <div class="col">
+                <p class="card-text"><i class="fa fa-check"></i> @project.Name</p>
+            </div>
+        }
+    </div>
+    <hr />
+    <div class="col-sm-12 mt-2">
+        <div class="col">
+            <h4 class="card-title"> @Html.DisplayNameFor(model => model.ProjectInfo) for @Model.Name</h4>
+        </div>
+        <div class="col">
+            <p class="card-text">@Html.DisplayFor(model => model.ProjectInfo)</p>
+        </div>
+    </div>
+</div>

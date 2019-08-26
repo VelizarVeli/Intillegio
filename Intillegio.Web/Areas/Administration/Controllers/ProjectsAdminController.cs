@@ -44,6 +44,19 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             return View("ProjectDetails", projectsDetails);
         }
 
+        public async Task<IActionResult> DeleteProjectDetails(int id)
+        {
+            var deleteDetails = await _projectsService.GetProjectDetailsForAdminAsync(id);
+
+            return View("DeleteProject", deleteDetails);
+        }
+
+        public async Task<IActionResult> DeleteProject(int id)
+        {
+            await _projectsService.DeleteProjectAsync(id);
+            return RedirectToAction("ProjectsAdmin");
+        }
+
         public IActionResult AddProject()
         {
             var projectList = new List<SelectListItem>();

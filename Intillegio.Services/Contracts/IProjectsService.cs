@@ -14,5 +14,6 @@ namespace Intillegio.Services.Contracts
         Task<ProjectBindingModel> GetProjectDetailsAsync(int id);
         Task<IEnumerable<AdminProjectViewModel>> GetAllProjectsForAdmin();
         Task<AdminProjectBindingModel> GetProjectDetailsForAdminAsync(int id);
+        Task DeleteProjectAsync(int id);
     }
 }
