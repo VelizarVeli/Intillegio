@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
@@ -45,6 +46,16 @@ namespace Intillegio.Services
             var partnerDto = Mapper.Map<AdminPartnerBindingModel>(partner);
 
             return partnerDto;
+        }
+
+        public async Task DeletePartnerAsync(int id)
+        {
+            var partner = DbContext.Partners.SingleOrDefault(e => e.Id == id);
+            if (partner != null)
+            {
+                DbContext.Partners.Remove(partner);
+                await DbContext.SaveChangesAsync();
+            }
         }
     }
 }

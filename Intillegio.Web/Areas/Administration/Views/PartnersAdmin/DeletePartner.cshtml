@@ -1,0 +1,22 @@
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminPartnerBindingModel
+
+@{
+    ViewData["Title"] = "Delete Partner";
+    Layout = "~/Areas/Administration/Shared/_Layout.cshtml";
+}
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+            <h3 class="modal-title">
+                <i class="fa fa-comment"></i> Are you sure you want to delete this?
+            </h3>
+        </div>
+        <div class="modal-header bg-warning text-white d-flex justify-content-around">
+            <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="DeletePartner" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fa fa-trash"> Delete</i></a>
+            <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="PartnersAdmin" class="btn btn-secondary"><i class="fa fa-times"></i> Cancel</a>
+        </div>
+        <div class="modal-body">
+            <partial name="~/Areas/Administration/Views/PartnersAdmin/Partials/_Details.cshtml" />
+        </div>
+    </div>
+</div>
