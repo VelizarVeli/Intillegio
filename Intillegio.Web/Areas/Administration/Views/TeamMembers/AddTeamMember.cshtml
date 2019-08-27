@@ -3,7 +3,6 @@
     ViewData["Title"] = "Add Team Member";
 
 }
-
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header bg-primary text-white">
@@ -67,28 +66,64 @@
                     <input asp-for="Linkedin" class="form-control">
                     <span asp-validation-for="Linkedin" class="text-danger"></span>
                 </div>
-                @*<div class="form-group">
-                    <label asp-for="ActivitiesAndSkills"></label>
-                    <select asp-for="ActivitiesAndSkills" class="form-control">
-                        <option value="-- Choose  --"></option>
-                        @foreach (var activityOrSkill in Model.ActivitiesAndSkills)
-                        {
-                            <option>@activityOrSkill</option>
-                        }
-                    </select>
-                    <span asp-validation-for="ActivitiesAndSkills" class="text-danger"></span>
-                </div>
                 <div class="form-group">
-                    <label asp-for="ProffessionalSkills"></label>
-                    <select asp-for="ProffessionalSkills" class="form-control">
-                        <option value="-- Избери категория --"></option>
-                        @foreach (var proffessionalSkill in Model.ProffessionalSkills)
+                    <label asp-for="ActivitiesAndSkills"></label>
+
+                    <span asp-validation-for="ActivitiesAndSkills" class="text-danger"></span>
+                    @*@if (Model.ActivitiesAndSkills != null)
                         {
-                            <option>@proffessionalSkill</option>
-                        }
-                    </select>
-                    <span asp-validation-for="ProffessionalSkills" class="text-danger"></span>
-                </div>*@
+                            for (var i = 0; i < 1; i++)
+                            {
+                                <tr>
+                                    @Html.HiddenFor(x => Model.ActivitiesAndSkills[i])
+                                    <td>
+                                        @Html.TextBoxFor(x => Model.ActivitiesAndSkills[i].Name, new {@class = "form-control", @readonly = "readonly"})
+                                    </td>
+                                    <td>
+                                        @Html.HiddenFor(x => Model.ActivitiesAndSkills[i].Name)
+                                    </td>
+                                </tr>
+                                <td class="submitCheck">
+                                    <input type="checkbox" value="@Model.ActivitiesAndSkills[i].Id" name="Expense[@i].Id">
+                                    <input type="hidden" value="0" name="Expense[@i].Id">
+                                </td>
+                                <label asp-for="ActivitiesAndSkills"></label>
+                                <input asp-for="ActivitiesAndSkills" class="form-control">
+                                <span asp-validation-for="ActivitiesAndSkills" class="text-danger"></span>
+                            }
+                        }*@
+
+                    <fieldset>
+                        <legend>Activities And Skills</legend>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Name)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Name)
+                            @Html.ValidationMessageFor(model => model.Name)
+                        </div>
+                        <div>
+                            <input id="btnAddBook" type="button" onclick="addRow();" value="Add Book" />
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        Title
+                                    </td>
+                                    <td>
+                                        Published Date
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbBooks"></tbody>
+                        </table>
+                        <p>
+                            <input type="submit" value="Create" />
+                        </p>
+                    </fieldset>
+                    }
+                </div>
                 <div class="modal-footer">
                     <a asp-area="Administration" asp-controller="TeamMembers" asp-action="TeamMembers" class="btn btn-secondary">Close</a>
                     <button type="submit" class="btn btn-success">Save</button>
@@ -100,4 +135,35 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+}
+
+@section ActivitiesAndSkills{
+    <script language="javascript" type="text/javascript">
+        function addRow() {
+
+            @{
+                Model.ActivitiesAndSkills.Add(new ActivityAndSkill());
+            }
+
+            var index = $("#tbBooks").children("tr").length;
+
+            var indexCell = "<td style='display:none'><input name='Books.Index'  type='hidden' value='" + index + "' /></td>";
+
+            var titleCell = "<td><input id='Books_" + index + "__Title'  name='Books[" + index + "].Title' type='text' value='' /></td>";
+
+            var publishedCell = "<td><input id='Books_" + index + "__Title'  name='Books[" + index + "].PublishedDate' type='text' value='' /></td>";
+
+            var removeCell = "<td><input id='btnAddBook' type='button'   value='Remove' onclick='removeRow(" + index + ");' /></td>";
+
+
+            var newRow = "<tr id='trBook" + index + "'>" +
+                indexCell + titleCell + publishedCell + removeCell + "</tr>";
+            $("#tbBooks").append(newRow);
+        }
+
+        function removeRow(id) {
+            var controlToBeRemoved = "#trBook" + id;
+            $(controlToBeRemoved).remove();
+        }
+    </script>
 }

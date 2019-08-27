@@ -1,6 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
 using Intillegio.Common.Constants;
 using Intillegio.DTOs.BindingModels.Admin;
+using Intillegio.DTOs.BindingModels.ViewModels;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
@@ -32,9 +36,59 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
         public IActionResult AddTeamMember()
         {
-            return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddTeamMember.cshtml");
+            var listActivityies = new List<ActivityAndSkill>();
+            listActivityies.Add(new ActivityAndSkill{Name = "Good"});
+            listActivityies.Add(new ActivityAndSkill{Name = "Bad"});
+            listActivityies.Add(new ActivityAndSkill{Name = "Fuck"});
+            listActivityies.Add(new ActivityAndSkill{Name = "Person"});
+            listActivityies.Add(new ActivityAndSkill{Name = "Motherfucker"});
+            listActivityies.Add(new ActivityAndSkill{Name = "You"});
+
+            var model = new AdminTeamMemberBindingModel
+            {
+                ActivitiesAndSkills = listActivityies
+            };
+
+            return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddTeamMember.cshtml", model);
+        }
+        public IActionResult AddTeamMember2()
+        {
+            var  model = new AdminTeamMemberBindingModel();
+
+            return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddTeamMember2.cshtml", model);
+        }
+        [HttpPost]
+        public string AddTeamMember2(AdminTeamMemberBindingModel model)
+        {
+            var sb = new StringBuilder();
+            try
+            {
+                sb.AppendFormat("Author : {0}", model.Name);
+                sb.AppendLine("<br />");
+                sb.AppendLine("--------------------------------");
+                sb.AppendLine("<br />");
+                foreach (var book in model.ActivitiesAndSkills)
+                {
+                    sb.AppendFormat("Title : {0}", book.Name);
+                    sb.AppendLine("<br />");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return sb.ToString();
         }
 
+
+        [HttpPost]
+        public async Task<IActionResult> AddTeamMember(AdminTeamMemberBindingModel model)
+        {
+            await _aboutService.AddTeamMemberAsync(model);
+
+            return RedirectToAction("TeamMembers");
+        }
 
         public async Task<IActionResult> TeamMemberDetails(int id)
         {

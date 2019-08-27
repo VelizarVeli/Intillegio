@@ -17,7 +17,7 @@
     </environment>
 </head>
 <body>
-    <partial name="~/Areas/Administration/Shared/_Navbar.cshtml"/>
+    <partial name="~/Areas/Administration/Shared/_Navbar.cshtml" />
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
@@ -39,6 +39,7 @@
         <script src="~/lib/jquery/dist/popper.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/bootstrap.min.js" asp-append-version="true"></script>
     </environment>
+    @RenderSection("ActivitiesAndSkills", required: false)
 
     @RenderSection("Scripts", required: false)
 </body>
