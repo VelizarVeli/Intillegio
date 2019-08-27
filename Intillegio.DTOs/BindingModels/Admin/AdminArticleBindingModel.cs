@@ -48,7 +48,6 @@ namespace Intillegio.DTOs.BindingModels.Admin
         public string Image825X530 { get; set; }
 
         [Required]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd MMMM yyyy}")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 

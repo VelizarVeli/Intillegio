@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Intillegio.Common;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
@@ -86,6 +88,17 @@ namespace Intillegio.Services
             return article;
         }
 
+        public async Task AddArticleAsync(AdminArticleBindingModel article)
+        {
+            CoreValidator.ThrowIfNull(article);
+            var model = Mapper.Map<Article>(article);
+            model.Date = DateTime.UtcNow;
+            model.CategoryId = DbContext.Categories.FirstOrDefault(ca =>
+                string.Equals(ca.CategoryName, article.Category, StringComparison.Ordinal)).Id;
+            await DbContext.Articles.AddAsync(model);
+            await DbContext.SaveChangesAsync();
+        }
+
         public async Task DeleteArticleAsync(int id)
         {
             var article = DbContext.Articles.SingleOrDefault(e => e.Id == id);
@@ -94,6 +107,13 @@ namespace Intillegio.Services
                 DbContext.Articles.Remove(article);
                 await DbContext.SaveChangesAsync();
             }
+        }
+
+        public async Task<IEnumerable<Category>> GetAllCategories()
+        {
+            var allCategories = await DbContext.Categories.ToListAsync();
+
+            return allCategories;
         }
     }
 }

@@ -1,11 +1,15 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Intillegio.Common.Constants;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Intillegio.Web.Areas.Administration.Controllers
 {
@@ -39,6 +43,37 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             }
 
             return View("ArticleDetails", articleDetails);
+        }
+
+        public async Task<IActionResult> AddArticle(string returnUrl = null)
+        {
+            var categories = await _articlesService.GetAllCategories();
+            var deptList = new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Text = "Select",
+                    Value = ""
+                }
+            };
+            foreach (var category in categories)
+            {
+                deptList.Add(new SelectListItem { Text = category.CategoryName });
+            }
+
+            ViewBag.Category = deptList;
+
+            ViewData["ReturnUrl"] = returnUrl;
+
+            return View(GlobalConstants.AdminAreaPath + "ArticlesAdmin/AddArticle.cshtml");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddArticle(AdminArticleBindingModel model)
+        {
+            await _articlesService.AddArticleAsync(model);
+
+            return RedirectToAction("ArticlesAdmin");
         }
 
         public async Task<IActionResult> DeleteArticleDetails(int id)
