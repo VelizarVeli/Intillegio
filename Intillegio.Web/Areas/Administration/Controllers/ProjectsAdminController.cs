@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Intillegio.Common.Constants;
 using Intillegio.DTOs.BindingModels;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
@@ -57,30 +58,87 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             return RedirectToAction("ProjectsAdmin");
         }
 
-        public IActionResult AddProject()
+        public  async Task<IActionResult> AddProject()
         {
-            var projectList = new List<SelectListItem>();
-            projectList.Add(new SelectListItem
+            var categories = await _projectsService.GetAllCategories();
+            var deptList = new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Text = "Select",
+                    Value = ""
+                }
+            };
+            foreach (var category in categories)
+            {
+                deptList.Add(new SelectListItem { Text = category.CategoryName });
+            }
+
+            var partners = await _projectsService.GetAllPartners();
+            var partList = new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Text = "Select",
+                    Value = ""
+                }
+            };
+            foreach (var partner in partners)
+            {
+                partList.Add(new SelectListItem { Text = partner.Name });
+            }
+
+            var stageList = new List<SelectListItem>();
+            stageList.Add(new SelectListItem
             {
                 Text = "Select",
                 Value = ""
             });
-
             foreach (Stage eVal in Enum.GetValues(typeof(Stage)))
             {
-                projectList.Add(new SelectListItem { Text = Enum.GetName(typeof(Stage), eVal), Value = eVal.ToString() });
+                stageList.Add(new SelectListItem { Text = Enum.GetName(typeof(Stage), eVal), Value = eVal.ToString() });
             }
 
-            ViewBag.Stage = projectList;
+            ViewBag.Stage = stageList;
+            ViewBag.Partner = partList;
+            ViewBag.Category = deptList;
+
             //ViewData["ReturnUrl"] = returnUrl;
             return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/AddProject.cshtml");
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProject(ProjectBindingModel model)
+        public async Task<IActionResult> AddProject(AdminProjectBindingModel model)
         {
-            await _projectsService.AddProject(model);
-            return RedirectToAction("AllProjects");
+            await _projectsService.AddProjectAsync(model);
+
+            return RedirectToAction("ProjectsAdmin");
         }
+
+        //public IActionResult AddProject()
+        //{
+        //    var projectList = new List<SelectListItem>();
+        //    projectList.Add(new SelectListItem
+        //    {
+        //        Text = "Select",
+        //        Value = ""
+        //    });
+
+        //    foreach (Stage eVal in Enum.GetValues(typeof(Stage)))
+        //    {
+        //        projectList.Add(new SelectListItem { Text = Enum.GetName(typeof(Stage), eVal), Value = eVal.ToString() });
+        //    }
+
+        //    ViewBag.Stage = projectList;
+        //    //ViewData["ReturnUrl"] = returnUrl;
+        //    return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/AddProject.cshtml");
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> CreateProject(ProjectBindingModel model)
+        //{
+        //    await _projectsService.AddProject(model);
+        //    return RedirectToAction("AllProjects");
+        //}
     }
 }

@@ -28,8 +28,9 @@ namespace Intillegio.Services.Mapping
             CreateMap<Project, AdminProjectViewModel>();
             CreateMap<Project, ProjectBindingModel>();
             CreateMap<ProjectBindingModel, Project>();
-            //CreateMap<AdminProjectBindingModel, Project>()
-            //    .ForMember(d => d.Features, opt => opt.MapFrom(sr => sr.Features.Select(y => y.Name).ToList()));
+            CreateMap<AdminProjectBindingModel, Project>()
+            .ForMember(d => d.Category, opt => opt.Ignore())
+            .ForMember(d => d.Partner, opt => opt.Ignore());
             CreateMap<Project, AdminProjectBindingModel>()
                 .ForMember(d => d.Category, opt => opt.MapFrom(sr => sr.Category.CategoryName))
                 .ForMember(d => d.Features, opt => opt.MapFrom(sr => sr.Features.Select(y => y.ProjectFeature).ToList()));

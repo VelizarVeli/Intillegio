@@ -118,13 +118,29 @@ namespace Intillegio.Services
             }
         }
 
-        public async Task AddProject(ProjectBindingModel project)
+        public async Task AddProjectAsync(AdminProjectBindingModel project)
         {
             CoreValidator.ThrowIfNull(project);
 
             var model = this.Mapper.Map<Project>(project);
+            model.CategoryId = DbContext.Categories.FirstOrDefault(c => c.CategoryName == project.Category).Id;
+            model.PartnerId = DbContext.Partners.FirstOrDefault(p => p.Name == project.Partner).Id;
             await DbContext.Projects.AddAsync(model);
-            await this.DbContext.SaveChangesAsync();
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Category>> GetAllCategories()
+        {
+            var allCategories = await DbContext.Categories.ToListAsync();
+
+            return allCategories;
+        }
+
+        public async Task<IEnumerable<Partner>> GetAllPartners()
+        {
+            var allPartners = await DbContext.Partners.ToListAsync();
+
+            return allPartners;
         }
     }
 }

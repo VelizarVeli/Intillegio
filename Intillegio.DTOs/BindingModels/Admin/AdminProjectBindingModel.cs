@@ -35,6 +35,7 @@ namespace Intillegio.DTOs.BindingModels.Admin
         public string Partner { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd MMMM yyyy}")]
         public DateTime StartingDate { get; set; }
 
