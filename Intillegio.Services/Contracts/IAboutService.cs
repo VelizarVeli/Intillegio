@@ -14,5 +14,6 @@ namespace Intillegio.Services.Contracts
         IEnumerable<AdminTeamMemberViewModel> GetTeamMembersForAdmin();
         Task<AdminTeamMemberBindingModel> GetTeamMemberDetailsForAdminAsync(int id);
         Task DeleteTeamMemberAsync(int id);
+        Task AddTeamMemberAsync(AdminTeamMemberBindingModel teamMember);
     }
 }

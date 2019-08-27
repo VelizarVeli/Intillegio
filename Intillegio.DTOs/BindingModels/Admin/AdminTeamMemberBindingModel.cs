@@ -9,7 +9,7 @@ namespace Intillegio.DTOs.BindingModels.Admin
     {
         public AdminTeamMemberBindingModel()
         {
-            ActivitiesAndSkills = new HashSet<ActivityAndSkill>();
+            ActivitiesAndSkills = new List<ActivityAndSkill>();
             ProffessionalSkills = new HashSet<ProffessionalSkill>();
         }
 
@@ -53,7 +53,9 @@ namespace Intillegio.DTOs.BindingModels.Admin
         public string Linkedin { get; set; }
 
         [Display(Name = "Activities and Skills")]
-        public ICollection<ActivityAndSkill> ActivitiesAndSkills { get; set; }
+        public List<ActivityAndSkill> ActivitiesAndSkills { get; set; }
+
+        public string Activities { get; set; }
 
         [Display(Name = "Proffessional Skills")]
         public ICollection<ProffessionalSkill> ProffessionalSkills { get; set; }

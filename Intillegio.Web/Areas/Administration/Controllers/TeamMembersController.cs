@@ -51,41 +51,11 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
             return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddTeamMember.cshtml", model);
         }
-        public IActionResult AddTeamMember2()
-        {
-            var  model = new AdminTeamMemberBindingModel();
-
-            return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddTeamMember2.cshtml", model);
-        }
-        [HttpPost]
-        public string AddTeamMember2(AdminTeamMemberBindingModel model)
-        {
-            var sb = new StringBuilder();
-            try
-            {
-                sb.AppendFormat("Author : {0}", model.Name);
-                sb.AppendLine("<br />");
-                sb.AppendLine("--------------------------------");
-                sb.AppendLine("<br />");
-                foreach (var book in model.ActivitiesAndSkills)
-                {
-                    sb.AppendFormat("Title : {0}", book.Name);
-                    sb.AppendLine("<br />");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return sb.ToString();
-        }
-
 
         [HttpPost]
         public async Task<IActionResult> AddTeamMember(AdminTeamMemberBindingModel model)
         {
-            await _aboutService.AddTeamMemberAsync(model);
+            await _aboutService.AddTeamMemberAsync(model); 
 
             return RedirectToAction("TeamMembers");
         }

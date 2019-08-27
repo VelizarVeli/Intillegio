@@ -67,43 +67,23 @@
                     <span asp-validation-for="Linkedin" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="Activities"></label>
+                    <input id="activity" asp-for="Activities" class="form-control">
+                </div>
+                <div class="form-group">
                     <label asp-for="ActivitiesAndSkills"></label>
-
-                    <span asp-validation-for="ActivitiesAndSkills" class="text-danger"></span>
-                    @*@if (Model.ActivitiesAndSkills != null)
-                        {
-                            for (var i = 0; i < 1; i++)
-                            {
-                                <tr>
-                                    @Html.HiddenFor(x => Model.ActivitiesAndSkills[i])
-                                    <td>
-                                        @Html.TextBoxFor(x => Model.ActivitiesAndSkills[i].Name, new {@class = "form-control", @readonly = "readonly"})
-                                    </td>
-                                    <td>
-                                        @Html.HiddenFor(x => Model.ActivitiesAndSkills[i].Name)
-                                    </td>
-                                </tr>
-                                <td class="submitCheck">
-                                    <input type="checkbox" value="@Model.ActivitiesAndSkills[i].Id" name="Expense[@i].Id">
-                                    <input type="hidden" value="0" name="Expense[@i].Id">
-                                </td>
-                                <label asp-for="ActivitiesAndSkills"></label>
-                                <input asp-for="ActivitiesAndSkills" class="form-control">
-                                <span asp-validation-for="ActivitiesAndSkills" class="text-danger"></span>
-                            }
-                        }*@
 
                     <fieldset>
                         <legend>Activities And Skills</legend>
                         <div class="editor-label">
-                            @Html.LabelFor(model => model.Name)
+                            @Html.LabelFor(model => model.Activities)
                         </div>
                         <div class="editor-field">
-                            @Html.EditorFor(model => model.Name)
-                            @Html.ValidationMessageFor(model => model.Name)
+                            @Html.EditorFor(model => model.Activities)
+                            @Html.ValidationMessageFor(model => model.Activities)
                         </div>
                         <div>
-                            <input id="btnAddBook" type="button" onclick="addRow();" value="Add Book" />
+                            <input id="btnAddActivity" type="button" onclick="addActivities();" value="Add Activity or Skill" />
                         </div>
                         <table>
                             <thead>
@@ -118,9 +98,6 @@
                             </thead>
                             <tbody id="tbBooks"></tbody>
                         </table>
-                        <p>
-                            <input type="submit" value="Create" />
-                        </p>
                     </fieldset>
                     }
                 </div>
@@ -139,6 +116,14 @@
 
 @section ActivitiesAndSkills{
     <script language="javascript" type="text/javascript">
+        function addActivities() {
+            if (!$('#activity').val) {
+                let activitiesValue = $('#activity').val();
+            }
+            console.log(activitiesValue);
+            //var nameValue = $("#Activities").val;
+            //console.log(nameValue);
+        }
         function addRow() {
 
             @{
