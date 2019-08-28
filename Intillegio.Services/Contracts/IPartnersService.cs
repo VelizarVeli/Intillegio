@@ -13,5 +13,6 @@ namespace Intillegio.Services.Contracts
         Task<AdminPartnerBindingModel> GetPartnerDetailsForAdminAsync(int id);
         Task DeletePartnerAsync(int id);
         Task AddPartnerAsync(AdminPartnerBindingModel partner);
+        Task PartnerEditAsync(AdminPartnerBindingModel partner, int modelId);
     }
 }

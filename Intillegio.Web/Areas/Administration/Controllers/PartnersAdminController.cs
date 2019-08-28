@@ -67,5 +67,19 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             await _partnersService.DeletePartnerAsync(id);
             return RedirectToAction("PartnersAdmin");
         }
+
+        public async Task<IActionResult> EditPartner(int id)
+        {
+            var editDetails = await _partnersService.GetPartnerDetailsForAdminAsync(id);
+
+            return View("EditPartner", editDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PartnerEdit(int id, AdminPartnerBindingModel model)
+        {
+            await _partnersService.PartnerEditAsync(model, id);
+            return RedirectToAction("PartnersAdmin");
+        }
     }
 }
