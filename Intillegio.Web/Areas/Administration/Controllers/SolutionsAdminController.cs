@@ -67,5 +67,19 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             await _solutionsService.DeleteSolutionAsync(id);
             return RedirectToAction("SolutionDetails");
         }
+
+        public async Task<IActionResult> EditSolution(int id)
+        {
+            var editDetails = await _solutionsService.GetSolutionDetailsForAdminAsync(id);
+
+            return View("EditSolution", editDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SolutionEdit(int id, AdminSolutionBindingModel model)
+        {
+            await _solutionsService.SolutionEditAsync(model, id);
+            return RedirectToAction("SolutionsAdmin");
+        }
     }
 }

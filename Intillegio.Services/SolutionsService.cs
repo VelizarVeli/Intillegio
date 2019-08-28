@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Intillegio.Common;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
@@ -74,6 +73,15 @@ namespace Intillegio.Services
         {
             var model = this.Mapper.Map<Solution>(solution);
             await DbContext.Solutions.AddAsync(model);
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task SolutionEditAsync(AdminSolutionBindingModel solution, int modelId)
+        {
+            var model = DbContext.Solutions.FirstOrDefault(i => i.Id == modelId);
+
+            Mapper.Map(solution, model);
+            DbContext.Solutions.Update(model);
             await DbContext.SaveChangesAsync();
         }
     }

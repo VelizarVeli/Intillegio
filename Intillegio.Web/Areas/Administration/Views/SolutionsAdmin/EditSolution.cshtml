@@ -1,0 +1,25 @@
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminSolutionBindingModel
+@{
+    ViewData["Title"] = "Edit Service";
+
+}
+<form asp-action="SolutionEdit">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title"><i class="fa fa-users"></i> Edit Solution</h5>
+            </div>
+            <div class="modal-body">
+                <partial name="~/Areas/Administration/Views/SolutionsAdmin/Partials/_EditDetail.cshtml" />
+            </div>
+            <div class="modal-header bg-info text-white d-flex justify-content-around">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Save" class="btn btn-success" />
+                <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="SolutionsAdmin" class="btn btn-secondary"><i class="fa fa-times"></i> Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
