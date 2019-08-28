@@ -20,7 +20,7 @@ namespace Intillegio.DTOs.BindingModels.Admin
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Date")]
+        [Display(Name = "Starts")]
         public DateTime StartDateTime { get; set; }
 
         [Required]

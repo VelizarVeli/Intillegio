@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Intillegio.Common;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
@@ -113,6 +112,29 @@ namespace Intillegio.Services
             var allCategories = await DbContext.Categories.ToListAsync();
 
             return allCategories;
+        }
+
+        public async Task ArticleEditAsync(AdminEditArticleBindingModel article, int id)
+        {
+            var model = DbContext.Articles.FirstOrDefault(i => i.Id == id);
+
+            Mapper.Map(article, model);
+            DbContext.Articles.Update(model);
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task<AdminEditArticleBindingModel> GetArticleDetailsForAdminEditAsync(int id)
+        {
+            var article = await DbContext
+                .Articles
+                .Include(a => a.Comments)
+                .SingleOrDefaultAsync(i => i.Id == id);
+
+            var eventDto = Mapper
+                .Map<AdminEditArticleBindingModel>(article);
+            var category = await DbContext.Categories.SingleOrDefaultAsync(c => c.Id == article.CategoryId);
+            eventDto.Category = category.CategoryName;
+            return eventDto;
         }
     }
 }

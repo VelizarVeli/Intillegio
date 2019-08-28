@@ -82,7 +82,6 @@ namespace Intillegio.Services
             var model = DbContext.Events.FirstOrDefault(i => i.Id == id);
 
             Mapper.Map(eventure, model);
-            //model.StartDateTime = eventure.StartDateTime;
             DbContext.Events.Update(model);
             await DbContext.SaveChangesAsync();
         }

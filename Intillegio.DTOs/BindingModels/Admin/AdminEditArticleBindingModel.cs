@@ -6,9 +6,9 @@ using Intillegio.Models;
 
 namespace Intillegio.DTOs.BindingModels.Admin
 {
-    public class AdminArticleBindingModel
+ public   class AdminEditArticleBindingModel
     {
-        public AdminArticleBindingModel()
+        public AdminEditArticleBindingModel()
         {
             Comments = new HashSet<Comment>();
         }
@@ -49,7 +49,6 @@ namespace Intillegio.DTOs.BindingModels.Admin
 
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd MMMM yyyy}")]
         public DateTime Date { get; set; }
 
         public ICollection<Comment> Comments { get; set; }

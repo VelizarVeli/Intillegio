@@ -88,5 +88,19 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             await _articlesService.DeleteArticleAsync(id);
             return RedirectToAction("ArticlesAdmin");
         }
+
+        public async Task<IActionResult> EditArticle(int id)
+        {
+            var editDetails = await _articlesService.GetArticleDetailsForAdminEditAsync(id);
+
+            return View("EditArticle", editDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ArticleEdit(int id, AdminEditArticleBindingModel model)
+        {
+            await _articlesService.ArticleEditAsync(model, id);
+            return RedirectToAction("ArticlesAdmin");
+        }
     }
 }
