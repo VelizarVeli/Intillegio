@@ -82,5 +82,19 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             await _productsService.DeleteProductAsync(id);
             return RedirectToAction("ProductsAdmin");
         }
+
+        public async Task<IActionResult> EditProduct(int id)
+        {
+            var editDetails = await _productsService.GetProductDetailsForAdminEditAsync(id);
+
+            return View("EditProduct", editDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ProductEdit(int id, AdminEditProductBindingModel model)
+        {
+            await _productsService.ProductEditAsync(model, id);
+            return RedirectToAction("ProductsAdmin");
+        }
     }
 }

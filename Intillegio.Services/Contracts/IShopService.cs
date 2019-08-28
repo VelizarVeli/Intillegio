@@ -17,5 +17,7 @@ namespace Intillegio.Services.Contracts
         Task DeleteProductAsync(int id);
         Task AddProductAsync(AdminProductBindingModel product);
         Task<IEnumerable<Category>> GetAllCategories();
+        Task ProductEditAsync(AdminEditProductBindingModel product, int id);
+        Task<AdminEditProductBindingModel> GetProductDetailsForAdminEditAsync(int id);
     }
 }

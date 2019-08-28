@@ -16,7 +16,7 @@ namespace Intillegio.Services.Mapping
             ConfigurePartners();
             ConfigureSolutions();
             ConfigureArticles();
-            ConfigureShops();
+            ConfigureProducts();
             ConfigureTeamMembers();
             ConfigureEvents();
         }
@@ -89,9 +89,13 @@ namespace Intillegio.Services.Mapping
                 .ForMember(d => d.CategoryName, opt => opt.Ignore());
             CreateMap<Article, AdminEditArticleBindingModel>()
                 .ForMember(d => d.Category, opt => opt.MapFrom(sr => sr.CategoryName.CategoryName));
+            CreateMap<AdminEditProductBindingModel, Product>()
+                .ForMember(d => d.Category, opt => opt.Ignore());
+            CreateMap<Product, AdminEditProductBindingModel>()
+                .ForMember(d => d.Category, opt => opt.MapFrom(sr => sr.Category.CategoryName));
         }
 
-        private void ConfigureShops()
+        private void ConfigureProducts()
         {
             CreateMap<Product, ProductViewModel>();
             CreateMap<Product, AdminProductViewModel>();

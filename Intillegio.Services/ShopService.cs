@@ -84,5 +84,29 @@ namespace Intillegio.Services
 
             return allCategories;
         }
+
+        public async Task ProductEditAsync(AdminEditProductBindingModel product, int id)
+        {
+            var model = DbContext.Products.FirstOrDefault(i => i.Id == id);
+
+            Mapper.Map(product, model);
+            DbContext.Products.Update(model);
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task<AdminEditProductBindingModel> GetProductDetailsForAdminEditAsync(int id)
+        {
+
+            var product = await DbContext
+                .Products
+                .Include(a => a.Reviews)
+                .Include(ab => ab.ProductImages)
+                .SingleOrDefaultAsync(i => i.Id == id);
+
+            var productDto = Mapper.Map<AdminEditProductBindingModel>(product);
+            var category = await DbContext.Categories.SingleOrDefaultAsync(c => c.Id == product.CategoryId);
+            productDto.Category = category.CategoryName;
+            return productDto;
+        }
     }
 }
