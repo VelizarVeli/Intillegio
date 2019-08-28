@@ -90,7 +90,6 @@ namespace Intillegio.Services
 
         public async Task AddArticleAsync(AdminArticleBindingModel article)
         {
-            CoreValidator.ThrowIfNull(article);
             var model = Mapper.Map<Article>(article);
             model.Date = DateTime.UtcNow;
             model.CategoryId = DbContext.Categories.FirstOrDefault(ca =>

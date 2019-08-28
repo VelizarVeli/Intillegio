@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Intillegio.Common.Constants;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
@@ -39,6 +40,19 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             }
 
             return View("EventDetails", eventDetails);
+        }
+
+        public  IActionResult AddEvent()
+        {
+            return View(GlobalConstants.AdminAreaPath + "EventsAdmin/AddEvent.cshtml");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddEvent(AdminEventBindingModel model)
+        {
+            await _eventsService.AddEventAsync(model);
+
+            return RedirectToAction("EventsAdmin");
         }
 
         public async Task<IActionResult> DeleteEventDetails(int id)

@@ -50,7 +50,8 @@ namespace Intillegio.Services
                         StartingDate = v.StartingDate,
                         Name = v.Name,
                         Id = v.Id,
-                        Features = v.Features
+                        Features = v.Features,
+                        ProjectInfo = v.ProjectInfo
                     })
                 .Include(a => a.RelatedProjects)
                 .Include(b => b.Features)
@@ -120,8 +121,6 @@ namespace Intillegio.Services
 
         public async Task AddProjectAsync(AdminProjectBindingModel project)
         {
-            CoreValidator.ThrowIfNull(project);
-
             var model = this.Mapper.Map<Project>(project);
             model.CategoryId = DbContext.Categories.FirstOrDefault(c => c.CategoryName == project.Category).Id;
             model.PartnerId = DbContext.Partners.FirstOrDefault(p => p.Name == project.Partner).Id;

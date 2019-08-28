@@ -54,7 +54,7 @@ namespace Intillegio.DTOs.BindingModels.Admin
 
         [Required]
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; } 
+        public DateTime Date { get; set; } = DateTime.UtcNow;
 
         [Required]
         [StringLength(LengthConstants.MaxLength, MinimumLength = LengthConstants.NameMinLength)]

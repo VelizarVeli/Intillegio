@@ -19,17 +19,15 @@ namespace Intillegio.Services
             userManager = UserManager;
         }
 
-        protected IntillegioContext DbContext { get; private set; }
+        protected IntillegioContext DbContext { get; }
 
-        protected IMapper Mapper { get; private set; }
+        protected IMapper Mapper { get; }
 
-        protected UserManager<IntillegioUser> UserManager { get; private set; }
+        protected UserManager<IntillegioUser> UserManager { get;  set; }
 
         protected async Task<IntillegioUser> GetUserByIdAsync(string id)
         {
             var user = await this.UserManager.FindByIdAsync(id);
-
-            CoreValidator.ThrowIfNull(user, new InvalidUserException());
 
             return user;
         }

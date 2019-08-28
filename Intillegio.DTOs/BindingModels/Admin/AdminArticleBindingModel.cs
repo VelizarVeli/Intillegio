@@ -49,6 +49,7 @@ namespace Intillegio.DTOs.BindingModels.Admin
 
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd MMMM yyyy}")]
         public DateTime Date { get; set; }
 
         public ICollection<Comment> Comments { get; set; }

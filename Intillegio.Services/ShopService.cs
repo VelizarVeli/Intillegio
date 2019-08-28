@@ -69,5 +69,20 @@ namespace Intillegio.Services
                 await DbContext.SaveChangesAsync();
             }
         }
+
+        public async Task AddProductAsync(AdminProductBindingModel product)
+        {
+            var model = Mapper.Map<Product>(product);
+            model.CategoryId = DbContext.Categories.FirstOrDefault(c => c.CategoryName == product.Category).Id;
+            await DbContext.Products.AddAsync(model);
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Category>> GetAllCategories()
+        {
+            var allCategories = await DbContext.Categories.ToListAsync();
+
+            return allCategories;
+        }
     }
 }

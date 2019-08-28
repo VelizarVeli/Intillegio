@@ -47,6 +47,8 @@ namespace Intillegio.Services.Mapping
         private void ConfigureSolutions()
         {
             CreateMap<Solution, SolutionViewModel>();
+            CreateMap<Solution, SolutionBindingModel>();
+            CreateMap<SolutionBindingModel, Solution>();
             CreateMap<Solution, AdminSolutionViewModel>();
             CreateMap<Solution, AdminSolutionBindingModel>();
             CreateMap<AdminSolutionBindingModel, Solution>();
@@ -56,10 +58,12 @@ namespace Intillegio.Services.Mapping
         {
             CreateMap<Event, EventViewModel>();
             CreateMap<Event, AdminEventViewModel>();
-            CreateMap<Event, EventBindingModel>();
+            CreateMap<Event, EventBindingModel>()
+                .ForMember(des => des.StartDate, opt => opt.MapFrom(sr => sr.StartDateTime))
+                .ForMember(des => des.StartTime, opt => opt.MapFrom(sr => sr.StartDateTime));
             CreateMap<EventBindingModel, Event>();
             CreateMap<Event, AdminEventBindingModel>()
-                .ForMember(d => d.StartDate, opt => opt.MapFrom(sr => sr.StartDateTime))
+                .ForMember(des => des.StartDate, opt => opt.MapFrom(sr => sr.StartDateTime))
                 .ForMember(des => des.StartTime, opt => opt.MapFrom(sr => sr.StartDateTime));
             CreateMap<AdminEventBindingModel, Event>();
         }
@@ -82,7 +86,8 @@ namespace Intillegio.Services.Mapping
             CreateMap<Product, ProductBindingModel>();
             CreateMap<ProductBindingModel, Product>();
             CreateMap<Product, AdminProductBindingModel>();
-            CreateMap<AdminProductBindingModel, Product>();
+            CreateMap<AdminProductBindingModel, Product>()
+                .ForMember(d => d.Category, opt => opt.Ignore());
         }
 
         private void ConfigureTeamMembers()

@@ -19,7 +19,7 @@
                 <h4 class="card-title">@Html.DisplayNameFor(model => model.Date)</h4>
             </div>
             <div class="col">
-                <p class="card-text">@Model.Date </p>
+                <p class="card-text">@Html.DisplayFor(d => d.Date, new {@Value = Model.Date.ToString("dd MMMM yyyy")}) </p>
             </div>
         </div>
         <hr />

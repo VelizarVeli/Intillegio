@@ -74,8 +74,6 @@ namespace Intillegio.Services
 
         public async Task AddTeamMemberAsync(AdminTeamMemberBindingModel teamMember)
         {
-            CoreValidator.ThrowIfNull(teamMember);
-
             var model = this.Mapper.Map<TeamMember>(teamMember);
             await DbContext.TeamMembers.AddAsync(model);
             await DbContext.SaveChangesAsync();

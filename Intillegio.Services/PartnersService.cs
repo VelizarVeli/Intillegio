@@ -61,8 +61,6 @@ namespace Intillegio.Services
 
         public async Task AddPartnerAsync(AdminPartnerBindingModel partner)
         {
-            CoreValidator.ThrowIfNull(partner);
-
             var model = this.Mapper.Map<Partner>(partner);
             await DbContext.Partners.AddAsync(model);
             await DbContext.SaveChangesAsync();

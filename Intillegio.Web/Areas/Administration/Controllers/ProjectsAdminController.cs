@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Intillegio.Common.Constants;
 using Intillegio.DTOs.BindingModels;
@@ -69,10 +70,7 @@ namespace Intillegio.Web.Areas.Administration.Controllers
                     Value = ""
                 }
             };
-            foreach (var category in categories)
-            {
-                deptList.Add(new SelectListItem { Text = category.CategoryName });
-            }
+            deptList.AddRange(categories.Select(category => new SelectListItem {Text = category.CategoryName}));
 
             var partners = await _projectsService.GetAllPartners();
             var partList = new List<SelectListItem>
@@ -83,17 +81,16 @@ namespace Intillegio.Web.Areas.Administration.Controllers
                     Value = ""
                 }
             };
-            foreach (var partner in partners)
-            {
-                partList.Add(new SelectListItem { Text = partner.Name });
-            }
+            partList.AddRange(partners.Select(partner => new SelectListItem {Text = partner.Name}));
 
-            var stageList = new List<SelectListItem>();
-            stageList.Add(new SelectListItem
+            var stageList = new List<SelectListItem>
             {
-                Text = "Select",
-                Value = ""
-            });
+                new SelectListItem
+                {
+                    Text = "Select",
+                    Value = ""
+                }
+            };
             foreach (Stage eVal in Enum.GetValues(typeof(Stage)))
             {
                 stageList.Add(new SelectListItem { Text = Enum.GetName(typeof(Stage), eVal), Value = eVal.ToString() });

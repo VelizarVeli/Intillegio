@@ -19,12 +19,18 @@ namespace Intillegio.DTOs.BindingModels
 
         [Required]
         [DataType(DataType.Date)]
-        [Display(Name = "Starting Date")]
-        public DateTime StartDateTime { get; set; }
+        [Display(Name = "Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd MMMM yyyy}")]
+        public DateTime StartDate { get; set; }
 
         [Required]
         [DataType(DataType.Time)]
-        [Display(Name = "Ending Time")]
+        [Display(Name = "Starts")]
+        public DateTime StartTime { get; set; }
+
+        [Required]
+        [Display(Name = "Ends")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd MMMM yyyy H:mm}")]
         public DateTime EndTime { get; set; }
 
         [Required]

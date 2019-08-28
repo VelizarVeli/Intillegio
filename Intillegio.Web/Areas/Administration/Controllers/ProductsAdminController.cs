@@ -1,11 +1,15 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Intillegio.Common.Constants;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Intillegio.Web.Areas.Administration.Controllers
 {
@@ -39,6 +43,31 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             }
 
             return View("ProductDetails", productDetails);
+        }
+
+        public async Task<IActionResult> AddProduct()
+        {
+            var categories = await _productsService.GetAllCategories();
+            var deptList = new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Text = "Select",
+                    Value = ""
+                }
+            };
+            deptList.AddRange(categories.Select(category => new SelectListItem { Text = category.CategoryName }));
+            ViewBag.Category = deptList;
+
+            return View(GlobalConstants.AdminAreaPath + "ProductsAdmin/AddProduct.cshtml");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProduct(AdminProductBindingModel model)
+        {
+            await _productsService.AddProductAsync(model);
+           
+            return RedirectToAction("ProductsAdmin");
         }
 
         public async Task<IActionResult> DeleteProductDetails(int id)

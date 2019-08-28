@@ -36,26 +36,13 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
         public IActionResult AddTeamMember()
         {
-            var listActivityies = new List<ActivityAndSkill>();
-            listActivityies.Add(new ActivityAndSkill{Name = "Good"});
-            listActivityies.Add(new ActivityAndSkill{Name = "Bad"});
-            listActivityies.Add(new ActivityAndSkill{Name = "Fuck"});
-            listActivityies.Add(new ActivityAndSkill{Name = "Person"});
-            listActivityies.Add(new ActivityAndSkill{Name = "Motherfucker"});
-            listActivityies.Add(new ActivityAndSkill{Name = "You"});
-
-            var model = new AdminTeamMemberBindingModel
-            {
-                ActivitiesAndSkills = listActivityies
-            };
-
-            return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddTeamMember.cshtml", model);
+            return View(GlobalConstants.AdminAreaPath + "TeamMembers/AddTeamMember.cshtml");
         }
 
         [HttpPost]
         public async Task<IActionResult> AddTeamMember(AdminTeamMemberBindingModel model)
         {
-            await _aboutService.AddTeamMemberAsync(model); 
+            await _aboutService.AddTeamMemberAsync(model);
 
             return RedirectToAction("TeamMembers");
         }

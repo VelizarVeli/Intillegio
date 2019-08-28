@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Intillegio.Common;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
@@ -36,7 +37,8 @@ namespace Intillegio.Services
                 .SingleOrDefaultAsync(i => i.Id == id);
 
             var eventDto = Mapper.Map<EventBindingModel>(eventure);
-
+            eventDto.StartDate = eventure.StartDateTime.Date;
+            eventDto.StartTime = eventure.StartDateTime;
             return eventDto;
         }
 
@@ -67,6 +69,13 @@ namespace Intillegio.Services
                 DbContext.Events.Remove(eventure);
                 await DbContext.SaveChangesAsync();
             }
+        }
+
+        public async Task AddEventAsync(AdminEventBindingModel eventure)
+        {
+            var model = this.Mapper.Map<Event>(eventure);
+            await DbContext.Events.AddAsync(model);
+            await DbContext.SaveChangesAsync();
         }
     }
 }

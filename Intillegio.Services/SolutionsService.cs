@@ -72,8 +72,6 @@ namespace Intillegio.Services
 
         public async Task AddSolutionAsync(AdminSolutionBindingModel solution)
         {
-            CoreValidator.ThrowIfNull(solution);
-
             var model = this.Mapper.Map<Solution>(solution);
             await DbContext.Solutions.AddAsync(model);
             await DbContext.SaveChangesAsync();
