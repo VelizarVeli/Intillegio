@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Intillegio.Common;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
@@ -100,12 +99,6 @@ namespace Intillegio.Services
                 .Include(a => a.RelatedProjects)
                 .SingleOrDefaultAsync(i => i.Id == id);
 
-
-            //var projectDto = Mapper
-            //    .Map<AdminProjectBindingModel>(DbContext
-            //        .Projects
-            //        .SingleOrDefault(i => i.Id == id));
-
             return projectDto;
         }
 
@@ -140,6 +133,31 @@ namespace Intillegio.Services
             var allPartners = await DbContext.Partners.ToListAsync();
 
             return allPartners;
+        }
+
+        public async Task ProjectEditAsync(AdminEditProjectBindingModel project, int id)
+        {
+            var model = DbContext.Projects.FirstOrDefault(i => i.Id == id);
+
+            Mapper.Map(project, model);
+            DbContext.Projects.Update(model);
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task<AdminEditProjectBindingModel> GetProjectDetailsForAdminEditAsync(int id)
+        {
+            var project = await DbContext
+                .Projects
+                .Include(a => a.RelatedProjects)
+                .SingleOrDefaultAsync(i => i.Id == id);
+
+            var projectDto = Mapper
+                .Map<AdminEditProjectBindingModel>(project);
+            var category = await DbContext.Categories.SingleOrDefaultAsync(c => c.Id == project.CategoryId);
+            var partner = await DbContext.Partners.SingleOrDefaultAsync(p => p.Id == project.PartnerId);
+            projectDto.Partner = partner.Name;
+            projectDto.Category = category.CategoryName;
+            return projectDto;
         }
     }
 }

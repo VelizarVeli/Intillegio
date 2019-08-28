@@ -34,6 +34,12 @@ namespace Intillegio.Services.Mapping
             CreateMap<Project, AdminProjectBindingModel>()
                 .ForMember(d => d.Category, opt => opt.MapFrom(sr => sr.Category.CategoryName))
                 .ForMember(d => d.Features, opt => opt.MapFrom(sr => sr.Features.Select(y => y.ProjectFeature).ToList()));
+            CreateMap<AdminEditProjectBindingModel, Project>()
+                .ForMember(d => d.Category, opt => opt.Ignore())
+                .ForMember(d => d.Partner, opt => opt.Ignore());
+            CreateMap<Project, AdminEditProjectBindingModel>()
+                .ForMember(d => d.Category, opt => opt.MapFrom(sr => sr.Category.CategoryName))
+                .ForMember(d => d.Features, opt => opt.MapFrom(sr => sr.Features.Select(y => y.ProjectFeature).ToList()));
         }
 
         private void ConfigurePartners()

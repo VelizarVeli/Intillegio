@@ -100,7 +100,6 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             ViewBag.Partner = partList;
             ViewBag.Category = deptList;
 
-            //ViewData["ReturnUrl"] = returnUrl;
             return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/AddProject.cshtml");
         }
 
@@ -112,30 +111,19 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             return RedirectToAction("ProjectsAdmin");
         }
 
-        //public IActionResult AddProject()
-        //{
-        //    var projectList = new List<SelectListItem>();
-        //    projectList.Add(new SelectListItem
-        //    {
-        //        Text = "Select",
-        //        Value = ""
-        //    });
 
-        //    foreach (Stage eVal in Enum.GetValues(typeof(Stage)))
-        //    {
-        //        projectList.Add(new SelectListItem { Text = Enum.GetName(typeof(Stage), eVal), Value = eVal.ToString() });
-        //    }
+        public async Task<IActionResult> EditProject(int id)
+        {
+            var editDetails = await _projectsService.GetProjectDetailsForAdminEditAsync(id);
 
-        //    ViewBag.Stage = projectList;
-        //    //ViewData["ReturnUrl"] = returnUrl;
-        //    return View(GlobalConstants.AdminAreaPath + "ProjectsAdmin/AddProject.cshtml");
-        //}
+            return View("EditProject", editDetails);
+        }
 
-        //[HttpPost]
-        //public async Task<IActionResult> CreateProject(ProjectBindingModel model)
-        //{
-        //    await _projectsService.AddProject(model);
-        //    return RedirectToAction("AllProjects");
-        //}
+        [HttpPost]
+        public async Task<IActionResult> ProjectEdit(int id, AdminEditProjectBindingModel model)
+        {
+            await _projectsService.ProjectEditAsync(model, id);
+            return RedirectToAction("ProjectsAdmin");
+        }
     }
 }

@@ -12,8 +12,8 @@
             <partial name="~/Areas/Administration/Views/ProjectsAdmin/Partials/_Details.cshtml" />
             <div class="modal-footer d-flex justify-content-around">
                 <a asp-area="Administration" asp-controller="ProjectsAdmin" asp-action="ProjectsAdmin" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
-                <a asp-area="Administration" asp-controller="ProjectsAdmin" asp-action="EditProject" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-                <a asp-area="Administration" asp-controller="ProjectsAdmin" asp-action="DeleteProjectDetails" asp-route-id="@Model.Id"class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                <a asp-area="Administration" asp-controller="ProjectsAdmin" asp-action="EditProject" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                <a asp-area="Administration" asp-controller="ProjectsAdmin" asp-action="DeleteProjectDetails" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
             </div>
         </div>
     </div>
