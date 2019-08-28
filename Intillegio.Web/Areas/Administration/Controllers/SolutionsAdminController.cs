@@ -67,20 +67,5 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             await _solutionsService.DeleteSolutionAsync(id);
             return RedirectToAction("SolutionDetails");
         }
-
-        public IActionResult CheckEdit()
-        {
-            return View();
-        }
-
-        public IActionResult CheckEditorForCreate()
-        {
-            return View();
-        }
-
-        public IActionResult CheckEditorForDelete()
-        {
-            return View();
-        }
     }
 }

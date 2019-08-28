@@ -1,0 +1,131 @@
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminTeamMemberBindingModel
+<div class="d-flex justify-content-around row">
+    <div class="col-sm-12">
+        <div class="card-body">
+            <h2 class="card-title"><input asp-for="Name" class="form-control" /></h2>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title"><label asp-for="Image350X290"></label></h4>
+            </div>
+            <div class="col">
+                <p class="card-text"><input asp-for="Image350X290" class="form-control" /></p>
+                <span asp-validation-for="Image350X290" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title"><label asp-for="Position"></label></h4>
+            </div>
+            <div class="col">
+                <p class="card-text"><input asp-for="Position" class="form-control" /></p>
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title"><label asp-for="Email"></label></h4>
+            </div>
+            <div class="col">
+                <p class="card-text"><input asp-for="Email" class="form-control" /></p>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title"><label asp-for="PhoneNumber"></label></h4>
+            </div>
+            <div class="col">
+                <p class="card-text"><input asp-for="PhoneNumber" class="form-control" /></p>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <hr />
+    <div class="col-sm-12 mt-2">
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title"><label asp-for="Twitter"></label></h4>
+            </div>
+            <div class="col">
+                <p class="card-text"><input asp-for="Twitter" class="form-control" /></p>
+                <span asp-validation-for="Twitter" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title"><label asp-for="Instagram"></label></h4>
+            </div>
+            <div class="col">
+                <p class="card-text"><input asp-for="Instagram" class="form-control" /></p>
+                <span asp-validation-for="Instagram" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title"><label asp-for="Skype"></label></h4>
+            </div>
+            <div class="col">
+                <p class="card-text"><input asp-for="Skype" class="form-control" /></p>
+                <span asp-validation-for="Skype" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title"><label asp-for="Facebook"></label></h4>
+            </div>
+            <div class="col">
+                <p class="card-text"><input asp-for="Facebook" class="form-control" /></p>
+                <span asp-validation-for="Facebook" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <h4 class="card-title"><label asp-for="Linkedin"></label></h4>
+            </div>
+            <div class="col">
+                <p class="card-text"><input asp-for="Linkedin" class="form-control" /></p>
+                <span asp-validation-for="Linkedin" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+        <div class="col">
+            <h4 class="card-title"><label asp-for="ActivitiesAndSkills"></label></h4>
+        </div>
+        @foreach (var activityOrSkill in @Model.ActivitiesAndSkills)
+        {
+            <div class="col">
+                <p class="card-text"><i class="fa fa-check"></i> @Html.EditorFor(model => activityOrSkill.Name)</p>
+            </div>
+        }
+        <hr />
+        <div class="col">
+            <h4 class="card-title"><label asp-for="ProffessionalSkills"></label></h4>
+        </div>
+        @foreach (var proffessionalSkill in @Model.ProffessionalSkills)
+        {
+            <div class="col">
+                <p class="card-text"><i class="fa fa-check"></i> @Html.EditorFor(model => proffessionalSkill.Name)</p>
+            </div>
+        }
+    </div>
+    <hr />
+    <div class="col-sm-12 mt-2">
+        <div class="col">
+            <h4 class="card-title"><label asp-for="About"></label> @Model.Name.Split(' ')[0]</h4>
+        </div>
+        <div class="col">
+            <p class="card-text"><input asp-for="About" class="form-control" /></p>
+        </div>
+    </div>
+</div>

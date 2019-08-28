@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Intillegio.Common.Constants;
 using Intillegio.DTOs.BindingModels.Admin;
-using Intillegio.DTOs.BindingModels.ViewModels;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Intillegio.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Intillegio.Web.Areas.Administration.Controllers
 {
@@ -69,6 +68,20 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         public async Task<IActionResult> DeleteTeamMember(int id)
         {
             await _aboutService.DeleteTeamMemberAsync(id);
+            return RedirectToAction("TeamMembers");
+        }
+
+        public async Task<IActionResult> EditTeamMember(int id)
+        {
+            var editDetails = await _aboutService.GetTeamMemberDetailsForAdminAsync(id);
+
+            return View("EditTeamMember", editDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> TeamMemberEdit(int id, AdminTeamMemberBindingModel model)
+        {
+            await _aboutService.TeamMemberEditAsync(model, id);
             return RedirectToAction("TeamMembers");
         }
     }

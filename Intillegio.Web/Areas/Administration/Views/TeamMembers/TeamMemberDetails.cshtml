@@ -11,9 +11,7 @@
             <partial name="~/Areas/Administration/Views/TeamMembers/Partials/_Details.cshtml" />
         </div><div class="modal-footer d-flex justify-content-around">
             <a asp-area="Administration" asp-controller="TeamMembers" asp-action="TeamMembers" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
-            <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="CheckEdit" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-            <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="CheckEditorForCreate" class="btn btn-primary"><i class="fa fa-edit"></i> Create</a>
-            <a asp-area="Administration" asp-controller="SolutionsAdmin" asp-action="CheckEditorForDetails" class="btn btn-primary"><i class="fa fa-edit"></i> Details</a>
+            <a asp-area="Administration" asp-controller="TeamMembers" asp-action="EditTeamMember" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
             <a asp-area="Administration" asp-controller="TeamMembers" asp-action="DeleteTeamMemberDetails" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
         </div>
     </div>>
