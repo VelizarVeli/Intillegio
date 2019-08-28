@@ -67,5 +67,19 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             await _eventsService.DeleteEventAsync(id);
             return RedirectToAction("EventsAdmin");
         }
+
+        public async Task<IActionResult> EditEvent(int id)
+        {
+            var editDetails = await _eventsService.GetEventDetailsForAdminEditAsync(id);
+
+            return View("EditEvent", editDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EventEdit(int id, AdminEditEventBindingModel model)
+        {
+            await _eventsService.EventEditAsync(model, id);
+            return RedirectToAction("EventsAdmin");
+        }
     }
 }

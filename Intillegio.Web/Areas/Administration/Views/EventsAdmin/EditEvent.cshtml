@@ -1,0 +1,27 @@
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminEditEventBindingModel
+
+@{
+    ViewData["Title"] = "Edit Event";
+    Layout = "~/Areas/Administration/Shared/_Layout.cshtml";
+}
+<form asp-action="EventEdit">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white">
+                <h5 class="modal-title"><i class="fa fa-meetup"></i> Edit Event</h5>
+            </div>
+            <div class="modal-body">
+                <partial name="~/Areas/Administration/Views/EventsAdmin/Partials/_EditDetail.cshtml" />
+            </div>
+            <div class="modal-header bg-info text-white d-flex justify-content-around">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Save" class="btn btn-success" />
+                <a asp-area="Administration" asp-controller="EventsAdmin" asp-action="EventsAdmin" class="btn btn-secondary"><i class="fa fa-times"></i> Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

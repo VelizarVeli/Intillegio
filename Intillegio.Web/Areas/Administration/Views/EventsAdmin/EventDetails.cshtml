@@ -12,7 +12,7 @@
             <partial name="~/Areas/Administration/Views/EventsAdmin/Partials/_Details.cshtml" />
             <div class="modal-footer d-flex justify-content-around">
                 <a asp-area="Administration" asp-controller="EventsAdmin" asp-action="EventsAdmin" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
-                <a asp-area="Administration" asp-controller="EventsAdmin" asp-action="CheckEdit" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                <a asp-area="Administration" asp-controller="EventsAdmin" asp-action="EditEvent" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
                 <a asp-area="Administration" asp-controller="EventsAdmin" asp-action="DeleteEventDetails" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
             </div>
         </div>

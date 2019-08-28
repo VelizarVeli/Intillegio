@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Intillegio.Common.Constants;
-using Intillegio.DTOs.BindingModels;
 using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
@@ -110,7 +109,6 @@ namespace Intillegio.Web.Areas.Administration.Controllers
 
             return RedirectToAction("ProjectsAdmin");
         }
-
 
         public async Task<IActionResult> EditProject(int id)
         {

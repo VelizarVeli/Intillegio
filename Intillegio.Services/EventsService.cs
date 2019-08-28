@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Intillegio.Common;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
@@ -17,7 +16,7 @@ namespace Intillegio.Services
 {
     public class EventsService : BaseService, IEventsService
     {
-        public EventsService(IntillegioContext dbContext, IMapper mapper, UserManager<IntillegioUser> userManager) 
+        public EventsService(IntillegioContext dbContext, IMapper mapper, UserManager<IntillegioUser> userManager)
             : base(dbContext, mapper, userManager)
         {
         }
@@ -76,6 +75,28 @@ namespace Intillegio.Services
             var model = this.Mapper.Map<Event>(eventure);
             await DbContext.Events.AddAsync(model);
             await DbContext.SaveChangesAsync();
+        }
+
+        public async Task EventEditAsync(AdminEditEventBindingModel eventure, int id)
+        {
+            var model = DbContext.Events.FirstOrDefault(i => i.Id == id);
+
+            Mapper.Map(eventure, model);
+            //model.StartDateTime = eventure.StartDateTime;
+            DbContext.Events.Update(model);
+            await DbContext.SaveChangesAsync();
+        }
+
+        public async Task<AdminEditEventBindingModel> GetEventDetailsForAdminEditAsync(int id)
+        {
+            var eventure = await DbContext
+                .Events
+                .Include(a => a.EventImages)
+                .SingleOrDefaultAsync(i => i.Id == id);
+
+            var eventDto = Mapper
+                .Map<AdminEditEventBindingModel>(eventure);
+            return eventDto;
         }
     }
 }
