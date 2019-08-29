@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Intillegio.Models;
 
 namespace Intillegio.Services.Contracts
 {
-    class ICategoryService
+    public interface ICategoryService
     {
+        Task<IEnumerable<Category>> GetAllCategories();
     }
 }

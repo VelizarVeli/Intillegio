@@ -6,6 +6,17 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Areas\Administration\Models\**" />
+    <Compile Remove="Areas\Administration\ViewModels\**" />
+    <Content Remove="Areas\Administration\Models\**" />
+    <Content Remove="Areas\Administration\ViewModels\**" />
+    <EmbeddedResource Remove="Areas\Administration\Models\**" />
+    <EmbeddedResource Remove="Areas\Administration\ViewModels\**" />
+    <None Remove="Areas\Administration\Models\**" />
+    <None Remove="Areas\Administration\ViewModels\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Font.Awesome" Version="5.10.0" />
@@ -20,12 +31,6 @@
     <ProjectReference Include="..\Intillegio.Data\Intillegio.Data.csproj" />
     <ProjectReference Include="..\Intillegio.Models\Intillegio.Models.csproj" />
     <ProjectReference Include="..\Intillegio.Services\Intillegio.Services.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\ViewModels\" />
   </ItemGroup>
 
 </Project>

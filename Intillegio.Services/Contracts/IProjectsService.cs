@@ -8,7 +8,7 @@ using Intillegio.Models;
 
 namespace Intillegio.Services.Contracts
 {
-    public interface IProjectsService
+    public interface IProjectsService: ICategoryService
     {
         Task<IEnumerable<ProjectViewModel>> GetAllProjects();
         Task<ProjectBindingModel> GetProjectDetailsAsync(int id);
@@ -16,7 +16,6 @@ namespace Intillegio.Services.Contracts
         Task<AdminProjectBindingModel> GetProjectDetailsForAdminAsync(int id);
         Task DeleteProjectAsync(int id);
         Task AddProjectAsync(AdminProjectBindingModel project);
-        Task<IEnumerable<Category>> GetAllCategories();
         Task<IEnumerable<Partner>> GetAllPartners();
         Task ProjectEditAsync(AdminEditProjectBindingModel project, int id);
         Task<AdminEditProjectBindingModel> GetProjectDetailsForAdminEditAsync(int id);

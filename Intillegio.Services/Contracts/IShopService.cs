@@ -4,11 +4,10 @@ using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.DTOs.BindingModels.Admin;
-using Intillegio.Models;
 
 namespace Intillegio.Services.Contracts
 {
-    public interface IShopService
+    public interface IShopService:ICategoryService
     {
         IEnumerable<ProductViewModel> GetAllProducts();
         Task<ProductBindingModel> GetProductDetailsAsync(int id);
@@ -16,7 +15,6 @@ namespace Intillegio.Services.Contracts
         Task<AdminProductBindingModel> GetProductDetailsForAdminAsync(int id);
         Task DeleteProductAsync(int id);
         Task AddProductAsync(AdminProductBindingModel product);
-        Task<IEnumerable<Category>> GetAllCategories();
         Task ProductEditAsync(AdminEditProductBindingModel product, int id);
         Task<AdminEditProductBindingModel> GetProductDetailsForAdminEditAsync(int id);
     }

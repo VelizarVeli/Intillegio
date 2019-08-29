@@ -4,11 +4,10 @@ using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.DTOs.BindingModels.Admin;
-using Intillegio.Models;
 
 namespace Intillegio.Services.Contracts
 {
-    public interface IBlogService
+    public interface IBlogService:ICategoryService
     {
         Task<IEnumerable<ArticleViewModel>> GetAllArticles();
         Task<IEnumerable<ArticleViewModel>> GetArticles();
@@ -17,7 +16,6 @@ namespace Intillegio.Services.Contracts
         Task<AdminArticleBindingModel> GetArticleDetailsForAdminAsync(int id);
         Task AddArticleAsync(AdminArticleBindingModel article);
         Task DeleteArticleAsync(int id);
-        Task<IEnumerable<Category>> GetAllCategories();
         Task ArticleEditAsync(AdminEditArticleBindingModel article, int id);
         Task<AdminEditArticleBindingModel> GetArticleDetailsForAdminEditAsync(int id);
     }
