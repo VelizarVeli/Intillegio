@@ -8,15 +8,14 @@ using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Intillegio.Services
 {
     public class PartnersService : BaseService, IPartnersService
     {
-        public PartnersService(IntillegioContext dbContext, IMapper mapper, UserManager<IntillegioUser> userManager)
-            : base(dbContext, mapper, userManager)
+        public PartnersService(IntillegioContext dbContext, IMapper mapper)
+            : base(dbContext, mapper)
         {
         }
 

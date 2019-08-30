@@ -10,15 +10,14 @@ using Intillegio.DTOs.BindingModels;
 using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Intillegio.Services
 {
     public class BlogService : BaseService, IBlogService
     {
-        public BlogService(IntillegioContext dbContext, IMapper mapper, UserManager<IntillegioUser> userManager)
-            : base(dbContext, mapper, userManager)
+        public BlogService(IntillegioContext dbContext, IMapper mapper)
+            : base(dbContext, mapper)
         {
         }
 
