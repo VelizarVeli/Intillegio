@@ -17,11 +17,6 @@ namespace Intillegio.Web.Tests
         [Fact]
         public void GetAllTeamMembersShouldGetTeamMambersCorrecly()
         {
-            //var mapper = new Mock<Mapper.Map<IEnumerable<TeamMemberViewModel>>(
-            //    dbContext.TeamMembers);
-            //Mapper.Map<IEnumerable<TeamMemberViewModel>>(
-            //    DbContext.TeamMembers);
-
             var mockList = new List<TeamMemberViewModel>();
             mockList.Add(new TeamMemberViewModel
             {
@@ -51,7 +46,7 @@ namespace Intillegio.Web.Tests
                     .Options;
             var dbContext = new IntillegioContext(options);
 
-            var mapper = new Mock<Mapper>();
+            var mapper = new Mock<IMapper>();
             mapper.Setup(m => m.Map<IEnumerable<TeamMemberViewModel>>(
                 dbContext.TeamMembers))
             .Returns(mockList);
@@ -69,9 +64,8 @@ namespace Intillegio.Web.Tests
             var allTeamMembers = service.GetAllTeamMembers();
 
             Assert.NotNull(allTeamMembers);
-            //Assert.Equal(1, 1/*teamMembersCount, allTeamMembers*/);
+            //Assert.Equal();
         }
-
 
         [Fact]
         public void TeamMemberBindingModelGetTeamMemberDetailsAsyncShouldReturnTeamMemberDetailsCorrectly()
@@ -104,7 +98,7 @@ namespace Intillegio.Web.Tests
                 .Include(p => p.ProffessionalSkills)
                 .SingleOrDefaultAsync(i => i.Id == 1);
 
-            var mapper = new Mock<Mapper>();
+            var mapper = new Mock<IMapper>();
             mapper.Setup(m => m.Map<TeamMemberBindingModel>(teamMember1))
                 .Returns(teamMemberBindingModel);
             service.GetTeamMemberDetailsAsync(1);
