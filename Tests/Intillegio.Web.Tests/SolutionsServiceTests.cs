@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.Models;
 using Intillegio.Services;
@@ -13,7 +14,7 @@ namespace Intillegio.Web.Tests
     public class SolutionsServiceTests
     {
         [Fact]
-        public void GetAllSolutionsShouldGetSolutionsCorrecly()
+        public void GetAllSolutionsShouldGetSolutionsCorrectly()
         {
             var mockList = new List<SolutionViewModel>
             {
@@ -32,7 +33,7 @@ namespace Intillegio.Web.Tests
             };
 
             var options = new DbContextOptionsBuilder<IntillegioContext>()
-                .UseInMemoryDatabase(databaseName: "Get_All_Articles_Db")
+                .UseInMemoryDatabase(databaseName: "Get_All_Solutions_Db")
                 .Options;
             var dbContext = new IntillegioContext(options);
 
@@ -52,6 +53,50 @@ namespace Intillegio.Web.Tests
             var service = new SolutionsService(dbContext, mapper.Object);
 
             var allSolutions = service.GetAllSolutions();
+
+            Assert.NotNull(allSolutions);
+        }
+
+        [Fact]
+        public void GetAllSolutionsForAdminShouldGetSolutionsCorrectly()
+        {
+            var mockList = new List<AdminSolutionViewModel>
+            {
+                new AdminSolutionViewModel
+                {
+                    Name = "Business Solutions",
+                    Image255X155 = "http://specthemes.com/redbiz/redbiz-5/img/content/services/service-1b.jpg",
+                    About = "A business solution comes in terms of marketing and advertising, payroll,accounting market research and investigation, among the other essential Business Technology .",
+                },
+                new AdminSolutionViewModel
+                {
+                    Name = "Development Manager",
+                    Image255X155 = "http://specthemes.com/redbiz/redbiz-5/img/content/services/service-2b.jpg",
+                    About = "Career Development Process- Development managers are responsible for developing the group.",
+                }
+            };
+
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Get_All_Solutions_for_Admin_Db")
+                .Options;
+            var dbContext = new IntillegioContext(options);
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<IEnumerable<AdminSolutionViewModel>>(
+                    dbContext.Solutions))
+                .Returns(mockList);
+
+            var solutionCount = 6;
+
+            for (int i = 0; i < solutionCount; i++)
+            {
+                dbContext.Solutions.Add(new Solution());
+            }
+
+            dbContext.SaveChanges();
+            var service = new SolutionsService(dbContext, mapper.Object);
+
+            var allSolutions = service.GetAllSolutionsForAdmin();
 
             Assert.NotNull(allSolutions);
         }

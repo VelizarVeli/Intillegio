@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.Models;
 using Intillegio.Services;
@@ -15,7 +16,7 @@ namespace Intillegio.Web.Tests
    public class EventsServiceTests
     {
         [Fact]
-        public void GetAllEventsShouldGetEventsCorrecly()
+        public void GetAllEventsShouldGetEventsCorrectly()
         {
             var mockList = new List<EventViewModel>
             {
@@ -34,7 +35,7 @@ namespace Intillegio.Web.Tests
             };
 
             var options = new DbContextOptionsBuilder<IntillegioContext>()
-                .UseInMemoryDatabase(databaseName: "Get_All_Articles_Db")
+                .UseInMemoryDatabase(databaseName: "Get_All_Events_Db")
                 .Options;
             var dbContext = new IntillegioContext(options);
 
@@ -54,6 +55,46 @@ namespace Intillegio.Web.Tests
             var service = new EventsService(dbContext, mapper.Object);
 
             var allEvents =  service.GetAllEvents();
+
+            Assert.NotNull(allEvents);
+        }
+
+        [Fact]
+        public void GetAllEventsForAdminShouldGetEventsCorrectly()
+        {
+            var mockList = new List<AdminEventViewModel>
+            {
+                new AdminEventViewModel
+                {
+                    StartDateTime = DateTime.ParseExact("2019-08-22 0:00", "yyyy-MM-dd H:mm", CultureInfo.InvariantCulture),
+                    Name = "BNI Gathering",
+                    Place = "Elias Canneti Centre",
+                    Town = "Ruse, Bulgaria",
+                    Id = 1,
+                }
+            };
+
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Get_All_Events_for_Admin_Db")
+                .Options;
+            var dbContext = new IntillegioContext(options);
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<IEnumerable<AdminEventViewModel>>(
+                    dbContext.Articles))
+                .Returns(mockList);
+
+            var eventsCount = 8;
+
+            for (int i = 0; i < eventsCount; i++)
+            {
+                dbContext.Events.Add(new Event());
+            }
+
+            dbContext.SaveChanges();
+            var service = new EventsService(dbContext, mapper.Object);
+
+            var allEvents = service.GetAllEventsForAdmin();
 
             Assert.NotNull(allEvents);
         }

@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.Models;
 using Intillegio.Services;
@@ -14,34 +17,7 @@ namespace Intillegio.Web.Tests
    public class BlogServiceTests
     {
         [Fact]
-        public void GetAllCategoriesShouldReturnCategories()
-        {
-            var options = new DbContextOptionsBuilder<IntillegioContext>()
-                .UseInMemoryDatabase(databaseName: "Get_All_Categories_Db")
-                .Options;
-
-            var dbContext = new IntillegioContext(options);
-
-            var categoriesCount = 4;
-            var compareCategories = new List<Category>();
-            for (int i = 0; i < categoriesCount; i++)
-            {
-                var category = new Category();
-                dbContext.Categories.Add(category);
-                compareCategories.Add(category);
-            }
-
-            dbContext.SaveChanges();
-
-            var service = new BlogService(dbContext, null);
-
-            var categories = service.GetAllCategories();
-
-            Assert.Equal(compareCategories, categories.Result);
-        }
-
-        [Fact]
-        public async Task<IEnumerable<ArticleViewModel>>GetAllArticlesShouldGetArticlesCorrecly()
+        public async Task<IEnumerable<ArticleViewModel>> GetAllArticlesShouldGetArticlesCorrectly()
         {
             var mockList = new List<ArticleViewModel>
             {
@@ -88,6 +64,80 @@ namespace Intillegio.Web.Tests
             var service = new BlogService(dbContext, mapper.Object);
 
             var allArticles = await service.GetAllArticles();
+
+            Assert.NotNull(allArticles);
+            return allArticles;
+        }
+
+        [Fact]
+        public void GetAllCategoriesShouldReturnCategoriesCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Get_All_Categories_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var categoriesCount = 4;
+            var compareCategories = new List<Category>();
+            for (int i = 0; i < categoriesCount; i++)
+            {
+                var category = new Category();
+                dbContext.Categories.Add(category);
+                compareCategories.Add(category);
+            }
+
+            dbContext.SaveChanges();
+
+            var service = new BlogService(dbContext, null);
+
+            var categories = service.GetAllCategories();
+
+            Assert.Equal(compareCategories, categories.Result);
+        }
+
+        [Fact]
+        public async Task<IEnumerable<AdminArticleViewModel>> GetAllArticlesForAdminShouldGetArticlesCorrectly()
+        {
+            var mockList = new List<AdminArticleViewModel>
+            {
+                new AdminArticleViewModel
+                {
+                    Name = "Advices for young designers",
+                    CategoryName = "Marketing Strategy",
+                    Id = 1,
+                    Date =  DateTime.ParseExact("2019-05-12 0:00", "yyyy-MM-dd H:mm", CultureInfo.InvariantCulture),
+                },
+                new AdminArticleViewModel
+                {
+                    Name = "Advices for young designers",
+                    CategoryName = "Marketing Strategy",
+                    Id = 1,
+                    Date =  DateTime.ParseExact("2019-06-06 0:00", "yyyy-MM-dd H:mm", CultureInfo.InvariantCulture),
+                }
+            };
+
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Get_All_Articles_for_Admin_Db")
+                .Options;
+            var dbContext = new IntillegioContext(options);
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<IEnumerable<AdminArticleViewModel>>(
+                    dbContext.Articles))
+                .Returns(mockList);
+
+            var articlesCount = 5;
+
+            for (int i = 0; i < articlesCount; i++)
+            {
+                dbContext.Articles.Add(new Article());
+            }
+
+            dbContext.SaveChanges();
+            var service = new BlogService(dbContext, mapper.Object);
+
+            var allArticles = await service.GetAllArticlesForAdmin();
             
             Assert.NotNull(allArticles);
             return allArticles;

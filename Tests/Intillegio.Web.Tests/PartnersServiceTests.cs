@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.Models;
 using Intillegio.Services;
@@ -15,7 +16,7 @@ namespace Intillegio.Web.Tests
   public  class PartnersServiceTests
     {
         [Fact]
-        public void GetPartnersLogosShouldGetPartnersLogosCorrecly()
+        public void GetPartnersLogosShouldGetPartnersLogosCorrectly()
         {
             var mockList = new List<PartnerViewModel>
             {
@@ -40,7 +41,7 @@ namespace Intillegio.Web.Tests
             };
 
             var options = new DbContextOptionsBuilder<IntillegioContext>()
-                .UseInMemoryDatabase(databaseName: "Get_All_Articles_Db")
+                .UseInMemoryDatabase(databaseName: "Get_All_Partners_Db")
                 .Options;
             var dbContext = new IntillegioContext(options);
 
@@ -60,6 +61,50 @@ namespace Intillegio.Web.Tests
             var service = new PartnersService(dbContext, mapper.Object);
 
             var allPartners = service.GetPartnersLogos();
+
+            Assert.NotNull(allPartners);
+        }
+
+        [Fact]
+        public void GetPartnersForAdminShouldGetPartnersCorrectly()
+        {
+            var mockList = new List<AdminPartnerViewModel>
+            {
+                new AdminPartnerViewModel
+                {
+                    Name = "Google"
+                },
+                new AdminPartnerViewModel
+                {
+                    Name = "NASA"
+                },
+                new AdminPartnerViewModel
+                {
+                    Name = "Microsoft"
+                }
+            };
+
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Get_All_Partners_for_Admin_Db")
+                .Options;
+            var dbContext = new IntillegioContext(options);
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<IEnumerable<AdminPartnerViewModel>>(
+                    dbContext.Partners))
+                .Returns(mockList);
+
+            var partnerCount = 3;
+
+            for (int i = 0; i < partnerCount; i++)
+            {
+                dbContext.Partners.Add(new Partner());
+            }
+
+            dbContext.SaveChanges();
+            var service = new PartnersService(dbContext, mapper.Object);
+
+            var allPartners = service.GetPartnersForAdmin();
 
             Assert.NotNull(allPartners);
         }

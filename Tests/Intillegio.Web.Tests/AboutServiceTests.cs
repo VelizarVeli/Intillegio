@@ -2,6 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
+using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels;
 using Intillegio.Models;
@@ -15,7 +16,7 @@ namespace Intillegio.Web.Tests
     public class AboutServiceTests
     {
         [Fact]
-        public void GetAllTeamMembersShouldGetTeamMambersCorrecly()
+        public void GetAllTeamMembersShouldGetTeamMambersCorrectly()
         {
             var mockList = new List<TeamMemberViewModel>();
             mockList.Add(new TeamMemberViewModel
@@ -123,7 +124,7 @@ namespace Intillegio.Web.Tests
         public void AddTeamMemberAsyncShouldReturnTeamMemberCorrectly()
         {
             var options = new DbContextOptionsBuilder<IntillegioContext>()
-                .UseInMemoryDatabase(databaseName: "Get_TeamMember_Details_Db")
+                .UseInMemoryDatabase(databaseName: "Add_TeamMember_Db")
                 .Options;
 
             var dbContext = new IntillegioContext(options);
@@ -161,6 +162,45 @@ namespace Intillegio.Web.Tests
             Assert.Equal(teamMemberBindingModel.Instagram, teamMember.Instagram);
             Assert.Equal(teamMemberBindingModel.Skype, teamMember.Skype);
             Assert.Equal(teamMemberBindingModel.Linkedin, teamMember.Linkedin);
+        }
+
+        [Fact]
+        public void GetTeamMembersForAdminShouldGetTeamMambersCorrectly()
+        {
+            var mockList = new List<AdminTeamMemberViewModel>
+            {
+                new AdminTeamMemberViewModel
+                {
+                    Name = "Jack Semper	",
+                    Id = 1,
+                    PhoneNumber = "(+123) 123 456 789",
+                    Email = "semper@gmail.com",
+                    Position = "Majority Owner",
+                }
+            };
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Get_All_TeamMembers_for_Admin_Db")
+                .Options;
+            var dbContext = new IntillegioContext(options);
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<IEnumerable<AdminTeamMemberViewModel>>(
+                    dbContext.TeamMembers))
+                .Returns(mockList);
+
+            var teamMembersCount = 5;
+
+            for (int i = 0; i < teamMembersCount; i++)
+            {
+                dbContext.TeamMembers.Add(new TeamMember());
+            }
+
+            dbContext.SaveChanges();
+            var service = new AboutService(dbContext, mapper.Object);
+
+            var allTeamMembers = service.GetAllTeamMembers();
+
+            Assert.NotNull(allTeamMembers);
         }
     }
 }
