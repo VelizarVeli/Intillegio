@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Intillegio.Common.Constants;
 using Intillegio.DTOs.BindingModels.Admin;
@@ -29,7 +29,9 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         public async Task<IActionResult> ArticlesAdmin()
         {
             var allArticles = await _articlesService.GetAllArticlesForAdmin();
-
+            var categories = await _articlesService.GetAllCategories();
+            var categoryCount = categories.Count();
+            ViewBag.CategoryCount = categoryCount;
             return View(GlobalConstants.AdminAreaPath + "ArticlesAdmin/ArticlesAdmin.cshtml", allArticles);
         }
 
@@ -45,7 +47,7 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             return View("ArticleDetails", articleDetails);
         }
 
-        public async Task<IActionResult> AddArticle(string returnUrl = null)
+        public async Task<IActionResult> AddArticle()
         {
             var categories = await _articlesService.GetAllCategories();
             var deptList = new List<SelectListItem>
@@ -62,8 +64,6 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             }
 
             ViewBag.Category = deptList;
-
-            ViewData["ReturnUrl"] = returnUrl;
 
             return View(GlobalConstants.AdminAreaPath + "ArticlesAdmin/AddArticle.cshtml");
         }

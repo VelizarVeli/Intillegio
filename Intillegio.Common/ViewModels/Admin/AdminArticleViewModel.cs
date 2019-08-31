@@ -11,5 +11,7 @@ namespace Intillegio.Common.ViewModels.Admin
         public string CategoryName { get; set; }
 
         public DateTime Date { get; set; }
+
+        public int NumberOfCategories { get; set; }
     }
 }

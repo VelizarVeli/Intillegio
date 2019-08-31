@@ -70,6 +70,7 @@ namespace Intillegio.Services
                 Date = v.Date
 
             }).ToListAsync();
+
             return allArticles;
         }
 
@@ -88,6 +89,13 @@ namespace Intillegio.Services
 
         public async Task AddArticleAsync(AdminArticleBindingModel article)
         {
+            if (article.Category == null)
+            {
+                var newCategory = new Category{CategoryName = article.NewCategory};
+                await DbContext.Categories.AddAsync(newCategory);
+                await DbContext.SaveChangesAsync();
+                article.Category = article.NewCategory;
+            }
             var model = Mapper.Map<Article>(article);
             model.Date = DateTime.UtcNow;
             model.CategoryId = DbContext.Categories.FirstOrDefault(ca =>

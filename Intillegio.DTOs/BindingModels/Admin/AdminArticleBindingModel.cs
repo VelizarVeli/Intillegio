@@ -22,8 +22,9 @@ namespace Intillegio.DTOs.BindingModels.Admin
         [Required]
         public string Content { get; set; }
 
-        [Required]
         public string Category { get; set; }
+
+        public string NewCategory { get; set; }
 
         [Display(Name = "Video Link")]
         public string VideoLink { get; set; }
