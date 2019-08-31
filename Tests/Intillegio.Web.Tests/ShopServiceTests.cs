@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +13,7 @@ using Xunit;
 
 namespace Intillegio.Web.Tests
 {
-   public class ShopServiceTests
+    public class ShopServiceTests
     {
         [Fact]
         public void GetAllProductsShouldGetProductsCorrectly()
@@ -86,6 +88,41 @@ namespace Intillegio.Web.Tests
             var categories = service.GetAllCategories();
 
             Assert.Equal(compareCategories, categories.Result);
+        }
+
+        [Fact]
+        public void AddProductAsyncShouldReturnProductCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Add_Product_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var productBindingModel = new AdminProductBindingModel
+            {
+                Name = "The Empire Strikes Back",
+                Image255X325 = "https://pictures.abebooks.com/isbn/9780345400789-uk.jpg",
+                Price = 12.3M,
+                Image135X135 = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328866630l/555314.jpg"
+            };
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<Product>(productBindingModel))
+                .Returns(new Product
+                {
+                    Name = "The Empire Strikes Back",
+                    Image255X325 = "https://pictures.abebooks.com/isbn/9780345400789-uk.jpg",
+                    Price = 12.3M,
+                    Image135X135 = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328866630l/555314.jpg"
+                });
+
+            var service = new ShopService(dbContext, mapper.Object);
+            service.AddProductAsync(productBindingModel);
+            Assert.True(dbContext.Products.Any(n => n.Name == productBindingModel.Name));
+            Assert.True(dbContext.Products.Any(a => a.Image135X135 == productBindingModel.Image135X135));
+            Assert.True(dbContext.Products.Any(b => b.Price == productBindingModel.Price));
+            Assert.True(dbContext.Products.Any(c => c.Image135X135 == productBindingModel.Image135X135));
         }
 
         [Fact]

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services;
 using Microsoft.EntityFrameworkCore;
@@ -141,6 +143,43 @@ namespace Intillegio.Web.Tests
             
             Assert.NotNull(allArticles);
             return allArticles;
+        }
+
+        [Fact]
+        public void AddArticleAsyncShouldReturnTeamMemberCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Add_Article_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var articleBindingModel = new AdminArticleBindingModel
+            {
+                Image350X220 = "http://specthemes.com/redbiz/redbiz-5/img/thumbs/t-1.jpg",
+                Name = "Advices for young designers",
+                Image825X530 = "http://specthemes.com/redbiz/redbiz-5/img/blog/blog-post.jpg",
+                Image390X245 = "http://specthemes.com/redbiz/redbiz-5/img/blog/blog-4.jpg",
+                Image65X65 = "http://specthemes.com/redbiz/redbiz-5/img/thumbs/t-1.jpg",
+                Content = "There’s a lot that goes into becoming a truly great designer. It can’t be done by simply reading a book or watching a YouTube video."
+            };
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<Article>(articleBindingModel))
+                .Returns(new Article
+                {
+                    Image350X220 = "http://specthemes.com/redbiz/redbiz-5/img/thumbs/t-1.jpg",
+                    Name = "Advices for young designers",
+                    Image825X530 = "http://specthemes.com/redbiz/redbiz-5/img/blog/blog-post.jpg",
+                    Image390X245 = "http://specthemes.com/redbiz/redbiz-5/img/blog/blog-4.jpg",
+                    Image65X65 = "http://specthemes.com/redbiz/redbiz-5/img/thumbs/t-1.jpg",
+                    Content = "There’s a lot that goes into becoming a truly great designer. It can’t be done by simply reading a book or watching a YouTube video."
+                });
+
+            var service = new BlogService(dbContext, mapper.Object);
+            service.AddArticleAsync(articleBindingModel);
+            Assert.True(dbContext.Articles.Any(n => n.Name == articleBindingModel.Name));
+            Assert.True(dbContext.Articles.Any(a => a.Image350X220 == articleBindingModel.Image350X220));
         }
     }
 }

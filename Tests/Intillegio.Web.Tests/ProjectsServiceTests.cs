@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services;
 using Microsoft.EntityFrameworkCore;
@@ -50,6 +52,35 @@ namespace Intillegio.Web.Tests
             var allProjects = service.GetAllProjects();
 
             Assert.NotNull(allProjects);
+        }
+
+        [Fact]
+        public void AddProjectAsyncShouldReturnProjectCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Add_Project_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var projectBindingModel = new AdminProjectBindingModel
+            {
+                Name = "Venera Base",
+                Image350X350 = "https://i.postimg.cc/PrSsz2qS/141222115103-cloud-city-horizontal-large-gallery.png"
+            };
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<Project>(projectBindingModel))
+                .Returns(new Project
+                {
+                    Name = "Venera Base",
+                    Image350X350 = "https://i.postimg.cc/PrSsz2qS/141222115103-cloud-city-horizontal-large-gallery.png"
+                });
+
+            var service = new ProjectsService(dbContext, mapper.Object);
+            service.AddProjectAsync(projectBindingModel);
+            Assert.True(dbContext.Projects.Any(n => n.Name == projectBindingModel.Name));
+            Assert.True(dbContext.Projects.Any(b => b.Image350X350 == projectBindingModel.Image350X350));
         }
 
         [Fact]

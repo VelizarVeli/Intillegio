@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +57,39 @@ namespace Intillegio.Web.Tests
             var allSolutions = service.GetAllSolutions();
 
             Assert.NotNull(allSolutions);
+        }
+
+
+        [Fact]
+        public void AddSolutionAsyncShouldReturnSolutionCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Add_Solution_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var solutionBindingModel = new AdminSolutionBindingModel
+            {
+                Name = "Development Manager",
+                Image255X155 = "http://specthemes.com/redbiz/redbiz-5/img/content/services/service-2b.jpg",
+                About = "Career Development Process- Development managers are responsible for developing the group.",
+            };
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<Solution>(solutionBindingModel))
+                .Returns(new Solution
+                {
+                    Name = "Development Manager",
+                    Image255X155 = "http://specthemes.com/redbiz/redbiz-5/img/content/services/service-2b.jpg",
+                    About = "Career Development Process- Development managers are responsible for developing the group.",
+                });
+
+            var service = new SolutionsService(dbContext, mapper.Object);
+            service.AddSolutionAsync(solutionBindingModel);
+            Assert.True(dbContext.Solutions.Any(n => n.Name == solutionBindingModel.Name));
+            Assert.True(dbContext.Solutions.Any(a => a.Image255X155 == solutionBindingModel.Image255X155));
+            Assert.True(dbContext.Solutions.Any(b => b.About == solutionBindingModel.About));
         }
 
         [Fact]

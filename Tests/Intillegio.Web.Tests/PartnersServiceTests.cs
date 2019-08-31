@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
+using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services;
 using Microsoft.EntityFrameworkCore;
@@ -63,6 +63,39 @@ namespace Intillegio.Web.Tests
             var allPartners = service.GetPartnersLogos();
 
             Assert.NotNull(allPartners);
+        }
+
+        [Fact]
+        public void AddPartnerAsyncShouldReturnPartnerCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Add_Partner_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var partnerBindingModel = new AdminPartnerBindingModel
+            {
+                Name = "Google",
+                Logo155X75 = "https://i.postimg.cc/3wD5nJWy/Google.png",
+                About = "Our mission is to organize the world’s information and make it universally accessible and useful.",
+
+            };
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<Partner>(partnerBindingModel))
+                .Returns(new Partner
+                {
+                    Name = "Google",
+                    Logo155X75 = "https://i.postimg.cc/3wD5nJWy/Google.png",
+                    About = "Our mission is to organize the world’s information and make it universally accessible and useful.",
+                });
+
+            var service = new PartnersService(dbContext, mapper.Object);
+            service.AddPartnerAsync(partnerBindingModel);
+            Assert.True(dbContext.Partners.Any(n => n.Name == partnerBindingModel.Name));
+            Assert.True(dbContext.Partners.Any(a => a.Logo155X75 == partnerBindingModel.Logo155X75));
+            Assert.True(dbContext.Partners.Any(b => b.About == partnerBindingModel.About));
         }
 
         [Fact]
