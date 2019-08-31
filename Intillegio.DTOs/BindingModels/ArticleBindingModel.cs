@@ -16,8 +16,7 @@ namespace Intillegio.DTOs.BindingModels
         public string Content { get; set; }
 
         [Required]
-        public int CategoryId { get; set; }
-        public Category ArticleCategory { get; set; }
+        public string Category { get; set; }
 
         public string VideoLink { get; set; }
 

@@ -1,0 +1,97 @@
+﻿@model Intillegio.DTOs.BindingModels.ArticleBindingModel
+<div class="col-md-9 col-sm-8 col-12">
+    <div class="blog-list-left">
+        <img src="@Model.Image825X530" alt="img">
+        <div class="data-box">
+            <h4>23</h4>
+            <strong>Mar</strong>
+        </div>
+        <div class="blog-title-box">
+            <h2>@Model.Name</h2>
+            <span><i class="fa fa-calendar"></i> @Model.Date.ToString("dd MMMM yyyy")</span>
+            <span><i class="fa fa-list-ul"></i>	@Model.Category</span>
+        </div>
+        <div class="blog-post-content">
+            <p>
+                @Model.Content
+            </p>
+            <blockquote class="blockquote">
+                <p>
+                    Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.
+                </p>
+                <h4>- Tomas Edison</h4>
+            </blockquote>
+            <div class="row mt-30">
+                <partial name="~/Views/Blog/PartialViews/ArticleDetails/_VideoBox.cshtml" />
+                <div class="col-md-6 col-sm-6 col-12">
+                    <div class="blog-list-bottom-text">
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                            since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged. but also the leap into electronic typesetting,
+                            remaining essentially unchanged.It was popularised in the 1960s with Letraset.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                also the leap into electronic typesetting, remaining essentially unchanged. but also the leap into electronic typesetting, remaining essentially
+                unchanged.It was popularised in the 1960s with Letraset.
+            </p>
+            <div class="blog-comments mt-50">
+                <h3 class="mt-0">All Comments:</h3>
+                <div class="blog-comment-user">
+                    <div class="row mt-20">
+                        <div class="col-md-1 hidden-sm-down pr-0">
+                            <img src="http://via.placeholder.com/50x50" alt="user">
+                        </div>
+                        <div class="col-md-11 col-12">
+                            <div class="comment-block">
+                                <h6>John Doe</h6><strong>07.03.2018</strong>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia magna vel molestie faucibus. Donec auctor et urnaLorem ipsum dolor
+                                    sit amet, consectetur adipiscing elit. Cras lacinia magna vel molestie faucibus.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-comment-user">
+                    <div class="row">
+                        <div class="col-md-1 hidden-sm-down pr-0">
+                            <img src="http://via.placeholder.com/50x50" alt="user">
+                        </div>
+                        <div class="col-md-11 col-12">
+                            <div class="comment-block">
+                                <h6>Emily Watson</h6><strong>10.03.2018</strong>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia magna vel molestie faucibus. Donec auctor et urnaLorem ipsum dolor
+                                    sit amet, consectetur adipiscing elit. Cras lacinia magna vel molestie faucibus.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mt-30">Your Comment:</h3>
+                <form class="comment-form" method="post" autocomplete="off">
+                    <div class="row">
+                        <div class="col-6">
+                            <input name="name" placeholder="Your Name">
+                        </div>
+                        <div class="col-6">
+                            <input name="email" placeholder="E-mail adress" type="email">
+                        </div>
+                        <div class="col-12">
+                            <textarea name="message" placeholder="Your Message"></textarea>
+                        </div>
+                    </div>
+                </form>
+                <div class="mt-10 left-holder">
+                    <a href="#" class="primary-button button-md">Send Comment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

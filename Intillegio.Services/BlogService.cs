@@ -54,9 +54,9 @@ namespace Intillegio.Services
 
         public async Task<ArticleBindingModel> GetArticleDetailsAsync(int id)
         {
-            var articleModel = await DbContext.Articles.SingleOrDefaultAsync(e => e.Id == id);
+            var articleModel = await DbContext.Articles.Include(c => c.CategoryName).SingleOrDefaultAsync(e => e.Id == id);
             var article = Mapper.Map<ArticleBindingModel>(articleModel);
-
+            article.Category = articleModel.CategoryName.CategoryName;
             return article;
         }
 
@@ -123,7 +123,21 @@ namespace Intillegio.Services
 
         public async Task ArticleEditAsync(AdminEditArticleBindingModel article, int id)
         {
+            var categoryName = await DbContext.Categories.FirstOrDefaultAsync(a => a.CategoryName == article.Category);
+            
             var model = DbContext.Articles.FirstOrDefault(i => i.Id == id);
+            if (categoryName == null)
+            {
+                var newCategory = new Category { CategoryName = article.Category };
+                await DbContext.Categories.AddAsync(newCategory);
+                await DbContext.SaveChangesAsync();
+                article.Category = article.Category;
+                model.CategoryId = newCategory.Id;
+            }
+            else
+            {
+                model.CategoryId = categoryName.Id;
+            }
 
             Mapper.Map(article, model);
             DbContext.Articles.Update(model);
