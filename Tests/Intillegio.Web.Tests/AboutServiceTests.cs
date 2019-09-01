@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
@@ -67,7 +66,6 @@ namespace Intillegio.Web.Tests
             var allTeamMembers = service.GetAllTeamMembers();
 
             Assert.NotNull(allTeamMembers);
-            //Assert.Equal();
         }
 
         [Fact]
@@ -208,6 +206,57 @@ namespace Intillegio.Web.Tests
             var allTeamMembers = service.GetAllTeamMembers();
 
             Assert.NotNull(allTeamMembers);
+        }
+
+        [Fact]
+        public void TeamMemberEditAsyncShouldEditTeamMemberCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Edit_TeamMember_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var service = new AboutService(dbContext, null);
+
+            var teamMember = new TeamMember()
+            {
+                Name = "Jack Semper	",
+                Id = 1,
+                PhoneNumber = "(+123) 123 456 789",
+                Email = "semper@gmail.com",
+                Position = "Majority Owner",
+            };
+
+            dbContext.TeamMembers.Add(teamMember);
+            dbContext.SaveChanges();
+
+            var adminTeamMemberBindingModel = new AdminTeamMemberBindingModel()
+            {
+                Name = "Jack Ripper	",
+                Id = 1,
+                PhoneNumber = "(+123) 123 456 879",
+                Email = "semper@gmail.eu",
+                Position = "Minority Owner",
+            };
+
+            var mapper = new Mock<IMapper>();
+            mapper.Setup(m => m.Map<TeamMember>(adminTeamMemberBindingModel))
+                .Returns(teamMember);
+
+            var id = dbContext.TeamMembers.LastOrDefault().Id;
+
+            service.TeamMemberEditAsync(adminTeamMemberBindingModel, id);
+
+            var teamMemberEdited = dbContext
+                .TeamMembers
+                .FirstOrDefault(artwork => artwork.Id == id);
+
+            Assert.Equal(adminTeamMemberBindingModel.Name, teamMemberEdited.Name);
+            Assert.Equal(adminTeamMemberBindingModel.Id, teamMemberEdited.Id);
+            Assert.Equal(adminTeamMemberBindingModel.PhoneNumber, teamMemberEdited.PhoneNumber);
+            Assert.Equal(adminTeamMemberBindingModel.Email, teamMemberEdited.Email);
+            Assert.Equal(adminTeamMemberBindingModel.Position, teamMemberEdited.Position);
         }
     }
 }
