@@ -1,4 +1,6 @@
-﻿namespace Intillegio.Common.ViewModels.Admin
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Intillegio.Common.ViewModels.Admin
 {
    public class AdminProductViewModel
     {
@@ -8,6 +10,7 @@
 
         public decimal Price { get; set; }
 
+        [Display(Name = "Stock Keeping Unit")]
         public string StockKeepingUnit { get; set; }
     }
 }

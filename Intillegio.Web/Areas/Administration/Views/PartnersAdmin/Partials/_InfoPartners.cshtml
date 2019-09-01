@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Intillegio.Common.ViewModels.Admin.AdminPartnerViewModel>
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminJunctionPartnersBindingModel
 <section id="posts">
     <div class="container">
         <div class="row">
@@ -9,15 +9,15 @@
                     </div>
                     <table class="table table-striped">
                         <thead class="thead-inverse">
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                            </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                        </tr>
                         </thead>
                         <tbody>
 
-                            @foreach (var partner in Model)
-                            {
+                        @foreach (var partner in Model.Partners)
+                        {
                             <tr>
                                 <td scope="row">@partner.Id</td>
                                 <td>@partner.Name</td>
@@ -27,7 +27,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            }
+                        }
                         </tbody>
                     </table>
                 </div>
@@ -42,7 +42,6 @@
                         <a href="posts.html" class="btn btn-outline-light btn-sm">View</a>
                     </div>
                 </div>
-
                 <div class="card text-center bg-success text-white mb-3">
                     <div class="card-body">
                         <h3>Categories</h3>
@@ -52,14 +51,13 @@
                         <a href="categories.html" class="btn btn-outline-light btn-sm">View</a>
                     </div>
                 </div>
-
                 <div class="card text-center bg-warning text-white mb-3">
                     <div class="card-body">
                         <h3>Users</h3>
                         <h1 class="display-4">
-                            <i class="fa fa-users"></i> 2
+                            <i class="fa fa-users"></i> @Model.UsersCount
                         </h1>
-                        <a href="users.html" class="btn btn-outline-light btn-sm">View</a>
+                        <a asp-controller="PartnersAdmin" asp-action="UsersAdmin" class="btn btn-outline-light btn-sm">View</a>
                     </div>
                 </div>
             </div>

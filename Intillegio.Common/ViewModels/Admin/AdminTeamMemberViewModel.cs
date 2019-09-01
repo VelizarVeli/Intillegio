@@ -1,4 +1,6 @@
-﻿namespace Intillegio.Common.ViewModels.Admin
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Intillegio.Common.ViewModels.Admin
 {
     public class AdminTeamMemberViewModel
     {
@@ -8,6 +10,7 @@
 
         public string Position { get; set; }
 
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
         public string Email { get; set; }

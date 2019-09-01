@@ -85,5 +85,12 @@ namespace Intillegio.Services
             DbContext.TeamMembers.Update(model);
             await DbContext.SaveChangesAsync();
         }
+
+        public async Task<int> GetPartnersCount()
+        {
+            var partnersCount = await DbContext.Partners.CountAsync();
+
+            return partnersCount;
+        }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Intillegio.Common.Constants;
 using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
@@ -9,7 +7,6 @@ using Intillegio.Web.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Intillegio.Web.Areas.Administration.Controllers
 {

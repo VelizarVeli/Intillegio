@@ -12,6 +12,7 @@ namespace Intillegio.Common.ViewModels
 
         public string About { get; set; }
 
+        [Display(Name = "Image 350 x 290")]
         public string Image350X290 { get; set; }
 
         public string Facebook { get; set; }

@@ -81,5 +81,19 @@ namespace Intillegio.Web.Areas.Administration.Controllers
             await _partnersService.PartnerEditAsync(model, id);
             return RedirectToAction("PartnersAdmin");
         }
+
+        public async Task<IActionResult> UsersAdmin()
+        {
+            var allUsersForAdmin = await _partnersService.GetUsersForAdmin();
+
+            return View(GlobalConstants.AdminAreaPath + "PartnersAdmin/UsersAdmin.cshtml", allUsersForAdmin);
+        }
+
+        public IActionResult AsignRole(string id)
+        {
+             _partnersService.AsignRole(id);
+
+            return RedirectToAction("PartnersAdmin");
+        }
     }
 }

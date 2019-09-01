@@ -2,12 +2,13 @@
 using Intillegio.Common.Constants;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 
 namespace Intillegio.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class ShopController : Controller
     {
         private readonly IShopService _shopService;

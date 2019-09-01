@@ -29,13 +29,16 @@
             <li>
                 <a asp-area="" asp-controller="Blog" asp-action="Blog">Blog</a>
             </li>
-            <li>
-                <a href="#">Shop</a>
-                <ul class="nav-dropdown">
-                    <li><a asp-area="" asp-controller="Shop" asp-action="AllProducts">Products</a></li>
-                    <li><a asp-area="" asp-controller="Shop" asp-action="ShoppingCart">Shopping Cart</a></li>
-                </ul>
-            </li>
+            @if (this.User.IsInRole(GlobalConstants.PartnerRoleName) || this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+            {
+                <li>
+                    <a href="#">Shop</a>
+                    <ul class="nav-dropdown">
+                        <li><a asp-area="" asp-controller="Shop" asp-action="AllProducts">Products</a></li>
+                        <li><a asp-area="" asp-controller="Shop" asp-action="ShoppingCart">Shopping Cart</a></li>
+                    </ul>
+                </li>
+            }
             <li>
                 <a href="#">Contact</a>
                 <ul class="nav-dropdown">

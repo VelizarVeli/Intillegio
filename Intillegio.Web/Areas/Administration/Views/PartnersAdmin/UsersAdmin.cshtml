@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Intillegio.Common.ViewModels.Admin.UserViewModel>
+@{
+    ViewData["Title"] = "Partners";
+}
+<section id="posts">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Users</h4>
+                    </div>
+                    <table class="table table-striped">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>Name</th>
+                            <th>Assign Partner Role</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td scope="row">@user.Username</td>
+                                <td>
+                                    <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="AsignRole" asp-route-id="@user.Id" class="btn btn-secondary">
+                                        <i class="fa fa-address-book"></i> Asign
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

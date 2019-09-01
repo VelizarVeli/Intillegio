@@ -2,21 +2,26 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Intillegio.Common.Constants;
 using Intillegio.Common.ViewModels;
 using Intillegio.Common.ViewModels.Admin;
 using Intillegio.Data.Data;
 using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Intillegio.Services
 {
     public class PartnersService : BaseService, IPartnersService
     {
-        public PartnersService(IntillegioContext dbContext, IMapper mapper)
+        private readonly SignInManager<IntillegioUser> _signInManager;
+
+        public PartnersService(IntillegioContext dbContext, IMapper mapper, SignInManager<IntillegioUser> signInManager)
             : base(dbContext, mapper)
         {
+            _signInManager = signInManager;
         }
 
         public async Task<IEnumerable<PartnerViewModel>> GetPartnersLogos()
@@ -27,12 +32,26 @@ namespace Intillegio.Services
             return partnersLogos;
         }
 
-        public async Task<IEnumerable<AdminPartnerViewModel>> GetPartnersForAdmin()
+        public async Task<AdminJunctionPartnersBindingModel> GetPartnersForAdmin()
         {
             var partners = await DbContext.Partners.ToListAsync();
             var partnersInfo = Mapper.Map<ICollection<AdminPartnerViewModel>>(partners);
+            var usersCount = DbContext.Users.Count();
+            var partnersJunction = new AdminJunctionPartnersBindingModel
+            {
+                Partners = partnersInfo,
+                UsersCount = usersCount - 1
+            };
 
-            return partnersInfo;
+            return partnersJunction;
+        }
+
+        public async Task<IEnumerable<UserViewModel>> GetUsersForAdmin()
+        {
+            var users = await DbContext.Users.ToListAsync();
+            var usersInfo = Mapper.Map<ICollection<UserViewModel>>(users);
+
+            return usersInfo;
         }
 
         public async Task<AdminPartnerBindingModel> GetPartnerDetailsForAdminAsync(int id)
@@ -55,6 +74,13 @@ namespace Intillegio.Services
                 DbContext.Partners.Remove(partner);
                 await DbContext.SaveChangesAsync();
             }
+        }
+
+        public void AsignRole(string id)
+        {
+            var user =  DbContext.Users.FirstOrDefault(a => a.Id == id);
+
+           var roleResult = _signInManager.UserManager.AddToRoleAsync(user, GlobalConstants.PartnerRoleName).Result;
         }
 
         public async Task AddPartnerAsync(AdminPartnerBindingModel partner)
