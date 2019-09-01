@@ -76,7 +76,7 @@ namespace Intillegio.Web.Tests
                     Name = "Venera Base",
                     Image350X350 = "https://i.postimg.cc/PrSsz2qS/141222115103-cloud-city-horizontal-large-gallery.png"
                 });
-
+            var mapping = mapper.Object;
             var service = new ProjectsService(dbContext, mapper.Object);
             service.AddProjectAsync(projectBindingModel);
             Assert.True(dbContext.Projects.Any(n => n.Name == projectBindingModel.Name));

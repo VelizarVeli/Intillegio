@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Intillegio.Common.ViewModels;
 using Intillegio.Services.Contracts;

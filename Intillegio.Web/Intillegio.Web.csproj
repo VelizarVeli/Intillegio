@@ -33,4 +33,9 @@
     <ProjectReference Include="..\Intillegio.Services\Intillegio.Services.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Models\DTOModels\" />
+  </ItemGroup>
+
 </Project>

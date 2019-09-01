@@ -23,7 +23,7 @@ namespace Intillegio.Web.Tests
         {
             var mockList = new List<ArticleViewModel>
             {
-                new ArticleViewModel
+                new ArticleViewModel()
                 {
                     Content = "There’s a lot that goes into becoming a truly great designer. It can’t be done by simply reading a book or watching a YouTube video.",
                     Name = "Advices for young designers",

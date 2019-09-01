@@ -19,6 +19,7 @@ namespace Intillegio.Web.Controllers
             _blogService = blogService;
             _currentUser = currentUser;
         }
+
         public async Task<IActionResult> Blog()
         {
             var allArticles = await _blogService.GetAllArticles();

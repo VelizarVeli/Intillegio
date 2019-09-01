@@ -38,8 +38,6 @@ namespace Intillegio.Services
 
             }).ToListAsync();
 
-            //var allArticles = Mapper.Map<IEnumerable<ArticleViewModel>>(
-            //    DbContext.Articles.OrderByDescending(a => a.Date));
             return allArticles;
         }
 
