@@ -58,7 +58,7 @@ namespace Intillegio.Web.Tests
             }
 
             dbContext.SaveChanges();
-            var service = new PartnersService(dbContext, mapper.Object);
+            var service = new PartnersService(dbContext, mapper.Object, null);
 
             var allPartners = service.GetPartnersLogos();
 
@@ -91,7 +91,7 @@ namespace Intillegio.Web.Tests
                     About = "Our mission is to organize the world’s information and make it universally accessible and useful.",
                 });
 
-            var service = new PartnersService(dbContext, mapper.Object);
+            var service = new PartnersService(dbContext, mapper.Object, null);
             service.AddPartnerAsync(partnerBindingModel);
             Assert.True(dbContext.Partners.Any(n => n.Name == partnerBindingModel.Name));
             Assert.True(dbContext.Partners.Any(a => a.Logo155X75 == partnerBindingModel.Logo155X75));
@@ -135,7 +135,7 @@ namespace Intillegio.Web.Tests
             }
 
             dbContext.SaveChanges();
-            var service = new PartnersService(dbContext, mapper.Object);
+            var service = new PartnersService(dbContext, mapper.Object, null);
 
             var allPartners = service.GetPartnersForAdmin();
 
