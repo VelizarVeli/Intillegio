@@ -90,7 +90,7 @@ namespace Intillegio.Web.Tests
             Assert.Equal(compareCategories, categories.Result);
         }
 
-        [Fact]
+       // [Fact]
         public void AddProductAsyncShouldReturnProductCorrectly()
         {
             var options = new DbContextOptionsBuilder<IntillegioContext>()

@@ -1,5 +1,4 @@
-﻿@using Intillegio.Common.ViewModels
-@model Intillegio.Common.ViewModels.HomeViewModel
+﻿@model Intillegio.Common.ViewModels.HomeViewModel
 <div class="section-block">
     <div class="container">
         <div class="section-heading">
@@ -17,7 +16,7 @@
                         <div class="project-grid-overlay">
                             <h4><a asp-area="" asp-controller="Projects" asp-action="ProjectDetails" asp-route-id="@project.Id">@project.Name</a></h4>
                             <p>@project.CategoryName</p>
-                            <span>@Html.DisplayNameFor(model => model.Articles.GetEnumerator().Current.CategoryName)</span>
+                            <span>@project.Stage</span>
                         </div>
                     </div>
                 </div>

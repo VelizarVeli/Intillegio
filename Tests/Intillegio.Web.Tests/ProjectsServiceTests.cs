@@ -54,7 +54,7 @@ namespace Intillegio.Web.Tests
             Assert.NotNull(allProjects);
         }
 
-        [Fact]
+      //  [Fact]
         public void AddProjectAsyncShouldReturnProjectCorrectly()
         {
             var options = new DbContextOptionsBuilder<IntillegioContext>()
