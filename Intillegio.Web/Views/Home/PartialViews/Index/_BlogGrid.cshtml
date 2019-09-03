@@ -9,11 +9,11 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
         </div>
         <div class="row mt-50">
-            @foreach (var article in Model.Articles.Take(3))
+            @foreach (var article in Model.Articles.Take(3).OrderByDescending(d => d.Date))
             {
-                if (article.Content.Length > 100)
+                if (article.Content.Length > 110)
                 {
-                    article.Content = article.Content.Substring(0, 120) + "...";
+                    article.Content = article.Content.Substring(0, 113) + "...";
                 }
                 if (article.Name.Length > 26)
                 {
