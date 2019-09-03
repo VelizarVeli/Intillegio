@@ -12,5 +12,7 @@ namespace Intillegio.Common.ViewModels
 
         [Display(Name = "Logo 155 x 75")]
         public string Logo155X75 { get; set; }
+
+        public string LinkToPartnersWebsite { get; set; }
     }
 }

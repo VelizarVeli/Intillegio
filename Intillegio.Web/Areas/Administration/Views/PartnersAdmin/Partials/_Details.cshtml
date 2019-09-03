@@ -35,4 +35,14 @@
             <p class="card-text">@Html.DisplayFor(model => model.About)</p>
         </div>
     </div>
+    <div class="col-sm-12 mt-2">
+        <div class="col">
+            <h4 class="card-title"> @Html.DisplayNameFor(model => model.LinkToPartnersWebsite)</h4>
+        </div>
+        <div class="col">
+            <a href="@Html.DisplayFor(model => model.LinkToPartnersWebsite)" target="_blank">
+                <p class="card-text">@Html.DisplayFor(model => model.LinkToPartnersWebsite)</p>
+            </a>
+        </div>
+    </div>
 </div>

@@ -19,6 +19,9 @@ namespace Intillegio.Models
         public string About { get; set; }
 
         [Required]
+        public string LinkToPartnersWebsite { get; set; }
+
+        [Required]
         public string Logo155X75 { get; set; }
 
         public ICollection<Project> Projects { get; set; }

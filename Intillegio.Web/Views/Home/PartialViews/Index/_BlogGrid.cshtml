@@ -1,12 +1,11 @@
-﻿@using Intillegio.Common.ViewModels
-@model Intillegio.Common.ViewModels.HomeViewModel
+﻿@model Intillegio.Common.ViewModels.HomeViewModel
 <div class="section-block-grey">
     <div class="container">
         <div class="section-heading center-holder">
             <span>Tips & News</span>
             <h3>Read Our Latest Articles</h3>
             <div class="section-heading-line"></div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
+            <p>Find information about procurements, new romanian bills and <br>other useful information for your business in Romania.</p>
         </div>
         <div class="row mt-50">
             @foreach (var article in Model.Articles.Take(3).OrderByDescending(d => d.Date))

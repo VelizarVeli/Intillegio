@@ -22,6 +22,9 @@ namespace Intillegio.DTOs.BindingModels.Admin
         public string About { get; set; }
 
         [Required]
+        public string LinkToPartnersWebsite { get; set; }
+
+        [Required]
         [Display(Name = "Logo Image 155 x 75")]
         public string Logo155X75 { get; set; }
 

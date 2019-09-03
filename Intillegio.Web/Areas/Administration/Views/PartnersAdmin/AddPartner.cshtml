@@ -28,6 +28,11 @@
                     <input asp-for="Logo155X75" class="form-control" />
                     <span asp-validation-for="Logo155X75" class="text-danger"></span>
                 </div>
+                <div class="form-group">
+                    <label asp-for="LinkToPartnersWebsite" class="control-label"></label>
+                    <input asp-for="LinkToPartnersWebsite" class="form-control" />
+                    <span asp-validation-for="LinkToPartnersWebsite" class="text-danger"></span>
+                </div>
                 <div class="modal-footer d-flex justify-content-around">
                     <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="PartnersAdmin" class="btn btn-secondary">Close</a>
                     <input type="submit" value="Save" class="btn btn-success" />
