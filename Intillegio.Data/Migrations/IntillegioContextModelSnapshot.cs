@@ -438,6 +438,24 @@ namespace Intillegio.Data.Migrations
                     b.ToTable("ProjectFeaturesJunction");
                 });
 
+            modelBuilder.Entity("Intillegio.Models.QuickLink", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Link")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuickLinks");
+                });
+
             modelBuilder.Entity("Intillegio.Models.Review", b =>
                 {
                     b.Property<int>("Id")

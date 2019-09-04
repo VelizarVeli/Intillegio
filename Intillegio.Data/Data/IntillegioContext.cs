@@ -24,6 +24,7 @@ namespace Intillegio.Data.Data
         public DbSet<Event> Events { get; set; }
         public DbSet<ProductImage> Images { get; set; }
         public DbSet<TeamMember> TeamMembers { get; set; }
+        public DbSet<QuickLink> QuickLinks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

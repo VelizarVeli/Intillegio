@@ -141,6 +141,7 @@ namespace Intillegio.Web
             services.AddScoped<IShopService, ShopService>();
             services.AddScoped<IAboutService, AboutService>();
             services.AddScoped<IEventsService, EventsService>();
+            services.AddScoped<IQuickLinksService, QuickLinksService>();
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Intillegio.Services.Mapping
             ConfigureProducts();
             ConfigureTeamMembers();
             ConfigureEvents();
+            ConfigureQuickLinks();
         }
 
         private void ConfigureProjects()
@@ -40,6 +41,12 @@ namespace Intillegio.Services.Mapping
             CreateMap<Project, AdminEditProjectBindingModel>()
                 .ForMember(d => d.Category, opt => opt.MapFrom(sr => sr.Category.CategoryName))
                 .ForMember(d => d.Features, opt => opt.MapFrom(sr => sr.Features.Select(y => y.ProjectFeature).ToList()));
+        }
+
+        private void ConfigureQuickLinks()
+        {
+            CreateMap<QuickLinksViewModel, QuickLink>();
+            CreateMap<QuickLink, QuickLinksViewModel>();
         }
 
         private void ConfigurePartners()
