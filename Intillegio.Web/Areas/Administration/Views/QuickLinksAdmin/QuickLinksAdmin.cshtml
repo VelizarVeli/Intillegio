@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Quick Links";
+}
+<section id="action" class="py-4 mb-4 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn btn-secondary btn-block" asp-area="Administration" asp-controller="QuickLinksAdmin" asp-action="AddQuickLink">
+                    <i class="fa fa-link"></i> Add Quick Link
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<partial name="~/Areas/Administration/Views/QuickLinksAdmin/Partials/_InfoQuickLinks.cshtml"/>

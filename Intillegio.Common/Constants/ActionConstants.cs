@@ -11,9 +11,10 @@
         public const string TeamMembers = "TeamMembers";
         public const string SolutionsAdmin = "SolutionsAdmin";
         public const string ProjectsAdmin = "ProjectsAdmin";
+        public const string ProductsAdmin = "ProductsAdmin";
         public const string PartnersAdmin = "PartnersAdmin";
         public const string EventsAdmin = "EventsAdmin";
         public const string ArticlesAdmin = "ArticlesAdmin";
-        public const string ProductsAdmin = "ProductsAdmin";
+        public const string QuickLinksAdmin = "QuickLinksAdmin";
     }
 }

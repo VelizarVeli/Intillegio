@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Partner Details";
+
+}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+            <h5 class="modal-title"><i class="fa fa-handshake-o"></i> Partner Details</h5>
+        </div>
+        <div class="modal-body">
+            <partial name="~/Areas/Administration/Views/PartnersAdmin/Partials/_Details.cshtml" />
+            <div class="modal-footer d-flex justify-content-around">
+                <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="PartnersAdmin" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Back</a>
+                <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="EditPartner" asp-route-id="@Model.Id" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="DeletePartnerDetails" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

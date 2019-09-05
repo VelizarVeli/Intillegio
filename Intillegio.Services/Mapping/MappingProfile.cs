@@ -47,6 +47,7 @@ namespace Intillegio.Services.Mapping
         {
             CreateMap<QuickLinksViewModel, QuickLink>();
             CreateMap<QuickLink, QuickLinksViewModel>();
+            CreateMap<AdminQuickLinkBindingModel, QuickLink>();
         }
 
         private void ConfigurePartners()

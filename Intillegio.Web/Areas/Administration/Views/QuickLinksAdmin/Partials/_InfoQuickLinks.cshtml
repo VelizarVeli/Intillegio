@@ -1,0 +1,37 @@
+﻿@model List<Intillegio.Common.ViewModels.QuickLinksViewModel>
+<section id="posts">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Quick Links</h4>
+                    </div>
+                    <table class="table table-striped">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach (var quickLink in Model)
+                        {
+                            <tr>
+                                <td scope="row">@quickLink.Id</td>
+                                <td>@quickLink.Name</td>
+                                <td>
+                                    <a asp-area="Administration" asp-controller="QuickLinksAdmin" asp-action="QuickLinksAdmin" asp-route-id="@quickLink.Id" class="btn btn-secondary">
+                                        <i class="fa fa-angle-double-right"></i> Details
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
