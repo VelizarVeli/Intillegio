@@ -10,6 +10,7 @@ namespace Intillegio.Services.Contracts
     public interface ISolutionsService
     {
         IEnumerable<SolutionViewModel> GetAllSolutions();
+        Task<IEnumerable<SolutionDropDownViewModel>> GetSolutionNamesForDropDownList();
         Task<SolutionBindingModel> GetSolutionDetailsAsync(int id);
         IEnumerable<AdminSolutionViewModel> GetAllSolutionsForAdmin();
         Task<AdminSolutionBindingModel> GetSolutionDetailsForAdminAsync(int id);

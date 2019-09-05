@@ -27,6 +27,14 @@ namespace Intillegio.Services
             return allSolutions;
         }
 
+        public async Task<IEnumerable<SolutionDropDownViewModel>> GetSolutionNamesForDropDownList()
+        {
+            var solutions = await DbContext.Solutions.OrderByDescending(a => a.Id).ToListAsync();
+
+            var allSolutions = Mapper.Map<IEnumerable<SolutionDropDownViewModel>>(solutions);
+            return allSolutions;
+        }
+
         public async Task<SolutionBindingModel> GetSolutionDetailsAsync(int id)
         {
             var solution = await DbContext
@@ -70,7 +78,7 @@ namespace Intillegio.Services
 
         public async Task AddSolutionAsync(AdminSolutionBindingModel solution)
         {
-            var model = this.Mapper.Map<Solution>(solution);
+            var model = Mapper.Map<Solution>(solution);
             await DbContext.Solutions.AddAsync(model);
             await DbContext.SaveChangesAsync();
         }

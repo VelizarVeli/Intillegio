@@ -69,6 +69,7 @@ namespace Intillegio.Services.Mapping
             CreateMap<Solution, AdminSolutionViewModel>();
             CreateMap<Solution, AdminSolutionBindingModel>();
             CreateMap<AdminSolutionBindingModel, Solution>();
+            CreateMap<Solution, SolutionDropDownViewModel>();
 
         }
         private void ConfigureEvents()

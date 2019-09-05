@@ -3,7 +3,7 @@
     <h3>Quick Links</h3>
     <ul class="footer-list">
 
-        @foreach (var quiLink in Model)
+        @foreach (var quiLink in Model.Take(7))
         {
             <li><a target="_blank" href="@quiLink.Link">@quiLink.Name</a></li>
         }

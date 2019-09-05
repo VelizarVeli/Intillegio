@@ -17,9 +17,7 @@
             <li>
                 <a asp-area="" asp-controller="About" asp-action="About">About Us</a>
             </li>
-            <li>
-                <a asp-area="" asp-controller="Solutions" asp-action="AllSolutions">Services</a>
-            </li>
+            @await Component.InvokeAsync("Solutions")
             <li>
                 <a asp-area="" asp-controller="Projects" asp-action="AllProjects">Projects</a>
             </li>
