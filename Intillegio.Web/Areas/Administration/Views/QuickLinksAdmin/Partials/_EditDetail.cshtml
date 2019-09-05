@@ -1,4 +1,4 @@
-﻿@model Intillegio.DTOs.BindingModels.Admin.AdminPartnerBindingModel
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminQuickLinkBindingModel
 <div class="d-flex justify-content-around row">
     <div class="col-sm-12">
         <div class="form-group">
@@ -7,19 +7,9 @@
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="About" class="control-label"></label>
-            <input asp-for="About" class="form-control" />
-            <span asp-validation-for="About" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="LinkToPartnersWebsite" class="control-label"></label>
-            <input asp-for="LinkToPartnersWebsite" class="form-control" />
-            <span asp-validation-for="LinkToPartnersWebsite" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Logo155X75" class="control-label"></label>
-            <input asp-for="Logo155X75" class="form-control" />
-            <span asp-validation-for="Logo155X75" class="text-danger"></span>
+            <label asp-for="Link" class="control-label"></label>
+            <input asp-for="Link" class="form-control" />
+            <span asp-validation-for="Link" class="text-danger"></span>
         </div>
     </div>
 </div>

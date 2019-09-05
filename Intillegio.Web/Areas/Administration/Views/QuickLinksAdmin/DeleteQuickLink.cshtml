@@ -1,7 +1,7 @@
-﻿@model Intillegio.DTOs.BindingModels.Admin.AdminPartnerBindingModel
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminQuickLinkBindingModel
 
 @{
-    ViewData["Title"] = "Delete Partner";
+    ViewData["Title"] = "Delete Quick Link";
     Layout = "~/Areas/Administration/Shared/_Layout.cshtml";
 }
 <div class="modal-dialog modal-lg">
@@ -12,11 +12,11 @@
             </h3>
         </div>
         <div class="modal-header bg-warning text-white d-flex justify-content-around">
-            <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="DeletePartner" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fa fa-trash"> Delete</i></a>
-            <a asp-area="Administration" asp-controller="PartnersAdmin" asp-action="PartnersAdmin" class="btn btn-secondary"><i class="fa fa-times"></i> Cancel</a>
+            <a asp-area="Administration" asp-controller="QuickLinksAdmin" asp-action="DeleteQuickLink" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fa fa-trash"> Delete</i></a>
+            <a asp-area="Administration" asp-controller="QuickLinksAdmin" asp-action="QuickLinksAdmin" class="btn btn-secondary"><i class="fa fa-times"></i> Cancel</a>
         </div>
         <div class="modal-body">
-            <partial name="~/Areas/Administration/Views/PartnersAdmin/Partials/_Details.cshtml" />
+            <partial name="~/Areas/Administration/Views/QuickLinksAdmin/Partials/_Details.cshtml" />
         </div>
     </div>
 </div>

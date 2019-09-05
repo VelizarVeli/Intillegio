@@ -72,7 +72,7 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> QuickLinksEdit(int id, AdminQuickLinkBindingModel model)
+        public async Task<IActionResult> QuickLinkEdit(int id, AdminQuickLinkBindingModel model)
         {
             await _quickLinksService.QuickLinkEditAsync(model, id);
             return RedirectToAction("QuickLinksAdmin");

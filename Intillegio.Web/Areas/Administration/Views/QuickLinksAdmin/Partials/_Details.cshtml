@@ -1,48 +1,22 @@
-﻿@model Intillegio.DTOs.BindingModels.Admin.AdminPartnerBindingModel
+﻿@model Intillegio.DTOs.BindingModels.Admin.AdminQuickLinkBindingModel
 <div class="d-flex justify-content-around row">
-    <div class="col-sm-12 mt-5">
-        <img src="@Model.Logo155X75" class="img-fluid" alt="Responsive image">
-    </div>
-    <hr />
-    <div class="col-sm-12 mt-2">
+    <div class="col-sm-12">
         <div class="row">
             <div class="col">
-                <h4 class="card-title">@Html.DisplayNameFor(model => model.Logo155X75)</h4>
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.Name)</h4>
             </div>
             <div class="col">
-                <a href="@Html.DisplayFor(model => model.Logo155X75)">
-                    <p class="card-text">@Html.DisplayFor(model => model.Logo155X75)</p>
-                </a>
+                <p class="card-text">@Html.DisplayFor(model => model.Name)</p>
             </div>
         </div>
         <hr />
-        <div class="col">
-            <h4 class="card-title">@Html.DisplayNameFor(model => model.Projects)</h4>
-        </div>
-        @foreach (var fps in @Model.Projects)
-        {
+        <div class="row">
             <div class="col">
-                <p class="card-text"><i class="fa fa-check"></i> @fps.Name</p>
+                <h4 class="card-title">@Html.DisplayNameFor(model => model.Link)</h4>
             </div>
-        }
-    </div>
-    <hr />
-    <div class="col-sm-12 mt-2">
-        <div class="col">
-            <h4 class="card-title"> @Html.DisplayNameFor(model => model.About) @Model.Name</h4>
-        </div>
-        <div class="col">
-            <p class="card-text">@Html.DisplayFor(model => model.About)</p>
-        </div>
-    </div>
-    <div class="col-sm-12 mt-2">
-        <div class="col">
-            <h4 class="card-title"> @Html.DisplayNameFor(model => model.LinkToPartnersWebsite)</h4>
-        </div>
-        <div class="col">
-            <a href="@Html.DisplayFor(model => model.LinkToPartnersWebsite)" target="_blank">
-                <p class="card-text">@Html.DisplayFor(model => model.LinkToPartnersWebsite)</p>
-            </a>
+            <div class="col">
+                <p class="card-text">@Html.DisplayFor(model => model.Link)</p>
+            </div>
         </div>
     </div>
 </div>
