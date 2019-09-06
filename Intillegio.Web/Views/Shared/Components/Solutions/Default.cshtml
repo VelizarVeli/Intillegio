@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Intillegio.Common.ViewModels.SolutionDropDownViewModel>
+ <li>
+    <li>
+        <a asp-area="" asp-controller="Solutions" asp-action="AllSolutions">Services</a>
+        <ul class="nav-dropdown">
+            @foreach (var solution in Model)
+            {
+                <li><a asp-controller="Solutions" asp-action="SolutionDetails" asp-route-id="@solution.Id">@solution.Name</a></li>
+            }
+        </ul>
+    </li>
+</li>

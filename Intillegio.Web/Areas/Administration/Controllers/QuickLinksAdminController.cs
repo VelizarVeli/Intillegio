@@ -2,15 +2,11 @@
 using Intillegio.Common.Constants;
 using Intillegio.DTOs.BindingModels.Admin;
 using Intillegio.Services.Contracts;
-using Intillegio.Web.Controllers;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Intillegio.Web.Areas.Administration.Controllers
 {
-    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
-    [Area("Administration")]
-    public class QuickLinksAdminController : BaseController
+    public class QuickLinksAdminController : AdminController
     {
         private readonly IQuickLinksService _quickLinksService;
 
