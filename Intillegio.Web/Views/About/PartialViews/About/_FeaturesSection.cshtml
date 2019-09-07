@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    @foreach (var solution in Model.Solutions)
+                    @foreach (var solution in Model.Solutions.Take(4))
                     {
                         if (solution.About.Length > 80)
                         {
@@ -25,10 +25,11 @@
                             <div class="feature-flex-square">
                                 <div class="clearfix">
                                     <div class="feature-flex-square-icon">
-                                        <i class="icon-target"></i>
+                                        @{ ++Model.Icons;}
+                                        <i class="icon-@Model.Icons.ToString()"></i>
                                     </div>
                                     <div class="feature-flex-square-content">
-                                        <h4><a asp-area="" asp-controller="Solutions" asp-action="SolutionDetails" asp-route-id="@solution.Id" >@solution.Name</a></h4>
+                                        <h4><a asp-area="" asp-controller="Solutions" asp-action="SolutionDetails" asp-route-id="@solution.Id">@solution.Name</a></h4>
                                         <p>@solution.About</p>
                                         <a asp-area="" asp-controller="Solutions" asp-action="SolutionDetails" asp-route-id="@solution.Id" class="feature-flex-square-content-button">Learn More</a>
                                     </div>
