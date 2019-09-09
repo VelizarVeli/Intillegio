@@ -101,6 +101,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> AddProject(AdminProjectBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             await _projectsService.AddProjectAsync(model);
 
             return RedirectToAction("ProjectsAdmin");
@@ -116,6 +120,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> ProjectEdit(int id, AdminEditProjectBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("ProjectsAdmin");
+            }
             await _projectsService.ProjectEditAsync(model, id);
             return RedirectToAction("ProjectsAdmin");
         }

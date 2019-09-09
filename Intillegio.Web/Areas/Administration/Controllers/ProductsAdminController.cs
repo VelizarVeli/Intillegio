@@ -61,6 +61,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> AddProduct(AdminProductBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             await _productsService.AddProductAsync(model);
            
             return RedirectToAction("ProductsAdmin");
@@ -89,6 +93,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> ProductEdit(int id, AdminEditProductBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("EditProduct");
+            }
             await _productsService.ProductEditAsync(model, id);
             return RedirectToAction("ProductsAdmin");
         }

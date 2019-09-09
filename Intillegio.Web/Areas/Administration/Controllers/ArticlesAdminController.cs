@@ -68,6 +68,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> AddArticle(AdminArticleBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             await _articlesService.AddArticleAsync(model);
 
             return RedirectToAction("ArticlesAdmin");
@@ -96,6 +100,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> ArticleEdit(int id, AdminEditArticleBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("EditArticle");
+            }
             await _articlesService.ArticleEditAsync(model, id);
             return RedirectToAction("ArticlesAdmin");
         }

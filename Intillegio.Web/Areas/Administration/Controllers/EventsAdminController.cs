@@ -11,12 +11,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
     public class EventsAdminController : AdminController
     {
         private readonly IEventsService _eventsService;
-        private readonly UserManager<IntillegioUser> _currentUser;
 
-        public EventsAdminController(IEventsService eventsService, UserManager<IntillegioUser> currentUser)
+        public EventsAdminController(IEventsService eventsService)
         {
             _eventsService = eventsService;
-            _currentUser = currentUser;
         }
 
         public IActionResult EventsAdmin()
@@ -46,6 +44,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> AddEvent(AdminEventBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             await _eventsService.AddEventAsync(model);
 
             return RedirectToAction("EventsAdmin");
@@ -74,6 +76,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> EventEdit(int id, AdminEditEventBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("EditEvent");
+            }
             await _eventsService.EventEditAsync(model, id);
             return RedirectToAction("EventsAdmin");
         }

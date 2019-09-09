@@ -34,6 +34,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTeamMember(AdminTeamMemberBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             await _aboutService.AddTeamMemberAsync(model);
 
             return RedirectToAction("TeamMembers");
@@ -74,6 +78,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> TeamMemberEdit(int id, AdminTeamMemberBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("EditTeamMember");
+            }
             await _aboutService.TeamMemberEditAsync(model, id);
             return RedirectToAction("TeamMembers");
         }

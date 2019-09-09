@@ -46,6 +46,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> AddSolution(AdminSolutionBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             await _solutionsService.AddSolutionAsync(model);
 
             return RedirectToAction("SolutionsAdmin");
@@ -74,6 +78,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> SolutionEdit(int id, AdminSolutionBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("EditSolution");
+            }
             await _solutionsService.SolutionEditAsync(model, id);
             return RedirectToAction("SolutionsAdmin");
         }

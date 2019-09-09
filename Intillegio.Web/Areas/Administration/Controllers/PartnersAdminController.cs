@@ -46,6 +46,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPartner(AdminPartnerBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return  View();
+            }
             await _partnersService.AddPartnerAsync(model);
 
             return RedirectToAction("PartnersAdmin");
@@ -74,6 +78,10 @@ namespace Intillegio.Web.Areas.Administration.Controllers
         [HttpPost]
         public async Task<IActionResult> PartnerEdit(int id, AdminPartnerBindingModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("EditPartner");
+            }
             await _partnersService.PartnerEditAsync(model, id);
             return RedirectToAction("PartnersAdmin");
         }
