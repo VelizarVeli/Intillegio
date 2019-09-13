@@ -90,7 +90,7 @@ namespace Intillegio.Web.Tests
             Assert.Equal(compareCategories, categories.Result);
         }
 
-       // [Fact]
+       [Fact]
         public void AddProductAsyncShouldReturnProductCorrectly()
         {
             var options = new DbContextOptionsBuilder<IntillegioContext>()
@@ -169,6 +169,31 @@ namespace Intillegio.Web.Tests
             var allProducts = service.GetAllProductsForAdmin();
 
             Assert.NotNull(allProducts);
+        }
+
+        [Fact]
+        public void DeleteProductAsyncShouldDeleteProductCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Delete_Product_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var service = new ShopService(dbContext, null);
+
+            var product = new Product();
+
+            dbContext.Products.Add(product);
+            dbContext.SaveChanges();
+
+            var productId = dbContext.Products.LastOrDefault().Id;
+
+            service.DeleteProductAsync(productId);
+
+            Assert.True(dbContext
+                            .Products
+                            .Any(a => a.Id == productId) == false);
         }
     }
 }

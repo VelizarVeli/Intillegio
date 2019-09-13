@@ -23,7 +23,7 @@ namespace Intillegio.Web.Tests
         {
             var mockList = new List<ArticleViewModel>
             {
-                new ArticleViewModel()
+                new ArticleViewModel
                 {
                     Content = "There’s a lot that goes into becoming a truly great designer. It can’t be done by simply reading a book or watching a YouTube video.",
                     Name = "Advices for young designers",
@@ -180,6 +180,31 @@ namespace Intillegio.Web.Tests
             service.AddArticleAsync(articleBindingModel);
             Assert.True(dbContext.Articles.Any(n => n.Name == articleBindingModel.Name));
             Assert.True(dbContext.Articles.Any(a => a.Image350X220 == articleBindingModel.Image350X220));
+        }
+
+        [Fact]
+        public void DeleteArticleAsyncShouldDeleteArticleCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Delete_Article_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var service = new BlogService(dbContext, null);
+
+            var article = new Article();
+
+            dbContext.Articles.Add(article);
+            dbContext.SaveChanges();
+
+            var articleId = dbContext.Articles.LastOrDefault().Id;
+
+            service.DeleteArticleAsync(articleId);
+
+            Assert.True(dbContext
+                            .Articles
+                            .Any(a => a.Id == articleId) == false);
         }
     }
 }

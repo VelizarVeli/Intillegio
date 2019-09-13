@@ -19,30 +19,32 @@ namespace Intillegio.Web.Tests
         [Fact]
         public void GetAllTeamMembersShouldGetTeamMambersCorrectly()
         {
-            var mockList = new List<TeamMemberViewModel>();
-            mockList.Add(new TeamMemberViewModel
+            var mockList = new List<TeamMemberViewModel>
             {
-                About = "Anne Smith (born July 1, 1959) is an educational psychologist",
-                Name = "Ann Smith",
-                Facebook = "lkjkljklasdf",
-                Image350X290 = "lkjfasd",
-                Instagram = "fdaasdf",
-                Position = "fdasadf",
-                Skype = "fdaasdf",
-                Twitter = "fdaasdf"
-            });
+                new TeamMemberViewModel
+                {
+                    About = "Anne Smith (born July 1, 1959) is an educational psychologist",
+                    Name = "Ann Smith",
+                    Facebook = "lkjkljklasdf",
+                    Image350X290 = "lkjfasd",
+                    Instagram = "fdaasdf",
+                    Position = "fdasadf",
+                    Skype = "fdaasdf",
+                    Twitter = "fdaasdf"
+                },
+                new TeamMemberViewModel
+                {
+                    About = "Anne Smith (born July 1, 1959) is an educational psychologist",
+                    Name = "Ann Smith",
+                    Facebook = "lkjkljklasdf",
+                    Image350X290 = "lkjfasd",
+                    Instagram = "fdaasdf",
+                    Position = "fdasadf",
+                    Skype = "fdaasdf",
+                    Twitter = "fdaasdf"
+                }
+            };
 
-            mockList.Add(new TeamMemberViewModel
-            {
-                About = "Anne Smith (born July 1, 1959) is an educational psychologist",
-                Name = "Ann Smith",
-                Facebook = "lkjkljklasdf",
-                Image350X290 = "lkjfasd",
-                Instagram = "fdaasdf",
-                Position = "fdasadf",
-                Skype = "fdaasdf",
-                Twitter = "fdaasdf"
-            });
             var options = new DbContextOptionsBuilder<IntillegioContext>()
                     .UseInMemoryDatabase(databaseName: "Get_All_TeamMembers_Db")
                     .Options;
@@ -68,7 +70,7 @@ namespace Intillegio.Web.Tests
             Assert.NotNull(allTeamMembers);
         }
 
-       // [Fact]
+       [Fact]
         public void TeamMemberBindingModelGetTeamMemberDetailsAsyncShouldReturnTeamMemberDetailsCorrectly()
         {
             var options = new DbContextOptionsBuilder<IntillegioContext>()
@@ -208,7 +210,7 @@ namespace Intillegio.Web.Tests
             Assert.NotNull(allTeamMembers);
         }
 
-       // [Fact]
+       [Fact]
         public void TeamMemberEditAsyncShouldEditTeamMemberCorrectly()
         {
             var options = new DbContextOptionsBuilder<IntillegioContext>()
@@ -219,7 +221,7 @@ namespace Intillegio.Web.Tests
 
             var service = new AboutService(dbContext, null);
 
-            var teamMember = new TeamMember()
+            var teamMember = new TeamMember
             {
                 Name = "Jack Semper	",
                 Id = 1,
@@ -257,6 +259,31 @@ namespace Intillegio.Web.Tests
             Assert.Equal(adminTeamMemberBindingModel.PhoneNumber, teamMemberEdited.PhoneNumber);
             Assert.Equal(adminTeamMemberBindingModel.Email, teamMemberEdited.Email);
             Assert.Equal(adminTeamMemberBindingModel.Position, teamMemberEdited.Position);
+        }
+
+        [Fact]
+        public void DeleteTeamMemberAsyncShouldDeleteTeamMemberCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Delete_TeamMember_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var service = new AboutService(dbContext, null);
+
+            var teamMember = new TeamMember();
+
+            dbContext.TeamMembers.Add(teamMember);
+            dbContext.SaveChanges();
+
+            var teamMemberId = dbContext.TeamMembers.LastOrDefault().Id;
+
+            service.DeleteTeamMemberAsync(teamMemberId);
+
+            Assert.True(dbContext
+                            .TeamMembers
+                            .Any(tm => tm.Id == teamMemberId) == false);
         }
     }
 }

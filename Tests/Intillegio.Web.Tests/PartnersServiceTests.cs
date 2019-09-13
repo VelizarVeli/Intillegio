@@ -141,5 +141,30 @@ namespace Intillegio.Web.Tests
 
             Assert.NotNull(allPartners);
         }
+
+        [Fact]
+        public void DeletePartnerAsyncShouldDeletePartnerCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Delete_Partner_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var service = new PartnersService(dbContext, null, null);
+
+            var partner = new Partner();
+
+            dbContext.Partners.Add(partner);
+            dbContext.SaveChanges();
+
+            var partnerId = dbContext.Partners.LastOrDefault().Id;
+
+            service.DeletePartnerAsync(partnerId);
+
+            Assert.True(dbContext
+                            .Partners
+                            .Any(a => a.Id == partnerId) == false);
+        }
     }
 }

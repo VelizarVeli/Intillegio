@@ -135,5 +135,30 @@ namespace Intillegio.Web.Tests
 
             Assert.NotNull(allSolutions);
         }
+
+        [Fact]
+        public void DeleteSolutionAsyncShouldDeleteSolutionCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Delete_Solution_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var service = new SolutionsService(dbContext, null);
+
+            var solution = new Solution();
+
+            dbContext.Solutions.Add(solution);
+            dbContext.SaveChanges();
+
+            var solutionId = dbContext.Solutions.LastOrDefault().Id;
+
+            service.DeleteSolutionAsync(solutionId);
+
+            Assert.True(dbContext
+                            .Solutions
+                            .Any(a => a.Id == solutionId) == false);
+        }
     }
 }

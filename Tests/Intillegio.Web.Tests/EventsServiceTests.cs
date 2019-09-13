@@ -144,5 +144,30 @@ namespace Intillegio.Web.Tests
 
             Assert.NotNull(allEvents);
         }
+
+        [Fact]
+        public void DeleteEventAsyncShouldDeleteEventCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Delete_Event_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var service = new EventsService(dbContext, null);
+
+            var eventure = new Event();
+
+            dbContext.Events.Add(eventure);
+            dbContext.SaveChanges();
+
+            var eventureId = dbContext.Events.LastOrDefault().Id;
+
+            service.DeleteEventAsync(eventureId);
+
+            Assert.True(dbContext
+                            .Events
+                            .Any(a => a.Id == eventureId) == false);
+        }
     }
 }

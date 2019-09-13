@@ -54,7 +54,7 @@ namespace Intillegio.Web.Tests
             Assert.NotNull(allProjects);
         }
 
-      //  [Fact]
+        [Fact]
         public void AddProjectAsyncShouldReturnProjectCorrectly()
         {
             var options = new DbContextOptionsBuilder<IntillegioContext>()
@@ -96,7 +96,7 @@ namespace Intillegio.Web.Tests
             var compareCategories = new List<Category>();
             for (int i = 0; i < categoriesCount; i++)
             {
-                var category = new  Category();
+                var category = new Category();
                 dbContext.Categories.Add(category);
                 compareCategories.Add(category);
             }
@@ -173,6 +173,31 @@ namespace Intillegio.Web.Tests
             var allProjects = service.GetAllProjectsForAdmin();
 
             Assert.NotNull(allProjects);
+        }
+
+        [Fact]
+        public void DeleteProjectAsyncShouldDeleteProjectCorrectly()
+        {
+            var options = new DbContextOptionsBuilder<IntillegioContext>()
+                .UseInMemoryDatabase(databaseName: "Delete_Project_Db")
+                .Options;
+
+            var dbContext = new IntillegioContext(options);
+
+            var service = new ProjectsService(dbContext, null);
+
+            var project = new Project();
+
+            dbContext.Projects.Add(project);
+            dbContext.SaveChanges();
+
+            var projectId = dbContext.Projects.LastOrDefault().Id;
+
+            service.DeleteProjectAsync(projectId);
+
+            Assert.True(dbContext
+                            .Projects
+                            .Any(a => a.Id == projectId) == false);
         }
     }
 }
