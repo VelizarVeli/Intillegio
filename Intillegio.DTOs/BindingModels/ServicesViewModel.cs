@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Intillegio.Common.ViewModels;
-using Intillegio.Emails;
 
 namespace Intillegio.DTOs.BindingModels
 {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Intillegio.Common.Constants;
+using Intillegio.Common.ViewModels;
 using Intillegio.DTOs.BindingModels;
-using Intillegio.Emails;
 using Intillegio.Models;
 using Intillegio.Services.Contracts;
 using Microsoft.AspNetCore.Identity;
@@ -41,8 +41,9 @@ namespace Intillegio.Web.Controllers
             {
                 AllSolutions = allSolutions,
                 Solution = solutionDetails,
-                Callback = message
             };
+
+            ViewBag.Message = message;
 
             return View("SolutionDetails", services);
         }

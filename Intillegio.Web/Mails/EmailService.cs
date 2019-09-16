@@ -1,8 +1,9 @@
 ﻿using System;
-using Intillegio.Emails.Contracts;
+using Intillegio.Common.ViewModels;
+using Intillegio.Web.Mails.Contracts;
 using MimeKit;
 
-namespace Intillegio.Emails
+namespace Intillegio.Web.Mails
 {
     public class EmailService : IEmailService
     {
@@ -10,7 +11,7 @@ namespace Intillegio.Emails
 
         public EmailService(IEmailConfiguration emailConfiguration)
         {
-            this._emailConfiguration = emailConfiguration;
+            _emailConfiguration = emailConfiguration;
         }
 
         public void Send(IEmailMessage emailMessage)
@@ -22,7 +23,7 @@ namespace Intillegio.Emails
             message.Body = new TextPart("plain")
             {
                 Text = $"Message: {emailMessage.Content}" + Environment.NewLine +
-                       $"Contact email: {emailMessage.Email}",
+                       $"Contact email: {emailMessage.Email}"
             };
 
             using (var client = new MailKit.Net.Smtp.SmtpClient())
@@ -53,6 +54,7 @@ namespace Intillegio.Emails
                 client.Send(message);
                 client.Disconnect(true);
             }
+
         }
     }
 }

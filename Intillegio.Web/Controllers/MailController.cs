@@ -1,9 +1,7 @@
-﻿using Intillegio.Common.ViewModels;
-using Intillegio.DTOs.BindingModels;
-using Intillegio.Emails;
-using Intillegio.Emails.Contracts;
+﻿using Intillegio.DTOs.BindingModels;
+using Intillegio.Web.Mails;
+using Intillegio.Web.Mails.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using Org.BouncyCastle.Crypto.Tls;
 
 namespace Intillegio.Web.Controllers
 {

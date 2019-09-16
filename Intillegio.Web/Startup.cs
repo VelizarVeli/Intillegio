@@ -2,13 +2,12 @@
 using AutoMapper;
 using Intillegio.Data.Data;
 using Intillegio.Data.Seeding;
-using Intillegio.Emails;
-using Intillegio.Emails.Contracts;
 using Intillegio.Models;
 using Intillegio.Services;
 using Intillegio.Services.Contracts;
-using Intillegio.Services.Emails;
 using Intillegio.Services.Mapping;
+using Intillegio.Web.Mails;
+using Intillegio.Web.Mails.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -42,9 +41,9 @@ namespace Intillegio.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
-            services.AddTransient<IEmailService, EmailService>();
-            services.AddScoped<IEmailMessage, EmailMessage>();
+            //services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+            //services.AddTransient<IEmailService, EmailService>();
+            //services.AddScoped<IEmailMessage, EmailMessage>();
 
             services.AddDbContext<IntillegioContext>(options =>
                 options.UseSqlServer(
@@ -87,6 +86,12 @@ namespace Intillegio.Web
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 options.Filters.Add(new RequireHttpsAttribute());
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+
+
+            services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddScoped<IEmailMessage, EmailMessage>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

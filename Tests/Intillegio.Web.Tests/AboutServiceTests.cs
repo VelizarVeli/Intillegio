@@ -271,10 +271,10 @@ namespace Intillegio.Web.Tests
                 .FirstOrDefault(artwork => artwork.Id == id);
 
             Assert.Equal(adminTeamMemberBindingModel.Name, teamMemberEdited.Name);
-            //Assert.Equal(adminTeamMemberBindingModel.Id, teamMemberEdited.Id);
-            //Assert.Equal(adminTeamMemberBindingModel.PhoneNumber, teamMemberEdited.PhoneNumber);
-            //Assert.Equal(adminTeamMemberBindingModel.Email, teamMemberEdited.Email);
-            //Assert.Equal(adminTeamMemberBindingModel.Position, teamMemberEdited.Position);
+            Assert.Equal(adminTeamMemberBindingModel.Id, teamMemberEdited.Id);
+            Assert.Equal(adminTeamMemberBindingModel.PhoneNumber, teamMemberEdited.PhoneNumber);
+            Assert.Equal(adminTeamMemberBindingModel.Email, teamMemberEdited.Email);
+            Assert.Equal(adminTeamMemberBindingModel.Position, teamMemberEdited.Position);
         }
 
         [Fact]
