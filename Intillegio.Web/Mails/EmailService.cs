@@ -18,7 +18,7 @@ namespace Intillegio.Web.Mails
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(emailMessage.Name, _emailConfiguration.SmtpUsername));
-            message.To.Add(new MailboxAddress("vels", "velizar.velikov@gmail.com"));
+            message.To.Add(new MailboxAddress("vels", "dimovanat@gmail.com"));
             message.Subject = $"{emailMessage.Subject}";
             message.Body = new TextPart("plain")
             {
@@ -39,7 +39,7 @@ namespace Intillegio.Web.Mails
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(callback.Name, _emailConfiguration.SmtpUsername));
-            message.To.Add(new MailboxAddress("vels", "velizar.velikov@gmail.com"));
+            message.To.Add(new MailboxAddress("vels", "dimovanat@gmail.com"));
             message.Subject = "Callback";
             message.Body = new TextPart("plain")
             {
