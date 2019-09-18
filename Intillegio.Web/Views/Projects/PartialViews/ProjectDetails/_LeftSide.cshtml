@@ -2,7 +2,8 @@
 <div class="col-md-8 col-sm-8 col-12">
     <h4>@Model.Name</h4>
     <p>
-        @Model.ProjectInfo
+        @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.ProjectInfo))
+
     </p>
 
     <h4>Project Features</h4>

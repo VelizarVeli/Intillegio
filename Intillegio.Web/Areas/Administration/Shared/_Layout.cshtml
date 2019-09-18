@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" />
         <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/font-awesome.min.css" asp-append-version="true">
@@ -21,26 +20,24 @@
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
-
     <footer class="border-top text-muted">
         <div class="container">
             &copy; 2019 - Intillegio - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/popper.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/bootstrap.min.js" asp-append-version="true"></script>
-
+        @RenderSection("Editor", required: false)
     </environment>
     <environment exclude="Development">
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/popper.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/bootstrap.min.js" asp-append-version="true"></script>
+        @RenderSection("Editor", required: false)
     </environment>
     @RenderSection("ActivitiesAndSkills", required: false)
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>

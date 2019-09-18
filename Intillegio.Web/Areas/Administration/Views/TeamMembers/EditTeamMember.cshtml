@@ -1,7 +1,5 @@
 ﻿@model Intillegio.DTOs.BindingModels.Admin.AdminTeamMemberBindingModel
 @{
-    ViewData["Title"] = "Team Member Edit";
-
 }
 <form asp-action="TeamMemberEdit">
     <div asp-validation-summary="All" class="text-danger"></div>
@@ -21,6 +19,10 @@
         </div>
     </div>
 </form>
+@section Editor{
+    <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+    <script>CKEDITOR.replace( 'About' );</script>
+}
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

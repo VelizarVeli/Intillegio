@@ -13,33 +13,11 @@
         </div>
         <div class="blog-post-content">
             <p>
-                @Model.Content
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))
             </p>
-            <blockquote class="blockquote">
-                <p>
-                    Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.
-                </p>
-                <h4>- Tomas Edison</h4>
-            </blockquote>
             <div class="row mt-30">
                 <partial name="~/Views/Blog/PartialViews/ArticleDetails/_VideoBox.cshtml" />
-                <div class="col-md-6 col-sm-6 col-12">
-                    <div class="blog-list-bottom-text">
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-                            since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged. but also the leap into electronic typesetting,
-                            remaining essentially unchanged.It was popularised in the 1960s with Letraset.
-                        </p>
-                    </div>
-                </div>
             </div>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
-                also the leap into electronic typesetting, remaining essentially unchanged. but also the leap into electronic typesetting, remaining essentially
-                unchanged.It was popularised in the 1960s with Letraset.
-            </p>
             <div class="blog-comments mt-50">
                 <h3 class="mt-0">All Comments:</h3>
                 <div class="blog-comment-user">

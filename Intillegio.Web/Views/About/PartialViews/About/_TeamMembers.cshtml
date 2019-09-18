@@ -20,7 +20,7 @@
                             <h4><a asp-area="" asp-controller="About" asp-action="TeamMemberDetails" asp-route-id="@member.Id">@member.Name</a></h4>
                             <span>@member.Position</span>
                             <p>
-                               @member.About
+                                @Html.Raw(System.Web.HttpUtility.HtmlDecode(member.About))
                             </p>
                             <ul>
                                 <li><a target="_blank" href="@member.Facebook"><i class="fa fa-facebook"></i></a></li>

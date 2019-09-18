@@ -22,6 +22,12 @@
         </div>
     </div>
 </form>
+@section Editor{
+    <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'Content' );
+    </script>
+}
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

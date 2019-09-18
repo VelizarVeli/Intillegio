@@ -1,5 +1,4 @@
 ﻿@model Intillegio.DTOs.BindingModels.Admin.AdminEditProjectBindingModel
-
 @{
     ViewData["Title"] = "Edit Project";
     Layout = "~/Areas/Administration/Shared/_Layout.cshtml";
@@ -22,6 +21,10 @@
         </div>
     </div>
 </form>
+@section Editor{
+    <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+    <script>CKEDITOR.replace( 'ProjectInfo' );</script>
+}
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

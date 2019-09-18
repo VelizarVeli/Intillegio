@@ -40,7 +40,7 @@ namespace Intillegio.DTOs.BindingModels.Admin
         [Display(Name = "Image 390 x 245")]
         public string Image390X245 { get; set; }
 
-        [Display(Name = "Image for the vide 400 x 250")]
+        [Display(Name = "Image for the video 400 x 250")]
         public string VideoImage400X250 { get; set; }
 
         [Required]

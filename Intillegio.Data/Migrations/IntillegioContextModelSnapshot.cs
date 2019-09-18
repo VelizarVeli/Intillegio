@@ -390,8 +390,7 @@ namespace Intillegio.Data.Migrations
                     b.Property<int?>("ProjectId");
 
                     b.Property<string>("ProjectInfo")
-                        .IsRequired()
-                        .HasMaxLength(1000);
+                        .IsRequired();
 
                     b.Property<int>("Stage");
 

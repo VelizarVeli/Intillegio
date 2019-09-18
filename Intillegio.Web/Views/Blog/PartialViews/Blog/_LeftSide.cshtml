@@ -3,9 +3,9 @@
     <div class="row">
         @foreach (var article in Model)
         {
-            if (article.Content.Length > 100)
+            if (article.Content.Length > 120)
             {
-                article.Content = article.Content.Substring(0, 132) + "...";
+                article.Content = article.Content.Substring(0, 129) + "...";
             }
             if (article.Name.Length > 33)
             {
@@ -27,7 +27,7 @@
                             <li><i class="fa fa-calendar"></i>@article.Date.ToString("MMMM dd, yyyy")</li>
                             <li><i class="fa fa-list-ul"></i>@article.CategoryName</li>
                         </ul>
-                        <p>@article.Content</p>
+                        @Html.Raw(System.Web.HttpUtility.HtmlDecode(article.Content))
                         <div class="mt-20 left-holder">
                             <a asp-area="" asp-controller="Blog" asp-action="ArticleDetails" asp-route-id="@article.Id" class="primary-button button-sm">Read More</a>
                         </div>
