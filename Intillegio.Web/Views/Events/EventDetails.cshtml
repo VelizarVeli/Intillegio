@@ -3,7 +3,7 @@
     ViewData["Title"] = "EventDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<partial name="~/Views/Events/PartialViews/EventDetails/_PageTitleEventDetails.cshtml"/>
+<partial name="~/Views/Events/PartialViews/EventDetails/_PageTitleEventDetails.cshtml" />
 <div class="section-block-grey">
     <div class="container">
         <div class="row">
@@ -15,7 +15,7 @@
                     <div class="section-heading-line-left"></div>
                     <div class="text-content mt-20">
                         <p>
-                            @Model.About
+                            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.About))
                         </p>
                     </div>
                     <div class="mt-20">
@@ -36,4 +36,4 @@
         </div>
     </div>
 </div>
-<partial name="~/Views/Events/PartialViews/EventDetails/_images.cshtml"/>
+<partial name="~/Views/Events/PartialViews/EventDetails/_images.cshtml" />

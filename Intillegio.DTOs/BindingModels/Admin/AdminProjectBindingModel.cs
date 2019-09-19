@@ -21,7 +21,6 @@ namespace Intillegio.DTOs.BindingModels.Admin
         public string Name { get; set; }
 
         [Required]
-        [StringLength(LengthConstants.AboutMaxLength, MinimumLength = LengthConstants.AboutMinLength)]
         [Display(Name = "Project Information")]
         public string ProjectInfo { get; set; }
 

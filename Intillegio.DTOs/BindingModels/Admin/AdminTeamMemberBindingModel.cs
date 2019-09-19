@@ -24,7 +24,6 @@ namespace Intillegio.DTOs.BindingModels.Admin
         public string Position { get; set; }
 
         [Required]
-        [StringLength(LengthConstants.AboutMaxLength, MinimumLength = LengthConstants.AboutMinLength)]
         public string About { get; set; }
 
         [Required]

@@ -33,7 +33,6 @@ namespace Intillegio.Models
         public string Town { get; set; }
 
         [Required]
-       [StringLength(LengthConstants.AboutMaxLength, MinimumLength = LengthConstants.AboutMinLength)]
         public string About { get; set; }
 
         [Required]

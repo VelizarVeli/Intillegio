@@ -90,7 +90,7 @@
             <h4 class="card-title"> @Html.DisplayNameFor(model => model.About) @Model.Name</h4>
         </div>
         <div class="col">
-            <p class="card-text">@Html.DisplayFor(model => model.About)</p>
+            <p class="card-text">@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.About))</p>
         </div>
     </div>
 </div>

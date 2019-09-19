@@ -33,7 +33,7 @@
                                 <li><i class="fa fa-clock-o"></i>@eventure.StartDateTime.ToString("HH:mm") - @eventure.EndTime.ToString("HH:mm")</li>
                             </ul>
                             <p>
-                                @eventure.About
+                                @Html.Raw(System.Web.HttpUtility.HtmlDecode(eventure.About))
                             </p>
                             <div class="mt-20 left-holder">
                                 <a asp-area="" asp-controller="Events" asp-action="EventDetails" asp-route-id="@eventure.Id" class="primary-button button-sm">Read More</a>
