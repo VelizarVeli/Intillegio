@@ -47,10 +47,5 @@ namespace Intillegio.Web.Controllers
 
             return View("SolutionDetails", services);
         }
-
-        public IActionResult DownloadServices()
-        {
-            return File("~/lib/Services.pdf", "application/pdf");
-        }
     }
 }
