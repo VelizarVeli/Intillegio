@@ -25,6 +25,17 @@
                 <span asp-validation-for="Position" class="text-danger"></span>
             </div>
         </div>
+    </div>
+    <hr />
+    <div class="col-sm-12 mt-2">
+        <div class="col">
+            <h4 class="card-title"><label asp-for="About"></label> @Model.Name.Split(' ')[0]</h4>
+        </div>
+        <div class="col">
+            <p class="card-text"><textarea asp-for="About" class="form-control"></textarea></p>
+        </div>
+    </div>
+    <div class="col-sm-12">
         <hr />
         <div class="row">
             <div class="col">
@@ -118,14 +129,5 @@
                 <p class="card-text"><i class="fa fa-check"></i> @Html.EditorFor(model => proffessionalSkill.Name)</p>
             </div>
         }
-    </div>
-    <hr />
-    <div class="col-sm-12 mt-2">
-        <div class="col">
-            <h4 class="card-title"><label asp-for="About"></label> @Model.Name.Split(' ')[0]</h4>
-        </div>
-        <div class="col">
-            <p class="card-text"><textarea asp-for="About" class="form-control"></textarea></p>
-        </div>
     </div>
 </div>
