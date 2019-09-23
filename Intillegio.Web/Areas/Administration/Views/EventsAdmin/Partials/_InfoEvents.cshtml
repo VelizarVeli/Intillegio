@@ -3,7 +3,7 @@
 <section id="posts">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h4>Events</h4>
@@ -28,7 +28,7 @@
                                 <td>@eventure.StartDateTime.ToString("dd MMMM yyyy HH:mm", CultureInfo.InvariantCulture)</td>
                                 <td>@eventure.Place</td>
                                 <td>@eventure.Town</td>
-                                <td>
+                                <td scope="row">
                                     <a asp-area="Administration" asp-controller="EventsAdmin" asp-action="EventDetails" asp-route-id="@eventure.Id" class="btn btn-secondary">
                                         <i class="fa fa-angle-double-right"></i> Details
                                     </a>
@@ -37,37 +37,6 @@
                             }
                         </tbody>
                     </table>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-center bg-primary text-white mb-3">
-                    <div class="card-body">
-                        <h3>Posts</h3>
-                        <h1 class="display-4">
-                            <i class="fa fa-pencil"></i> 6
-                        </h1>
-                        <a href="posts.html" class="btn btn-outline-light btn-sm">View</a>
-                    </div>
-                </div>
-
-                <div class="card text-center bg-success text-white mb-3">
-                    <div class="card-body">
-                        <h3>Categories</h3>
-                        <h1 class="display-4">
-                            <i class="fa fa-folder-open-o"></i> 4
-                        </h1>
-                        <a href="categories.html" class="btn btn-outline-light btn-sm">View</a>
-                    </div>
-                </div>
-
-                <div class="card text-center bg-warning text-white mb-3">
-                    <div class="card-body">
-                        <h3>Users</h3>
-                        <h1 class="display-4">
-                            <i class="fa fa-users"></i> 2
-                        </h1>
-                        <a href="users.html" class="btn btn-outline-light btn-sm">View</a>
-                    </div>
                 </div>
             </div>
         </div>
