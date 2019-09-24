@@ -1,0 +1,32 @@
+﻿@model Intillegio.Common.ViewModels.Admin.UsersPostsCategoriesViewModel
+<div class="col-md-3">
+    <div class="card text-center bg-primary text-white mb-3">
+        <div class="card-body">
+            <h3>Posts</h3>
+            <h1 class="display-4">
+                <i class="fa fa-pencil"></i> @Model.NumberOfPosts
+            </h1>
+            <a href="posts.html" class="btn btn-outline-light btn-sm">View</a>
+        </div>
+    </div>
+
+    <div class="card text-center bg-success text-white mb-3">
+        <div class="card-body">
+            <h3>Categories</h3>
+            <h1 class="display-4">
+                <i class="fa fa-folder-open-o"></i> @Model.NumberOfCategories
+            </h1>
+            <a href="categories.html" class="btn btn-outline-light btn-sm">View</a>
+        </div>
+    </div>
+
+    <div class="card text-center bg-warning text-white mb-3">
+        <div class="card-body">
+            <h3>Users</h3>
+            <h1 class="display-4">
+                <i class="fa fa-users"></i> @Model.NumberOfUsers
+            </h1>
+            <a asp-controller="PartnersAdmin" asp-action="UsersAdmin" class="btn btn-outline-light btn-sm">View</a>
+        </div>
+    </div>
+</div>

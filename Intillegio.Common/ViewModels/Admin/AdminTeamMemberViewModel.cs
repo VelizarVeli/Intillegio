@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 
 namespace Intillegio.Common.ViewModels.Admin
 {
+    [DebuggerDisplay("{" + nameof(Name) + "}")]
     public class AdminTeamMemberViewModel
     {
         public int Id { get; set; }
