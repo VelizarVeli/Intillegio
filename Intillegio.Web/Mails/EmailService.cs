@@ -18,7 +18,7 @@ namespace Intillegio.Web.Mails
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(emailMessage.Name, _emailConfiguration.SmtpUsername));
-            message.To.Add(new MailboxAddress("vels", "dimovanat@gmail.com"));
+            message.To.Add(new MailboxAddress("natalia", "dimovanat@gmail.com"));
             message.Subject = $"{emailMessage.Subject}";
             message.Body = new TextPart("plain")
             {
