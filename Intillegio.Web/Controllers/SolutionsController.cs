@@ -31,7 +31,7 @@ namespace Intillegio.Web.Controllers
         {
             var allSolutions = _solutionsService.GetAllSolutions();
             var solutionDetails = await _solutionsService.GetSolutionDetailsAsync(id);
-            var message = new EmailCallback();
+            //var message = new EmailCallback();
             if (solutionDetails == null)
             {
                 return RedirectToAction(ActionConstants.Solutions);
@@ -43,7 +43,7 @@ namespace Intillegio.Web.Controllers
                 Solution = solutionDetails,
             };
 
-            ViewBag.Message = message;
+            //ViewBag.Message = message;
 
             return View("SolutionDetails", services);
         }
