@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using AutoMapper;
 using Intillegio.Data.Data;
 using Intillegio.Data.Seeding;
@@ -71,17 +73,38 @@ namespace Intillegio.Web
                 options.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
             });
 
+            services.Configure<RequestLocalizationOptions>(opts =>
+            {
+                var supportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("bg"),
+                    new CultureInfo("ro")
+                };
+            });
+
             services.AddHttpsRedirection(options =>
             {
                 options.HttpsPort = 443;
             });
 
+            services.AddLocalization(opts =>
+            {
+                opts.ResourcesPath = "Resources";
+            });
 
             services.AddMvc(options =>
             {
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                 options.Filters.Add(new RequireHttpsAttribute());
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            })
+                .AddViewLocalization(opts =>
+                {
+                    opts.ResourcesPath = "Resources";
+                })
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
             services.AddTransient<IEmailService, EmailService>();
